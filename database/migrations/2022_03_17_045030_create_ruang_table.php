@@ -19,7 +19,7 @@ class CreateRuangTable extends Migration
             $table->string('gambar');
             $table->bigInteger('harga');
             $table->text('deskripsi');
-            $table->foreignId('respsionis_id')->constrained('resepsionis')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('resepsionis_id')->constrained('resepsionis')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

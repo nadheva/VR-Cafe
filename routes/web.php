@@ -1,6 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DendaController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PerangkatController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResepsionisController;
+use App\Http\Controllers\RuangController;
+use App\Http\Controllers\SewaPerangkatController;
+use App\Http\Controllers\SewaRuangController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------

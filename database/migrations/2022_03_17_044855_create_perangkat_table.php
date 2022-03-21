@@ -17,6 +17,7 @@ class CreatePerangkatTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('gambar');
+            $table->integer('stok');
             $table->bigInteger('harga');
             $table->text('deskripsi');
             $table->timestamps();
