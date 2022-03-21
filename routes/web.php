@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\LaporanController;
@@ -25,11 +25,12 @@ use App\Http\Controllers\WishlistController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.index');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'] );
 
 require __DIR__.'/auth.php';
