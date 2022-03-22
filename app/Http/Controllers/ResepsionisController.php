@@ -21,11 +21,18 @@ class ResepsionisController extends Controller
             'foto' => 'required',
             'email' => 'required'
         ]);
-
+        if (isset($request->foto)) {
+            $extention = $request->foto->extension();
+            $file_name = time() . '.' . $extention;
+            $txt = "storage/resepsionis/". $file_name;
+            $request->foto->storeAs('public/resepsionis', $file_name);
+        } else {
+            $file_name = null;
+        }
         Resepsionis::create([
             'nama' => $request->nama,
             'no_telp' => $request->no_telp,
-            'foto' => $request->foto,
+            'foto' => $txt,
             'email' => $request->email,
         ]); 
 
@@ -38,8 +45,16 @@ class ResepsionisController extends Controller
         $resepsionis = Resepsionis::findOrfail($id);
         $resepsionis->nama = $request->nama;
         $resepsionis->no_telp = $request->no_telp;
-        $resepsionis->foto = $request->foto;
         $resepsionis->email = $request->email;
+        if (isset($request->foto)) {
+            $extention = $request->foto->extension();
+            $file_name = time() . '.' . $extention;
+            $txt = "storage/resepsionis/". $file_name;
+            $request->foto->storeAs('public/resepsionis', $file_name);
+            $resepsionis->foto = $txt;
+        } else {
+            $file_name = null;
+        }
         $resepsionis->save();
 
         return redirect()->route('resepsionis.index')

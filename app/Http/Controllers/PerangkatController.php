@@ -23,9 +23,18 @@ class PerangkatController extends Controller
             'deskripsi' => 'required'
         ]);
 
+        if (isset($request->gambar)) {
+            $extention = $request->gambar->extension();
+            $file_name = time() . '.' . $extention;
+            $txt = "storage/perangkat/". $file_name;
+            $request->gambar->storeAs('public/perangkat', $file_name);
+        } else {
+            $file_name = null;
+        }
+
         Perangkat::create([
             'nama' => $request->nama,
-            'gambar' => $request->gambar,
+            'gambar' => $txt,
             'stok' => $request->stok,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi
@@ -39,10 +48,18 @@ class PerangkatController extends Controller
     {
         $perangkat = Perangkat::findOrfail($id);
         $perangkat->nama = $request->nama;
-        $perangkat->gambar = $request->gambar;
         $perangkat->stok = $request->stok;
         $perangkat->harga = $request->harga;
         $perangkat->deskripsi = $request->deskripsi;
+        if (isset($request->gambar)) {
+            $extention = $request->gambar->extension();
+            $file_name = time() . '.' . $extention;
+            $txt = "storage/perangkat/". $file_name;
+            $request->gambar->storeAs('public/perangkat', $file_name);
+            $perangkat->gambar = $txt;
+        } else {
+            $file_name = null;
+        }
         $perangkat->save();
 
         return redirect()->route('perangkat.index')

@@ -24,12 +24,20 @@ class ProfileController extends Controller
             'alamat' => 'required'
         ]);
 
+        if (isset($request->foto)) {
+            $extention = $request->foto->extension();
+            $file_name = time() . '.' . $extention;
+            $txt = "storage/profile/". $file_name;
+            $request->foto->storeAs('public/profile', $file_name);
+        } else {
+            $file_name = null;
+        }
         Profile::create([
             'user_id' => $request->user_id,
             'nama_lengkap' => $request->nama_lengkap,
             'nik' => $request->nik,
             'no_telp' => $request->no_telp,
-            'foto' => $request->foto,
+            'foto' => $txt,
             'alamat' => $request->alamat,
         ]); 
 
@@ -44,8 +52,16 @@ class ProfileController extends Controller
         $profile->nama_lengkap = $request->nama_lengkap;
         $profile->nik = $request->nik;
         $profile->no_telp = $request->no_telp;
-        $profile->foto = $request->foto;
         $profile->alamat = $request->alamat;
+        if (isset($request->foto)) {
+            $extention = $request->foto->extension();
+            $file_name = time() . '.' . $extention;
+            $txt = "storage/profile/". $file_name;
+            $request->foto->storeAs('public/profile', $file_name);
+            $profile->foto = $txt;
+        } else {
+            $file_name = null;
+        }
         $profile->save();
 
         return redirect()->route('profile.index')
