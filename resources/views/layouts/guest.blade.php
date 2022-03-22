@@ -9,7 +9,7 @@
   @include('guest.partials.navbar')
 
   <!-- ======= Hero Section ======= -->
-  {{-- @yield('carousel') --}}
+  @yield('carousel')
 
   <main id="main">
 

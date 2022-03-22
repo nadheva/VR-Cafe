@@ -95,11 +95,12 @@
 
 
   <!-- ======= Intro Section ======= -->
+  @section('carousel')
   <div class="intro intro-carousel swiper position-relative">
 
     <div class="swiper-wrapper">
 
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-1.jpg)">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{asset('tuser/assets/img/slide-1.jpg')}})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -124,7 +125,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-2.jpg)">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{asset('tuser/assets/img/slide-2.jpg')}})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -149,7 +150,7 @@
           </div>
         </div>
       </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-3.jpg)">
+      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url({{asset('tuser/assets/img/slide-3.jpg')}})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -176,7 +177,9 @@
       </div>
     </div>
     <div class="swiper-pagination"></div>
-  </div><!-- End Intro Section -->
+  </div>
+  <!-- End Intro Section -->
+  @endsection
 
   <main id="main">
 
@@ -293,7 +296,7 @@
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="assets/img/property-6.jpg" alt="" class="img-a img-fluid">
+                  <img src="{{asset('tuser/assets/img/property-6.jpg')}}" alt="" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
@@ -341,7 +344,7 @@
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="assets/img/property-3.jpg" alt="" class="img-a img-fluid">
+                  <img src="{{asset('tuser/assets/img/property-3.jpg')}}" alt="" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
@@ -389,7 +392,7 @@
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="assets/img/property-7.jpg" alt="" class="img-a img-fluid">
+                  <img src="{{asset('tuser/assets/img/property-7.jpg')}}" alt="" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
@@ -437,7 +440,7 @@
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
-                  <img src="assets/img/property-10.jpg" alt="" class="img-a img-fluid">
+                  <img src="{{asset('tuser/assets/img/property-10.jpg')}}" alt="" class="img-a img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-overlay-a-content">
@@ -509,7 +512,7 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-4.jpg" alt="" class="img-d img-fluid">
+                <img src="{{asset('tuser/assets/img/agent-4.jpg')}}" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
@@ -565,7 +568,7 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-1.jpg" alt="" class="img-d img-fluid">
+                <img src="{{asset('tuser/assets/img/agent-1.jpg')}}" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
@@ -621,7 +624,7 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="assets/img/agent-5.jpg" alt="" class="img-d img-fluid">
+                <img src="{{asset('tuser/assets/img/agent-5.jpg')}}" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
@@ -702,7 +705,7 @@
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
-                  <img src="assets/img/post-2.jpg" alt="" class="img-b img-fluid">
+                  <img src="{{asset('tuser/assets/img/post-2.jpg')}}" alt="" class="img-b img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-header-b">
@@ -726,7 +729,7 @@
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
-                  <img src="assets/img/post-5.jpg" alt="" class="img-b img-fluid">
+                  <img src="{{asset('tuser/assets/img/post-5.jpg')}}" alt="" class="img-b img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-header-b">
@@ -750,7 +753,7 @@
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
-                  <img src="assets/img/post-7.jpg" alt="" class="img-b img-fluid">
+                  <img src="{{asset('tuser/assets/img/post-7.jpg')}}" alt="" class="img-b img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-header-b">
@@ -774,7 +777,7 @@
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
-                  <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
+                  <img src="{{asset('tuser/assets/img/post-3.jpg')}}" alt="" class="img-b img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-header-b">
@@ -823,7 +826,7 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <div class="testimonial-img">
-                      <img src="assets/img/testimonial-1.jpg" alt="" class="img-fluid">
+                      <img src="{{asset('tuser/assets/img/testimonial-1.jpg')}}" alt="" class="img-fluid">
                     </div>
                   </div>
                   <div class="col-sm-12 col-md-6">
@@ -838,7 +841,7 @@
                       </p>
                     </div>
                     <div class="testimonial-author-box">
-                      <img src="assets/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
+                      <img src="{{asset('tuser/assets/img/mini-testimonial-1.jpg')}}" alt="" class="testimonial-avatar">
                       <h5 class="testimonial-author">Albert & Erika</h5>
                     </div>
                   </div>
@@ -851,7 +854,7 @@
                 <div class="row">
                   <div class="col-sm-12 col-md-6">
                     <div class="testimonial-img">
-                      <img src="assets/img/testimonial-2.jpg" alt="" class="img-fluid">
+                      <img src="{{asset('tuser/assets/img/testimonial-2.jpg')}}" alt="" class="img-fluid">
                     </div>
                   </div>
                   <div class="col-sm-12 col-md-6">
@@ -866,7 +869,7 @@
                       </p>
                     </div>
                     <div class="testimonial-author-box">
-                      <img src="assets/img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
+                      <img src="{{asset('tuser/assets/img/mini-testimonial-2.jpg')}}" alt="" class="testimonial-avatar">
                       <h5 class="testimonial-author">Pablo & Emma</h5>
                     </div>
                   </div>
