@@ -498,10 +498,10 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Best Agents</h2>
+                <h2 class="title-a">Resepsionis</h2>
               </div>
               <div class="title-link">
-                <a href="agents-grid.html">All Agents
+                <a href="agents-grid.html">Resepsionis
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>

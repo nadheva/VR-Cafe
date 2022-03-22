@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DendaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\ProfileController;
@@ -24,10 +25,10 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
-Route::get('/', function () {
-    return view('guest.index');
-});
-
+// Route::get('/', function () {
+//     return view('guest.index');
+// });
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
