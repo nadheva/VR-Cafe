@@ -10,7 +10,7 @@ class ResepsionisController extends Controller
     public  function index()
     {
         $resepsionis = Resepsionis::all();
-        return view('admin.resepsionis.index', compact('profile'));
+        return view('admin.resepsionis.index', compact('resepsionis'));
     }
 
     public function store(Request $request)
