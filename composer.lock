@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46ae3c38ad84d58d7e3de899c22929c2",
+    "content-hash": "9fbae4fd3d0b8c08bd0dde914c55a4cb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2177,6 +2177,45 @@
                 }
             ],
             "time": "2021-07-05T08:18:36+00:00"
+        },
+        {
+            "name": "needim/noty",
+            "version": "v3.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/needim/noty.git",
+                "reference": "77268c46b6db6a1eb7a920ed7c859fbc8de17993"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/needim/noty/zipball/77268c46b6db6a1eb7a920ed7c859fbc8de17993",
+                "reference": "77268c46b6db6a1eb7a920ed7c859fbc8de17993",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nedim Arabaci",
+                    "homepage": "http://ned.im",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Noty is a library that makes it easy to create alert - success - error - warning - information - confirmation messages as an alternative the standard alert dialog.",
+            "homepage": "http://ned.im/noty",
+            "keywords": [
+                "notification",
+                "noty"
+            ],
+            "support": {
+                "issues": "https://github.com/needim/noty/issues",
+                "source": "https://github.com/needim/noty/tree/master"
+            },
+            "abandoned": true,
+            "time": "2017-12-13T20:36:34+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -8484,5 +8523,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

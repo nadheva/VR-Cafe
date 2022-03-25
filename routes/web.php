@@ -34,5 +34,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 Route::get('/login', [AuthenticatedSessionController::class, 'create'] );
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'] );
+Route::resource('artikel', ArtikelController::class);
+Route::resource('denda', DendaController::class);
+Route::resource('perangkat', PerangkatController::class)->except('update');
+Route::put('perangkat-update/{id}', [PerangkatController::class, 'update']);
+Route::resource('resepsionis', ResepsionisController::class);
+Route::resource('ruang', RuangController::class);
+Route::resource('testimonial', TestimonialController::class);
+Route::resource('wishlist', WishlistController::class);
 
 require __DIR__.'/auth.php';
