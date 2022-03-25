@@ -46,4 +46,15 @@ Route::resource('testimonial', TestimonialController::class);
 Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
 Route::resource('wishlist', WishlistController::class);
 
+//Guest
+Route::get('/guest-about', [HomeController::class, 'about']);
+Route::get('/guest-perangkat', [HomeController::class, 'perangkat']);
+Route::get('/guest-perangkat-detail/{id}', [HomeController::class, 'detail_perangkat']);
+Route::get('/guest-ruang', [HomeController::class, 'ruang']);
+Route::get('/guest-ruang-detail/{id}', [HomeController::class, 'detail_ruang']);
+Route::get('/guest-contact', [HomeController::class, 'contact']);
+Route::get('/guest-resepsionis', [HomeController::class, 'resepsionis']);
+Route::get('/guest-resepsionis-detail', [HomeController::class, 'resepsionis_detail']);
+Route::get('/guest-vr-room', [HomeController::class, 'vr_room']);
+
 require __DIR__.'/auth.php';

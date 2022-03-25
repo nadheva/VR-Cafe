@@ -14,27 +14,23 @@
           <li class="nav-item">
             <a class="nav-link active" href="index.html">Home</a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">What We Are</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{{url('guest-about')}}">About Us</a>
+              <a class="dropdown-item " href="blog-single.html">History</a>
+              <a class="dropdown-item " href="agents-grid.html">Vision and Mission</a>
+              <a class="dropdown-item " href="agent-single.html">Our Facilitator</a>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="property-grid.html">Studio</a>
+            <a class="nav-link" href="/about">Studio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="blog-grid.html">VR Wearables</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="property-grid.html">Try Virtual Room</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item " href="property-single.html">Property Single</a>
-              <a class="dropdown-item " href="blog-single.html">Blog Single</a>
-              <a class="dropdown-item " href="agents-grid.html">Agents Grid</a>
-              <a class="dropdown-item " href="agent-single.html">Agent Single</a>
-            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link " href="/">Contact</a>
