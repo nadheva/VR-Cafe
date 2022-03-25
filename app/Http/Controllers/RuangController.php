@@ -19,6 +19,7 @@ class RuangController extends Controller
             'nama' => 'required',
             'gambar' => 'required',
             'resepsionis_id' => 'required',
+            'banner' => 'required',
             'harga' => 'required',
             'deskripsi' => 'required'
         ]);
@@ -30,9 +31,18 @@ class RuangController extends Controller
         } else {
             $file_name = null;
         }
+        if (isset($request->banner)) {
+            $extention = $request->banner->extension();
+            $file_name = time() . '.' . $extention;
+            $txt2 = "storage/ruangbanner/". $file_name;
+            $request->gambar->storeAs('public/ruang', $file_name);
+        } else {
+            $file_name = null;
+        }
         Ruang::create([
             'nama' => $request->nama,
             'gambar' => $txt,
+            'bannner' => $txt2,
             'resepsionis_id' => $request->resepsionis_id,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi
@@ -55,6 +65,15 @@ class RuangController extends Controller
             $txt = "storage/ruang/". $file_name;
             $request->gambar->storeAs('public/ruang', $file_name);
             $ruang->gambar = $txt;
+        } else {
+            $file_name = null;
+        }
+        if (isset($request->banner)) {
+            $extention = $request->banner->extension();
+            $file_name = time() . '.' . $extention;
+            $txt2 = "storage/ruangbanner/". $file_name;
+            $request->gambar->storeAs('public/ruang', $file_name);
+            $ruang->banner = $txt2;
         } else {
             $file_name = null;
         }

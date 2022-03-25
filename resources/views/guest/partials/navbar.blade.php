@@ -16,17 +16,17 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="about.html">About</a>
+            <a class="nav-link" href="about.html">About</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link " href="property-grid.html">Property</a>
+            <a class="nav-link" href="property-grid.html">Studio</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link " href="blog-grid.html">Blog</a>
+            <a class="nav-link" href="blog-grid.html">VR Wearables</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="property-grid.html">Try Virtual Room</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
             <div class="dropdown-menu">
@@ -37,8 +37,25 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="contact.html">Contact</a>
+            <a class="nav-link " href="/">Contact</a>
           </li>
+          @if(Auth::user())
+          <div class="dropdown">
+            <li class="nav-item d-flex align-items-center dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <a href="/logout" class="nav-link text-body font-weight-bold px-0" id="userDropdown" role="button">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">{{Auth::user()->name}}</span>
+              </a>
+            </li>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="/logout">Sign Out</a></li>
+              </ul>
+          </div>
+          @else
+          <li class="nav-item">
+            <a class="nav-link " href="/login">Sign In</a>
+          </li>
+          @endif
         </ul>
       </div>
 

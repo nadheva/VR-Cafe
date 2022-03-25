@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRuangTable extends Migration
+class CreateGrouproomTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateRuangTable extends Migration
      */
     public function up()
     {
-        Schema::create('ruang', function (Blueprint $table) {
+        Schema::create('grouproom', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('gambar');
-            $table->string('banner');
-            $table->bigInteger('harga');
+            $table->string('judul');
+            $table->string('link');
             $table->text('deskripsi');
-            $table->foreignId('resepsionis_id')->constrained('resepsionis')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateRuangTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ruang');
+        Schema::dropIfExists('grouproom');
     }
 }
