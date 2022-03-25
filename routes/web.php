@@ -40,8 +40,10 @@ Route::resource('perangkat', PerangkatController::class)->except('update');
 Route::put('perangkat-update/{id}', [PerangkatController::class, 'update']);
 Route::resource('resepsionis', ResepsionisController::class)->except('update');
 Route::put('resepsionis-update/{id}', [ResepsionisController::class, 'update']);
-Route::resource('ruang', RuangController::class);
+Route::resource('ruang', RuangController::class)->except('update');
+Route::put('ruang-update/{id}', [RuangController::class, 'update']);
 Route::resource('testimonial', TestimonialController::class);
+Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
 Route::resource('wishlist', WishlistController::class);
 
 require __DIR__.'/auth.php';
