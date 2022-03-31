@@ -16,6 +16,7 @@ class PerangkatController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'kode_perangkat' => 'required',
             'nama' => 'required',
             'gambar' => 'required',
             'stok' => 'required',
@@ -33,6 +34,7 @@ class PerangkatController extends Controller
         }
 
         Perangkat::create([
+            'kode_perangkat' => $request->kode_perangkat,
             'nama' => $request->nama,
             'gambar' => $txt,
             'stok' => $request->stok,
@@ -47,6 +49,7 @@ class PerangkatController extends Controller
     public function update(Request $request, $id)
     {
         $perangkat = Perangkat::findOrfail($id);
+        $perangkat->kode_perangkat = $request->kode_perangkat;
         $perangkat->nama = $request->nama;
         $perangkat->stok = $request->stok;
         $perangkat->harga = $request->harga;

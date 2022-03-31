@@ -15,6 +15,7 @@ class CreatePerangkatTable extends Migration
     {
         Schema::create('perangkat', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('kode_perangkat');
             $table->string('nama');
             $table->string('gambar');
             $table->integer('stok');

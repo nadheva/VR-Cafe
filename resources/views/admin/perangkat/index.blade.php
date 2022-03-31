@@ -18,7 +18,8 @@
             <table id="datatable-search" class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kode</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gambar</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stok</th>
@@ -32,6 +33,9 @@
                 <tr>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold" >{{ $item->kode_perangkat }}</span>
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold" maxlength="10" >{{ $item->nama }}</span>
@@ -80,7 +84,11 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                      <div class="modal-body">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Kode Perangkat:</label>
+                            <input type="number" class="form-control" name="kode_perangkat" placeholder="4 Digit">
+                        </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Perangkat:</label>
                             <input type="text" class="form-control" name="nama">
@@ -128,6 +136,10 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label">Kode Perangkat:</label>
+                          <input type="number" class="form-control" name="kode_perangkat" value="{{$i->kode_perangkat}}" placeholder="4 Digit">
+                        </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Perangkat:</label>
                             <input type="text" class="form-control" name="nama" value="{{$i->nama}}">

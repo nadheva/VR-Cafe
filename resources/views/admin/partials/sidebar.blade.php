@@ -5,7 +5,7 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0"
             href=" https://demos.creative-tim.com/soft-ui-dashboard-pro/pages/dashboards/default.html " target="_blank">
-            <img src="{{ asset('tadmin/assets/img/logo-ct-dark.png') }}" class="navbar-brand-img h-100"
+            <img src="{{ asset('tuser/assets/img/favicon.png') }}" class="navbar-brand-img h-100"
                 alt="main_logo">
             <span class="ms-1 font-weight-bold">VR CAFE</span>
         </a>
@@ -37,7 +37,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">Home</span>
                 </a>
             </li>
 

@@ -25,29 +25,31 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('guest.index');
-// });
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-Route::get('/login', [AuthenticatedSessionController::class, 'create'] );
-Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'] );
-Route::resource('artikel', ArtikelController::class);
-Route::resource('denda', DendaController::class);
-Route::resource('perangkat', PerangkatController::class)->except('update');
-Route::put('perangkat-update/{id}', [PerangkatController::class, 'update']);
-Route::resource('resepsionis', ResepsionisController::class)->except('update');
-Route::put('resepsionis-update/{id}', [ResepsionisController::class, 'update']);
-Route::resource('ruang', RuangController::class)->except('update');
-Route::put('ruang-update/{id}', [RuangController::class, 'update']);
-Route::resource('testimonial', TestimonialController::class);
-Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
-Route::resource('wishlist', WishlistController::class);
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('dashboard', [HomeController::class, 'dashboard']);
+    Route::get('login', [AuthenticatedSessionController::class, 'create'] );
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'] );
+    Route::resource('artikel', ArtikelController::class);
+    Route::resource('denda', DendaController::class);
+    Route::resource('perangkat', PerangkatController::class)->except('update');
+    Route::put('perangkat-update/{id}', [PerangkatController::class, 'update']);
+    Route::resource('resepsionis', ResepsionisController::class)->except('update');
+    Route::put('resepsionis-update/{id}', [ResepsionisController::class, 'update']);
+    Route::resource('ruang', RuangController::class)->except('update');
+    Route::put('ruang-update/{id}', [RuangController::class, 'update']);
+    Route::resource('testimonial', TestimonialController::class);
+    Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
+    Route::resource('wishlist', WishlistController::class);
+});
 
 //Guest
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/guest-about', [HomeController::class, 'about']);
+Route::get('/guest-contact', [HomeController::class, 'contact']);
 Route::get('/guest-perangkat', [HomeController::class, 'perangkat']);
 Route::get('/guest-perangkat-detail/{id}', [HomeController::class, 'detail_perangkat']);
 Route::get('/guest-ruang', [HomeController::class, 'ruang']);

@@ -12,6 +12,7 @@ class SewaRuang extends Model
     protected $fillable = [
         'perangkat_id',
         'user_id',
+        'invoice',
         'tanggal_mulai',
         'tanggal_berakhir',
         'keperluan',

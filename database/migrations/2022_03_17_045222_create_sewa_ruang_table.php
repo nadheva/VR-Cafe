@@ -17,6 +17,7 @@ class CreateSewaRuangTable extends Migration
             $table->id();
             $table->foreignId('ruang_id')->constrained('ruang')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->text('invoice');
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->text('keperluan');

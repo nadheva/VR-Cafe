@@ -10,6 +10,7 @@ class Perangkat extends Model
     use HasFactory;
     protected $table = 'perangkat';
     protected $fillable = [
+    'kode_perangkat',
     'nama',
     'gambar',
     'stok',

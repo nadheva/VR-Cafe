@@ -20,6 +20,11 @@ class HomeController extends Controller
         return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial'));
     }
 
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
     public function about()
     {
         return view('guest.about.about');
@@ -27,7 +32,7 @@ class HomeController extends Controller
 
     public function perangkat()
     {
-        $perangkat = Perangkat::all()->latest();
+        $perangkat = Perangkat::all();
         return view('guest.perangkat.perangkat', compact('perangkat'));
     }
 
@@ -39,13 +44,13 @@ class HomeController extends Controller
 
     public function ruang()
     {
-        $ruang = Ruang::all()->latest();
+        $ruang = Ruang::all();
         return view('guest.ruang.ruang', compact('ruang'));
     }
 
     public function detail_ruang($id)
     {
-        $ruang = Ruang::all()->latest();
+        $ruang = Ruang::where('id', $id)->first();
         return view('guest.ruang.ruang-detail', compact('ruang'));
     }
 
@@ -56,7 +61,7 @@ class HomeController extends Controller
 
     public function resepsionis()
     {
-        $resepsionis = Resepsionis::all()->latest();
+        $resepsionis = Resepsionis::all();
         return view('guest.resepsionis.resepsionis', compact('resepsionis'));
     }
 
@@ -68,8 +73,10 @@ class HomeController extends Controller
 
     public function vr_room()
     {
-        $vr_room = VR_Room::all()->latest();
-        return view('guest.vr-room.vr-room', compact('vr_room'));
+        // $vr_room = VR_Room::all()->latest();
+        return view('guest.vr-room.vr-room');
     }
+
+
 
 }

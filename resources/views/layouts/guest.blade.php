@@ -16,7 +16,6 @@
    {{$slot}}
 
   </main><!-- End #main -->
-
   <!-- ======= Footer ======= -->
   @include('guest.partials.footer')
 
