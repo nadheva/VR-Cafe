@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGrouproomTable extends Migration
+class CreateOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateGrouproomTable extends Migration
      */
     public function up()
     {
-        Schema::create('grouproom', function (Blueprint $table) {
+        Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('link');
-            $table->text('deskripsi');
+            $table->foreignId('sewa_ruang_id')->constrained('sewa_ruang')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('sewa_perangkat_id')->constrained('sewa_perangkat')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateGrouproomTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grouproom');
+        Schema::dropIfExists('order');
     }
 }
