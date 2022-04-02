@@ -15,8 +15,8 @@ class CreateOrderTable extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sewa_ruang_id')->constrained('sewa_ruang')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('sewa_perangkat_id')->constrained('sewa_perangkat')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('sewa_ruang_id')->constrained('sewa_ruang')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('sewa_perangkat_id')->constrained('sewa_perangkat')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->timestamps();
         });
     }

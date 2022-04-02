@@ -10,9 +10,11 @@ class Denda extends Model
     use HasFactory;
     protected $table = 'denda';
     protected $fillable = [
-        'sewa_ruang_id',
-        'sewa_perangkat_id',
-        'user_id',
+        // 'sewa_ruang_id',
+        // 'sewa_perangkat_id',
+        // 'user_id',
+        'order_id',
+        'invoice',
         'status',
         'snap_token',
         'grand_total',

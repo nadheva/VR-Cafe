@@ -69,7 +69,7 @@ class SewaPerangkatController extends Controller
             'tanggal_mulai' => $request->tanggal_mulai,
             'tanggal_berakhir' =>  $request->tanggal_berakhir,
             'keperluan' => $request->keperluan,
-            'proses' => $request->proses,
+            'proses' => 'Disewa',
             'status' => 'pending',
             // 'snap_token' => $request->snap_token,
             'grand_total' => $request->grand_total
@@ -211,7 +211,18 @@ class SewaPerangkatController extends Controller
 
     public function update(Request $request, $id)
     {
+        $sewa_perangkat = SewaPerangkat::find($id);
 
+        $sewa_perangkat->update([
+            'proses' => 'Dikembalikan'
+        ]);
+
+        $sewa_perangkat->perangkat->where('id', $sewa_perangkat->perangkat->id )
+                                  ->update([
+                                      'stok' => ($sewa_perangkat->perangkat->stok +  1)
+                                  ]);
+        return redirect()->route('sewa_perangkat.index')
+                ->with('success', 'Perangkat berhasil dikembalikan!');
     }
 
     public function destroy($id)

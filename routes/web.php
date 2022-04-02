@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResepsionisController;
@@ -25,10 +26,7 @@ use App\Http\Controllers\WishlistController;
 |
 */
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
+//dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [HomeController::class, 'dashboard']);
     Route::get('login', [AuthenticatedSessionController::class, 'create'] );
@@ -44,6 +42,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('testimonial', TestimonialController::class);
     Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
     Route::resource('wishlist', WishlistController::class);
+    Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update');
+    Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
+    Route::resource('sewa-ruang', SewaRuangController::class)->except('update');
+    Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
+    Route::resource('order', OrderController::class)->except('update');
+    Route::put('order-update/{id}', [OrderController::class, 'update']);
+    Route::resource('denda', DendaController::class)->except('update');
+    Route::put('denda-update/{id}', [DendaController::class, 'update']);
 });
 
 //Guest
