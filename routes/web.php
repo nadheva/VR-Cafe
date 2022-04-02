@@ -29,27 +29,55 @@ use App\Http\Controllers\WishlistController;
 //dashboard
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [HomeController::class, 'dashboard']);
+
+    //Auth
     Route::get('login', [AuthenticatedSessionController::class, 'create'] );
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'] );
+
+    //Artikel
     Route::resource('artikel', ArtikelController::class);
-    Route::resource('denda', DendaController::class);
+
+    //Perangkat
     Route::resource('perangkat', PerangkatController::class)->except('update');
     Route::put('perangkat-update/{id}', [PerangkatController::class, 'update']);
+
+    //Resepsionis
     Route::resource('resepsionis', ResepsionisController::class)->except('update');
     Route::put('resepsionis-update/{id}', [ResepsionisController::class, 'update']);
+
+    //Studio
     Route::resource('ruang', RuangController::class)->except('update');
     Route::put('ruang-update/{id}', [RuangController::class, 'update']);
+
+    //Testimonial
     Route::resource('testimonial', TestimonialController::class);
     Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
+
+    //Wishlist
     Route::resource('wishlist', WishlistController::class);
+
+    //Sewa Perangkat
     Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update');
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
+
+    //Sewa Studio
     Route::resource('sewa-ruang', SewaRuangController::class)->except('update');
     Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
+
+    //Order
     Route::resource('order', OrderController::class)->except('update');
     Route::put('order-update/{id}', [OrderController::class, 'update']);
+
+    //Denda
     Route::resource('denda', DendaController::class)->except('update');
     Route::put('denda-update/{id}', [DendaController::class, 'update']);
+
+    //Profile
+    Route::resource('profile', ProfileController::class)->except('update');
+    Route::put('profile-update/{id}', [ProfileController::class, 'update']);
+
+    //Laporan
+    Route::resource('laporan', LaporanController::class);
 });
 
 //Guest
