@@ -12,9 +12,12 @@
         <ul class="navbar-nav">
 
           <li class="nav-item">
-            <a class="nav-link active" href="/">Home</a>
+            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Beranda</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('guest-about') ? 'active' : '' }}" href="{{url('guest-about')}}">Tentang</a>
+          </li>
+          {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">What We Are</a>
             <div class="dropdown-menu">
               <a class="dropdown-item " href="{{url('guest-about')}}">About Us</a>
@@ -22,19 +25,19 @@
               <a class="dropdown-item " href="agents-grid.html">Vision and Mission</a>
               <a class="dropdown-item " href="agent-single.html">Our Facilitator</a>
             </div>
-          </li>
+          </li> --}}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Our Service</a>
+            <a class="nav-link dropdown-toggle {{ Request::is('guest-ruang', 'guest-perangkat') ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layanan</a>
             <div class="dropdown-menu">
               <a class="dropdown-item " href="{{url('guest-ruang')}}">Studio</a>
               <a class="dropdown-item " href="{{url('guest-perangkat')}}">VR Wearables</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{url('guest-vr-room')}}">Try VR Room</a>
+            <a class="nav-link {{ Request::is('guest-vr-room') ? 'active' : '' }}" href="{{url('guest-vr-room')}}">Coba VR Room</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="{{url('guest-contact')}}">Contact</a>
+            <a class="nav-link {{ Request::is('guest-contact') ? 'active' : '' }}" href="{{url('guest-contact')}}">Kontak</a>
           </li>
           @if(Auth::user())
           <div class="dropdown">

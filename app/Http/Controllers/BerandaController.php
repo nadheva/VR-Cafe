@@ -7,17 +7,21 @@ use App\Models\Resepsionis;
 use App\Models\Ruang;
 use App\Models\Perangkat;
 use App\Models\Testimonial;
-use App\Models\VR_Room;
+use App\Models\Artikel;
+use App\Models\User;
 
-class HomeController extends Controller
+class BerandaController extends Controller
 {
+
     public function index()
     {
-        $resepsionis = Resepsionis::all();
-        $ruang = Ruang::all();
-        $perangkat = Perangkat::all();
-        $testimonial = Testimonial::all();
-        return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial'));
+        $resepsionis = Resepsionis::latest()->take(5)->get();
+        $ruang = Ruang::latest()->take(5)->get();
+        $perangkat = Perangkat::latest()->take(5)->get();
+        $testimonial = Testimonial::latest()->take(5)->get();
+        $artikel = Artikel::latest()->take(5)->get();
+        $user = User::join('testimonial', 'users.id', '=', 'testimonial.user_id')->get();
+        return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial', 'artikel', 'user'));
     }
 
     public function dashboard()
@@ -33,7 +37,7 @@ class HomeController extends Controller
     public function perangkat()
     {
         $perangkat = Perangkat::all();
-        return view('guest.perangkat.perangkat', compact('perangkat'));
+        return view('guest.perangkat.perangkat', compact('perangkat', 'deva'));
     }
 
     public function detail_perangkat($id)
@@ -71,12 +75,21 @@ class HomeController extends Controller
         return view('guest.resepsionis.resepsionis-detail', compact('resepsionis'));
     }
 
+    public function artikel()
+    {
+        $artikel = Artikel::all();
+        return view('guest.artikel.artikel', compact('artikel'));
+    }
+
+    public function detail_artikel($id)
+    {
+        $artikel = Artikel::where('id', $id)->first();
+        return view('guest.artikel.artikel-detail', compact('artikel'));
+    }
+
     public function vr_room()
     {
         // $vr_room = VR_Room::all()->latest();
         return view('guest.vr-room.vr-room');
     }
-
-
-
 }

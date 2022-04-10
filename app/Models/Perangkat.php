@@ -13,8 +13,10 @@ class Perangkat extends Model
     'kode_perangkat',
     'nama',
     'gambar',
+    'gambar_detail',
     'stok',
     'harga',
     'deskripsi'
     ];
+    protected $array = ['gambar_detail'];
 }

@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-  
+
     <!-- Modal Tambah Perangkat -->
     <div class="modal fade" id="tambahPerangkat" tabindex="-1" role="dialog" aria-labelledby="tambahPerangkatLabel"
         aria-hidden="true">
@@ -96,6 +96,10 @@
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar:</label>
                             <input type="file" class="form-control" name="gambar">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Gambar Detail:</label>
+                            <input type="file" class="form-control" name="gambar_detail[]" multiple>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Stok:</label>
@@ -149,6 +153,10 @@
                             <input type="file" class="form-control" name="gambar" value="{{asset($i->gambar)}}">
                         </div>
                         <div class="form-group">
+                            <label for="message-text" class="col-form-label">Gambar Detail:</label>
+                            <input type="file" class="form-control" name="gambar_detail[]" value="{{asset($i->gambar_detail)}}" multiple>
+                        </div>
+                        <div class="form-group">
                             <label for="message-text" class="col-form-label">Stok:</label>
                             <input type="number" class="form-control" name="stok" value="{{$i->stok}}">
                         </div>
@@ -177,8 +185,8 @@
         searchable: true,
         fixedHeight: true
       });
-  
-      
+
+
       $('.show_confirm').click(function(event) {
               var form =  $(this).closest("form");
               var name = $(this).data("name");
@@ -196,7 +204,7 @@
                 }
               });
           });
-      
+
     </script>
     @endpush
   </x-app-layout>

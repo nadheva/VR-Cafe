@@ -14,12 +14,14 @@ class Ruang extends Model
         'banner',
         'nama',
         'gambar',
+        'gambar_detail',
         'harga',
         'deskripsi',
         'resepsionis_id'
     ];
+    protected $array = ['gambar_detail'];
 
-    public function resepsionis() 
+    public function resepsionis()
     {
         return $this->belongsTo(Resepsionis::class, 'resepsionis_id', 'id');
     }

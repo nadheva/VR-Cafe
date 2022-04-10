@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="d-flex flex-column h-100">
-                                <h2 class="font-weight-bolder mb-0">General Statistics</h2>
+                                <h2 class="font-weight-bolder mb-0">Selamat <span id="typed"></span></h2>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                         <td class="w-30">
                                             <div class="d-flex px-2 py-1 align-items-center">
                                                 <div>
-                                                    <img src="../../assets/img/icons/flags/US.png" alt="Country flag">
+                                                    <img src="../../tadmin/assets/img/icons/flags/US.png" alt="Country flag">
                                                 </div>
                                                 <div class="ms-4">
                                                     <p class="text-xs font-weight-bold mb-0">Country:</p>
@@ -150,7 +150,7 @@
                                         <td class="w-30">
                                             <div class="d-flex px-2 py-1 align-items-center">
                                                 <div>
-                                                    <img src="../../assets/img/icons/flags/DE.png" alt="Country flag">
+                                                    <img src="../../tadmin/assets/img/icons/flags/DE.png" alt="Country flag">
                                                 </div>
                                                 <div class="ms-4">
                                                     <p class="text-xs font-weight-bold mb-0">Country:</p>
@@ -181,7 +181,7 @@
                                         <td class="w-30">
                                             <div class="d-flex px-2 py-1 align-items-center">
                                                 <div>
-                                                    <img src="../../assets/img/icons/flags/GB.png" alt="Country flag">
+                                                    <img src="../../tadmin/assets/img/icons/flags/GB.png" alt="Country flag">
                                                 </div>
                                                 <div class="ms-4">
                                                     <p class="text-xs font-weight-bold mb-0">Country:</p>
@@ -212,7 +212,7 @@
                                         <td class="w-30">
                                             <div class="d-flex px-2 py-1 align-items-center">
                                                 <div>
-                                                    <img src="../../assets/img/icons/flags/BR.png" alt="Country flag">
+                                                    <img src="../../tadmin/assets/img/icons/flags/BR.png" alt="Country flag">
                                                 </div>
                                                 <div class="ms-4">
                                                     <p class="text-xs font-weight-bold mb-0">Country:</p>
@@ -432,6 +432,15 @@
         </div>
     </div>
     @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.8/typed.min.js"></script>
+    <script>
+      var typed = new Typed("#typed", {
+        strings: ["Datang!"],
+        typeSpeed: 40,
+        startDelay: 90,
+        loop: true
+      });
+    </script>
         <script>
             var ctx = document.getElementById("chart-bars").getContext("2d");
 

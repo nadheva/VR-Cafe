@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class CreateRuangTable extends Migration
 {
@@ -18,6 +19,7 @@ class CreateRuangTable extends Migration
             $table->bigInteger('kode_ruang');
             $table->string('nama');
             $table->string('gambar');
+            $table->longText('gambar_detail');
             $table->string('banner');
             $table->bigInteger('harga');
             $table->text('deskripsi');

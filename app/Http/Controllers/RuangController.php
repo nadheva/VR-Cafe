@@ -26,6 +26,21 @@ class RuangController extends Controller
             'harga' => 'required',
             'deskripsi' => 'required'
         ]);
+        $image = array();
+        if($file = $request->file('gambar_detail')){
+            foreach($file as $file){
+                $image_name = md5(rand(1000,10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $uploade_path = 'public/ruang/gambar_detail';
+                $image_url = $uploade_path.$image_full_name;
+                $file->storeAs($uploade_path,$image_full_name);
+                $image[] = $image_url;
+            }
+        } else {
+            $image_full_name = null;
+        }
+
         if (isset($request->gambar)) {
             $extention = $request->gambar->extension();
             $file_name = time() . '.' . $extention;
@@ -47,10 +62,11 @@ class RuangController extends Controller
             'nama' => $request->nama,
             'gambar' => $txt,
             'banner' => $txt2,
+            'gambar_detail' => implode('|', $image),
             'resepsionis_id' => $request->resepsionis_id,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi
-        ]); 
+        ]);
 
         return redirect()->route('ruang.index')
         ->with('success', 'Ruang Berhasil Ditambahkan!');
@@ -64,6 +80,21 @@ class RuangController extends Controller
         $ruang->resepsionis_id = $request->resepsionis_id;
         $ruang->harga = $request->harga;
         $ruang->deskripsi = $request->deskripsi;
+        $image = array();
+        if($file = $request->file('gambar_detail')){
+            foreach($file as $file){
+                $image_name = md5(rand(1000,10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $uploade_path = 'public/perangkat/gambar_detail';
+                $image_url = $uploade_path.$image_full_name;
+                $file->storeAs($uploade_path,$image_full_name);
+                $image[] = $image_url;
+                $ruang->gambar_detail = implode('|', $image);
+            }
+        } else {
+            $image_full_name = null;
+        }
         if (isset($request->gambar)) {
             $extention = $request->gambar->extension();
             $file_name = time() . '.' . $extention;

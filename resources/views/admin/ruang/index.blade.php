@@ -74,7 +74,7 @@
         </div>
       </div>
     </div>
-  
+
     <!-- Modal Tambah Perangkat -->
     <div class="modal fade" id="tambahRuang" tabindex="-1" role="dialog" aria-labelledby="tambahRuangLabel"
         aria-hidden="true">
@@ -102,6 +102,10 @@
                             <input type="file" class="form-control" name="gambar">
                         </div>
                         <div class="form-group">
+                            <label for="message-text" class="col-form-label">Gambar Detail:</label>
+                            <input type="file" class="form-control" name="gambar_detail[]" multiple>
+                        </div>
+                        <div class="form-group">
                             <label for="message-text" class="col-form-label">Banner:</label>
                             <input type="file" class="form-control" name="banner">
                         </div>
@@ -111,7 +115,7 @@
                               @foreach ($resepsionis as $item)
                               <option value="{{$item->id}}">{{$item->nama}}</option>
                               @endforeach
-                            </select> 
+                            </select>
                           </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
@@ -161,6 +165,10 @@
                             <input type="file" class="form-control" name="gambar" value="{{asset($i->gambar)}}">
                         </div>
                         <div class="form-group">
+                            <label for="message-text" class="col-form-label">Gambar Detail:</label>
+                            <input type="file" class="form-control" name="gambar_detail[]" value="{{asset($i->gambar_detail)}}" multiple>
+                        </div>
+                        <div class="form-group">
                             <label for="message-text" class="col-form-label">Banner:</label>
                             <input type="file" class="form-control" name="banner" value="{{asset($i->banner)}}">
                         </div>
@@ -170,7 +178,7 @@
                               @foreach ($resepsionis as $item)
                               <option value="{{$item->id}}" selected>{{$item->nama}}</option>
                               @endforeach
-                            </select> 
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
@@ -197,8 +205,8 @@
         searchable: true,
         fixedHeight: true
       });
-  
-      
+
+
       $('.show_confirm').click(function(event) {
               var form =  $(this).closest("form");
               var name = $(this).data("name");
@@ -216,7 +224,7 @@
                 }
               });
           });
-      
+
     </script>
     @endpush
   </x-app-layout>

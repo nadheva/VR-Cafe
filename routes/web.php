@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DendaController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PerangkatController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\SewaPerangkatController;
 use App\Http\Controllers\SewaRuangController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ use App\Http\Controllers\WishlistController;
 
 //dashboard
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('dashboard', [HomeController::class, 'dashboard']);
+    Route::get('dashboard', [BerandaController::class, 'dashboard']);
 
     //Auth
     Route::get('login', [AuthenticatedSessionController::class, 'create'] );
@@ -81,16 +82,18 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //Guest
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/guest-about', [HomeController::class, 'about']);
-Route::get('/guest-contact', [HomeController::class, 'contact']);
-Route::get('/guest-perangkat', [HomeController::class, 'perangkat']);
-Route::get('/guest-perangkat-detail/{id}', [HomeController::class, 'detail_perangkat']);
-Route::get('/guest-ruang', [HomeController::class, 'ruang']);
-Route::get('/guest-ruang-detail/{id}', [HomeController::class, 'detail_ruang']);
-Route::get('/guest-contact', [HomeController::class, 'contact']);
-Route::get('/guest-resepsionis', [HomeController::class, 'resepsionis']);
-Route::get('/guest-resepsionis-detail', [HomeController::class, 'resepsionis_detail']);
-Route::get('/guest-vr-room', [HomeController::class, 'vr_room']);
+Route::get('/', [BerandaController::class, 'index']);
+Route::get('/guest-about', [BerandaController::class, 'about']);
+Route::get('/guest-contact', [BerandaController::class, 'contact']);
+Route::get('/guest-perangkat', [BerandaController::class, 'perangkat']);
+Route::get('/guest-perangkat-detail/{id}', [BerandaController::class, 'detail_perangkat']);
+Route::get('/guest-ruang', [BerandaController::class, 'ruang']);
+Route::get('/guest-ruang-detail/{id}', [BerandaController::class, 'detail_ruang']);
+Route::get('/guest-contact', [BerandaController::class, 'contact']);
+Route::get('/guest-resepsionis', [BerandaController::class, 'resepsionis']);
+Route::get('/guest-resepsionis-detail', [BerandaController::class, 'resepsionis_detail']);
+Route::get('/guest-artikel', [BerandaController::class, 'artikel']);
+Route::get('/guest-artikel-detail/{id}', [BerandaController::class, 'artikel_detail']);
+Route::get('/guest-vr-room', [BerandaController::class, 'vr_room']);
 
 require __DIR__.'/auth.php';

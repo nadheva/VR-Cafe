@@ -5,83 +5,251 @@
         <div class="col-sm-12 col-md-4">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">EstateAgency</h3>
+              <h3 class="w-title-a text-brand">Tentang</h3>
             </div>
+            <hr style="border-top: 3px solid rgb(226 232 240);border-radius:.5rem">
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+                Penyedia layanan sewa studio dan perangkat VR terpercaya di Indonesia. Sewa aman dan harga termurah, Sewa Sekarang!
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com
+                  <span class="color-text-a">Email: </span> vrcafe.business@gmail.com
                 </li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +54 356 945234
+                  <span class="color-text-a">Telepon: </span> +62 356 9888989
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-4 section-md-t3">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">The Company</h3>
-            </div>
-            <div class="w-body-a">
-              <div class="w-body-a">
-                <ul class="list-unstyled">
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+            <div class="socials-a">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-facebook" aria-hidden="true"></i>
+                    </a>
                   </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-twitter" aria-hidden="true"></i>
+                    </a>
                   </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
                   </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
-                  </li>
-                  <li class="item-list-a">
-                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
                   </li>
                 </ul>
               </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Pembayaran</h3>
+            </div>
+            <hr style="border-top: 3px solid rgb(226 232 240);border-radius:.5rem">
+            <div class="row">
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/qris.png')}}" style="width: 50px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/shopeepay.png')}}" style="width: 50px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/GOPAY.png')}}" style="width: 50px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/visa.png')}}" style="max-width: 30px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/mastercard.png')}}" style="max-width: 30px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/jcb.png')}}" style="max-width: 30px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/american_express.png')}}" style="max-width: 20px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/bca.png')}}" style="max-width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/bni.png')}}" style="max-width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/briva.png')}}" style="width: 60px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/mandiri.png')}}" style="width: 60px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/permata_bank.png')}}" style="width: 60px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/atm_bersama.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/alto.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/prima.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/indomaret.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/isaku.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/alfamidi.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/alfamart.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/dandan.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/bca_klikpay.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/octo.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/brimo.png')}}" style="max-width: 20px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/danamon.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-4 mb-3">
+                    <div class="card h-100 border-0 rounded shadow">
+                        <div class="card-body p-2 text-center">
+                            <img src="{{asset('tuser/assets/img/payment/akulaku.png')}}" style="width: 40px;">
+                        </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
-              <h3 class="w-title-a text-brand">International sites</h3>
+              <h3 class="w-title-a text-brand">Alamat</h3>
             </div>
+            <hr style="border-top: 3px solid rgb(226 232 240);border-radius:.5rem">
             <div class="w-body-a">
-              <ul class="list-unstyled">
-                <li class="item-list-a">
-                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
-                </li>
-              </ul>
+                <p>
+                    <i class="bi bi-clock"></i> Buka :
+                    <br>
+                    Senin - Sabtu ( 08.30 - 17.00 )
+                </p>
+                <p>
+                    <i class="bi bi-map"></i> Jl. Radio IV No.8B Barito
+                    Kebayoran Baru, Jakarta Selatan
+                </p>
             </div>
           </div>
         </div>
@@ -92,53 +260,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <nav class="nav-footer">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">Home</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">About</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Property</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Blog</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Contact</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="bi bi-linkedin" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
           <div class="copyright-footer">
             <p class="copyright color-text-a">
-              &copy; Copyright
-              <span class="color-a">EstateAgency</span> All Rights Reserved.
+              &copy;
+              <span class="color-a">VR Cafe</span> Hak Cipta Dilindungi.
             </p>
           </div>
           <div class="credits">

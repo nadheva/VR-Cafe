@@ -99,7 +99,7 @@
   <div class="intro intro-carousel swiper position-relative">
 
     <div class="swiper-wrapper">
-    @foreach($ruang as $i)                                                  
+    @foreach($ruang as $i)
       <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{{ asset($i->banner)}}');">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
@@ -116,7 +116,7 @@
                       <br> {{$i->nama}}
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | Rp. {{$i->harga}}</span></a>
+                      <a href="{{url('/guest-ruang-detail/'.$i->id )}}"><span class="price-a">sewa | Rp. {{$i->harga}}</span></a>
                     </p>
                   </div>
                 </div>
@@ -141,7 +141,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Our Services</h2>
+                <h2 class="title-a">Layanan Kami</h2>
               </div>
             </div>
           </div>
@@ -154,7 +154,7 @@
                   <span class="bi bi-cart"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Lifestyle</h2>
+                  <h2 class="title-c">Sewa Studio</h2>
                 </div>
               </div>
               <div class="card-body-c">
@@ -165,7 +165,7 @@
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
+                <a href="#" class="link-c link-icon">Baca Selengkapnya
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -178,7 +178,7 @@
                   <span class="bi bi-calendar4-week"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Loans</h2>
+                  <h2 class="title-c">Sewa Perangkat VR</h2>
                 </div>
               </div>
               <div class="card-body-c">
@@ -189,8 +189,8 @@
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
-                  <span class="bi bi-calendar4-week"></span>
+                <a href="#" class="link-c link-icon">Baca Selengkapnya
+                  <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
             </div>
@@ -202,7 +202,7 @@
                   <span class="bi bi-card-checklist"></span>
                 </div>
                 <div class="card-title-c align-self-center">
-                  <h2 class="title-c">Sell</h2>
+                  <h2 class="title-c">Konsultasi</h2>
                 </div>
               </div>
               <div class="card-body-c">
@@ -213,7 +213,7 @@
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Read more
+                <a href="#" class="link-c link-icon">Baca Selengkapnya
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -233,7 +233,7 @@
                 <h2 class="title-a">Studio</h2>
               </div>
               <div class="title-link">
-                <a href="property-grid.html">All Studio
+                <a href="{{url('/guest-ruang')}}">Semua Studio
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -243,7 +243,6 @@
 
         <div id="property-carousel" class="swiper">
           <div class="swiper-wrapper">
-
             @foreach($ruang as $i )
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
@@ -254,7 +253,7 @@
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="property-single.html">{{$i->kode_ruang}} Studio
+                        <a href="{{url('/guest-ruang-detail/'.$i->id)}}">{{$i->kode_ruang}} Studio
                           <br /> {{$i->nama}}</a>
                       </h2>
                     </div>
@@ -262,7 +261,7 @@
                       <div class="price-box d-flex">
                         <span class="price-a">rent | RP {{$i->harga}}</span>
                       </div>
-                      <a href="#" class="link-a">Click here to view
+                      <a href="{{url('/guest-ruang-detail/'.$i->id)}}" class="link-a">Lihat
                         <span class="bi bi-chevron-right"></span>
                       </a>
                     </div>
@@ -292,7 +291,8 @@
                 </div>
               </div>
             </div>
-            @endforeach<!-- End carousel item -->
+            @endforeach
+            <!-- End carousel item -->
           </div>
         </div>
         <div class="propery-carousel-pagination carousel-pagination"></div>
@@ -307,10 +307,10 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">VR Wearables</h2>
+                <h2 class="title-a">Perangkat VR</h2>
               </div>
               <div class="title-link">
-                <a href="property-grid.html">All VR Wearables
+                <a href="property-grid.html">Semua Perangkat VR
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -331,15 +331,15 @@
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="property-single.html">{{$i->kode_perangkat}}
+                        <a href="{{url('/guest-perangkat-detail/'. $i->id)}}">{{$i->kode_perangkat}}
                           <br /> {{$i->nama}}</a>
                       </h2>
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">rent | RP {{$i->harga}}</span>
+                        <span class="price-a">sewa | RP {{$i->harga}}</span>
                       </div>
-                      <a href="#" class="link-a">Click here to view
+                      <a href="{{url('/guest-perangkat-detail/'. $i->id)}}" class="link-a">Lihat
                         <span class="bi bi-chevron-right"></span>
                       </a>
                     </div>
@@ -365,7 +365,7 @@
                 <h2 class="title-a">Resepsionis</h2>
               </div>
               <div class="title-link">
-                <a href="agents-grid.html">Resepsionis
+                <a href="{{url('/guest-resepsionis')}}">Semua Resepsionis
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -373,6 +373,7 @@
           </div>
         </div>
         <div class="row">
+            @foreach($resepsionis as $i)
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
@@ -382,8 +383,8 @@
                 <div class="card-header-d">
                   <div class="card-title-d align-self-center">
                     <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Margaret Sotillo
-                        <br> Escala</a>
+                      <a href="{{url('/guest-resepsionis-detail/'.$i->id)}}" class="link-two">{{$i->nama}}
+                        <br></a>
                     </h3>
                   </div>
                 </div>
@@ -393,10 +394,10 @@
                   </p>
                   <div class="info-agents color-a">
                     <p>
-                      <strong>Phone: </strong> +54 356 945234
+                      <strong>Phone: </strong> {{$i->no_telp}}
                     </p>
                     <p>
-                      <strong>Email: </strong> agents@example.com
+                      <strong>Email: </strong> {{$ii->email}}
                     </p>
                   </div>
                 </div>
@@ -429,118 +430,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="card-box-d">
-              <div class="card-img-d">
-                <img src="{{asset('tuser/assets/img/agent-1.jpg')}}" alt="" class="img-d img-fluid">
-              </div>
-              <div class="card-overlay card-overlay-hover">
-                <div class="card-header-d">
-                  <div class="card-title-d align-self-center">
-                    <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Stiven Spilver
-                        <br> Darw</a>
-                    </h3>
-                  </div>
-                </div>
-                <div class="card-body-d">
-                  <p class="content-d color-text-a">
-                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                  </p>
-                  <div class="info-agents color-a">
-                    <p>
-                      <strong>Phone: </strong> +54 356 945234
-                    </p>
-                    <p>
-                      <strong>Email: </strong> agents@example.com
-                    </p>
-                  </div>
-                </div>
-                <div class="card-footer-d">
-                  <div class="socials-footer d-flex justify-content-center">
-                    <ul class="list-inline">
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-facebook" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-twitter" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-instagram" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-linkedin" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-box-d">
-              <div class="card-img-d">
-                <img src="{{asset('tuser/assets/img/agent-5.jpg')}}" alt="" class="img-d img-fluid">
-              </div>
-              <div class="card-overlay card-overlay-hover">
-                <div class="card-header-d">
-                  <div class="card-title-d align-self-center">
-                    <h3 class="title-d">
-                      <a href="agent-single.html" class="link-two">Emma Toledo
-                        <br> Cascada</a>
-                    </h3>
-                  </div>
-                </div>
-                <div class="card-body-d">
-                  <p class="content-d color-text-a">
-                    Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                  </p>
-                  <div class="info-agents color-a">
-                    <p>
-                      <strong>Phone: </strong> +54 356 945234
-                    </p>
-                    <p>
-                      <strong>Email: </strong> agents@example.com
-                    </p>
-                  </div>
-                </div>
-                <div class="card-footer-d">
-                  <div class="socials-footer d-flex justify-content-center">
-                    <ul class="list-inline">
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-facebook" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-twitter" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-instagram" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="link-one">
-                          <i class="bi bi-linkedin" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section><!-- End Agents Section -->
@@ -552,10 +442,10 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Latest News</h2>
+                <h2 class="title-a">Artikel</h2>
               </div>
               <div class="title-link">
-                <a href="blog-grid.html">All News
+                <a href="{{url('/guest-artikel')}}">Semua Artikel
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -565,7 +455,7 @@
 
         <div id="news-carousel" class="swiper">
           <div class="swiper-wrapper">
-
+            @foreach($artikel as $i)
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
@@ -574,93 +464,22 @@
                 <div class="card-overlay">
                   <div class="card-header-b">
                     <div class="card-category-b">
-                      <a href="#" class="category-b">House</a>
+                      <a href="#" class="category-b"></a>
                     </div>
                     <div class="card-title-b">
                       <h2 class="title-2">
-                        <a href="blog-single.html">House is comming
-                          <br> new</a>
+                        <a href="{{url('/guest-artikel-detail/'.$i->id)}}">{{$i->judul}}
+                          <br></a>
                       </h2>
                     </div>
                     <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
+                      <span class="date-b">{{$i->timestamps}}</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-c swiper-slide">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="{{asset('tuser/assets/img/post-5.jpg')}}" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-c swiper-slide">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="{{asset('tuser/assets/img/post-7.jpg')}}" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Park</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Park is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-c swiper-slide">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="{{asset('tuser/assets/img/post-3.jpg')}}" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="#">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
+            </div>
+            @endforeach<!-- End carousel item -->
 
           </div>
         </div>
@@ -676,7 +495,7 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Testimonials</h2>
+                <h2 class="title-a">Testimonial</h2>
               </div>
             </div>
           </div>
@@ -684,7 +503,7 @@
 
         <div id="testimonial-carousel" class="swiper">
           <div class="swiper-wrapper">
-
+            @foreach($testimonial as $i)
             <div class="carousel-item-a swiper-slide">
               <div class="testimonials-box">
                 <div class="row">
@@ -699,47 +518,18 @@
                     </div>
                     <div class="testimonials-content">
                       <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                        debitis hic ber quibusdam
-                        voluptatibus officia expedita corpori.
+                        {{$i->isi}}
                       </p>
                     </div>
                     <div class="testimonial-author-box">
                       <img src="{{asset('tuser/assets/img/mini-testimonial-1.jpg')}}" alt="" class="testimonial-avatar">
-                      <h5 class="testimonial-author">Albert & Erika</h5>
+                      <h5 class="testimonial-author">{{$i->user->name}}</h5>
                     </div>
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
-
-            <div class="carousel-item-a swiper-slide">
-              <div class="testimonials-box">
-                <div class="row">
-                  <div class="col-sm-12 col-md-6">
-                    <div class="testimonial-img">
-                      <img src="{{asset('tuser/assets/img/testimonial-2.jpg')}}" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div class="testimonial-ico">
-                      <i class="bi bi-chat-quote-fill"></i>
-                    </div>
-                    <div class="testimonials-content">
-                      <p class="testimonial-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                        debitis hic ber quibusdam
-                        voluptatibus officia expedita corpori.
-                      </p>
-                    </div>
-                    <div class="testimonial-author-box">
-                      <img src="{{asset('tuser/assets/img/mini-testimonial-2.jpg')}}" alt="" class="testimonial-avatar">
-                      <h5 class="testimonial-author">Pablo & Emma</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End carousel item -->
+            </div>
+            @endforeach<!-- End carousel item -->
 
           </div>
         </div>

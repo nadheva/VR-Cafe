@@ -24,6 +24,21 @@ class PerangkatController extends Controller
             'deskripsi' => 'required'
         ]);
 
+        $image = array();
+        if($file = $request->file('gambar_detail')){
+            foreach($file as $file){
+                $image_name = md5(rand(1000,10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $uploade_path = 'public/perangkat/gambar_detail';
+                $image_url = $uploade_path.$image_full_name;
+                $file->storeAs($uploade_path,$image_full_name);
+                $image[] = $image_url;
+            }
+        } else {
+            $image_full_name = null;
+        }
+
         if (isset($request->gambar)) {
             $extention = $request->gambar->extension();
             $file_name = time() . '.' . $extention;
@@ -37,10 +52,11 @@ class PerangkatController extends Controller
             'kode_perangkat' => $request->kode_perangkat,
             'nama' => $request->nama,
             'gambar' => $txt,
+            'gambar_detail' => implode('|', $image),
             'stok' => $request->stok,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi
-        ]); 
+        ]);
 
         return redirect()->route('perangkat.index')
         ->with('success', 'Perangkat Berhasil Ditambahkan!');
@@ -54,6 +70,21 @@ class PerangkatController extends Controller
         $perangkat->stok = $request->stok;
         $perangkat->harga = $request->harga;
         $perangkat->deskripsi = $request->deskripsi;
+        $image = array();
+        if($file = $request->file('gambar_detail')){
+            foreach($file as $file){
+                $image_name = md5(rand(1000,10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $uploade_path = 'public/perangkat/gambar_detail';
+                $image_url = $uploade_path.$image_full_name;
+                $file->storeAs($uploade_path,$image_full_name);
+                $image[] = $image_url;
+                $perangkat->gambar_detail = implode('|', $image);
+            }
+        } else {
+            $image_full_name = null;
+        }
         if (isset($request->gambar)) {
             $extention = $request->gambar->extension();
             $file_name = time() . '.' . $extention;
