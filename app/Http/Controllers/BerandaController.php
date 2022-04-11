@@ -20,8 +20,7 @@ class BerandaController extends Controller
         $perangkat = Perangkat::latest()->take(5)->get();
         $testimonial = Testimonial::latest()->take(5)->get();
         $artikel = Artikel::latest()->take(5)->get();
-        $user = User::join('testimonial', 'users.id', '=', 'testimonial.user_id')->get();
-        return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial', 'artikel', 'user'));
+        return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial', 'artikel'));
     }
 
     public function dashboard()

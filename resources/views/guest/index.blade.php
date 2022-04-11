@@ -243,6 +243,9 @@
 
         <div id="property-carousel" class="swiper">
           <div class="swiper-wrapper">
+            @if($ruang->isEmpty())
+            <span>Studio kosong</span>
+            @else
             @foreach($ruang as $i )
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
@@ -293,6 +296,7 @@
             </div>
             @endforeach
             <!-- End carousel item -->
+            @endif
           </div>
         </div>
         <div class="propery-carousel-pagination carousel-pagination"></div>
@@ -320,7 +324,9 @@
 
         <div id="property-carousel" class="swiper">
           <div class="swiper-wrapper">
-
+            @if($perangkat->isEmpty())
+            <span>Perangkat VR Kosong</span>
+            @else
             @foreach($perangkat as $i )
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
@@ -348,7 +354,8 @@
               </div>
             </div>
             @endforeach<!-- End carousel item -->
-          </div>
+            @endif
+        </div>
         </div>
         <div class="propery-carousel-pagination carousel-pagination"></div>
 
@@ -373,6 +380,9 @@
           </div>
         </div>
         <div class="row">
+            @if($resepsionis->isEmpty())
+            <span>Resepsionis Kosong</span>
+            @else
             @foreach($resepsionis as $i)
           <div class="col-md-4">
             <div class="card-box-d">
@@ -431,6 +441,7 @@
             </div>
           </div>
           @endforeach
+          @endif
         </div>
       </div>
     </section><!-- End Agents Section -->
@@ -455,6 +466,9 @@
 
         <div id="news-carousel" class="swiper">
           <div class="swiper-wrapper">
+            @if($artikel->isEmpty())
+            <span>Artikel Kosong</span>
+            @else
             @foreach($artikel as $i)
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
@@ -480,7 +494,7 @@
               </div>
             </div>
             @endforeach<!-- End carousel item -->
-
+            @endif
           </div>
         </div>
 
