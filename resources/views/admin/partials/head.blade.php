@@ -14,6 +14,8 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{asset('tadmin/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+    <link rel="stylesheet" href="/noty.css"></script>
+    <script type="text/javascript" src="/noty.js"></script>
     <!-- CSS Files -->
     <link id="pagestyle" href="{{asset('tadmin/assets/css/soft-ui-dashboard.css?v=1.0.7')}}" rel="stylesheet" />
     @stack('css')

@@ -74,8 +74,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('denda-update/{id}', [DendaController::class, 'update']);
 
     //Profile
-    Route::resource('profile', ProfileController::class)->except('update');
-    Route::put('profile-update/{id}', [ProfileController::class, 'update']);
+    Route::resource('profil', ProfileController::class);
+    // Route::put('profile-update/{id}', [ProfileController::class, 'update']);
 
     //Laporan
     Route::resource('laporan', LaporanController::class);

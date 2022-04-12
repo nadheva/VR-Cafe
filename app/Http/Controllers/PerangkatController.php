@@ -12,7 +12,10 @@ class PerangkatController extends Controller
         $perangkat = Perangkat::all();
         return view('admin.perangkat.index', compact('perangkat'));
     }
-
+    public  function create()
+    {
+        return view('admin.perangkat.create');
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -59,7 +62,7 @@ class PerangkatController extends Controller
         ]);
 
         return redirect()->route('perangkat.index')
-        ->with('success', 'Perangkat Berhasil Ditambahkan!');
+        ->noty('success', 'Perangkat Berhasil Ditambahkan!');
     }
 
     public function update(Request $request, $id)

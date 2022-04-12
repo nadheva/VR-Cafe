@@ -1,4 +1,5 @@
 <x-app-layout>
+    @if(Auth::user()->where('role', '=', 'Admin'))
     <div class="col-md-12 mb-lg-0 mb-4">
       <div class="card mt-4">
         <div class="card-header pb-0 p-3">
@@ -6,11 +7,9 @@
             <div class="col-6 d-flex align-items-center">
               <h6 class="mb-0">Data Perangkat</h6>
             </div>
-            @if(Auth::user()->where('role', '=', 'Admin'))
             <div class="col-6 text-end">
                 <a class="btn bg-gradient-dark mb-0" href="" data-bs-toggle="modal" data-bs-target="#tambahPerangkat"><i class="fas fa-plus"></i>&nbsp;&nbsp;Tambah Perangkat</a>
               </div>
-            @endif
           </div>
         </div>
         <div class="card">
@@ -124,6 +123,8 @@
         </div>
     </div>
 
+
+
     <!-- Modal Edit Perangkat -->
     @foreach($perangkat as $i)
     <div class="modal fade" id="editPerangkat-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="editPerangkatLabel"
@@ -179,6 +180,11 @@
         </div>
     </div>
     @endforeach
+    @endif
+
+    @if(Auth::user()->where('role', '=', 'user'))
+    
+    @endif
     @push('scripts')
     <script>
       const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {

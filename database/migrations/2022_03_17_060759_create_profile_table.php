@@ -16,11 +16,17 @@ class CreateProfileTable extends Migration
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('nama_lengkap');
+            $table->string('nama_depan');
+            $table->string('nama_belakang');
             $table->string('nik');
             $table->string('no_telp');
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
             $table->string('foto');
-            $table->text('alamat');      
+            $table->text('alamat');
+            $table->string('kota');
+            $table->string('provinsi');
+            $table->string('kode_pos');
             $table->timestamps();
         });
     }
