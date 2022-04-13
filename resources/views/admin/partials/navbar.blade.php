@@ -54,7 +54,8 @@
                     <span class="d-sm-inline d-none">{{Auth::user()->name}}</span>
                   </a>
                 </li>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{route('profil.index')}}">Profil</a></li>
                     <li><a class="dropdown-item" href="/logout">Sign Out</a></li>
                   </ul>
               </div>

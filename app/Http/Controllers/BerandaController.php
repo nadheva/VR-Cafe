@@ -8,7 +8,9 @@ use App\Models\Ruang;
 use App\Models\Perangkat;
 use App\Models\Testimonial;
 use App\Models\Artikel;
+use App\Models\Profile;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class BerandaController extends Controller
 {
@@ -21,11 +23,6 @@ class BerandaController extends Controller
         $testimonial = Testimonial::latest()->take(5)->get();
         $artikel = Artikel::latest()->take(5)->get();
         return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial', 'artikel'));
-    }
-
-    public function dashboard()
-    {
-        return view('dashboard');
     }
 
     public function about()

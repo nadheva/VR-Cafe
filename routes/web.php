@@ -14,6 +14,7 @@ use App\Http\Controllers\SewaPerangkatController;
 use App\Http\Controllers\SewaRuangController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 //dashboard
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('dashboard', [BerandaController::class, 'dashboard']);
+    Route::get('dashboard', [DashboardController::class, 'dashboard']);
 
     //Auth
     Route::get('login', [AuthenticatedSessionController::class, 'create'] );
