@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "maatwebsite/excel": "^3.1",
+        "mckenziearts/laravel-notify": "^2.3",
         "midtrans/midtrans-php": "^2.5",
         "needim/noty": "^3.1",
         "rsmalc/laravel-noty": "^2.5"

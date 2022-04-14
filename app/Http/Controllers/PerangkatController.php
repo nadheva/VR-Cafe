@@ -60,9 +60,10 @@ class PerangkatController extends Controller
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi
         ]);
+        // notify()->success('Perangkat berhasil ditambahkan');
 
         return redirect()->route('perangkat.index')
-        ->noty('success', 'Perangkat Berhasil Ditambahkan!');
+        ->with('success', 'Perangkat Berhasil Ditambahkan!');
     }
 
     public function update(Request $request, $id)

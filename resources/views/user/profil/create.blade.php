@@ -78,11 +78,7 @@
                           </div>
                           <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>Provinsi</label>
-                            <select class="multisteps-form__select form-control" name="provinsi">
-                              <option selected="selected">Silahkan Pilih</option>
-                              <option value="1">State 1</option>
-                              <option value="2">State 2</option>
-                            </select>
+                            <input class="multisteps-form__input form-control" type="text" name="provinsi" placeholder="eg. Jawa" />
                           </div>
                           <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>Kode Pos</label>
