@@ -164,7 +164,7 @@
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akses</h6>
                 </li>
                 <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#konten" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="konten" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#layanan" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="layanan" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>credit-card</title>
@@ -182,7 +182,7 @@
                 </div>
                 <span class="nav-link-text ms-1">Transaksi</span>
                 </a>
-                <div class="collapse   {{Route::is('order.*') ? 'show' : ''}}" id="konten">
+                <div class="collapse   {{Route::is('order.*') ? 'show' : ''}}" id="layanan">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item {{Route::is('order.*') ? 'active' : ''}}">
                     <a class="nav-link {{Route::is('order.*') ? 'active' : ''}}" href="{{route('order.index')}}">
@@ -263,7 +263,7 @@
                         <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">MENU</h6>
                     </li>
                     <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#konten" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="konten" role="button" aria-expanded="false">
+                    <a data-bs-toggle="collapse" href="#layanan" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="layanan" role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                         <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title>credit-card</title>
@@ -281,7 +281,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Layanan Sewa</span>
                     </a>
-                    <div class="collapse   {{Route::is('layanan*') ? 'show' : ''}}" id="konten">
+                    <div class="collapse   {{Route::is('layanan*') ? 'show' : ''}}" id="layanan">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item {{Route::is('sewa-ruang.*') ? 'active' : ''}}">
                         <a class="nav-link {{Route::is('sewa-ruang.*') ? 'active' : ''}}" href="{{route('sewa-ruang.index')}}">
@@ -304,7 +304,7 @@
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akses</h6>
                 </li>
                 <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#konten" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="konten" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#akses" class="nav-link {{Route::is('akses*') ? 'active' : ''}}" aria-controls="akses" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>credit-card</title>
@@ -322,7 +322,7 @@
                 </div>
                 <span class="nav-link-text ms-1">Transaksi</span>
                 </a>
-                <div class="collapse   {{Route::is('order.*') ? 'show' : ''}}" id="konten">
+                <div class="collapse   {{Route::is('akses.*') ? 'show' : ''}}" id="akses">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item {{Route::is('order.*') ? 'active' : ''}}">
                     <a class="nav-link {{Route::is('order.*') ? 'active' : ''}}" href="{{route('order.index')}}">

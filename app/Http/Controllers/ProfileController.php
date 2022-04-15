@@ -81,7 +81,7 @@ class ProfileController extends Controller
         $profile->nik = $request->nik;
         $profile->no_telp = $request->no_telp;
         $profile->facebook = $request->facebook;
-        $profile->instagram = $request->intagram;
+        $profile->instagram = $request->instagram;
         $profile->alamat = $request->alamat;
         $profile->kota = $request->kota;
         $profile->provinsi = $request->provinsi;
@@ -98,13 +98,13 @@ class ProfileController extends Controller
         $profile->save();
 
         return redirect()->route('profil.index')
-        ->with('success', 'Profile Berhasil Diedit!');
+        ->with('info', 'Profile Berhasil Diedit!');
     }
 
     public function destroy($id)
     {
         Profile::find($id)->delete();
         return redirect()->route('profil.index')
-        ->with('success', 'Profil Berhasil Dihapus!');
+        ->with('warning', 'Profil Berhasil Dihapus!');
     }
 }
