@@ -37,7 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'] );
 
     //Artikel
-    Route::resource('artikel', ArtikelController::class);
+    Route::resource('artikel', ArtikelController::class)->except('update');
+    Route::put('artikel-update/{id}', [ArtikelController::class, 'update']);
 
     //Perangkat
     Route::resource('perangkat', PerangkatController::class)->except('update');
