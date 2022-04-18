@@ -18,6 +18,7 @@ class CreateRuangTable extends Migration
             $table->id();
             $table->bigInteger('kode_ruang');
             $table->string('nama');
+            $table->string('slug');
             $table->string('gambar');
             $table->longText('gambar_detail');
             $table->string('banner');

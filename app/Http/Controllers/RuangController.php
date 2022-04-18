@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ruang;
 use App\Models\Resepsionis;
+use Illuminate\Support\Str;
 
 class RuangController extends Controller
 {
@@ -60,6 +61,7 @@ class RuangController extends Controller
         Ruang::create([
             'kode_ruang' => $request->kode_ruang,
             'nama' => $request->nama,
+            'slug' => Str::slug($request->nama, '-'),
             'gambar' => $txt,
             'banner' => $txt2,
             'gambar_detail' => implode('|', $image),
@@ -77,6 +79,7 @@ class RuangController extends Controller
         $ruang = Ruang::findOrfail($id);
         $ruang->kode_ruang = $request->kode_ruang;
         $ruang->nama = $request->nama;
+        $ruang->slug = Str::slug($request->nama, '-');
         $ruang->resepsionis_id = $request->resepsionis_id;
         $ruang->harga = $request->harga;
         $ruang->deskripsi = $request->deskripsi;

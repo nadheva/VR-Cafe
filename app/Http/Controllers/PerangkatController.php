@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Perangkat;
+use Illuminate\Support\Str;
 
 class PerangkatController extends Controller
 {
@@ -55,6 +56,7 @@ class PerangkatController extends Controller
         Perangkat::create([
             'kode_perangkat' => $request->kode_perangkat,
             'nama' => $request->nama,
+            'slug' => Str::slug($request->nama, '-'),
             'gambar' => $txt,
             'gambar_detail' => json_encode($image),
             'stok' => $request->stok,
@@ -72,6 +74,7 @@ class PerangkatController extends Controller
         $perangkat = Perangkat::findOrfail($id);
         $perangkat->kode_perangkat = $request->kode_perangkat;
         $perangkat->nama = $request->nama;
+        $perangkat->slug = Str::slug($request->nama, '-');
         $perangkat->stok = $request->stok;
         $perangkat->harga = $request->harga;
         $perangkat->deskripsi = $request->deskripsi;

@@ -10,11 +10,11 @@
                   <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($perangkat->gambar)}}" alt="{{$perangkat->nama}}">
                   <div class="my-gallery d-flex mt-4 pt-2" itemscope itemtype="http://schema.org/ImageGallery">
                     @foreach($perangkatdetails as $key => $i)
-                    {{-- <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject"> --}}
+                    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                       <a href="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/black-chair.jpg" itemprop="contentUrl" data-size="500x600">
                         <img class="w-75 min-height-100 max-height-100 border-radius-lg shadow" src="{{asset($i)}}" itemprop="thumbnail" alt="Image description" />
                       </a>
-                    {{-- </figure> --}}
+                    </figure>
                     @endforeach
                     {{-- <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                       <a href="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/chair-steel.jpg" itemprop="contentUrl" data-size="500x600">
