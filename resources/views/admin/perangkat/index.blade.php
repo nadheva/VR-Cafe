@@ -110,7 +110,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
-                            <textarea class="form-control" name="deskripsi"></textarea>
+                            <textarea class="form-control" name="deskripsi" id="mytextarea"></textarea>
                         </div>
 
                     </div>
@@ -167,7 +167,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
-                            <textarea class="form-control" name="deskripsi" value="{{$i->deskripsi}}">{{$i->deskripsi}}</textarea>
+                            <textarea class="form-control" name="deskripsi" id="mytextarea" value="{{$i->deskripsi}}">{{$i->deskripsi}}</textarea>
                         </div>
 
                     </div>
@@ -183,7 +183,7 @@
     @endif
 
     @if(Auth::user()->where('role', '=', 'user'))
-    
+
     @endif
     @push('scripts')
     <script>

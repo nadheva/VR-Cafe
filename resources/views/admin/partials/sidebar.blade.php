@@ -291,8 +291,8 @@
                         </li>
                     </ul>
                     <ul class="nav ms-4 ps-3">
-                        <li class="nav-item {{Route::is('sewa-perangkat.*') ? 'active' : ''}}">
-                        <a class="nav-link {{Route::is('sewa-perangkat.*') ? 'active' : ''}}" href="{{route('sewa-perangkat.index')}}">
+                        <li class="nav-item {{Route::is('user-perangkat.*') ? 'active' : ''}}">
+                        <a class="nav-link {{Route::is('user-perangkat.*') ? 'active' : ''}}" href="{{route('user-perangkat.index')}}">
                             <span class="sidenav-mini-icon"> K </span>
                             <span class="sidenav-normal"> Perangkat </span>
                         </a>

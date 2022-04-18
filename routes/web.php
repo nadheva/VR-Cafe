@@ -15,6 +15,9 @@ use App\Http\Controllers\SewaRuangController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\User\CartController;
+//User
+use App\Http\Controllers\User\PerangkatController as UserPerangkat;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,14 +31,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//dashboard
+
+
+//Backend
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'dashboard']);
-
     //Auth
     Route::get('login', [AuthenticatedSessionController::class, 'create'] );
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'] );
-
+    //Wishlist
+    Route::resource('wishlist', WishlistController::class);
     //Artikel
     Route::resource('artikel', ArtikelController::class)->except('update');
     Route::put('artikel-update/{id}', [ArtikelController::class, 'update']);
@@ -52,13 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('ruang', RuangController::class)->except('update');
     Route::put('ruang-update/{id}', [RuangController::class, 'update']);
 
-    //Testimonial
-    Route::resource('testimonial', TestimonialController::class);
-    Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
-
-    //Wishlist
-    Route::resource('wishlist', WishlistController::class);
-
     //Sewa Perangkat
     Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update');
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
@@ -67,9 +65,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('sewa-ruang', SewaRuangController::class)->except('update');
     Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
 
+    //Testimonial
+    Route::resource('testimonial', TestimonialController::class);
+    Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
+
     //Order
     Route::resource('order', OrderController::class)->except('update');
     Route::put('order-update/{id}', [OrderController::class, 'update']);
+
 
     //Denda
     Route::resource('denda', DendaController::class)->except('update');
@@ -77,13 +80,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Profile
     Route::resource('profil', ProfileController::class);
-    // Route::put('profile-update/{id}', [ProfileController::class, 'update']);
 
     //Laporan
     Route::resource('laporan', LaporanController::class);
+    Route::resource('user-perangkat', UserPerangkat::class);
+
+    //Cart
+    Route::resource('cart', CartController::class);
 });
 
-//Guest
+//FrontEnd
 Route::get('/', [BerandaController::class, 'index']);
 Route::get('/guest-about', [BerandaController::class, 'about']);
 Route::get('/guest-contact', [BerandaController::class, 'contact']);

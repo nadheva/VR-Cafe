@@ -31,12 +31,13 @@ class PerangkatController extends Controller
         if($file = $request->file('gambar_detail')){
             foreach($file as $file){
                 $image_name = md5(rand(1000,10000));
-                $ext = strtolower($file->getClientOriginalExtension());
-                $image_full_name = $image_name.'.'.$ext;
-                $uploade_path = 'public/perangkat/gambar_detail';
-                $image_url = $uploade_path.$image_full_name;
-                $file->storeAs($uploade_path,$image_full_name);
-                $image[] = $image_url;
+                $ext = $file->extension();
+                $image_full_name =  $image_name . '.' . $ext;
+                $upload_path = "storage/perangkat/gambar_detail/".$image_full_name;
+                // $image_url = $uploade_path;
+                $file->storeAs('public/perangkat/gambar_detail/', $image_full_name);
+                $image[] = $upload_path;
+                // $perangkat->gambar_detail = json_encode($image);
             }
         } else {
             $image_full_name = null;
@@ -55,7 +56,7 @@ class PerangkatController extends Controller
             'kode_perangkat' => $request->kode_perangkat,
             'nama' => $request->nama,
             'gambar' => $txt,
-            'gambar_detail' => implode('|', $image),
+            'gambar_detail' => json_encode($image),
             'stok' => $request->stok,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi
@@ -78,13 +79,13 @@ class PerangkatController extends Controller
         if($file = $request->file('gambar_detail')){
             foreach($file as $file){
                 $image_name = md5(rand(1000,10000));
-                $ext = strtolower($file->getClientOriginalExtension());
-                $image_full_name = $image_name.'.'.$ext;
-                $uploade_path = 'public/perangkat/gambar_detail';
-                $image_url = $uploade_path.$image_full_name;
-                $file->storeAs($uploade_path,$image_full_name);
-                $image[] = $image_url;
-                $perangkat->gambar_detail = implode('|', $image);
+                $ext = $file->extension();
+                $image_full_name =  $image_name . '.' . $ext;
+                $upload_path = "storage/perangkat/gambar_detail/".$image_full_name;
+                // $image_url = $uploade_path;
+                $file->storeAs('public/perangkat/gambar_detail/', $image_full_name);
+                $image[] = $upload_path;
+                $perangkat->gambar_detail = json_encode($image);
             }
         } else {
             $image_full_name = null;
