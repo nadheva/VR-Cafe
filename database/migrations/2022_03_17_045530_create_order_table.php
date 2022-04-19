@@ -17,6 +17,10 @@ class CreateOrderTable extends Migration
             $table->id();
             $table->foreignId('sewa_ruang_id')->constrained('sewa_ruang')->onDelete('cascade')->onUpdate('cascade')->nullable();
             $table->foreignId('sewa_perangkat_id')->constrained('sewa_perangkat')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('perangkat_id')->constrained('perangkat')->onDelete('cascacde')->onUpdate('cascade')->nullable();
+            $table->foreignId('ruang_id')->constrained('ruang')->onDelete('cascacde')->onUpdate('cascade')->nullable();
+            $table->integer('jumlah');
+            $table->bigInteger('harga');
             $table->timestamps();
         });
     }

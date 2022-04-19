@@ -13,6 +13,7 @@ class Ruang extends Model
         'kode_ruang',
         'banner',
         'nama',
+        'slug',
         'gambar',
         'gambar_detail',
         'harga',

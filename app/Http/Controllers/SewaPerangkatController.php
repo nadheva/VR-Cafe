@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SewaPerangkat;
 use App\Models\Perangkat;
+use App\Models\Cart;
+use App\Models\Order;
 use Midtrans\Snap;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -48,10 +50,10 @@ class SewaPerangkatController extends Controller
         }
 
         $invoice =  'INV-'.Str::upper($random);
-        $user = Auth::user();
-        $perangkat = Perangkat::where('id', $id)->first();
+        $user = Auth::user()->id;
+        $perangkat = Perangkat::get();
         $this->validate($request, [
-            'perangkat_id' => 'required',
+            // 'perangkat_id' => 'required',
             'user_id' => 'required',
             'invoice' => 'required',
             'tanggal_mulai' => 'required',
@@ -63,7 +65,7 @@ class SewaPerangkatController extends Controller
         ]);
 
         $sewa_perangkat = SewaPerangkat::create([
-            'perangkat_id' => $perangkat,
+            // 'perangkat_id' => $perangkat,
             'user_id' => $user,
             'invoice' => $invoice,
             'tanggal_mulai' => $request->tanggal_mulai,
@@ -75,13 +77,19 @@ class SewaPerangkatController extends Controller
             'grand_total' => $request->grand_total
         ]);
 
-        $sewa_perangkat->perangkat->where('id', $sewa_perangkat->perangkat_id)
-                                        ->update([
-                                            'stok' => ($sewa_perangkat->perangkat->stok - 1),
-                                        ]);
-        $sewa_perangkat->order()->create([
-            'sewa_perangkat_id' => $sewa_perangkat->id
-        ]);
+        foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
+            $perangkat->where('id', $cart->perangkat->id)
+            ->update([
+                'stok' => ($perangkat->stok - $cart->jumlah),
+            ]);
+
+            $sewa_perangkat->order()->create([
+            'sewa_perangkat_id' => $sewa_perangkat->id,
+            'perangkat_id'      => $cart->perangkat_id,
+            'jumlah'            => $cart->jumlah,
+            'harga'             => $cart->harga,
+            ]);
+        }
 
         $payload = [
             'transaction_details' => [
@@ -212,22 +220,30 @@ class SewaPerangkatController extends Controller
     public function update(Request $request, $id)
     {
         $sewa_perangkat = SewaPerangkat::find($id);
-
+        $order = Order::where('id', $id)->first();
+        // $perangkat = Perangkat::all();
         $sewa_perangkat->update([
             'proses' => 'Dikembalikan'
         ]);
 
-        $sewa_perangkat->perangkat->where('id', $sewa_perangkat->perangkat->id )
-                                  ->update([
-                                      'stok' => ($sewa_perangkat->perangkat->stok +  1)
-                                  ]);
+        // $sewa_perangkat->perangkat->where('id', $sewa_perangkat->perangkat->id )
+        //                           ->update([
+        //                               'stok' => ($sewa_perangkat->perangkat->stok +  1)
+        //                           ]);
+        foreach(Order::where('id', $id)->get() as $order) {
+        Perangkat::where('id', $order->perangkat->id)
+            ->update([
+                'stok' => (Perangkat::select('stok') + $order->jumlah),
+            ]);
+        }
         return redirect()->route('sewa_perangkat.index')
                 ->with('success', 'Perangkat berhasil dikembalikan!');
     }
 
     public function destroy($id)
     {
-
+        SewaPerangkat::find($id)->delete();
+        return redirect()->back();
     }
 
 

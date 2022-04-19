@@ -10,7 +10,6 @@ class SewaPerangkat extends Model
     use HasFactory;
     protected $table = 'sewa_perangkat';
     protected $fillable = [
-        'perangkat_id',
         'user_id',
         'invoice',
         'tanggal_mulai',

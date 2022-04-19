@@ -15,7 +15,7 @@ class CreateSewaPerangkatTable extends Migration
     {
         Schema::create('sewa_perangkat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('perangkat_id')->constrained('perangkat')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('perangkat_id')->constrained('perangkat')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->text('invoice');
             $table->date('tanggal_mulai');

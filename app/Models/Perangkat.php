@@ -12,6 +12,7 @@ class Perangkat extends Model
     protected $fillable = [
     'kode_perangkat',
     'nama',
+    'slug',
     'gambar',
     'gambar_detail',
     'stok',

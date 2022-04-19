@@ -40,5 +40,19 @@ class CartController extends Controller
         ->with('success', 'Perangkat telah ditambahkan ke keranjang!');
     }
 
-    
+    public function destroy(Request $request)
+    {
+        Cart::with('perangkat')
+              ->whereId($request->cart_id)
+              ->delete();
+    }
+
+    public function destroy_all()
+    {
+        Cart::with('perangkat')
+            ->where('user_id', Auth::user()->id)
+            ->delete();
+    }
+
+
 }
