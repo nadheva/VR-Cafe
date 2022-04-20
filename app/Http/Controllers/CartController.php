@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Perangkat;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $cart = Cart::with('perangkat')
-                ->where('user_id', Auth::user()->id)
-                ->orderBy('created_at', 'desc')
-                ->sum('harga')->get();
-        return view('user.cart.index', compact('cart'));
+        $cart = Cart::where('user_id', Auth::user()->id)->get();
+        $total = $cart->sum('harga');
+        return view('user.cart.index', compact('cart', 'total'));
     }
 
     public function store(Request $request)
@@ -36,7 +35,7 @@ class CartController extends Controller
                 'harga' => $request->harga
             ]);
         }
-        return redirect()->route('cart.index')
+        return redirect()->back()
         ->with('success', 'Perangkat telah ditambahkan ke keranjang!');
     }
 

@@ -17,10 +17,11 @@ class PerangkatController extends Controller
     public function show($id)
     {
         $perangkat = Perangkat::where('id', $id)->first();
+        $perangkatlain = Perangkat::latest()->take(5)->get()->except($id);
         $perangkatdetails = json_decode($perangkat->gambar_detail, true);
         foreach ($perangkatdetails as $key => $i){
             $data[] = $i;
          }
-        return view('user.sewa-perangkat.show', compact('perangkat', 'perangkatdetails' ));
+        return view('user.sewa-perangkat.show', compact('perangkat', 'perangkatdetails' ,'perangkatlain'));
     }
 }

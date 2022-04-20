@@ -11,8 +11,8 @@ class Cart extends Model
     protected $table = 'cart';
     protected $fillable = [
         'user_id',
-        'produk_id',
-        'qty',
+        'perangkat_id',
+        'jumlah',
         'harga'
     ];
 
@@ -23,6 +23,6 @@ class Cart extends Model
 
     public function perangkat()
     {
-        return $this->hasMany(Perangkat::class, 'perangkat_id', 'id');
+        return $this->belongsTo(Perangkat::class, 'perangkat_id', 'id');
     }
 }

@@ -15,7 +15,7 @@ use App\Http\Controllers\SewaRuangController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\CartController;
 //User
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
 use Illuminate\Support\Facades\Route;
@@ -86,7 +86,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('user-perangkat', UserPerangkat::class);
 
     //Cart
-    Route::resource('cart', CartController::class);
+    // Route::resource('cart', CartController::class);
+    Route::get('cart', [CartController::class, 'index']);
+    Route::post('cart/store', [CartController::class, 'store'] );
+    Route::put('update-cart', [CartController::class, 'update']);
+    Route::delete('remove-from-cart', [CartController::class, 'destroy']);
 });
 
 //FrontEnd
