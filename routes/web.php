@@ -86,11 +86,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('user-perangkat', UserPerangkat::class);
 
     //Cart
-    // Route::resource('cart', CartController::class);
-    Route::get('cart', [CartController::class, 'index']);
-    Route::post('cart/store', [CartController::class, 'store'] );
-    Route::put('update-cart', [CartController::class, 'update']);
-    Route::delete('remove-from-cart', [CartController::class, 'destroy']);
+    Route::resource('cart', CartController::class);
+    // Route::get('cart', [CartController::class, 'index']);
+    // Route::post('cart/store', [CartController::class, 'store'] );
+    // Route::put('update-cart', [CartController::class, 'update']);
+    // Route::delete('remove-from-cart', [CartController::class, 'destroy']);
 });
 
 //FrontEnd

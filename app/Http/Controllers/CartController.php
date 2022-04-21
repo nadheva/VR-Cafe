@@ -39,12 +39,21 @@ class CartController extends Controller
         ->with('success', 'Perangkat telah ditambahkan ke keranjang!');
     }
 
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        Cart::with('perangkat')
-              ->whereId($request->cart_id)
-              ->delete();
+        Cart::find($id)->delete();
+        return redirect()->back()
+        ->with('warning', 'Berhasil dihapus dari keranjang');
     }
+
+    // public function destroy(Request $request)
+    // {
+    //     Cart::with('perangkat')
+    //           ->whereId($request->cart_id)
+    //           ->delete();
+    //     return redirect()->back()
+    //     ->with('warning', 'Berhasil dihapus dari keranjang');
+    // }
 
     public function destroy_all()
     {

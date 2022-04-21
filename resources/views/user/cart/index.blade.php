@@ -5,9 +5,9 @@
             <div class="card">
               <!-- Card header -->
               <div class="card-header pb-0">
-                <div class="d-lg-flex">
+                <div class="center">
                   <div>
-                    <h5 class="mb-0">Keranjang</h5>
+                    <h3 class="center" style="text-align: center">Keranjang</h3>
                   </div>
                   <div class="ms-auto my-auto mt-lg-0 mt-4">
                     <div class="ms-auto my-auto">
@@ -31,7 +31,7 @@
               </div>
               <div class="card-body px-0 pb-0">
                 <div class="table-responsive">
-                  <table class="table table-success table-striped" id="datatable-basic">
+                  <table class="table table-striped table-hover" id="datatable-basic">
                     <thead class="thead-light">
                       <tr>
                         <th>No.</th>
@@ -57,9 +57,13 @@
                         <td class="text-sm">{{$i->jumlah}}</td>
                         <td class="text-sm">Rp. @money($i->harga)</td>
                         <td class="text-sm">
-                          <a href="{{url('remove-cart', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
-                            <i class="fas fa-trash text-danger"></i>
-                          </a>
+                            <div>
+                                <form id="form-delete" action="{{route('cart.destroy', $i->id)}}" method="POST" style="display: inline">
+                                  @csrf
+                                  @method("DELETE")
+                                  <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0 show_confirm" data-toggle="tooltip" title='Delete' ><i class="fas fa-trash text-secondary"></i></button>
+                                </form>
+                              </div>
                         </td>
                       </tr>
                       @endforeach
@@ -74,33 +78,21 @@
                         <th>Aksi</th>
                       </tr>
                     </tfoot>
-
                   </table>
                   <div>
-                    <div class="mx-3" colspan="5" class="text-right"><h5>Total:<span style="align-items: flex-end"><strong> Rp. @money($total)</strong></span></h5></div>
+                    <div class="text-right" colspan="5" style="display: flex; justify-content: flex-end"><h5>Total:<span style="text-align: right"><strong> Rp. @money($total)</strong></span></h5></div>
                 </div>
                 <div>
-                    <div class="mx-3" colspan="5" class="text-right">
-                        <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Kembali</a>
-                        <button class="btn btn-success">Checkout</button>
+                    <div class="mx-3" colspan="5" class="text-right" style="display: flex; justify-content: flex-end">
+                        <a href="{{ route('user-perangkat.index') }}" class="btn btn-warning mx-2"><i class="fa fa-angle-left"></i> Kembali</a>
+                        <a href="{{ route('sewa-perangkat.index')}}" class="btn btn-success mx-2">Checkout</a>
                     </div>
                 </div>
-                  {{-- <div>
-                    Total: Rp. @money($total)
-                   </div>
-                   <div>
-                     <form action="{{ url('remove-cart') }}" method="POST">
-                       @csrf
-                       <button class="px-6 py-2 text-red-800 bg-red-300">Remove All Cart</button>
-                     </form>
-                   </div> --}}
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
           @push('scripts')
           <script>
             const dataTableBasic = new simpleDatatables.DataTable("#datatable-basic", {
@@ -108,6 +100,23 @@
             fixedHeight: true,
             paging: false
             });
+            $('.show_confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                title: `Hapus Data?`,
+                text: "Jika data terhapus, data akan hilang selamanya!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+              if (willDelete) {
+                form.submit();
+              }
+            });
+        });
           </script>
           @endpush
 </x-app-layout>

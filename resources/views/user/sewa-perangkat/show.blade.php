@@ -95,7 +95,7 @@
                   </ul>
                   <div class="row mt-4">
                     <div class="col-lg-5">
-                    <form action="{{url('cart/store')}}" method="POST">
+                    <form action="{{route('cart.store')}}" method="POST">
                         @csrf
                         <input type="hidden" name="perangkat_id" value="{{$perangkat->id}}">
                         <input type="hidden" name="jumlah" value="1">

@@ -30,8 +30,9 @@ class SewaPerangkatController extends Controller
 
     public function index()
     {
-        $perangkat = Perangkat::all();
-        return view('user.sewa-perangakat.index', compact('perangkat'));
+        $user = Auth::user()->id;
+        $cart = Cart::where('user_id', $user)->get();
+        return view('user.cart.checkout', compact('cart'));
     }
 
     public function create($id)
