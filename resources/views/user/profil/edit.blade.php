@@ -12,7 +12,7 @@
                     </button>
                     <button class="multisteps-form__progress-btn" type="button" title="Address">Alamat</button>
                     <button class="multisteps-form__progress-btn" type="button" title="Socials">Media Sosial</button>
-                    <button class="multisteps-form__progress-btn" type="button" title="Profile">Profil</button>
+                    {{-- <button class="multisteps-form__progress-btn" type="button" title="Profile">Profil</button> --}}
                   </div>
                 </div>
               </div>

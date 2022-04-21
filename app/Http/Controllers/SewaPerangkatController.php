@@ -7,6 +7,7 @@ use App\Models\SewaPerangkat;
 use App\Models\Perangkat;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Profile;
 use Midtrans\Snap;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -31,8 +32,15 @@ class SewaPerangkatController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
+        $profil = Profile::where('user_id', $user)->first();
+        if(is_null($profil)){
+            return redirect()->route('profil.create')
+            ->with('danger', 'Anda belum menambahkan data profil!');
+        } else {
         $cart = Cart::where('user_id', $user)->get();
-        return view('user.cart.checkout', compact('cart'));
+        $total = $cart->sum('harga');
+        return view('user.cart.checkout', compact('cart', 'profil', 'total'));
+        }
     }
 
     public function create($id)
@@ -43,7 +51,7 @@ class SewaPerangkatController extends Controller
 
     public function store()
     {
-        DB::transaction(function(Request $request, $id) {
+        DB::transaction(function() {
         $length = 10;
         $random = '';
         for ($i = 0; $i < $length; $i++) {
@@ -53,44 +61,47 @@ class SewaPerangkatController extends Controller
         $invoice =  'INV-'.Str::upper($random);
         $user = Auth::user()->id;
         $perangkat = Perangkat::get();
-        $this->validate($request, [
-            // 'perangkat_id' => 'required',
-            'user_id' => 'required',
-            'invoice' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_berakhir' =>  'required',
-            'keperluan' => 'required',
-            'proses' => 'required',
-            'status' => 'required',
-            'grand_total' => 'required'
-        ]);
+        $cart = Cart::where('user_id', $user)->get();
+        $total = $cart->sum('harga');
+        // $diff_in_days = $this->request->tanggal_mulai->diffInDays($this->request->tanggal_akhir);
+        // $this->validate($this->request, [
+        //     'perangkat_id' => 'required',
+        //     'user_id' => 'required',
+        //     'invoice' => 'required',
+        //     'tanggal_mulai' => 'required',
+        //     'tanggal_berakhir' =>  'required',
+        //     'keperluan' => 'required',
+        //     'proses' => 'required',
+        //     'status' => 'required',
+        //     'grand_total' => 'required'
+        // ]);
 
         $sewa_perangkat = SewaPerangkat::create([
             // 'perangkat_id' => $perangkat,
             'user_id' => $user,
             'invoice' => $invoice,
-            'tanggal_mulai' => $request->tanggal_mulai,
-            'tanggal_berakhir' =>  $request->tanggal_berakhir,
-            'keperluan' => $request->keperluan,
+            'tanggal_mulai' => $this->request->tanggal_mulai,
+            'tanggal_berakhir' =>  $this->request->tanggal_berakhir,
+            'keperluan' => $this->request->keperluan,
             'proses' => 'Disewa',
             'status' => 'pending',
             // 'snap_token' => $request->snap_token,
-            'grand_total' => $request->grand_total
+            'grand_total' =>5 * $total
         ]);
 
-        foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
-            $perangkat->where('id', $cart->perangkat->id)
-            ->update([
-                'stok' => ($perangkat->stok - $cart->jumlah),
-            ]);
+        // foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
+        //     $perangkat->where('id', $cart->perangkat->id)
+        //     ->update([
+        //         'stok' => ($perangkat->stok - $cart->jumlah),
+        //     ]);
 
-            $sewa_perangkat->order()->create([
-            'sewa_perangkat_id' => $sewa_perangkat->id,
-            'perangkat_id'      => $cart->perangkat_id,
-            'jumlah'            => $cart->jumlah,
-            'harga'             => $cart->harga,
-            ]);
-        }
+            // $sewa_perangkat->order()->create([
+            // 'sewa_perangkat_id' => $sewa_perangkat->id,
+            // 'perangkat_id'      => $cart->perangkat_id,
+            // 'jumlah'            => $cart->jumlah,
+            // 'harga'             => $cart->harga,
+            // ]);
+        // }
 
         $payload = [
             'transaction_details' => [
@@ -98,8 +109,8 @@ class SewaPerangkatController extends Controller
                 'gross_amount' => $sewa_perangkat->grand_total,
             ],
             'customer_details' => [
-                'first_name' => $user->name,
-                'email' => $user->email,
+                'first_name' => Auth::user()->name,
+                'email' => Auth::user()->email,
             ]
         ];
 
@@ -109,6 +120,8 @@ class SewaPerangkatController extends Controller
         $sewa_perangkat->save();
 
         });
+
+        return redirect()->back();
     }
 
     public function notificationHandler(Request $request)
