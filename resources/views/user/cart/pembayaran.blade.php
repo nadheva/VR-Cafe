@@ -1,5 +1,5 @@
 <x-app-layout>
-    {{ session()->get('id') }}
+    {{-- {{ session()->get('id') }} --}}
     <div class="container-fluid py-4">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -22,13 +22,13 @@
                 <hr class="horizontal dark mt-0 mb-4">
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-12">
-                    @foreach($order as $i)
+                    @foreach($sewa_perangkat as $i)
                     <div class="d-flex">
                       <div>
-                        <img src="{{asset($i->perangkat->gambar)}}" class="avatar avatar-xxl me-3" alt="product image">
+                        {{-- <img src="{{asset($i->perangkat->gambar)}}" class="avatar avatar-xxl me-3" alt="product image"> --}}
                       </div>
                       <div>
-                        <h6 class="text-lg mb-0 mt-2">{{$i->perangkat->nama}}</h6>
+                        {{-- <h6 class="text-lg mb-0 mt-2">{{$i->perangkat->nama}}</h6> --}}
                         <p class="text-sm mb-3">Order was delivered 2 days ago.</p>
                         <span class="badge badge-sm bg-gradient-success">Delivered</span>
                       </div>

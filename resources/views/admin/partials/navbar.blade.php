@@ -26,9 +26,9 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Default</li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
             </ol>
-            <h6 class="font-weight-bolder mb-0">Default</h6>
+            <h6 class="font-weight-bolder mb-0">{{request()->path()}}</h6>
         </nav>
         <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
             <a href="javascript:;" class="nav-link text-body p-0">

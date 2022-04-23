@@ -65,16 +65,16 @@ class SewaPerangkatController extends Controller
         $cart = Cart::where('user_id', $user)->get();
         $total = $cart->sum('harga');
 
-        $this->validate($this->request, [
-            'user_id' => 'required',
-            'invoice' => 'required',
-            'tanggal_mulai' => 'required',
-            'tanggal_berakhir' =>  'required',
-            'keperluan' => 'required',
-            'proses' => 'required',
-            'status' => 'required',
-            'grand_total' => 'required'
-        ]);
+        // $this->validate($this->request, [
+        //     'user_id' => 'required',
+        //     'invoice' => 'required',
+        //     'tanggal_mulai' => 'required',
+        //     'tanggal_berakhir' =>  'required',
+        //     'keperluan' => 'required',
+        //     'proses' => 'required',
+        //     'status' => 'required',
+        //     'grand_total' => 'required'
+        // ]);
 
         $sewa_perangkat = SewaPerangkat::create([
             // 'perangkat_id' => $perangkat,
@@ -120,12 +120,11 @@ class SewaPerangkatController extends Controller
         $sewa_perangkat->snap_token = $snapToken;
         $sewa_perangkat->save();
 
+        $this->response['id'] = $sewa_perangkat;
 
         });
-        $id = session()->get('id');
-        // return redirect('pembayaran/'.$this->request->session()->get('id'));
-        return redirect('pembayaran', ['id', $id]);
-        // return view('user.cart.pembayaran')->with('id', 'sewa_perangkat_id');
+        return redirect('pembayaran', response()->json($this->response->id));
+
     }
 
     public function notificationHandler(Request $request)
@@ -232,10 +231,9 @@ class SewaPerangkatController extends Controller
 
     public function pembayaran($id)
     {
+        // $sewa_perangkat = SewaPerangkat::where('id',$id)->first();
         $sewa_perangkat = SewaPerangkat::find($id);
-        // Session::get('');
-        $order = Order::where('sewa_perangkkat_id', $sewa_perangkat)->get();
-        return view('user.cart.pembayaran', compact('sewa_perangkat', 'order'));
+        return view('user.cart.pembayaran', compact('sewa_perangkat'));
     }
 
     public function edit($id)

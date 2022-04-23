@@ -59,7 +59,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Sewa Perangkat
     Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update', 'pembayaran');
-    Route::get('pembayaran/{id}', [SewaPerangkatController::class, 'pembayaran']);
+    Route::get('pembayaran/{id}', [SewaPerangkatController::class, 'pembayaran'])->name('pembayaran');
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
 
     //Sewa Studio

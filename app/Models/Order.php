@@ -16,6 +16,11 @@ class Order extends Model
         'harga'
     ];
 
+    public function sewa_perangkat()
+    {
+        return $this->belongsTo(SewaPerangkat::class);
+    }
+
     public function perangkat()
     {
         return $this->belongsTo(Perangkat::class);
