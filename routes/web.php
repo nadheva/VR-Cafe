@@ -58,7 +58,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('ruang-update/{id}', [RuangController::class, 'update']);
 
     //Sewa Perangkat
-    Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update');
+    Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update', 'pembayaran');
+    Route::get('pembayaran/{id}', [SewaPerangkatController::class, 'pembayaran']);
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
 
     //Sewa Studio
@@ -69,7 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('testimonial', TestimonialController::class);
     Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
 
-    //Order
+    //Order/transaksi
     Route::resource('order', OrderController::class)->except('update');
     Route::put('order-update/{id}', [OrderController::class, 'update']);
 
@@ -91,6 +92,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::post('cart/store', [CartController::class, 'store'] );
     // Route::put('update-cart', [CartController::class, 'update']);
     // Route::delete('remove-from-cart', [CartController::class, 'destroy']);
+
 });
 
 //FrontEnd

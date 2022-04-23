@@ -29,15 +29,6 @@
                   <div class="col-12">
                     <img class="w-100 border-radius-lg shadow-lg mt-3" src="{{asset($profil->foto)}}" alt="">
                   </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="font-weight-bolder">Media Sosial</h5>
-                      <label class="mt-4">Facebook</label>
-                      <input class="form-control" type="text" value="{{$profil->facebook}}" disabled/>
-                      <label class="mt-4">Instagram</label>
-                      <input class="form-control" type="text" value="{{$profil->instagram}}" disabled/>
-                    </div>
-                  </div>
                   {{-- <div class="col-12 mt-4">
                     <div class="d-flex">
                       <button class="btn bg-gradient-primary btn-sm mb-0 me-2" type="button" name="button">Edit</button>
@@ -97,6 +88,15 @@
                         <input class="multisteps-form__input form-control" type="number" value="{{$profil->kode_pos}}" disabled />
                       </div>
                     </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="font-weight-bolder">Media Sosial</h5>
+                  <label class="mt-4">Facebook</label>
+                  <input class="form-control" type="text" value="{{$profil->facebook}}" disabled/>
+                  <label class="mt-4">Instagram</label>
+                  <input class="form-control" type="text" value="{{$profil->instagram}}" disabled/>
                 </div>
               </div>
           </div>

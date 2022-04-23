@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Profile;
 use Midtrans\Snap;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -63,45 +64,45 @@ class SewaPerangkatController extends Controller
         $perangkat = Perangkat::get();
         $cart = Cart::where('user_id', $user)->get();
         $total = $cart->sum('harga');
-        // $diff_in_days = $this->request->tanggal_mulai->diffInDays($this->request->tanggal_akhir);
-        // $this->validate($this->request, [
-        //     'perangkat_id' => 'required',
-        //     'user_id' => 'required',
-        //     'invoice' => 'required',
-        //     'tanggal_mulai' => 'required',
-        //     'tanggal_berakhir' =>  'required',
-        //     'keperluan' => 'required',
-        //     'proses' => 'required',
-        //     'status' => 'required',
-        //     'grand_total' => 'required'
-        // ]);
+
+        $this->validate($this->request, [
+            'user_id' => 'required',
+            'invoice' => 'required',
+            'tanggal_mulai' => 'required',
+            'tanggal_berakhir' =>  'required',
+            'keperluan' => 'required',
+            'proses' => 'required',
+            'status' => 'required',
+            'grand_total' => 'required'
+        ]);
 
         $sewa_perangkat = SewaPerangkat::create([
             // 'perangkat_id' => $perangkat,
             'user_id' => $user,
             'invoice' => $invoice,
-            'tanggal_mulai' => $this->request->tanggal_mulai,
-            'tanggal_berakhir' =>  $this->request->tanggal_berakhir,
+            'tanggal_mulai' => $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $this->request->tanggal_mulai),
+            'tanggal_berakhir' =>  $sampai= \Carbon\Carbon::createFromFormat('Y-m-d', $this->request->tanggal_berakhir),
             'keperluan' => $this->request->keperluan,
             'proses' => 'Disewa',
             'status' => 'pending',
-            // 'snap_token' => $request->snap_token,
-            'grand_total' =>5 * $total
+            'grand_total' => ($mulai->diffInDays($sampai)) * $total
         ]);
 
-        // foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
-        //     $perangkat->where('id', $cart->perangkat->id)
-        //     ->update([
-        //         'stok' => ($perangkat->stok - $cart->jumlah),
-        //     ]);
+        foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
+            $perangkat->where('id', $cart->perangkat->id);
+            foreach (Perangkat::where('id', $cart->perangkat->id)->get() as $i)
+            $i->stok = $i->stok - $cart->jumlah;
+            $i->save();
 
-            // $sewa_perangkat->order()->create([
-            // 'sewa_perangkat_id' => $sewa_perangkat->id,
-            // 'perangkat_id'      => $cart->perangkat_id,
-            // 'jumlah'            => $cart->jumlah,
-            // 'harga'             => $cart->harga,
-            // ]);
-        // }
+            $sewa_perangkat->order()->create([
+            'sewa_perangkat_id' => $sewa_perangkat->id,
+            'perangkat_id'      => $cart->perangkat_id,
+            'jumlah'            => $cart->jumlah,
+            'harga'             => $cart->harga,
+            ]);
+
+
+        }
 
         $payload = [
             'transaction_details' => [
@@ -119,9 +120,12 @@ class SewaPerangkatController extends Controller
         $sewa_perangkat->snap_token = $snapToken;
         $sewa_perangkat->save();
 
-        });
 
-        return redirect()->back();
+        });
+        $id = session()->get('id');
+        // return redirect('pembayaran/'.$this->request->session()->get('id'));
+        return redirect('pembayaran', ['id', $id]);
+        // return view('user.cart.pembayaran')->with('id', 'sewa_perangkat_id');
     }
 
     public function notificationHandler(Request $request)
@@ -224,6 +228,14 @@ class SewaPerangkatController extends Controller
 
         }
 
+    }
+
+    public function pembayaran($id)
+    {
+        $sewa_perangkat = SewaPerangkat::find($id);
+        // Session::get('');
+        $order = Order::where('sewa_perangkkat_id', $sewa_perangkat)->get();
+        return view('user.cart.pembayaran', compact('sewa_perangkat', 'order'));
     }
 
     public function edit($id)

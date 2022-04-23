@@ -11,10 +11,13 @@ class Order extends Model
     protected $table = 'order';
     protected $fillable = [
         'sewa_perangkat_id',
-        'sewa_ruang_id',
         'perangkat_id',
-        'ruang_id',
         'jumlah',
         'harga'
     ];
+
+    public function perangkat()
+    {
+        return $this->belongsTo(Perangkat::class);
+    }
 }

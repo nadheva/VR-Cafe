@@ -20,4 +20,9 @@ class SewaPerangkat extends Model
         'snap_token',
         'grand_total'
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
