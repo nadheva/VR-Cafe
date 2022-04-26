@@ -324,8 +324,8 @@
                 </a>
                 <div class="collapse   {{Route::is('akses.*') ? 'show' : ''}}" id="akses">
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('order.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('order.*') ? 'active' : ''}}" href="{{route('order.index')}}">
+                    <li class="nav-item {{Route::is('user-transaksi.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('user-transaksi.*') ? 'active' : ''}}" href="{{route('user-transaksi.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Riwayat Transaksi </span>
                     </a>

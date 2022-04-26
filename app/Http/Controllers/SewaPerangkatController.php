@@ -65,16 +65,6 @@ class SewaPerangkatController extends Controller
         $cart = Cart::where('user_id', $user)->get();
         $total = $cart->sum('harga');
 
-        // $this->validate($this->request, [
-        //     'user_id' => 'required',
-        //     'invoice' => 'required',
-        //     'tanggal_mulai' => 'required',
-        //     'tanggal_berakhir' =>  'required',
-        //     'keperluan' => 'required',
-        //     'proses' => 'required',
-        //     'status' => 'required',
-        //     'grand_total' => 'required'
-        // ]);
 
         $sewa_perangkat = SewaPerangkat::create([
             // 'perangkat_id' => $perangkat,
@@ -99,6 +89,14 @@ class SewaPerangkatController extends Controller
             'perangkat_id'      => $cart->perangkat_id,
             'jumlah'            => $cart->jumlah,
             'harga'             => $cart->harga,
+            ]);
+
+            $sewa_perangkat->denda()->create([
+                'sewa_perangkat_id' => $sewa_perangkat->id,
+                'user_id' => $sewa_perangkat->user_id,
+                // 'invoice' => $sewa_perangkat->invoice,
+                'status' => 'pending',
+                'grand_total' => '0'
             ]);
 
 

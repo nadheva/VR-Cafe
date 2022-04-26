@@ -46,7 +46,7 @@
                     <span class="text-secondary text-xs font-weight-bold">{{ $item->stok }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{ $item->harga }}</span>
+                    <span class="text-secondary text-xs font-weight-bold">Rp. @money($item->harga)</span>
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">{!! $item->deskripsi !!}</span>

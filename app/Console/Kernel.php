@@ -3,6 +3,13 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Models\SewaPerangkat;
+use App\Models\SewaRuang;
+use App\Models\Denda;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use Midtrans\Snap;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -16,6 +23,42 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->call(function(){
+            DB::transaction(function() {
+                $length = 10;
+                $random = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $random .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
+                }
+
+                $invoice =  'INV-'.Str::upper($random);
+                $denda = Denda::all();
+                if($denda->where($denda->sewa_perangkat->proses = 'Disewa')->whereRaw($denda->sewa_perangkat->tanggal_berakhir > now())){
+                    $denda->update([
+                        'grand_total' =>$denda->sewa_perangkat->grand_total * (($denda->sewa_perangkat->tanggal_berakhir)->diffInDays(Carbon::now())),
+                        'invoice' => $invoice
+                    ]);
+                    $payload = [
+                        'transaction_details' => [
+                            'order_id' => $denda->invoice,
+                            'gross_amount' => $denda->grand_total,
+                        ],
+                        'customer_details' => [
+                            'first_name' => $denda->sewa_perangkat->user->name,
+                            'email' => $denda->sewa_perangkat->user->email,
+                        ]
+                    ];
+
+                    //snap token
+                    $snapToken = Snap::getSnapToken($payload);
+                    $denda->snap_token = $snapToken;
+                    $denda->save();
+
+            }
+
+        });
+        })->daily();
     }
 
     /**

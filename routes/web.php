@@ -16,6 +16,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\User\OrderController as UserOrderController;
 //User
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
 use Illuminate\Support\Facades\Route;
@@ -92,6 +93,9 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::post('cart/store', [CartController::class, 'store'] );
     // Route::put('update-cart', [CartController::class, 'update']);
     // Route::delete('remove-from-cart', [CartController::class, 'destroy']);
+
+    //user-order
+    Route::resource('user-transaksi', UserOrderController::class);
 
 });
 

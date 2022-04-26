@@ -26,6 +26,11 @@ class SewaPerangkat extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function denda()
+    {
+        return $this->hasOne(Denda::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
