@@ -4,13 +4,14 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use App\Models\SewaPerangkat;
-use App\Models\SewaRuang;
 use App\Models\Denda;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Midtrans\Snap;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Redirect;
 
 class Kernel extends ConsoleKernel
 {
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
@@ -33,10 +35,11 @@ class Kernel extends ConsoleKernel
                 }
 
                 $invoice =  'INV-'.Str::upper($random);
-                $denda = Denda::all();
-                if($denda->where($denda->sewa_perangkat->proses = 'Disewa')->whereRaw($denda->sewa_perangkat->tanggal_berakhir > now())){
+                $denda = Denda::get();
+                $sekarang = \Carbon\Carbon::createFromFormat('Y-m-d', now());
+                if($denda->where($denda->sewa_perangkat->proses, '=', 'Disewa')->where($denda->sewa_perangkat->tanggal_berakhir < $sekarang)){
                     $denda->update([
-                        'grand_total' =>$denda->sewa_perangkat->grand_total * (($denda->sewa_perangkat->tanggal_berakhir)->diffInDays(Carbon::now())),
+                        'grand_total' =>$denda->sewa_perangkat->grand_total * (($denda->sewa_perangkat->tanggal_berakhir)->diffInDays($sekarang)),
                         'invoice' => $invoice
                     ]);
                     $payload = [

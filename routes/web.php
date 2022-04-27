@@ -19,6 +19,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\User\OrderController as UserOrderController;
 //User
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
+use App\Http\Controllers\User\DendaController as UserDenda;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,8 +60,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('ruang-update/{id}', [RuangController::class, 'update']);
 
     //Sewa Perangkat
-    Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update', 'pembayaran');
-    Route::get('pembayaran/{id}', [SewaPerangkatController::class, 'pembayaran'])->name('pembayaran');
+    Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update');
+    // Route::get('pembayaran/{id}', [SewaPerangkatController::class, 'pembayaran'])->name('pembayaran');
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
 
     //Sewa Studio
@@ -77,8 +78,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //Denda
-    Route::resource('denda', DendaController::class)->except('update');
+    Route::resource('denda', DendaController::class)->except('update', 'store');
     Route::put('denda-update/{id}', [DendaController::class, 'update']);
+    Route::get('storedenda', [DendaController::class, 'store']);
 
     //Profile
     Route::resource('profil', ProfileController::class);
@@ -96,6 +98,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     //user-order
     Route::resource('user-transaksi', UserOrderController::class);
+
+    //user-denda
+    Route::resource('user-denda', UserDenda::class);
 
 });
 

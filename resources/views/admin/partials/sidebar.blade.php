@@ -332,8 +332,8 @@
                     </li>
                 </ul>
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('denda.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('denda.*') ? 'active' : ''}}" href="{{route('denda.index')}}">
+                    <li class="nav-item {{Route::is('user-denda.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('user-denda.*') ? 'active' : ''}}" href="{{route('user-denda.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Denda </span>
                     </a>

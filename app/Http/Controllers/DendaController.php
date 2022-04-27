@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Midtrans\Snap;
 use App\Models\Denda;
+use Illuminate\Support\Carbon;
 
 class DendaController extends Controller
 {
@@ -25,48 +26,48 @@ class DendaController extends Controller
 
     public  function index()
     {
-        $denda = Denda::all();
+        $denda = Denda::where('grand_total', '!=', '0')->get();
         return view('admin.denda.index', compact('denda'));
     }
 
     public function store()
     {
-        DB::transaction(function (Request $request) {
-        $length = 10;
-        $random = '';
-        for ($i = 0; $i < $length; $i++) {
-            $random .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
+        DB::transaction(function() {
+            $length = 10;
+            $random = '';
+            for ($i = 0; $i < $length; $i++) {
+                $random .= rand(0, 1) ? rand(0, 9) : chr(rand(ord('a'), ord('z')));
+            }
+
+            $invoice =  'INV-'.Str::upper($random);
+            $denda = Denda::all();
+            $sekarang = \Carbon\Carbon::createFromFormat('Y-m-d', now());
+            if($denda->where($denda->sewa_perangkat->proses, '=', 'Disewa')->whereRaw($denda->sewa_perangkat->tanggal_berakhir < $sekarang)){
+                $denda->update([
+                    'grand_total' =>$denda->sewa_perangkat->grand_total * (($denda->sewa_perangkat->tanggal_berakhir)->diffInDays($sekarang)),
+                    'invoice' => $invoice
+                ]);
+                $payload = [
+                    'transaction_details' => [
+                        'order_id' => $denda->invoice,
+                        'gross_amount' => $denda->grand_total,
+                    ],
+                    'customer_details' => [
+                        'first_name' => $denda->sewa_perangkat->user->name,
+                        'email' => $denda->sewa_perangkat->user->email,
+                    ]
+                ];
+
+                //snap token
+                $snapToken = Snap::getSnapToken($payload);
+                $denda->snap_token = $snapToken;
+                $denda->save();
+
         }
-        $invoice =  'INV-'.Str::upper($random);
-        $request->validate([
-            'status' => 'required',
-            'grand_total' => 'required',
-        ]);
 
-        $denda = Denda::create([
-            'invoice' => $invoice,
-            'order_id' => $request->order_id,
-            'status' => 'pending',
-            'grand_total' => $request->grand_total
-        ]);
-
-        $payload = [
-            'transaction_details' => [
-                'order_id' => $denda->invoice,
-                'gross_amount' => $denda->grand_total,
-            ],
-            'customer_details' => [
-                'first_name' => $denda->sewa_perangkat->user->name,
-                'email' => $denda->sewa_perangkat->user->email,
-            ]
-        ];
-        //snap token
-        $snapToken = Snap::getSnapToken($payload);
-        $denda->snap_token = $snapToken;
-        $denda->save();
     });
-        return redirect()->route('denda.index')
-        ->with('success', 'Denda Berhasil Ditambahkan!');
+        // return redirect()->route('denda.index')
+        // ->with('success', 'Denda Berhasil Ditambahkan!');
     }
     public function notificationHandler(Request $request)
     {

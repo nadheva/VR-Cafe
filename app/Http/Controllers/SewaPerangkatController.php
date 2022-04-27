@@ -118,10 +118,10 @@ class SewaPerangkatController extends Controller
         $sewa_perangkat->snap_token = $snapToken;
         $sewa_perangkat->save();
 
-        $this->response['id'] = $sewa_perangkat;
+        // $this->response['id'] = $sewa_perangkat;
 
         });
-        return redirect('pembayaran', response()->json($this->response->id));
+        return redirect()->route('user-transaksi.index');
 
     }
 
@@ -227,11 +227,11 @@ class SewaPerangkatController extends Controller
 
     }
 
-    public function pembayaran($id)
+    public function show($id)
     {
         // $sewa_perangkat = SewaPerangkat::where('id',$id)->first();
         $sewa_perangkat = SewaPerangkat::find($id);
-        return view('user.cart.pembayaran', compact('sewa_perangkat'));
+        return view('user.transaksi.show', compact('sewa_perangkat'));
     }
 
     public function edit($id)
