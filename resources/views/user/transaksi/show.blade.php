@@ -29,14 +29,14 @@
                     <tr>
                         <td>Total Bayar </td>
                         <td>:</td>
-                        <td>{{$sewa_perangkat->grand_total}}</td>
+                        <td>Rp. @money($sewa_perangkat->grand_total)</td>
                     </tr>
                     <tr>
                         <td>Status </td>
                         <td>:</td>
                         <td>
                             <div class="col-lg-4 text-right d-flex flex-column">
-                            <a class="btn bg-gradient-success" href="{{route('profil.create')}}">Bayar</a>
+                            <button class="btn bg-gradient-success" id="pay-button">Bayar</button>
                           </div>
                         </td>
                     </tr>
@@ -71,9 +71,9 @@
                                 <h6 class="ms-3 my-auto">{{$i->perangkat->nama}}</h6>
                               </div>
                             </td>
-                            <td>{{$i->perangkat->harga}}</td>
+                            <td>Rp. @money($i->perangkat->harga)</td>
                             <td>{{$i->jumlah}}</td>
-                            <td>{{$i->harga}}</td>
+                            <td>Rp. @money($i->harga)</td>
                           </tr>
                           @endforeach
                           </tbody>
@@ -85,7 +85,26 @@
           </div>
 
           @push('scripts')
-          <script>
+          <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="env('MIDTRANS_CLIENTKEY', '')"></script>
+            <script type="text/javascript">
+                document.getElementById('pay-button').onclick = function(){
+                    // SnapToken acquired from previous step
+                    snap.pay('{{$sewa_perangkat->snap_token}}', {
+                        // Optional
+                        onSuccess: function(result){
+                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                        },
+                        // Optional
+                        onPending: function(result){
+                            document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                        },
+                        // Optional
+                        onError: function(result){
+                          document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                        }
+                    });
+                };
+
             if (document.getElementById('products-list')) {
               const dataTableSearch = new simpleDatatables.DataTable("#products-list", {
                 searchable: true,
