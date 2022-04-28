@@ -116,7 +116,7 @@
                       <br> {{$i->nama}}
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="{{url('/guest-ruang-detail/'.$i->id )}}"><span class="price-a">sewa | Rp. {{$i->harga}}</span></a>
+                      <a href="{{url('/guest-ruang-detail/'.$i->id )}}"><span class="price-a">sewa | Rp. @money($i->harga)</span></a>
                     </p>
                   </div>
                 </div>
@@ -246,7 +246,7 @@
             @if($ruang->isEmpty())
             <span>Studio kosong</span>
             @else
-            @foreach($ruang as $i )
+            @foreach($ruang as $i)
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
@@ -262,7 +262,7 @@
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">rent | RP {{$i->harga}}</span>
+                        <span class="price-a">rent | Rp. @money($i->harga)</span>
                       </div>
                       <a href="{{url('/guest-ruang-detail/'.$i->id)}}" class="link-a">Lihat
                         <span class="bi bi-chevron-right"></span>
@@ -271,7 +271,7 @@
                     <div class="card-footer-a">
                       <ul class="card-info d-flex justify-content-around">
                         <li>
-                          <h4 class="card-info-title">Area</h4>
+                          <h4 class="card-info-title">Ukuran</h4>
                           <span>340m
                             <sup>2</sup>
                           </span>
@@ -281,11 +281,11 @@
                           <span>2</span>
                         </li>
                         <li>
-                          <h4 class="card-info-title">VR Wearables</h4>
+                          <h4 class="card-info-title">Perangkat VR</h4>
                           <span>4</span>
                         </li>
                         <li>
-                          <h4 class="card-info-title">Desktop</h4>
+                          <h4 class="card-info-title">PC Desktop</h4>
                           <span>1</span>
                         </li>
                       </ul>
@@ -343,7 +343,7 @@
                     </div>
                     <div class="card-body-a">
                       <div class="price-box d-flex">
-                        <span class="price-a">sewa | RP {{$i->harga}}</span>
+                        <span class="price-a">sewa | Rp. @money($i->harga)</span>
                       </div>
                       <a href="{{url('/guest-perangkat-detail/'. $i->id)}}" class="link-a">Lihat
                         <span class="bi bi-chevron-right"></span>
@@ -407,7 +407,7 @@
                       <strong>Phone: </strong> {{$i->no_telp}}
                     </p>
                     <p>
-                      <strong>Email: </strong> {{$ii->email}}
+                      <strong>Email: </strong> {{$i->email}}
                     </p>
                   </div>
                 </div>

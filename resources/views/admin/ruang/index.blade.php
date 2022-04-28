@@ -122,6 +122,22 @@
                             <input type="number" class="form-control" name="harga">
                         </div>
                         <div class="form-group">
+                            <label for="message-text" class="col-form-label">Ukuran:</label>
+                            <input type="number" class="form-control" name="ukuran">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Monitor:</label>
+                            <input type="number" class="form-control" name="monitor">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Perangkat VR:</label>
+                            <input type="number" class="form-control" name="perangkat_vr">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">PC Desktop:</label>
+                            <input type="number" class="form-control" name="pc_desktop">
+                        </div>
+                        <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
                             <textarea class="form-control" name="deskripsi" id="mytextarea"></textarea>
                         </div>
@@ -183,6 +199,22 @@
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
                             <input type="number" class="form-control" name="harga" value="{{$i->harga}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Ukuran:</label>
+                            <input type="number" class="form-control" name="ukuran" value="{{$i->ukuran}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Monitor:</label>
+                            <input type="number" class="form-control" name="monitor" value="{{$i->monitor}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Perangkat VR:</label>
+                            <input type="number" class="form-control" name="perangkat_vr" value="{{$i->perangkat_vr}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">PC Desktop:</label>
+                            <input type="number" class="form-control" name="pc_desktop" value="{{$i->pc_desktop}}">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>

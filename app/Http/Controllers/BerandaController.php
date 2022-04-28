@@ -17,7 +17,7 @@ class BerandaController extends Controller
 
     public function index()
     {
-        $resepsionis = Resepsionis::latest()->take(5)->get();
+        $resepsionis = Resepsionis::latest()->take(3)->get();
         $ruang = Ruang::latest()->take(5)->get();
         $perangkat = Perangkat::latest()->take(5)->get();
         $testimonial = Testimonial::latest()->take(5)->get();

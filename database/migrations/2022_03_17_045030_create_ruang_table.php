@@ -23,6 +23,10 @@ class CreateRuangTable extends Migration
             $table->longText('gambar_detail');
             $table->string('banner');
             $table->bigInteger('harga');
+            $table->bigInteger('ukuran');
+            $table->bigInteger('monitor');
+            $table->bigInteger('perangkat_vr');
+            $table->bigInteger('pc_desktop');
             $table->text('deskripsi');
             $table->foreignId('resepsionis_id')->constrained('resepsionis')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

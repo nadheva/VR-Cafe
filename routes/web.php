@@ -19,6 +19,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\User\OrderController as UserOrderController;
 //User
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
+use App\Http\Controllers\User\RuangController as UserRuang;
 use App\Http\Controllers\User\DendaController as UserDenda;
 use Illuminate\Support\Facades\Route;
 
@@ -88,6 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Laporan
     Route::resource('laporan', LaporanController::class);
     Route::resource('user-perangkat', UserPerangkat::class);
+    Route::resource('user-ruang', UserRuang::class);
 
     //Cart
     Route::resource('cart', CartController::class);

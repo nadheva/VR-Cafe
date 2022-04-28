@@ -25,18 +25,23 @@ class RuangController extends Controller
             'resepsionis_id' => 'required',
             'banner' => 'required',
             'harga' => 'required',
+            'ukuran' => 'required',
+            'monitor' => 'required',
+            'perangkat_vr' => 'required',
+            'pc_desktop' => 'required',
             'deskripsi' => 'required'
         ]);
         $image = array();
         if($file = $request->file('gambar_detail')){
             foreach($file as $file){
                 $image_name = md5(rand(1000,10000));
-                $ext = strtolower($file->getClientOriginalExtension());
-                $image_full_name = $image_name.'.'.$ext;
-                $uploade_path = 'public/ruang/gambar_detail';
-                $image_url = $uploade_path.$image_full_name;
-                $file->storeAs($uploade_path,$image_full_name);
-                $image[] = $image_url;
+                $ext = $file->extension();
+                $image_full_name =  $image_name . '.' . $ext;
+                $upload_path = "storage/ruang/gambar_detail/".$image_full_name;
+                // $image_url = $uploade_path;
+                $file->storeAs('public/ruang/gambar_detail/', $image_full_name);
+                $image[] = $upload_path;
+                // $perangkat->gambar_detail = json_encode($image);
             }
         } else {
             $image_full_name = null;
@@ -53,8 +58,8 @@ class RuangController extends Controller
         if (isset($request->banner)) {
             $extention = $request->banner->extension();
             $file_name = time() . '.' . $extention;
-            $txt2 = "storage/ruangbanner/". $file_name;
-            $request->banner->storeAs('public/ruangbanner', $file_name);
+            $txt2 = "storage/ruang/banner/". $file_name;
+            $request->banner->storeAs('public/ruang/banner', $file_name);
         } else {
             $file_name = null;
         }
@@ -64,9 +69,13 @@ class RuangController extends Controller
             'slug' => Str::slug($request->nama, '-'),
             'gambar' => $txt,
             'banner' => $txt2,
-            'gambar_detail' => implode('|', $image),
+            'gambar_detail' => json_encode($image),
             'resepsionis_id' => $request->resepsionis_id,
             'harga' => $request->harga,
+            'ukuran' => $request->ukuran,
+            'monitor' => $request->monitor,
+            'perangkat_vr' => $request->perangkat_vr,
+            'pc_desktop' => $request->pc_desktop,
             'deskripsi' => $request->deskripsi
         ]);
 
@@ -83,17 +92,21 @@ class RuangController extends Controller
         $ruang->resepsionis_id = $request->resepsionis_id;
         $ruang->harga = $request->harga;
         $ruang->deskripsi = $request->deskripsi;
+        $ruang->ukuran = $request->ukuran;
+        $ruang->monitor = $request->monitor;
+        $ruang->pc_desktop = $request->pc_desktop;
+        $ruang->perangkat_vr = $request->perangkat_vr;
         $image = array();
         if($file = $request->file('gambar_detail')){
             foreach($file as $file){
                 $image_name = md5(rand(1000,10000));
-                $ext = strtolower($file->getClientOriginalExtension());
-                $image_full_name = $image_name.'.'.$ext;
-                $uploade_path = 'public/perangkat/gambar_detail';
-                $image_url = $uploade_path.$image_full_name;
-                $file->storeAs($uploade_path,$image_full_name);
-                $image[] = $image_url;
-                $ruang->gambar_detail = implode('|', $image);
+                $ext = $file->extension();
+                $image_full_name =  $image_name . '.' . $ext;
+                $upload_path = "storage/ruang/gambar_detail/".$image_full_name;
+                // $image_url = $uploade_path;
+                $file->storeAs('public/ruang/gambar_detail/', $image_full_name);
+                $image[] = $upload_path;
+                $ruang->gambar_detail = json_encode($image);
             }
         } else {
             $image_full_name = null;
@@ -110,8 +123,8 @@ class RuangController extends Controller
         if (isset($request->banner)) {
             $extention = $request->banner->extension();
             $file_name = time() . '.' . $extention;
-            $txt2 = "storage/ruangbanner/". $file_name;
-            $request->banner->storeAs('public/ruangbanner', $file_name);
+            $txt2 = "storage/ruang/banner/". $file_name;
+            $request->banner->storeAs('public/ruang/banner', $file_name);
             $ruang->banner = $txt2;
         } else {
             $file_name = null;
