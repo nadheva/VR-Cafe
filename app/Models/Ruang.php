@@ -17,6 +17,10 @@ class Ruang extends Model
         'gambar',
         'gambar_detail',
         'harga',
+        'jumlah',
+        'ukuran',
+        'pc_desktop',
+        'monitor',
         'deskripsi',
         'resepsionis_id'
     ];

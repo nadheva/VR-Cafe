@@ -35,15 +35,15 @@
                     <thead class="thead-light">
                       <tr>
                         <th>No.</th>
-                        <th>Produk</th>
+                        <th>Studio</th>
                         <th>Kode Perangkat</th>
                         <th>Harga</th>
-                        <th>Status</th>
+                        {{-- <th>Status</th> --}}
                         <th>Detail</th>
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($perangkat as $i)
+                    @foreach($ruang as $i)
                       <tr>
                         <td class="text-sm">{{$loop->iteration}}</td>
                         <td>
@@ -52,9 +52,9 @@
                             <h6 class="ms-3 my-auto">{{$i->nama}}</h6>
                           </div>
                         </td>
-                        <td class="text-sm">{{$i->kode_perangkat}}</td>
+                        <td class="text-sm">{{$i->kode_ruang}}</td>
                         <td class="text-sm">Rp. @money($i->harga) </td>
-                        <td class="text-sm">{{$i->stok}}</td>
+                        {{-- <td class="text-sm">{{$i->stok}}</td>
                         @if($i->stok == 0)
                         <td>
                           <span class="badge badge-danger badge-sm">Stok Habis</span>
@@ -63,9 +63,9 @@
                         <td>
                           <span class="badge badge-success badge-sm">Stok Tersedia</span>
                         </td>
-                        @endif
+                        @endif --}}
                         <td class="text-sm">
-                          <a href="{{route('user-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                          <a href="{{route('user-ruang.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                             <i class="fas fa-eye text-secondary"></i>
                           </a>
                         </td>

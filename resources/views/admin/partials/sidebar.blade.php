@@ -284,7 +284,7 @@
                     <div class="collapse   {{Route::is('layanan*') ? 'show' : ''}}" id="layanan">
                     <ul class="nav ms-4 ps-3">
                         <li class="nav-item {{Route::is('sewa-ruang.*') ? 'active' : ''}}">
-                        <a class="nav-link {{Route::is('sewa-ruang.*') ? 'active' : ''}}" href="{{route('sewa-ruang.index')}}">
+                        <a class="nav-link {{Route::is('sewa-ruang.*') ? 'active' : ''}}" href="{{route('user-ruang.index')}}">
                             <span class="sidenav-mini-icon"> K </span>
                             <span class="sidenav-normal"> Studio </span>
                         </a>

@@ -72,6 +72,7 @@ class RuangController extends Controller
             'gambar_detail' => json_encode($image),
             'resepsionis_id' => $request->resepsionis_id,
             'harga' => $request->harga,
+            'jumlah' => $request->jumlah,
             'ukuran' => $request->ukuran,
             'monitor' => $request->monitor,
             'perangkat_vr' => $request->perangkat_vr,
@@ -96,6 +97,7 @@ class RuangController extends Controller
         $ruang->monitor = $request->monitor;
         $ruang->pc_desktop = $request->pc_desktop;
         $ruang->perangkat_vr = $request->perangkat_vr;
+        $ruang->jumlah = $request->jumlah;
         $image = array();
         if($file = $request->file('gambar_detail')){
             foreach($file as $file){

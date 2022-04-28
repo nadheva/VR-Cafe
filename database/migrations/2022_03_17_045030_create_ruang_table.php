@@ -23,6 +23,7 @@ class CreateRuangTable extends Migration
             $table->longText('gambar_detail');
             $table->string('banner');
             $table->bigInteger('harga');
+            $table->bigInteger('jumlah');
             $table->bigInteger('ukuran');
             $table->bigInteger('monitor');
             $table->bigInteger('perangkat_vr');

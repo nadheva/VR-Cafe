@@ -23,6 +23,7 @@
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gambar</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Resepsionis</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deskripsi</th>
                   @if(Auth::user()->where('role', '=', 'Admin'))
@@ -47,6 +48,9 @@
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">Rp. @money($item->harga)</span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{$item->jumlah}}</span>
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">{{ $item->resepsionis->nama }}</span>
@@ -120,6 +124,10 @@
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
                             <input type="number" class="form-control" name="harga">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Jumlah:</label>
+                            <input type="number" class="form-control" name="jumlah">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ukuran:</label>
@@ -199,6 +207,10 @@
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
                             <input type="number" class="form-control" name="harga" value="{{$i->harga}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Jumlah:</label>
+                            <input type="number" class="form-control" name="jumlah" value="{{$i->jumlah}}">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ukuran:</label>

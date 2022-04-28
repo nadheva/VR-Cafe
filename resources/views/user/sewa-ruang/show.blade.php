@@ -7,9 +7,9 @@
               <h5 class="mb-4">Detail Produk</h5>
               <div class="row">
                 <div class="col-xl-5 col-lg-6 text-center">
-                  <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($perangkat->gambar)}}" alt="{{$perangkat->nama}}">
+                  <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($ruang->gambar)}}" alt="{{$ruang->nama}}">
                   <div class="my-gallery d-flex mt-4 pt-2" itemscope itemtype="http://schema.org/ImageGallery">
-                    @foreach($perangkatdetails as $key => $i)
+                    @foreach($ruangdetails as $key => $i)
                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                       <a href="{{asset($i)}}" itemprop="contentUrl" data-size="500x600">
                         <img class="w-75 min-height-100 max-height-100 border-radius-lg shadow" src="{{asset($i)}}" itemprop="thumbnail" alt="Image description" />
@@ -72,7 +72,7 @@
                   </div>
                 </div>
                 <div class="col-lg-5 mx-auto">
-                  <h3 class="mt-lg-0 mt-4">{{$perangkat->nama}}</h3>
+                  <h3 class="mt-lg-0 mt-4">{{$ruang->nama}}</h3>
                   <div class="rating">
                     <i class="fas fa-star" aria-hidden="true"></i>
                     <i class="fas fa-star" aria-hidden="true"></i>
@@ -82,24 +82,24 @@
                   </div>
                   <br>
                   <h6 class="mb-0 mt-3">Harga</h6>
-                  <h5>Rp.@money($perangkat->harga)</h5>
-                  @if($perangkat->stok == 0)
+                  <h5>Rp.@money($ruang->harga)</h5>
+                  {{-- @if($ruang->stok == 0)
                   <span class="badge badge-danger">Stok Habis</span>
                   @else
                   <span class="badge badge-success">Stok Tersedia</span>
-                  @endif
+                  @endif --}}
                   <br>
                   <label class="mt-4">Deskripsi</label>
                   <ul>
-                        {!!$perangkat->deskripsi!!}
+                        {!!$ruang->deskripsi!!}
                   </ul>
                   <div class="row mt-4">
                     <div class="col-lg-5">
                     <form action="{{route('cart.store')}}" method="POST">
                         @csrf
-                        <input type="hidden" name="perangkat_id" value="{{$perangkat->id}}">
+                        <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
                         <input type="hidden" name="jumlah" value="1">
-                        <input type="hidden" name="harga" value="{{$perangkat->harga}}">
+                        <input type="hidden" name="harga" value="{{$ruang->harga}}">
                       <button class="btn bg-gradient-success mb-0 mt-lg-auto w-100" type="submit" name="button">Sewa Sekarang</button>
                     </form>
                     </div>
@@ -119,13 +119,13 @@
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Produk</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kode Perangkat</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Harga</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stok</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                  {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stok</th> --}}
+                  {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th> --}}
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Detail</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($perangkatlain as $i)
+                @foreach($ruanglain as $i)
                 <tr>
                   <td>
                     <div class="d-flex px-2 py-1">
@@ -138,15 +138,15 @@
                     </div>
                   </td>
                   <td>
-                    <p class="text-sm text-secondary mb-0">{{$i->kode_perangkat}}</p>
+                    <p class="text-sm text-secondary mb-0">{{$i->kode_ruang}}</p>
                   </td>
                   <td>
                     <p class="text-sm text-secondary mb-0">Rp. @money($i->harga) </p>
                   </td>
-                  <td  class="align-middle text-center">
+                  {{-- <td  class="align-middle text-center">
                     <p class="text-sm text-secondary mb-0">{{$i->stok}} </p>
-                  </td>
-                  @if($i->stok == 0)
+                  </td> --}}
+                  {{-- @if($i->stok == 0)
                   <td  class="align-middle text-center">
                     <span class="badge badge-danger badge-sm">Stok Habis</span>
                   </td>
@@ -154,7 +154,7 @@
                   <td  class="align-middle text-center">
                     <span class="badge badge-success badge-sm">Stok Tersedia</span>
                   </td>
-                  @endif
+                  @endif --}}
                   <td class="text-sm align-middle text-center">
                     <a href="{{route('user-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                       <i class="fas fa-eye text-secondary"></i>
