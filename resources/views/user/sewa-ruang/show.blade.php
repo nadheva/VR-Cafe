@@ -83,11 +83,11 @@
                   <br>
                   <h6 class="mb-0 mt-3">Harga</h6>
                   <h5>Rp.@money($ruang->harga)</h5>
-                  {{-- @if($ruang->stok == 0)
-                  <span class="badge badge-danger">Stok Habis</span>
+                  @if($ruang->jumlah == 0)
+                  <span class="badge badge-danger">Habis</span>
                   @else
-                  <span class="badge badge-success">Stok Tersedia</span>
-                  @endif --}}
+                  <span class="badge badge-success">Tersedia</span>
+                  @endif
                   <br>
                   <label class="mt-4">Deskripsi</label>
                   <ul>
@@ -111,7 +111,9 @@
         </div>
       <div class="row mt-5">
         <div class="col-12">
-          <h5 class="ms-3">Perangkat Lainnya</h5>
+            <div class="card">
+                <div class="card-h100">
+          <h5 class="my-3 mx-2">Studio Lainnya</h5>
           <div class="table table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
@@ -119,8 +121,8 @@
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Produk</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kode Perangkat</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Harga</th>
-                  {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stok</th> --}}
-                  {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th> --}}
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Jumlah</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Detail</th>
                 </tr>
               </thead>
@@ -143,20 +145,20 @@
                   <td>
                     <p class="text-sm text-secondary mb-0">Rp. @money($i->harga) </p>
                   </td>
-                  {{-- <td  class="align-middle text-center">
-                    <p class="text-sm text-secondary mb-0">{{$i->stok}} </p>
-                  </td> --}}
-                  {{-- @if($i->stok == 0)
                   <td  class="align-middle text-center">
-                    <span class="badge badge-danger badge-sm">Stok Habis</span>
+                    <p class="text-sm text-secondary mb-0">{{$i->jumlah}} </p>
+                  </td>
+                  @if($i->jumlah == 0)
+                  <td  class="align-middle text-center">
+                    <span class="badge badge-danger badge-sm">Tidak Tersedia</span>
                   </td>
                   @else
                   <td  class="align-middle text-center">
-                    <span class="badge badge-success badge-sm">Stok Tersedia</span>
+                    <span class="badge badge-success badge-sm">Tersedia</span>
                   </td>
-                  @endif --}}
+                  @endif
                   <td class="text-sm align-middle text-center">
-                    <a href="{{route('user-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                    <a href="{{route('user-ruang.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                       <i class="fas fa-eye text-secondary"></i>
                     </a>
                   </td>
@@ -165,6 +167,8 @@
               </tbody>
             </table>
           </div>
+        </div>
+        </div>
         </div>
       </div>
     </div>

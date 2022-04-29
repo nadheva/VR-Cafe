@@ -32,7 +32,7 @@ class CartController extends Controller
                 'user_id' => Auth::user()->id,
                 'perangkat_id' => $request->perangkat_id,
                 'jumlah' => $request->jumlah,
-                'harga' => $request->harga
+                'harga' => $request->harga * $request->jumlah
             ]);
         }
         return redirect()->back()

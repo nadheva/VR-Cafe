@@ -93,12 +93,18 @@
                   <ul>
                         {!!$perangkat->deskripsi!!}
                   </ul>
+                  <form action="{{route('cart.store')}}" method="POST">
+                    @csrf
+                  <div class="row mt-4">
+                    <div class="col-lg-5 mt-lg-0 mt-2">
+                      <label>Jumlah</label>
+                      <input class="form-control" name="jumlah" type="number" >
+                    </div>
+                  </div>
                   <div class="row mt-4">
                     <div class="col-lg-5">
-                    <form action="{{route('cart.store')}}" method="POST">
-                        @csrf
                         <input type="hidden" name="perangkat_id" value="{{$perangkat->id}}">
-                        <input type="hidden" name="jumlah" value="1">
+                        {{-- <input type="hidden" name="jumlah" value="1"> --}}
                         <input type="hidden" name="harga" value="{{$perangkat->harga}}">
                       <button class="btn bg-gradient-success mb-0 mt-lg-auto w-100" type="submit" name="button">Sewa Sekarang</button>
                     </form>
@@ -111,7 +117,9 @@
         </div>
       <div class="row mt-5">
         <div class="col-12">
-          <h5 class="ms-3">Perangkat Lainnya</h5>
+        <div class="card">
+            <div class="card-h100">
+          <h5 class="my-3 mx-2">Perangkat Lainnya</h5>
           <div class="table table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
@@ -165,6 +173,8 @@
               </tbody>
             </table>
           </div>
+            </div>
+        </div>
         </div>
       </div>
     </div>

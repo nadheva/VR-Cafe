@@ -38,7 +38,8 @@
                         <th>Studio</th>
                         <th>Kode Perangkat</th>
                         <th>Harga</th>
-                        {{-- <th>Status</th> --}}
+                        <th>Jumlah</th>
+                        <th>Status</th>
                         <th>Detail</th>
                       </tr>
                     </thead>
@@ -54,16 +55,16 @@
                         </td>
                         <td class="text-sm">{{$i->kode_ruang}}</td>
                         <td class="text-sm">Rp. @money($i->harga) </td>
-                        {{-- <td class="text-sm">{{$i->stok}}</td>
-                        @if($i->stok == 0)
+                        <td class="text-sm">{{$i->jumlah}}</td>
+                        @if($i->jumlah == 0)
                         <td>
-                          <span class="badge badge-danger badge-sm">Stok Habis</span>
+                          <span class="badge badge-danger badge-sm">Tidak Tersedia</span>
                         </td>
                         @else
                         <td>
-                          <span class="badge badge-success badge-sm">Stok Tersedia</span>
+                          <span class="badge badge-success badge-sm">Tersedia</span>
                         </td>
-                        @endif --}}
+                        @endif
                         <td class="text-sm">
                           <a href="{{route('user-ruang.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                             <i class="fas fa-eye text-secondary"></i>
