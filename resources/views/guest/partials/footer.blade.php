@@ -108,14 +108,14 @@
                 <div class="col-md-4 col-4 mb-3">
                     <div class="card h-100 border-0 rounded shadow">
                         <div class="card-body p-2 text-center">
-                            <img src="{{asset('tuser/assets/img/payment/bca.png')}}" style="max-width: 40px;">
+                            <img src="{{asset('tuser/assets/img/payment/BCA.png')}}" style="max-width: 40px;">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-4 mb-3">
                     <div class="card h-100 border-0 rounded shadow">
                         <div class="card-body p-2 text-center">
-                            <img src="{{asset('tuser/assets/img/payment/bni.png')}}" style="max-width: 40px;">
+                            <img src="{{asset('tuser/assets/img/payment/BNI.png')}}" style="max-width: 40px;">
                         </div>
                     </div>
                 </div>
