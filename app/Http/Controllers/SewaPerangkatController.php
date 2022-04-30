@@ -9,6 +9,8 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Profile;
 use Midtrans\Snap;
+use App\Models\Denda;
+use App\Models\SewaRuang;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -143,6 +145,8 @@ class SewaPerangkatController extends Controller
 
         //data tranaction
         $data_transaction = SewaPerangkat::where('invoice', $orderId)->first();
+        $data_transaction1 = SewaRuang::where('invoice', $orderId)->first();
+        $data_transaction2 = Denda::where('invoice', $orderId)->first();
 
         if ($transaction == 'capture') {
 
@@ -157,6 +161,12 @@ class SewaPerangkatController extends Controller
                 $data_transaction->update([
                     'status' => 'pending'
                 ]);
+                $data_transaction1->update([
+                    'status' => 'pending'
+                ]);
+                $data_transaction2->update([
+                    'status' => 'pending'
+                ]);
 
               } else {
 
@@ -164,6 +174,12 @@ class SewaPerangkatController extends Controller
                 *   update invoice to success
                 */
                 $data_transaction->update([
+                    'status' => 'success'
+                ]);
+                $data_transaction1->update([
+                    'status' => 'success'
+                ]);
+                $data_transaction2->update([
                     'status' => 'success'
                 ]);
 
@@ -179,6 +195,12 @@ class SewaPerangkatController extends Controller
             $data_transaction->update([
                 'status' => 'success'
             ]);
+            $data_transaction1->update([
+                'status' => 'success'
+            ]);
+            $data_transaction2->update([
+                'status' => 'success'
+            ]);
 
 
         } elseif($transaction == 'pending'){
@@ -188,6 +210,12 @@ class SewaPerangkatController extends Controller
             *   update invoice to pending
             */
             $data_transaction->update([
+                'status' => 'pending'
+            ]);
+            $data_transaction1->update([
+                'status' => 'pending'
+            ]);
+            $data_transaction2->update([
                 'status' => 'pending'
             ]);
 
@@ -201,6 +229,12 @@ class SewaPerangkatController extends Controller
             $data_transaction->update([
                 'status' => 'failed'
             ]);
+            $data_transaction1->update([
+                'status' => 'failed'
+            ]);
+            $data_transaction2->update([
+                'status' => 'failed'
+            ]);
 
 
         } elseif ($transaction == 'expire') {
@@ -212,6 +246,12 @@ class SewaPerangkatController extends Controller
             $data_transaction->update([
                 'status' => 'expired'
             ]);
+            $data_transaction1->update([
+                'status' => 'expired'
+            ]);
+            $data_transaction2->update([
+                'status' => 'expired'
+            ]);
 
 
         } elseif ($transaction == 'cancel') {
@@ -220,6 +260,12 @@ class SewaPerangkatController extends Controller
             *   update invoice to failed
             */
             $data_transaction->update([
+                'status' => 'failed'
+            ]);
+            $data_transaction1->update([
+                'status' => 'failed'
+            ]);
+            $data_transaction2->update([
                 'status' => 'failed'
             ]);
 
