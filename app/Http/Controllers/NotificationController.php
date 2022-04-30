@@ -2,10 +2,23 @@
 
 namespace App\Http\Controllers;
 use App\Models\Payment;
+use Midtrans\Snap;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $this->middleware('auth')->except('notificationHandler');
+
+        $this->request = $request;
+        // Set midtrans configuration
+        \Midtrans\Config::$serverKey    = config('services.midtrans.serverKey');
+        \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
+        \Midtrans\Config::$isSanitized  = config('services.midtrans.isSanitized');
+        \Midtrans\Config::$is3ds        = config('services.midtrans.is3ds');
+    }
+
     public function notificationHandler(Request $request)
     {
         $payload      = $request->getContent();
