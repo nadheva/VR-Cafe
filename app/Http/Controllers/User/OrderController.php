@@ -50,7 +50,8 @@ class OrderController extends Controller
     public function show($id)
     {
         $sewa_perangkat = SewaPerangkat::findOrfail($id);
-        return view('user.transaksi.show', compact('sewa_perangkat'));
+        $client = env('MIDTRANS_CLIENTKEY');
+        return view('user.transaksi.show', compact('sewa_perangkat', 'client'));
     }
 
     /**
