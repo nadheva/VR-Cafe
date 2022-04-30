@@ -15,4 +15,9 @@ class Payment extends Model
         'snap_token',
         'grand_total'
     ];
+
+    public function sewa_perangkat()
+    {
+        return $this->belongsTo(SewaPerangkat::class, 'sewa_perangkat_id', 'id');
+    }
 }
