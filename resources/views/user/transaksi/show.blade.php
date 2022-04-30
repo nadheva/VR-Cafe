@@ -2,6 +2,7 @@
     <div class="container-fluid py-4">
           <div class="col-lg-8 mt-lg-0 mt-4" style="align-items: center">
             <div class="card">
+            <div class="table-responsive">
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
                 <table class="table">
@@ -52,10 +53,12 @@
                   </table>
               </div>
             </div>
+            </div>
         </div>
         <div class="row mt-4">
           <div class="col-sm-8 mt-sm-0 mt-4col-sm-8 mt-sm-0 mt-4">
             <div class="card">
+                <div class="table-responsive">
                 <div class="card-body">
                   <div class="row">
                       <h5 class="font-weight-bolder">Perangkat</h5>
@@ -87,6 +90,7 @@
                           </tbody>
                         </table>
                   </div>
+                </div>
                 </div>
               </div>
           </div>
