@@ -20,4 +20,8 @@ class Payment extends Model
     {
         return $this->belongsTo(SewaPerangkat::class, 'sewa_perangkat_id', 'id');
     }
+    public function sewa_ruang()
+    {
+        return $this->belongsTo(SewaRuang::class, 'sewa_ruang_id', 'id');
+    }
 }
