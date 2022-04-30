@@ -35,7 +35,7 @@
                         <td>Status </td>
                         <td>:</td>
                         <td>
-                            <div class="col-lg-4 text-right d-flex flex-column">
+                            <div class="col-lg-5 text-right d-flex flex-column">
                             @if($sewa_perangkat->status == "pending")
                             <button class="btn bg-gradient-success" id="pay-button">Bayar</button>
                             @elseif($sewa_perangkat->status == "success")
