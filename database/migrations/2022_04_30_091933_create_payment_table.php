@@ -19,8 +19,8 @@ class CreatePaymentTable extends Migration
             $table->enum('status', ['pending', 'success', 'failed', 'expired']);
             $table->string('snap_token')->nullable();
             $table->bigInteger('grand_total');
-            $table->foreignId('sewa_perangkat_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('set null');
-            $table->foreignId('sewa_ruang_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('sewa_perangkat_id')->nullable()->constrained('sewa_perangkat')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('sewa_ruang_id')->nullable()->constrained('sewa_ruang')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }
