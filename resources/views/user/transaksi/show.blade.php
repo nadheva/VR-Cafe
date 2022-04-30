@@ -85,7 +85,7 @@
           </div>
 
           @push('scripts')
-          <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="env('MIDTRANS_CLIENTKEY', '')"></script>
+          <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-z_jHqP15kzkknUvW"></script>
             <script type="text/javascript">
                 document.getElementById('pay-button').onclick = function(){
                     // SnapToken acquired from previous step
