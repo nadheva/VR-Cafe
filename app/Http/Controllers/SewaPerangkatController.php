@@ -215,12 +215,6 @@ class SewaPerangkatController extends Controller
             $data_transaction->update([
                 'status' => 'failed'
             ]);
-            // $data_transaction1->update([
-            //     'status' => 'failed'
-            // ]);
-            // $data_transaction2->update([
-            //     'status' => 'failed'
-            // ]);
 
 
         } elseif ($transaction == 'expire') {
