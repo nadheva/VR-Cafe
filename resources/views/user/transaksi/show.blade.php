@@ -97,7 +97,7 @@
             <script type="text/javascript">
                 document.getElementById('pay-button').onclick = function(){
                     // SnapToken acquired from previous step
-                    snap.pay('{{$sewa_perangkat->snap_token}}', {
+                    snap.pay('{{$sewa_perangkat->payment->snap_token}}', {
                         // Optional
                         onSuccess: function(result){
                             document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
