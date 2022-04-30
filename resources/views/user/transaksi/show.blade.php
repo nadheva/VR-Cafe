@@ -36,8 +36,16 @@
                         <td>:</td>
                         <td>
                             <div class="col-lg-4 text-right d-flex flex-column">
+                            @if($sewa_perangkat->status == "pending")
                             <button class="btn bg-gradient-success" id="pay-button">Bayar</button>
-                          </div>
+                            @elseif($sewa_perangkat->status == "success")
+                            <button class="btn bg-gradient-info" id="pay-button">Sudah Bayar</button>
+                            @elseif($sewa_perangkat->status == "failed")
+                            <button class="btn bg-gradient-danger" id="pay-button">Gagal</button>
+                            @elseif($sewa_perangkat->status == "expired")
+                            <button class="btn bg-gradient-warning" id="pay-button">Kadaluarsa</button>
+                            @endif
+                            </div>
                         </td>
                     </tr>
                     </tbody>
