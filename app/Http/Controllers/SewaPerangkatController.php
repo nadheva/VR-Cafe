@@ -220,7 +220,7 @@ class SewaPerangkatController extends Controller
             ]);
 
 
-        } elseif ($transaction == 'deny') {
+        } elseif ($transaction == ('failure'||'deny'||'cancel')) {
 
 
             /**
