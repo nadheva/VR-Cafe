@@ -9,40 +9,40 @@
                     <tr>
                       <td>No. Invoice </td>
                       <td>:</td>
-                      <td>{{$sewa_perangkat->invoice}}</td>
+                      <td>{{$invoice->invoice}}</td>
                     </tr>
                     <tr>
                       <td>Nama Lengkap </td>
                       <td>:</td>
-                      <td>{{$sewa_perangkat->user->profile->nama_depan. " ".$sewa_perangkat->user->profile->nama_belakang}}</td>
+                      <td>{{$invoice->user->profile->nama_depan. " ".$invoice->user->profile->nama_belakang}}</td>
                     </tr>
                     <tr>
                       <td>No. Telp </td>
                       <td>:</td>
-                      <td>{{$sewa_perangkat->user->profile->no_telp}}</td>
+                      <td>{{$invoice->user->profile->no_telp}}</td>
                     </tr>
                     <tr>
                         <td>Alamat </td>
                         <td>:</td>
-                        <td>{{$sewa_perangkat->user->profile->alamat}}</td>
+                        <td>{{$invoice->user->profile->alamat}}</td>
                     </tr>
                     <tr>
                         <td>Total Bayar </td>
                         <td>:</td>
-                        <td>Rp. @money($sewa_perangkat->grand_total)</td>
+                        <td>Rp. @money($invoice->grand_total)</td>
                     </tr>
                     <tr>
                         <td>Status </td>
                         <td>:</td>
                         <td>
                             <div class="col-lg-5 text-right d-flex flex-column">
-                            @if($sewa_perangkat->status == "pending")
+                            @if($invoice->status == "pending")
                             <button class="btn bg-gradient-info" id="pay-button">Bayar</button>
-                            @elseif($sewa_perangkat->status == "success")
+                            @elseif($invoice->status == "success")
                             <button class="btn bg-gradient-success" id="pay-button">Sudah Bayar</button>
-                            @elseif($sewa_perangkat->status == "failed")
+                            @elseif($invoice->status == "failed")
                             <button class="btn bg-gradient-danger" id="pay-button">Gagal</button>
-                            @elseif($sewa_perangkat->status == "expired")
+                            @elseif($invoice->status == "expired")
                             <button class="btn bg-gradient-warning" id="pay-button">Kadaluarsa</button>
                             @endif
                             </div>
@@ -70,7 +70,7 @@
                               </tr>
                             </thead>
                           <tbody>
-                          @foreach($sewa_perangkat->order as $i)
+                          @foreach($invoice->order as $i)
                           <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>

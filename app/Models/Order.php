@@ -10,15 +10,15 @@ class Order extends Model
     use HasFactory;
     protected $table = 'order';
     protected $fillable = [
-        'sewa_perangkat_id',
+        'invoice_id',
         'perangkat_id',
         'jumlah',
         'harga'
     ];
 
-    public function sewa_perangkat()
+    public function invoice()
     {
-        return $this->belongsTo(SewaPerangkat::class);
+        return $this->belongsTo(Invoice::class);
     }
 
     public function perangkat()

@@ -44,7 +44,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($sewa_perangkat as $i)
+                      @foreach($invoice as $i)
                     <tr>
                     <td>
                         <div class="d-flex align-items-center">
