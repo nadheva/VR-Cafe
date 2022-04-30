@@ -36,13 +36,13 @@
                         <td>:</td>
                         <td>
                             <div class="col-lg-5 text-right d-flex flex-column">
-                            @if($sewa_perangkat->status == "pending")
+                            @if($sewa_perangkat->payment->status == "pending")
                             <button class="btn bg-gradient-info" id="pay-button">Bayar</button>
-                            @elseif($sewa_perangkat->status == "success")
+                            @elseif($sewa_perangkat->payment->status == "success")
                             <button class="btn bg-gradient-success" id="pay-button">Sudah Bayar</button>
-                            @elseif($sewa_perangkat->status == "failed")
+                            @elseif($sewa_perangkat->payment->status == "failed")
                             <button class="btn bg-gradient-danger" id="pay-button">Gagal</button>
-                            @elseif($sewa_perangkat->status == "expired")
+                            @elseif($sewa_perangkat->payment->status == "expired")
                             <button class="btn bg-gradient-warning" id="pay-button">Kadaluarsa</button>
                             @endif
                             </div>

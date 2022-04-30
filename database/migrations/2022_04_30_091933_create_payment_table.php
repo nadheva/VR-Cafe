@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSewaPerangkatTable extends Migration
+class CreateInvoiceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateSewaPerangkatTable extends Migration
      */
     public function up()
     {
-        Schema::create('sewa_perangkat', function (Blueprint $table) {
+        Schema::create('payment', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->text('invoice');
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_berakhir');
-            $table->text('keperluan');
-            $table->enum('proses',['Disewa', 'Dikembalikan']);
+            $table->enum('status', ['pending', 'success', 'failed', 'expired']);
+            $table->string('snap_token')->nullable();
             $table->bigInteger('grand_total');
             $table->timestamps();
         });
@@ -33,6 +30,6 @@ class CreateSewaPerangkatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sewa_perangkat');
+        Schema::dropIfExists('payment');
     }
 }
