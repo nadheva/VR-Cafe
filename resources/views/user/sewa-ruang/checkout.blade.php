@@ -26,6 +26,7 @@
                           <h5 class="font-weight-bolder mb-0">Rincian</h5>
                           {{-- <p class="mb-0 text-sm">Mandatory informations</p> --}}
                           <div class="multisteps-form__content">
+                              <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
                             <div class="row mt-3">
                               <div class="col-12 col-sm-6">
                                 <label>Nama Pemesan</label>

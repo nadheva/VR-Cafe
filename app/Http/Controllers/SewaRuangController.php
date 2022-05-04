@@ -56,10 +56,10 @@ class SewaRuangController extends Controller
 
             $invoice =  'INV-'.Str::upper($random);
             $user = Auth::user()->id;
-            $ruang = Ruang::where('id', $id);
+            $ruang = Ruang::where('id', $this->request->ruang_id)->first();
 
             $sewa_ruang = SewaRuang::create([
-                'ruang_id' => $this->create($id),
+                'ruang_id' => $this->request->ruang_id,
                 'user_id' => $user,
                 'invoice' => $invoice,
                 'tanggal_mulai' => $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $this->request->tanggal_mulai),
@@ -70,18 +70,23 @@ class SewaRuangController extends Controller
                 'grand_total' => ($mulai->diffInDays($sampai)) * $ruang->harga
             ]);
 
-                $sewa_ruang->ruang()->where('id', $sewa_ruang->perangkat_id)
-                ->update([
-                    'jumlah' => ($sewa_ruang->ruang->jumlah - 1)
-                ]);
+            $payment =  $sewa_ruang->payment()->create([
+                'invoice' => $sewa_ruang->invoice,
+                'status' => 'pending',
+                'grand_total' => $sewa_ruang->grand_total
+            ]);
 
-                $sewa_ruang->denda()->create([
-                    'sewa_ruang_id' => $sewa_ruang->id,
-                    'user_id' => $sewa_ruang->user_id,
-                    // 'invoice' => $sewa_perangkat->invoice,
-                    'status' => 'pending',
-                    'grand_total' => '0'
-                ]);
+                // $sewa_ruang->studio()->where('id', $sewa_ruang->ruang_id)
+                // ->update([
+                //     'jumlah' => ($sewa_ruang->studio->jumlah - 1)
+                // ]);
+
+                // $sewa_ruang->denda()->create([
+                //     'sewa_ruang_id' => $sewa_ruang->id,
+                //     'user_id' => $sewa_ruang->user_id,
+                //     'status' => 'pending',
+                //     'grand_total' => '0'
+                // ]);
 
             $payload = [
                 'transaction_details' => [
@@ -96,13 +101,13 @@ class SewaRuangController extends Controller
 
             //snap token
             $snapToken = Snap::getSnapToken($payload);
-            $sewa_ruang->snap_token = $snapToken;
-            $sewa_ruang->save();
+            $payment->snap_token = $snapToken;
+            $payment->save();
 
             // $this->response['id'] = $sewa_perangkat;
 
             });
-            return redirect()->route('user-transaksi.index');
+            return redirect()->route('order-studio.index');
     }
 
     public function notificationHandler(Request $request)
