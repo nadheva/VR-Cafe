@@ -95,13 +95,7 @@
                   </ul>
                   <div class="row mt-4">
                     <div class="col-lg-5">
-                    <form action="{{route('cart.store')}}" method="POST">
-                        @csrf
-                        <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
-                        <input type="hidden" name="jumlah" value="1">
-                        <input type="hidden" name="harga" value="{{$ruang->harga}}">
-                      <button class="btn bg-gradient-success mb-0 mt-lg-auto w-100" type="submit" name="button">Sewa Sekarang</button>
-                    </form>
+                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-ruang-create', $ruang->id)}}" type="button" name="button">Sewa Sekarang</a>
                     </div>
                   </div>
                 </div>

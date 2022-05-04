@@ -5,7 +5,8 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderPerangkatController;
+use App\Http\Controllers\OrderStudioController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResepsionisController;
@@ -66,7 +67,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
 
     //Sewa Studio
-    Route::resource('sewa-ruang', SewaRuangController::class)->except('update');
+    Route::resource('sewa-ruang', SewaRuangController::class)->except('update', 'create');
+    Route::get('sewa-ruang-create/{id}', [SewaRuangController::class, 'create'])->name('sewa-ruang-create');
     Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
 
     //Testimonial
@@ -74,8 +76,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
 
     //Order/transaksi
-    Route::resource('order', OrderController::class)->except('update');
-    Route::put('order-update/{id}', [OrderController::class, 'update']);
+    Route::resource('order-perangkat', OrderPerangkatController::class)->except('update');
+    Route::put('order-perangkat-update/{id}', [OrderPerangkatController::class, 'update']);
+
+    Route::resource('order-studio', OrderStudioController::class)->except('update');
+    Route::put('order-studio-update/{id}', [OrderStudioController::class, 'update']);
 
 
     //Denda

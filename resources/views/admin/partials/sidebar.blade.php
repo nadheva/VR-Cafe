@@ -161,7 +161,7 @@
                 </li>
                 </li>
                 <li class="nav-item mt-3">
-                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akses</h6>
+                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Transaksi</h6>
                 </li>
                 <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#layanan" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="layanan" role="button" aria-expanded="false">
@@ -180,14 +180,53 @@
                     </g>
                     </svg>
                 </div>
-                <span class="nav-link-text ms-1">Transaksi</span>
+                <span class="nav-link-text ms-1">Laporan Transaksi</span>
                 </a>
-                <div class="collapse   {{Route::is('order.*') ? 'show' : ''}}" id="layanan">
+                <div class="collapse   {{Route::is('layanan.*') ? 'show' : ''}}" id="layanan">
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('order.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('order.*') ? 'active' : ''}}" href="{{route('order.index')}}">
+                    <li class="nav-item {{Route::is('order-perangkat.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('order-perangkat.*') ? 'active' : ''}}" href="{{route('order-perangkat.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
-                        <span class="sidenav-normal"> Laporan Transaksi </span>
+                        <span class="sidenav-normal"> Perangkat VR </span>
+                    </a>
+                    </li>
+                </ul>
+                <ul class="nav ms-4 ps-3">
+                    <li class="nav-item {{Route::is('order-studio.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('order-studio.*') ? 'active' : ''}}" href="{{route('order-studio.index')}}">
+                        <span class="sidenav-mini-icon"> K </span>
+                        <span class="sidenav-normal"> Studio </span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#pengembalian" class="nav-link {{Route::is('pengembalian*') ? 'active' : ''}}" aria-controls="pengembalian" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>credit-card</title>
+                    <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Rounded-Icons" transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
+                            <g id="credit-card" transform="translate(453.000000, 454.000000)">
+                            <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" id="Path" opacity="0.593633743"></path>
+                            <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                            </g>
+                        </g>
+                        </g>
+                    </g>
+                    </svg>
+                </div>
+                <span class="nav-link-text ms-1">Pengembalian</span>
+                </a>
+                <div class="collapse   {{Route::is('pengembalian.*') ? 'show' : ''}}" id="pengembalian">
+                <ul class="nav ms-4 ps-3">
+                    <li class="nav-item {{Route::is('pengembalian.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('order-perangkat.index')}}">
+                        <span class="sidenav-mini-icon"> K </span>
+                        <span class="sidenav-normal"> Perangkat VR </span>
                     </a>
                     </li>
                 </ul>
@@ -195,7 +234,46 @@
                     <li class="nav-item {{Route::is('denda.*') ? 'active' : ''}}">
                     <a class="nav-link {{Route::is('denda.*') ? 'active' : ''}}" href="{{route('denda.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
-                        <span class="sidenav-normal"> Denda </span>
+                        <span class="sidenav-normal"> Studio </span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#denda" class="nav-link {{Route::is('denda*') ? 'active' : ''}}" aria-controls="denda" role="button" aria-expanded="false">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <title>credit-card</title>
+                    <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Rounded-Icons" transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
+                            <g id="credit-card" transform="translate(453.000000, 454.000000)">
+                            <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" id="Path" opacity="0.593633743"></path>
+                            <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                            </g>
+                        </g>
+                        </g>
+                    </g>
+                    </svg>
+                </div>
+                <span class="nav-link-text ms-1">Denda</span>
+                </a>
+                <div class="collapse   {{Route::is('denda.*') ? 'show' : ''}}" id="denda">
+                <ul class="nav ms-4 ps-3">
+                    <li class="nav-item {{Route::is('pengembalian.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('order-perangkat.index')}}">
+                        <span class="sidenav-mini-icon"> K </span>
+                        <span class="sidenav-normal"> Perangkat VR </span>
+                    </a>
+                    </li>
+                </ul>
+                <ul class="nav ms-4 ps-3">
+                    <li class="nav-item {{Route::is('denda.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('denda.*') ? 'active' : ''}}" href="{{route('denda.index')}}">
+                        <span class="sidenav-mini-icon"> K </span>
+                        <span class="sidenav-normal"> Studio </span>
                     </a>
                     </li>
                 </ul>

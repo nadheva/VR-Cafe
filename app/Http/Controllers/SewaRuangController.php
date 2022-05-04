@@ -34,8 +34,15 @@ class SewaRuangController extends Controller
 
     public function create($id)
     {
+        $user = Auth::user()->id;
+        $profil = Profile::where('user_id', $user)->first();
+        if(is_null($profil)){
+            return redirect()->route('profil.create')
+            ->with('danger', 'Anda belum menambahkan data profil!');
+        } else {
         $ruang = Ruang::where('id', $id)->first();
-        return view('user.sewa-ruang.sewa', compact('ruang'));
+        return view('user.sewa-ruang.checkout', compact('ruang', 'profil'));
+        }
     }
 
     public function store()
