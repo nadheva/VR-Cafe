@@ -10,40 +10,40 @@
                     <tr>
                       <td>No. Invoice </td>
                       <td>:</td>
-                      <td>{{$sewa_ruang->invoice}}</td>
+                      <td>{{$sewa_perangkat->invoice}}</td>
                     </tr>
                     <tr>
                       <td>Nama Lengkap </td>
                       <td>:</td>
-                      <td>{{$sewa_ruang->user->profile->nama_depan. " ".$sewa_ruang->user->profile->nama_belakang}}</td>
+                      <td>{{$sewa_perangkat->user->profile->nama_depan. " ".$sewa_perangkat->user->profile->nama_belakang}}</td>
                     </tr>
                     <tr>
                       <td>No. Telp </td>
                       <td>:</td>
-                      <td>{{$sewa_ruang->user->profile->no_telp}}</td>
+                      <td>{{$sewa_perangkat->user->profile->no_telp}}</td>
                     </tr>
                     <tr>
                         <td>Alamat </td>
                         <td>:</td>
-                        <td>{{$sewa_ruang->user->profile->alamat}}</td>
+                        <td>{{$sewa_perangkat->user->profile->alamat}}</td>
                     </tr>
                     <tr>
                         <td>Total Bayar </td>
                         <td>:</td>
-                        <td>Rp. @money($sewa_ruang->grand_total)</td>
+                        <td>Rp. @money($sewa_perangkat->grand_total)</td>
                     </tr>
                     <tr>
                         <td>Status </td>
                         <td>:</td>
                         <td>
                             <div class="col-lg-5 text-right d-flex flex-column">
-                            @if($sewa_ruang->payment->status == "pending")
+                            @if($sewa_perangkat->payment->status == "pending")
                             <button class="btn bg-gradient-info" id="pay-button">Bayar</button>
-                            @elseif($sewa_ruang->payment->status == "success")
+                            @elseif($sewa_perangkat->payment->status == "success")
                             <button class="btn bg-gradient-success" id="pay-button">Sudah Bayar</button>
-                            @elseif($sewa_ruang->payment->status == "failed")
+                            @elseif($sewa_perangkat->payment->status == "failed")
                             <button class="btn bg-gradient-danger" id="pay-button">Gagal</button>
-                            @elseif($sewa_ruang->payment->status == "expired")
+                            @elseif($sewa_perangkat->payment->status == "expired")
                             <button class="btn bg-gradient-warning" id="pay-button">Kadaluarsa</button>
                             @endif
                             </div>
@@ -63,15 +63,30 @@
                   <div class="row">
                       <h5 class="font-weight-bolder">Perangkat</h5>
                       <table class="table" id="products-list">
+                          <thead>
+                              <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Harga</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Subtotal</th>
+                              </tr>
+                            </thead>
                           <tbody>
-                            <tr>
-                                <td>Nama Studio</td>
-                                <td> : </td>
-                                <td> {{$sewa_ruang->studio->nama}} </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
+                          @foreach($sewa_perangkat->order as $i)
+                          <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>
+                            <div class="d-flex">
+                                <img class="w-10 ms-3" src="{{asset($i->perangkat->gambar)}}" alt="{{$i->perangkat->nama}}">
+                                <h6 class="ms-3 my-auto">{{$i->perangkat->nama}}</h6>
+                              </div>
+                            </td>
+                            <td>Rp. @money($i->perangkat->harga)</td>
+                            <td>{{$i->jumlah}}</td>
+                            <td>Rp. @money($i->harga)</td>
+                          </tr>
+                          @endforeach
                           </tbody>
                         </table>
                   </div>
@@ -128,4 +143,4 @@
             };
           </script>
           @endpush
-</x-app-layout>
+  </x-app-layout>

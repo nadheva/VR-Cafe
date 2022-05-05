@@ -127,6 +127,9 @@ class SewaPerangkatController extends Controller
         // $this->response['id'] = $sewa_perangkat;
 
         });
+        Cart::with('perangkat')
+        ->where('user_id', Auth::user()->id)
+        ->delete();
         return redirect()->route('user-transaksi-perangkat.index');
 
     }

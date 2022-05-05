@@ -64,42 +64,25 @@
                           <div class="multisteps-form__content">
                             <div class="row mt-3">
                                 <div class="table-responsive">
-                                    {{-- <table class="table table-striped table-hover" id="datatable-basic">
-                                      <thead class="thead-light">
-                                        <tr>
-                                          <th>No.</th>
-                                          <th>Nama</th>
-                                          <th>Harga</th>
-                                          <th>Jumlah</th>
-                                          <th>Subtotal</th>
-                                        </tr>
-                                      </thead>
+                                    <table class="table table-striped table-hover" id="datatable-basic">
                                       <tbody>
-                                      @foreach($cart as $i)
                                         <tr>
-                                          <td class="text-sm">{{$loop->iteration}}</td>
-                                          <td>
-                                            <div class="d-flex">
-                                              <img class="w-10 ms-3" src="{{asset($i->perangkat->gambar)}}" alt="{{$i->perangkat->nama}}">
-                                              <h6 class="ms-3 my-auto">{{$i->perangkat->nama}}</h6>
-                                            </div>
-                                          </td>
-                                          <td class="text-sm">Rp. @money($i->perangkat->harga) </td>
-                                          <td class="text-sm">{{$i->jumlah}}</td>
-                                          <td class="text-sm">Rp. @money($i->harga)</td>
+                                            <td>Nama</td>
+                                            <td> : </td>
+                                            <td>{{$ruang->nama}}</td>
                                         </tr>
-                                        @endforeach
+                                        <tr>
+                                            <td>Gambar</td>
+                                            <td> : </td>
+                                            <td><img src="{{asset($ruang->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Harga</td>
+                                            <td> : </td>
+                                            <td>{{$ruang->harga}}</td>
+                                        </tr>
                                       </tbody>
-                                      <tfoot>
-                                        <tr>
-                                          <th>No.</th>
-                                          <th>Nama</th>
-                                          <th>Harga</th>
-                                          <th>Jumlah</th>
-                                          <th>Subtotal</th>
-                                        </tr>
-                                      </tfoot>
-                                    </table> --}}
+                                    </table>
                             </div>
                             <div class="button-row d-flex mt-4">
                               <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button" title="Sebelumnya">Sebelumnya</button>
