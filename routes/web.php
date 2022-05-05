@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Sewa Perangkat
     Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update', 'notificationHandler');
     Route::post('notificationHandler', [SewaPerangkatController::class, 'notificationHandler']);
-    Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
+    Route::put('sewa-perangkat-update/{id}', [SewaPerangkatController::class, 'update']);
 
     //Sewa Studio
     Route::resource('sewa-ruang', SewaRuangController::class)->except('update', 'create');

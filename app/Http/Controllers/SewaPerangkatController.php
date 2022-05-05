@@ -68,7 +68,6 @@ class SewaPerangkatController extends Controller
         $cart = Cart::where('user_id', $user)->get();
         $total = $cart->sum('harga');
 
-
         $sewa_perangkat = SewaPerangkat::create([
             'user_id' => $user,
             'invoice' => $invoice,
@@ -256,24 +255,19 @@ class SewaPerangkatController extends Controller
 
     public function update(Request $request, $id)
     {
-        $sewa_perangkat = SewaPerangkat::find($id);
-        $order = Order::where('id', $id)->first();
-        // $perangkat = Perangkat::all();
+        $sewa_perangkat = SewaPerangkat::findOrFail($id);
+        $perangkat = Perangkat::get();
         $sewa_perangkat->update([
             'proses' => 'Dikembalikan'
         ]);
 
-        // $sewa_perangkat->perangkat->where('id', $sewa_perangkat->perangkat->id )
-        //                           ->update([
-        //                               'stok' => ($sewa_perangkat->perangkat->stok +  1)
-        //                           ]);
-        foreach(Order::where('id', $id)->get() as $order) {
-        Perangkat::where('id', $order->perangkat->id)
-            ->update([
-                'stok' => (Perangkat::select('stok') + $order->jumlah),
-            ]);
+        foreach(Order::where('sewa_perangkat_id', $id)->get() as $order) {
+          $perangkat->where('id', $order->perangkat->id);
+          foreach (Perangkat::where('id', $order->perangkat->id)->get() as $i)
+          $i->stok = $i->stok + $order->jumlah;
+          $i->save();
         }
-        return redirect()->route('sewa_perangkat.index')
+        return redirect()->route('pengembalian-perangkat')
                 ->with('success', 'Perangkat berhasil dikembalikan!');
     }
 
