@@ -98,7 +98,7 @@
                   <div class="row mt-4">
                     <div class="col-lg-5 mt-lg-0 mt-2">
                       <label>Jumlah</label>
-                      <input class="form-control" name="jumlah" type="number" >
+                      <input class="form-control" name="jumlah" type="number" max="{{$perangkat->stok}}" required>
                     </div>
                   </div>
                   <div class="row mt-4">
