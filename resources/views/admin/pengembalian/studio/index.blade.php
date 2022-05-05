@@ -62,10 +62,10 @@
                         </div>
                       </td>
                       <td class="font-weight-bold">
-                        <span class="my-2 text-xs">{{$i->tanggal_mulai->format('d.m.Y')}}</span>
+                        <span class="my-2 text-xs">{{$i->tanggal_mulai}}</span>
                       </td>
                       <td class="font-weight-bold">
-                        <span class="my-2 text-xs">{{$i->tanggal_berakhir->format('d.m.Y')}}</span>
+                        <span class="my-2 text-xs">{{$i->tanggal_berakhir}}</span>
                       </td>
                       <td class="text-sm">
                         <a href="{{route('order-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
