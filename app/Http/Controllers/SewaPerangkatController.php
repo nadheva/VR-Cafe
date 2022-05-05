@@ -97,14 +97,6 @@ class SewaPerangkatController extends Controller
             'harga'             => $cart->harga,
             ]);
 
-            $sewa_perangkat->denda()->create([
-                'sewa_perangkat_id' => $sewa_perangkat->id,
-                'user_id' => $sewa_perangkat->user_id,
-                'grand_total' => '0'
-            ]);
-
-
-
         }
 
         $payload = [

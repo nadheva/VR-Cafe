@@ -83,7 +83,7 @@
         </div>
       </div>
 
-    <!-- Modal Edit Perangkat -->
+    <!-- Modal -->
     @foreach($sewa_perangkat as $i)
     <div class="modal fade" id="editPerangkat-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="editPerangkatLabel"
         aria-hidden="true">

@@ -95,7 +95,11 @@
                   </ul>
                   <div class="row mt-4">
                     <div class="col-lg-5">
+                      @if($ruang->jumlah == 0)
+                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-ruang-create', $ruang->id)}}" type="button" name="button" disabled>Sewa Sekarang</a>
+                      @else
                       <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-ruang-create', $ruang->id)}}" type="button" name="button">Sewa Sekarang</a>
+                      @endif
                     </div>
                   </div>
                 </div>

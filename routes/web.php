@@ -17,6 +17,8 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DendaPerangkatController;
+use App\Http\Controllers\DendaStudioController;
 
 //User
 use App\Http\Controllers\User\OrderPerangkatController as UserOrderPerangkatController;
@@ -88,6 +90,8 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //Denda
+    Route::resource('denda-perangkat', DendaPerangkatController::class);
+    Route::resource('denda-studio', DendaStudioController::class);
     Route::resource('denda', DendaController::class)->except('update', 'store');
     Route::put('denda-update/{id}', [DendaController::class, 'update']);
     Route::get('storedenda', [DendaController::class, 'store']);
@@ -99,6 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('laporan', LaporanController::class);
     Route::resource('user-perangkat', UserPerangkat::class);
     Route::resource('user-ruang', UserRuang::class);
+
 
     //Cart
     Route::resource('cart', CartController::class);

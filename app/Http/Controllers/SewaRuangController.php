@@ -75,15 +75,9 @@ class SewaRuangController extends Controller
                 'grand_total' => $sewa_ruang->grand_total
             ]);
 
-                // $sewa_ruang->studio()->where('id', $sewa_ruang->ruang_id)
-                // ->update([
-                //     'jumlah' => ($sewa_ruang->studio->jumlah - 1)
-                // ]);
-
-                $sewa_ruang->denda()->create([
-                    'sewa_ruang_id' => $sewa_ruang->id,
-                    'user_id' => $sewa_ruang->user_id,
-                    'grand_total' => '0'
+                $sewa_ruang->studio->where('id', $sewa_ruang->ruang_id)
+                ->update([
+                    'jumlah' => ($sewa_ruang->studio->jumlah - 1)
                 ]);
 
             $payload = [
