@@ -223,16 +223,16 @@
                 </a>
                 <div class="collapse   {{Route::is('pengembalian.*') ? 'show' : ''}}" id="pengembalian">
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('pengembalian.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('pengembalian-perangkat')}}">
+                    <li class="nav-item {{Route::is('pengembalian-perangkat*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('pengembalian-perangkat.*') ? 'active' : ''}}" href="{{route('pengembalian-perangkat')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Perangkat VR </span>
                     </a>
                     </li>
                 </ul>
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('pengembalian*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('pengembalian-studio')}}">
+                    <li class="nav-item {{Route::is('pengembalian-studio*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('pengembalian-studio.*') ? 'active' : ''}}" href="{{route('pengembalian-studio')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Studio </span>
                     </a>

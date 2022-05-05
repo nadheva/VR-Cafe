@@ -67,38 +67,30 @@
             </div>
             </div>
         </div>
-        {{-- <div class="row mt-4">
+        <div class="row mt-4">
           <div class="col-sm-8 mt-sm-0 mt-4col-sm-8 mt-sm-0 mt-4">
             <div class="card">
                 <div class="table-responsive">
                 <div class="card-body">
                   <div class="row">
-                      <h5 class="font-weight-bolder">Perangkat</h5>
+                      <h5 class="font-weight-bolder">Studio</h5>
                       <table class="table" id="products-list">
-                          <thead>
-                              <tr>
-                                <th scope="col">No.</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Harga</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Subtotal</th>
-                              </tr>
-                            </thead>
                           <tbody>
-                          @foreach($sewa_studio->order as $i)
-                          <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>
-                            <div class="d-flex">
-                                <img class="w-10 ms-3" src="{{asset($i->perangkat->gambar)}}" alt="{{$i->perangkat->nama}}">
-                                <h6 class="ms-3 my-auto">{{$i->perangkat->nama}}</h6>
-                              </div>
-                            </td>
-                            <td>Rp. @money($i->perangkat->harga)</td>
-                            <td>{{$i->jumlah}}</td>
-                            <td>Rp. @money($i->harga)</td>
-                          </tr>
-                          @endforeach
+                            <tr>
+                                <td>Nama</td>
+                                <td> : </td>
+                                <td>{{$sewa_studio->studio->nama}}</td>
+                            </tr>
+                            <tr>
+                                <td>Gambar</td>
+                                <td> : </td>
+                                <td><img src="{{asset($sewa_studio->studio->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
+                            </tr>
+                            <tr>
+                                <td>Harga</td>
+                                <td> : </td>
+                                <td>{{$sewa_studio->studio->harga}}</td>
+                            </tr>
                           </tbody>
                         </table>
                   </div>
@@ -106,7 +98,7 @@
                 </div>
               </div>
           </div>
-          </div> --}}
+          </div>
 
           @push('scripts')
           <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{$client}}"></script>

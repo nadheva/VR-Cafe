@@ -22,7 +22,7 @@ class SewaRuang extends Model
 
     public function studio()
     {
-        return $this->hasOne(Ruang::class);
+        return $this->belongsTo(Ruang::class, 'ruang_id', 'id');
     }
 
     public function denda()

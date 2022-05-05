@@ -15,7 +15,7 @@ class OrderPerangkatController extends Controller
     }
     public function pengembalian()
     {
-        $sewa_perangkat = SewaPerangkat::where('proses', '==', 'Disewa')->latest()->get();
+        $sewa_perangkat = SewaPerangkat::where('proses', '=', 'Disewa')->latest()->get();
         return view('admin.pengembalian.perangkat.index', compact('sewa_perangkat'));
     }
 

@@ -15,7 +15,7 @@ class OrderStudioController extends Controller
 
     public function pengembalian()
     {
-        $sewa_ruang = SewaRuang::where('proses', '==', 'Disewa')->latest()->get();
+        $sewa_ruang = SewaRuang::where('proses', '=', 'Disewa')->latest()->get();
         return view('admin.pengembalian.studio.index', compact('sewa_ruang'));
     }
 
