@@ -35,13 +35,14 @@
                 <table class="table table-flush" id="datatable-search">
                   <thead class="thead-light">
                     <tr>
-                      <th>No.</th>
-                      <th>Invoice</th>
-                      <th>Penyewa</th>
-                      <th>Tanggal</th>
-                      <th>Status</th>
-                      <th>Bayar</th>
-                      <th>Detail</th>
+                        <th>No.</th>
+                        <th>Invoice</th>
+                        <th>Penyewa</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Bayar</th>
+                        <th>Proses</th>
+                        <th>Detail</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -97,8 +98,17 @@
                       <td class="text-xs font-weight-bold">
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
+                      @if($i->proses == 'Disewa')
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-warning badge-sm">Disewa</span>
+                      </td>
+                      @elseif($i->proses == 'Dikembalikan')
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-info badge-sm">Dikembalikan</span>
+                      </td>
+                      @endif
                       <td class="text-sm">
-                        <a href="{{route('user-transaksi.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

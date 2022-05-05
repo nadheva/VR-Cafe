@@ -38,17 +38,25 @@
                         <td>
                             <div class="col-lg-5 text-right d-flex flex-column">
                             @if($sewa_perangkat->payment->status == "pending")
-                            <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-info" aria-hidden="true"></i></button>
-                            <span>Belum dibayar</span>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-info" aria-hidden="true"></i></button>
+                                <span>Belum dibayar</span>
+                            </div>
                             @elseif($sewa_perangkat->payment->status == "success")
-                            <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check" aria-hidden="true"></i></button>
-                            <span>Sudah dibayar</span>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check" aria-hidden="true"></i></button>
+                                <span>Sudah dibayar</span>
+                            </div>
                             @elseif($sewa_perangkat->payment->status == "failed")
-                            <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times" aria-hidden="true"></i></button>
-                            <span>Gagal</span>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times" aria-hidden="true"></i></button>
+                                <span>Gagal</span>
+                            </div>
                             @elseif($sewa_perangkat->payment->status == "expired")
-                            <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
-                            <span>Kadaluarsa</span>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
+                                <span>Kadaluarsa</span>
+                            </div>
                             @endif
                             </div>
                         </td>

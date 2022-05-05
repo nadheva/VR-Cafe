@@ -15,13 +15,11 @@ class CreateDendaTable extends Migration
     {
         Schema::create('denda', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('sewa_ruang_id')->constrained('sewa_ruang')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->foreignId('sewa_perangkat_id')->constrained('sewa_perangkat')->onDelete('cascade')->onUpdate('cascade')->nullable();
+            $table->foreignId('sewa_ruang_id')->nullable()->constrained('sewa_ruang')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('sewa_perangkat_id')->nullable()->constrained('sewa_perangkat')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('invoice')->nullable();
-            // $table->foreignId('order_id')->constrained('order')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('status', ['pending', 'success', 'failed', 'expired']);
-            $table->string('snap_token')->nullable();
             $table->bigInteger('grand_total');
             $table->timestamps();
         });

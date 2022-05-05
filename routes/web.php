@@ -17,8 +17,10 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\User\OrderController as UserOrderController;
+
 //User
+use App\Http\Controllers\User\OrderPerangkatController as UserOrderPerangkatController;
+use App\Http\Controllers\User\OrderStudioController as UserOrderStudioController;
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
 use App\Http\Controllers\User\RuangController as UserRuang;
 use App\Http\Controllers\User\DendaController as UserDenda;
@@ -76,10 +78,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
 
     //Order/transaksi
-    Route::resource('order-perangkat', OrderPerangkatController::class)->except('update');
+    Route::resource('order-perangkat', OrderPerangkatController::class)->except('update', 'pengembalian');
+    Route::get('pengembalian-perangkat', [OrderPerangkatController::class, 'pengembalian'])->name('pengembalian-perangkat');
     Route::put('order-perangkat-update/{id}', [OrderPerangkatController::class, 'update']);
 
-    Route::resource('order-studio', OrderStudioController::class)->except('update');
+    Route::resource('order-studio', OrderStudioController::class)->except('update', 'pengembalian');
+    Route::get('pengembalian-studio', [OrderStudioController::class, 'pengembalian'])->name('pengembalian-studio');
     Route::put('order-studio-update/{id}', [OrderStudioController::class, 'update']);
 
 
@@ -104,7 +108,8 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::delete('remove-from-cart', [CartController::class, 'destroy']);
 
     //user-order
-    Route::resource('user-transaksi', UserOrderController::class);
+    Route::resource('user-transaksi-perangkat', UserOrderPerangkatController::class);
+    Route::resource('user-transaksi-perangkat', UserOrderPerangkatController::class);
 
     //user-denda
     Route::resource('user-denda', UserDenda::class);

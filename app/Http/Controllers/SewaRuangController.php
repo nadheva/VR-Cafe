@@ -66,7 +66,6 @@ class SewaRuangController extends Controller
                 'tanggal_berakhir' =>  $sampai= \Carbon\Carbon::createFromFormat('Y-m-d', $this->request->tanggal_berakhir),
                 'keperluan' => $this->request->keperluan,
                 'proses' => 'Disewa',
-                'status' => 'pending',
                 'grand_total' => ($mulai->diffInDays($sampai)) * $ruang->harga
             ]);
 
@@ -81,12 +80,11 @@ class SewaRuangController extends Controller
                 //     'jumlah' => ($sewa_ruang->studio->jumlah - 1)
                 // ]);
 
-                // $sewa_ruang->denda()->create([
-                //     'sewa_ruang_id' => $sewa_ruang->id,
-                //     'user_id' => $sewa_ruang->user_id,
-                //     'status' => 'pending',
-                //     'grand_total' => '0'
-                // ]);
+                $sewa_ruang->denda()->create([
+                    'sewa_ruang_id' => $sewa_ruang->id,
+                    'user_id' => $sewa_ruang->user_id,
+                    'grand_total' => '0'
+                ]);
 
             $payload = [
                 'transaction_details' => [

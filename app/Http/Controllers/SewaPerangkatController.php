@@ -101,8 +101,6 @@ class SewaPerangkatController extends Controller
             $sewa_perangkat->denda()->create([
                 'sewa_perangkat_id' => $sewa_perangkat->id,
                 'user_id' => $sewa_perangkat->user_id,
-                // 'invoice' => $sewa_perangkat->invoice,
-                'status' => 'pending',
                 'grand_total' => '0'
             ]);
 
@@ -129,7 +127,7 @@ class SewaPerangkatController extends Controller
         // $this->response['id'] = $sewa_perangkat;
 
         });
-        return redirect()->route('user-transaksi.index');
+        return redirect()->route('user-transaksi-perangkat.index');
 
     }
 

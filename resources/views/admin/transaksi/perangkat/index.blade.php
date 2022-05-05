@@ -98,11 +98,11 @@
                       <td class="text-xs font-weight-bold">
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>d>
-                      @if($i->proses, '=', 'Disewa')
+                      @if($i->proses == 'Disewa')
                       <td  class="text-xs font-weight-bold">
                         <span class="badge badge-warning badge-sm">Disewa</span>
                       </td>
-                      @elseif($i->proses, '=', 'Dikembalikan')
+                      @elseif($i->proses == 'Dikembalikan')
                       <td  class="text-xs font-weight-bold">
                         <span class="badge badge-info badge-sm">Dikembalikan</span>
                       </td>

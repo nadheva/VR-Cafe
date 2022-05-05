@@ -164,7 +164,7 @@
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Transaksi</h6>
                 </li>
                 <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#layanan" class="nav-link {{Route::is('layanan*') ? 'active' : ''}}" aria-controls="layanan" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#order" class="nav-link {{Route::is('order*') ? 'active' : ''}}" aria-controls="order" role="button" aria-expanded="false">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>credit-card</title>
@@ -182,9 +182,9 @@
                 </div>
                 <span class="nav-link-text ms-1">Laporan Transaksi</span>
                 </a>
-                <div class="collapse   {{Route::is('layanan.*') ? 'show' : ''}}" id="layanan">
+                <div class="collapse   {{Route::is('order.*') ? 'show' : ''}}" id="order">
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('order-perangkat.*') ? 'active' : ''}}">
+                    <li class="nav-item {{Route::is('order.*') ? 'active' : ''}}">
                     <a class="nav-link {{Route::is('order-perangkat.*') ? 'active' : ''}}" href="{{route('order-perangkat.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Perangkat VR </span>
@@ -192,7 +192,7 @@
                     </li>
                 </ul>
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('order-studio.*') ? 'active' : ''}}">
+                    <li class="nav-item {{Route::is('order.*') ? 'active' : ''}}">
                     <a class="nav-link {{Route::is('order-studio.*') ? 'active' : ''}}" href="{{route('order-studio.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Studio </span>
@@ -224,15 +224,15 @@
                 <div class="collapse   {{Route::is('pengembalian.*') ? 'show' : ''}}" id="pengembalian">
                 <ul class="nav ms-4 ps-3">
                     <li class="nav-item {{Route::is('pengembalian.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('order-perangkat.index')}}">
+                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('pengembalian-perangkat')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Perangkat VR </span>
                     </a>
                     </li>
                 </ul>
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('denda.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('denda.*') ? 'active' : ''}}" href="{{route('denda.index')}}">
+                    <li class="nav-item {{Route::is('pengembalian*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('pengembalian.*') ? 'active' : ''}}" href="{{route('pengembalian-studio')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Studio </span>
                     </a>
@@ -402,8 +402,8 @@
                 </a>
                 <div class="collapse   {{Route::is('akses.*') ? 'show' : ''}}" id="akses">
                 <ul class="nav ms-4 ps-3">
-                    <li class="nav-item {{Route::is('user-transaksi.*') ? 'active' : ''}}">
-                    <a class="nav-link {{Route::is('user-transaksi.*') ? 'active' : ''}}" href="{{route('user-transaksi.index')}}">
+                    <li class="nav-item {{Route::is('user-transaksi-perangkat.*') ? 'active' : ''}}">
+                    <a class="nav-link {{Route::is('user-transaksi-perangkat.*') ? 'active' : ''}}" href="{{route('user-transaksi-perangkat.index')}}">
                         <span class="sidenav-mini-icon"> K </span>
                         <span class="sidenav-normal"> Riwayat Transaksi </span>
                     </a>

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\SewaPerangkat;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OrderStudioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $sewa_perangkat = SewaPerangkat::where('user_id', Auth::user()->id)->latest()->get();
-        return view('user.transaksi.index', compact('sewa_perangkat'));
+        //
     }
 
     /**
@@ -49,9 +46,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $sewa_perangkat = SewaPerangkat::findOrfail($id);
-        $client = env('MIDTRANS_CLIENTKEY');
-        return view('user.transaksi.show', compact('sewa_perangkat', 'client'));
+        //
     }
 
     /**

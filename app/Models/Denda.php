@@ -11,15 +11,18 @@ class Denda extends Model
     protected $table = 'denda';
     protected $fillable = [
         'sewa_perangkat_id',
+        'sewa_ruang_id',
         'user_id',
         'invoice',
-        'status',
-        'snap_token',
         'grand_total',
     ];
 
     public function sewa_perangkat(){
         return $this->belongsTo(SewaPerangkat::class);
+    }
+
+    public function sewa_ruang(){
+        return $this->belongsTo(SewaRuang::class);
     }
 
     public function user(){

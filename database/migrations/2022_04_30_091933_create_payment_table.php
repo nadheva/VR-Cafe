@@ -21,6 +21,7 @@ class CreatePaymentTable extends Migration
             $table->bigInteger('grand_total');
             $table->foreignId('sewa_perangkat_id')->nullable()->constrained('sewa_perangkat')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('sewa_ruang_id')->nullable()->constrained('sewa_ruang')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('denda_id')->nullable()->constrained('denda')->onUpdate('cascade')->onDelete('set null');
             $table->timestamps();
         });
     }

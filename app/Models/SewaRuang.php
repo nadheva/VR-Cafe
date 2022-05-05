@@ -17,8 +17,6 @@ class SewaRuang extends Model
         'tanggal_berakhir',
         'keperluan',
         'proses',
-        'status',
-        'snap_token',
         'grand_total'
     ];
 
