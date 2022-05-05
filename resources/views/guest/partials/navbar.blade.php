@@ -34,7 +34,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('guest-vr-room') ? 'active' : '' }}" href="{{url('guest-vr-room')}}">Coba VR Room</a>
+            <a class="nav-link {{ Request::is('guest-vr-room') ? 'active' : '' }}" href="{{url('guest-vr-room')}}">VR Room</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ Request::is('guest-contact') ? 'active' : '' }}" href="{{url('guest-contact')}}">Kontak</a>
