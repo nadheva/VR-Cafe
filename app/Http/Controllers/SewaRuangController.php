@@ -217,7 +217,17 @@ class SewaRuangController extends Controller
 
     public function update(Request $request, $id)
     {
+        $sewa_ruang = SewaRuang::findOrFail($id);
+        $sewa_ruang->update([
+            'proses' => 'Dikembalikan'
+        ]);
 
+        $sewa_ruang->studio->where('id', $sewa_ruang->studio->id)
+                        ->update([
+                            'jumlah' => ($sewa_ruang->studio->jumlah + 1),
+                            ]);
+        return redirect()->route('pengembalian-studio')
+                ->with('success', 'Studio berhasil dikembalikan!');
     }
 
     public function destroy($id)
