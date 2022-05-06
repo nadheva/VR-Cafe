@@ -87,4 +87,13 @@ class OrderPerangkatController extends Controller
     {
         //
     }
+
+    public function invoice($id)
+    {
+        $sewa_perangkat = SewaPerangkat::findOrfail($id);
+        $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_mulai);
+        $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_berakhir);
+        $hari = $mulai->diffInDays($selesai);
+        return view('user.transaksi.perangkat.invoice', compact('sewa_perangkat', 'hari'));
+    }
 }

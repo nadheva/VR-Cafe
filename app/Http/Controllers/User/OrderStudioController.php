@@ -88,4 +88,13 @@ class OrderStudioController extends Controller
     {
         //
     }
+
+    public function invoice($id)
+    {
+        $sewa_ruang = SewaRuang::findOrfail($id);
+        $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_ruang->tanggal_mulai);
+        $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_ruang->tanggal_berakhir);
+        $hari = $mulai->diffInDays($selesai);
+        return view('user.transaksi.studio.invoice', compact('sewa_ruang', 'hari'));
+    }
 }

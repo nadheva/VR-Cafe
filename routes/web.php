@@ -114,7 +114,9 @@ Route::group(['middleware' => ['auth']], function () {
 
     //user-order
     Route::resource('user-transaksi-perangkat', UserOrderPerangkatController::class);
-    Route::resource('user-transaksi-studio', UserOrderStudioController::class);
+    Route::get('invoice-transaksi-perangkat/{id}', [UserOrderPerangkatController::class, 'invoice'])->name('invoice-transaksi-perangkat');
+    Route::resource('user-transaksi-studio', UserOrderStudioController::class)->except('invoice');
+    Route::get('invoice-transaksi-studio/{id}', [UserOrderStudioController::class, 'invoice'])->name('invoice-transaksi-studio');
 
     //user-denda
     Route::resource('user-denda', UserDenda::class);

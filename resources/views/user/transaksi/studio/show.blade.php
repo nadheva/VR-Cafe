@@ -6,7 +6,7 @@
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
                 <div class="col-12 mx-0 text-end">
-                    <a class="btn bg-gradient-warning mb-0" href="">Invoice</a>
+                    <a class="btn bg-gradient-warning mb-0" href="{{route('invoice-transaksi-studio', $sewa_ruang->id)}}">Invoice</a>
                   </div>
                 <table class="table">
                     <tbody>
