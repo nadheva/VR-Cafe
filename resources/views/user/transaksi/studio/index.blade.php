@@ -5,7 +5,7 @@
             {{-- <a href="javascript:;" class="btn btn-icon bg-gradient-primary">
               New order
             </a> --}}
-            <h5>Denda</h5>
+            <h5>Transaksi Studio</h5>
           </div>
           <div class="d-flex">
             <div class="dropdown d-inline">
@@ -35,17 +35,16 @@
                 <table class="table table-flush" id="datatable-search">
                   <thead class="thead-light">
                     <tr>
-                        <th>No.</th>
-                        <th>Invoice</th>
-                        <th>Tanggal</th>
-                        <th>Status</th>
-                        <th>Bayar</th>
-                        <th>Jenis</th>
-                        <th>Detail</th>
+                      <th>No.</th>
+                      <th>Invoice</th>
+                      <th>Tanggal</th>
+                      <th>Status</th>
+                      <th>Bayar</th>
+                      <th>Detail</th>
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($denda as $i)
+                      @foreach($sewa_ruang as $i)
                     <tr>
                     <td>
                         <div class="d-flex align-items-center">
@@ -92,17 +91,8 @@
                       <td class="text-xs font-weight-bold">
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
-                      @if(is_null($i->sewa_perangkat_id))
-                      <td  class="text-xs font-weight-bold">
-                        <span class="badge badge-dark badge-sm">Studio</span>
-                      </td>
-                      @elseif(is_null($i->sewa_ruang_id))
-                      <td  class="text-xs font-weight-bold">
-                        <span class="badge badge-primary badge-sm">Perangkat VR</span>
-                      </td>
-                      @endif
                       <td class="text-sm">
-                        <a href="{{route('user-denda.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('user-transaksi-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

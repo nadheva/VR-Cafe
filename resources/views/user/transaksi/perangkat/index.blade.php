@@ -5,7 +5,7 @@
             {{-- <a href="javascript:;" class="btn btn-icon bg-gradient-primary">
               New order
             </a> --}}
-            <h5>Transaksi Saya</h5>
+            <h5>Transaksi Perangkat VR</h5>
           </div>
           <div class="d-flex">
             <div class="dropdown d-inline">
@@ -59,28 +59,28 @@
                       <td class="font-weight-bold">
                         <span class="my-2 text-xs">{{$i->created_at->format('d.m.Y')}}</span>
                       </td>
-                      @if($i->status == 'pending')
+                      @if($i->payment->status == 'pending')
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-info" aria-hidden="true"></i></button>
                           <span>Belum dibayar</span>
                         </div>
                       </td>
-                      @elseif($i->status == 'success')
+                      @elseif($i->payment->status == 'success')
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check" aria-hidden="true"></i></button>
                           <span>Sudah dibayar</span>
                         </div>
                       </td>
-                      @elseif($i->status == 'failed')
+                      @elseif($i->payment->status == 'failed')
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times" aria-hidden="true"></i></button>
                           <span>Gagal</span>
                         </div>
                       </td>
-                      @elseif($i->status == 'expired')
+                      @elseif($i->payment->status == 'expired')
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
@@ -92,7 +92,7 @@
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
                       <td class="text-sm">
-                        <a href="{{route('user-transaksi.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('user-transaksi-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

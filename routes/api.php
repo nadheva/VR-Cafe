@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\SewaPerangkatController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('notificationHandler', [SewaPerangkatController::class, 'notificationHandler'])->name('notificationHandler');
+Route::post('notificationHandler', [NotificationController::class, 'notificationHandler'])->name('notificationHandler');
+// Route::post('notificationHandlerPerangkat', [SewaPerangkatController::class, 'notificationHandler'])->name('notificationHandlerPerangkat');

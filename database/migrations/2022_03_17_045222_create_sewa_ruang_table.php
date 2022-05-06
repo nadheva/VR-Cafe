@@ -22,8 +22,6 @@ class CreateSewaRuangTable extends Migration
             $table->date('tanggal_berakhir');
             $table->text('keperluan');
             $table->enum('proses', ['Ditolak', 'Dalam Proses', 'Disewa', 'Dikembalikan'])->default('Dalam Proses');
-            $table->enum('status', ['pending', 'success', 'failed', 'expired']);
-            $table->string('snap_token')->nullable();
             $table->bigInteger('grand_total');
             $table->timestamps();
         });

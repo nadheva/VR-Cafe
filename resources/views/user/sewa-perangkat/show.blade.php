@@ -98,7 +98,7 @@
                   <div class="row mt-4">
                     <div class="col-lg-5 mt-lg-0 mt-2">
                       <label>Jumlah</label>
-                      <input class="form-control" name="jumlah" type="number" >
+                      <input class="form-control" name="jumlah" type="number" max="{{$perangkat->stok}}" required>
                     </div>
                   </div>
                   <div class="row mt-4">
@@ -106,7 +106,11 @@
                         <input type="hidden" name="perangkat_id" value="{{$perangkat->id}}">
                         {{-- <input type="hidden" name="jumlah" value="1"> --}}
                         <input type="hidden" name="harga" value="{{$perangkat->harga}}">
+                        @if($perangkat->stok == 0)
+                        <button class="btn bg-gradient-success mb-0 mt-lg-auto w-100" type="submit" name="button" disabled>Sewa Sekarang</button>
+                        @else
                       <button class="btn bg-gradient-success mb-0 mt-lg-auto w-100" type="submit" name="button">Sewa Sekarang</button>
+                        @endif
                     </form>
                     </div>
                   </div>

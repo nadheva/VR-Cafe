@@ -95,27 +95,27 @@
                       <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Kode Ruang:</label>
-                            <input type="number" class="form-control" name="kode_ruang" placeholder="4 Digit">
+                            <input type="number" class="form-control" name="kode_ruang" placeholder="4 Digit" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Ruang:</label>
-                            <input type="text" class="form-control" name="nama">
+                            <input type="text" class="form-control" name="nama" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar:</label>
-                            <input type="file" class="form-control" name="gambar">
+                            <input type="file" class="form-control" name="gambar" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar Detail:</label>
-                            <input type="file" class="form-control" name="gambar_detail[]" multiple>
+                            <input type="file" class="form-control" name="gambar_detail[]" multiple required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Banner:</label>
-                            <input type="file" class="form-control" name="banner">
+                            <input type="file" class="form-control" name="banner" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1" class="col-form-label">Resepsionis</label>
-                            <select class="form-control" name="resepsionis_id" id="exampleFormControlSelect1">
+                            <select class="form-control" name="resepsionis_id" id="exampleFormControlSelect1" required>
                               @foreach ($resepsionis as $item)
                               <option value="{{$item->id}}">{{$item->nama}}</option>
                               @endforeach
@@ -123,31 +123,31 @@
                           </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
-                            <input type="number" class="form-control" name="harga">
+                            <input type="number" class="form-control" name="harga" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Jumlah:</label>
-                            <input type="number" class="form-control" name="jumlah">
+                            <input type="number" class="form-control" name="jumlah" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ukuran:</label>
-                            <input type="number" class="form-control" name="ukuran">
+                            <input type="number" class="form-control" name="ukuran" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Monitor:</label>
-                            <input type="number" class="form-control" name="monitor">
+                            <input type="number" class="form-control" name="monitor" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Perangkat VR:</label>
-                            <input type="number" class="form-control" name="perangkat_vr">
+                            <input type="number" class="form-control" name="perangkat_vr" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">PC Desktop:</label>
-                            <input type="number" class="form-control" name="pc_desktop">
+                            <input type="number" class="form-control" name="pc_desktop" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
-                            <textarea class="form-control" name="deskripsi" id="mytextarea"></textarea>
+                            <textarea class="form-control" name="deskripsi" id="mytextarea" required></textarea>
                         </div>
 
                     </div>
@@ -178,27 +178,27 @@
                     <div class="modal-body">
                         <div class="form-group">
                           <label for="recipient-name" class="col-form-label">Kode Ruang:</label>
-                          <input type="number" class="form-control" name="kode_ruang" value="{{$i->kode_ruang}}" placeholder="4 Digit">
+                          <input type="number" class="form-control" name="kode_ruang" value="{{$i->kode_ruang}}" placeholder="4 Digit" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Ruang:</label>
-                            <input type="text" class="form-control" name="nama" value="{{$i->nama}}">
+                            <input type="text" class="form-control" name="nama" value="{{$i->nama}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar:</label>
-                            <input type="file" class="form-control" name="gambar" value="{{asset($i->gambar)}}">
+                            <input type="file" class="form-control" name="gambar" value="{{asset($i->gambar)}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar Detail:</label>
-                            <input type="file" class="form-control" name="gambar_detail[]" value="{{asset($i->gambar_detail)}}" multiple>
+                            <input type="file" class="form-control" name="gambar_detail[]" value="{{asset($i->gambar_detail)}}" multiple required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Banner:</label>
-                            <input type="file" class="form-control" name="banner" value="{{asset($i->banner)}}">
+                            <input type="file" class="form-control" name="banner" value="{{asset($i->banner)}}" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1" class="col-form-label">Resepsionis</label>
-                            <select class="form-control" name="resepsionis_id" id="exampleFormControlSelect1">
+                            <select class="form-control" name="resepsionis_id" id="exampleFormControlSelect1" required>
                               @foreach ($resepsionis as $item)
                               <option value="{{$item->id}}" selected>{{$item->nama}}</option>
                               @endforeach
@@ -206,31 +206,31 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
-                            <input type="number" class="form-control" name="harga" value="{{$i->harga}}">
+                            <input type="number" class="form-control" name="harga" value="{{$i->harga}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Jumlah:</label>
-                            <input type="number" class="form-control" name="jumlah" value="{{$i->jumlah}}">
+                            <input type="number" class="form-control" name="jumlah" value="{{$i->jumlah}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ukuran:</label>
-                            <input type="number" class="form-control" name="ukuran" value="{{$i->ukuran}}">
+                            <input type="number" class="form-control" name="ukuran" value="{{$i->ukuran}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Monitor:</label>
-                            <input type="number" class="form-control" name="monitor" value="{{$i->monitor}}">
+                            <input type="number" class="form-control" name="monitor" value="{{$i->monitor}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Perangkat VR:</label>
-                            <input type="number" class="form-control" name="perangkat_vr" value="{{$i->perangkat_vr}}">
+                            <input type="number" class="form-control" name="perangkat_vr" value="{{$i->perangkat_vr}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">PC Desktop:</label>
-                            <input type="number" class="form-control" name="pc_desktop" value="{{$i->pc_desktop}}">
+                            <input type="number" class="form-control" name="pc_desktop" value="{{$i->pc_desktop}}" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
-                            <textarea class="form-control" name="deskripsi" id="mytextarea" value="{{$i->deskripsi}}">{{$i->deskripsi}}</textarea>
+                            <textarea class="form-control" name="deskripsi" id="mytextarea" value="{{$i->deskripsi}}" required>{{$i->deskripsi}}</textarea>
                         </div>
 
                     </div>

@@ -5,7 +5,7 @@
             {{-- <a href="javascript:;" class="btn btn-icon bg-gradient-primary">
               New order
             </a> --}}
-            <h5>Denda</h5>
+            <h5>Transaksi Studio</h5>
           </div>
           <div class="d-flex">
             <div class="dropdown d-inline">
@@ -37,15 +37,16 @@
                     <tr>
                         <th>No.</th>
                         <th>Invoice</th>
+                        <th>Penyewa</th>
                         <th>Tanggal</th>
                         <th>Status</th>
                         <th>Bayar</th>
-                        <th>Jenis</th>
+                        <th>Proses</th>
                         <th>Detail</th>
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($denda as $i)
+                      @foreach($sewa_ruang as $i)
                     <tr>
                     <td>
                         <div class="d-flex align-items-center">
@@ -55,6 +56,11 @@
                       <td>
                         <div class="d-flex align-items-center">
                           <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->invoice}}</p>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->user->name}}</p>
                         </div>
                       </td>
                       <td class="font-weight-bold">
@@ -92,17 +98,17 @@
                       <td class="text-xs font-weight-bold">
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
-                      @if(is_null($i->sewa_perangkat_id))
+                      @if($i->proses == 'Disewa')
                       <td  class="text-xs font-weight-bold">
-                        <span class="badge badge-dark badge-sm">Studio</span>
+                        <span class="badge badge-warning badge-sm">Disewa</span>
                       </td>
-                      @elseif(is_null($i->sewa_ruang_id))
+                      @elseif($i->proses == 'Dikembalikan')
                       <td  class="text-xs font-weight-bold">
-                        <span class="badge badge-primary badge-sm">Perangkat VR</span>
+                        <span class="badge badge-info badge-sm">Dikembalikan</span>
                       </td>
                       @endif
                       <td class="text-sm">
-                        <a href="{{route('user-denda.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

@@ -5,7 +5,8 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DendaController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\LaporanController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderPerangkatController;
+use App\Http\Controllers\OrderStudioController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResepsionisController;
@@ -16,8 +17,12 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\User\OrderController as UserOrderController;
+use App\Http\Controllers\DendaPerangkatController;
+use App\Http\Controllers\DendaStudioController;
+
 //User
+use App\Http\Controllers\User\OrderPerangkatController as UserOrderPerangkatController;
+use App\Http\Controllers\User\OrderStudioController as UserOrderStudioController;
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
 use App\Http\Controllers\User\RuangController as UserRuang;
 use App\Http\Controllers\User\DendaController as UserDenda;
@@ -63,10 +68,11 @@ Route::group(['middleware' => ['auth']], function () {
     //Sewa Perangkat
     Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update', 'notificationHandler');
     Route::post('notificationHandler', [SewaPerangkatController::class, 'notificationHandler']);
-    Route::put('sewa-perangkat-update/{id}', [SewaPerangkat::class, 'update']);
+    Route::put('sewa-perangkat-update/{id}', [SewaPerangkatController::class, 'update']);
 
     //Sewa Studio
-    Route::resource('sewa-ruang', SewaRuangController::class)->except('update');
+    Route::resource('sewa-ruang', SewaRuangController::class)->except('update', 'create');
+    Route::get('sewa-ruang-create/{id}', [SewaRuangController::class, 'create'])->name('sewa-ruang-create');
     Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
 
     //Testimonial
@@ -74,11 +80,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('testimonial-update/{id}', [TestimonialController::class, 'update']);
 
     //Order/transaksi
-    Route::resource('order', OrderController::class)->except('update');
-    Route::put('order-update/{id}', [OrderController::class, 'update']);
+    Route::resource('order-perangkat', OrderPerangkatController::class)->except('update', 'pengembalian');
+    Route::get('pengembalian-perangkat', [OrderPerangkatController::class, 'pengembalian'])->name('pengembalian-perangkat');
+    Route::put('order-perangkat-update/{id}', [OrderPerangkatController::class, 'update']);
+
+    Route::resource('order-studio', OrderStudioController::class)->except('update', 'pengembalian');
+    Route::get('pengembalian-studio', [OrderStudioController::class, 'pengembalian'])->name('pengembalian-studio');
+    Route::put('order-studio-update/{id}', [OrderStudioController::class, 'update']);
 
 
     //Denda
+    Route::resource('denda-perangkat', DendaPerangkatController::class);
+    Route::resource('denda-studio', DendaStudioController::class);
     Route::resource('denda', DendaController::class)->except('update', 'store');
     Route::put('denda-update/{id}', [DendaController::class, 'update']);
     Route::get('storedenda', [DendaController::class, 'store']);
@@ -91,6 +104,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('user-perangkat', UserPerangkat::class);
     Route::resource('user-ruang', UserRuang::class);
 
+
     //Cart
     Route::resource('cart', CartController::class);
     // Route::get('cart', [CartController::class, 'index']);
@@ -99,7 +113,10 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::delete('remove-from-cart', [CartController::class, 'destroy']);
 
     //user-order
-    Route::resource('user-transaksi', UserOrderController::class);
+    Route::resource('user-transaksi-perangkat', UserOrderPerangkatController::class);
+    Route::get('invoice-transaksi-perangkat/{id}', [UserOrderPerangkatController::class, 'invoice'])->name('invoice-transaksi-perangkat');
+    Route::resource('user-transaksi-studio', UserOrderStudioController::class)->except('invoice');
+    Route::get('invoice-transaksi-studio/{id}', [UserOrderStudioController::class, 'invoice'])->name('invoice-transaksi-studio');
 
     //user-denda
     Route::resource('user-denda', UserDenda::class);

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\SewaPerangkat;
+use App\Models\Ruang;
+use App\Models\SewaRuang;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OrderStudioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $sewa_perangkat = SewaPerangkat::where('user_id', Auth::user()->id)->latest()->get();
-        return view('user.transaksi.index', compact('sewa_perangkat'));
+        $sewa_ruang = SewaRuang::where('user_id', Auth::user()->id)->latest()->get();
+        return view('user.transaksi.studio.index', compact('sewa_ruang'));
     }
 
     /**
@@ -49,9 +50,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        $sewa_perangkat = SewaPerangkat::findOrfail($id);
+        $sewa_ruang = SewaRuang::findOrfail($id);
         $client = env('MIDTRANS_CLIENTKEY');
-        return view('user.transaksi.show', compact('sewa_perangkat', 'client'));
+        return view('user.transaksi.studio.show', compact('sewa_ruang', 'client'));
     }
 
     /**
@@ -86,5 +87,14 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function invoice($id)
+    {
+        $sewa_ruang = SewaRuang::findOrfail($id);
+        $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_ruang->tanggal_mulai);
+        $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_ruang->tanggal_berakhir);
+        $hari = $mulai->diffInDays($selesai);
+        return view('user.transaksi.studio.invoice', compact('sewa_ruang', 'hari'));
     }
 }

@@ -26,7 +26,7 @@ class DendaController extends Controller
 
     public  function index()
     {
-        $denda = Denda::where('grand_total', '!=', '0')->get();
+        $denda = Denda::latest()->get();
         return view('admin.denda.index', compact('denda'));
     }
 
@@ -169,6 +169,12 @@ class DendaController extends Controller
 
         }
 
+    }
+    public function show($id)
+    {
+        $denda = Denda::findOrfail($id);
+        $client = env('MIDTRANS_CLIENTKEY');
+        return view('admin.denda.show', compact('denda', 'client'));
     }
 
     public function update(Request $request, $id)

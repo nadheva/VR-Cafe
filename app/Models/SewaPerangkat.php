@@ -16,9 +16,7 @@ class SewaPerangkat extends Model
         'tanggal_berakhir',
         'keperluan',
         'proses',
-        'status',
-        'snap_token',
-        'grand_total'
+        'grand_total',
     ];
 
     public function order()
@@ -34,5 +32,10 @@ class SewaPerangkat extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
     }
 }

@@ -1,20 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
-
-use App\Http\Controllers\Controller;
-use App\Models\Denda;
-use App\Models\SewaPerangkat;
-use Illuminate\Support\Facades\Auth;
+namespace App\Http\Controllers;
+use App\Models\Payment;
+use Midtrans\Snap;
 use Illuminate\Http\Request;
 
-class DendaController extends Controller
+class NotificationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct(Request $request)
     {
         $this->middleware('auth')->except('notificationHandler');
@@ -25,12 +17,6 @@ class DendaController extends Controller
         \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
         \Midtrans\Config::$isSanitized  = config('services.midtrans.isSanitized');
         \Midtrans\Config::$is3ds        = config('services.midtrans.is3ds');
-    }
-
-    public function index()
-    {
-        $denda = Denda::where('user_id', Auth::user()->id)->latest()->get();
-        return view('user.denda.index', compact('denda'));
     }
 
     public function notificationHandler(Request $request)
@@ -50,7 +36,9 @@ class DendaController extends Controller
         $fraud        = $notification->fraud_status;
 
         //data tranaction
-        $data_transaction = Denda::where('invoice', $orderId)->first();
+        $data_transaction = Payment::where('invoice', $orderId)->first();
+        // $data_transaction1 = SewaRuang::where('invoice', $orderId)->first();
+        // $data_transaction2 = Denda::where('invoice', $orderId)->first();
 
         if ($transaction == 'capture') {
 
@@ -66,6 +54,7 @@ class DendaController extends Controller
                     'status' => 'pending'
                 ]);
 
+
               } else {
 
                 /**
@@ -74,6 +63,7 @@ class DendaController extends Controller
                 $data_transaction->update([
                     'status' => 'success'
                 ]);
+
 
               }
 
@@ -89,6 +79,7 @@ class DendaController extends Controller
             ]);
 
 
+
         } elseif($transaction == 'pending'){
 
 
@@ -100,7 +91,8 @@ class DendaController extends Controller
             ]);
 
 
-        } elseif ($transaction == 'deny') {
+
+        } elseif ($transaction == ('failure')) {
 
 
             /**
@@ -133,73 +125,5 @@ class DendaController extends Controller
 
         }
 
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $denda = Denda::findOrfail($id);
-        $client = env('MIDTRANS_CLIENTKEY');
-        return view('user.denda.show', compact('denda', 'client'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

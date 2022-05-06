@@ -2,8 +2,12 @@
     <div class="container-fluid py-4">
           <div class="col-lg-8 mt-lg-0 mt-4" style="align-items: center">
             <div class="card">
+            <div class="table-responsive">
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
+                <div class="col-12 mx-0 text-end">
+                    <a class="btn bg-gradient-warning mb-0" href="{{route('invoice-transaksi-perangkat', $sewa_perangkat->id)}}">Invoice</a>
+                  </div>
                 <table class="table">
                     <tbody>
                     <tr>
@@ -36,13 +40,13 @@
                         <td>:</td>
                         <td>
                             <div class="col-lg-5 text-right d-flex flex-column">
-                            @if($invoice->status == "pending")
+                            @if($sewa_perangkat->payment->status == "pending")
                             <button class="btn bg-gradient-info" id="pay-button">Bayar</button>
-                            @elseif($invoice->status == "success")
+                            @elseif($sewa_perangkat->payment->status == "success")
                             <button class="btn bg-gradient-success" id="pay-button">Sudah Bayar</button>
-                            @elseif($invoice->status == "failed")
+                            @elseif($sewa_perangkat->payment->status == "failed")
                             <button class="btn bg-gradient-danger" id="pay-button">Gagal</button>
-                            @elseif($invoice->status == "expired")
+                            @elseif($sewa_perangkat->payment->status == "expired")
                             <button class="btn bg-gradient-warning" id="pay-button">Kadaluarsa</button>
                             @endif
                             </div>
@@ -52,10 +56,12 @@
                   </table>
               </div>
             </div>
+            </div>
         </div>
         <div class="row mt-4">
           <div class="col-sm-8 mt-sm-0 mt-4col-sm-8 mt-sm-0 mt-4">
             <div class="card">
+                <div class="table-responsive">
                 <div class="card-body">
                   <div class="row">
                       <h5 class="font-weight-bolder">Perangkat</h5>
@@ -88,6 +94,7 @@
                         </table>
                   </div>
                 </div>
+                </div>
               </div>
           </div>
           </div>
@@ -97,7 +104,7 @@
             <script type="text/javascript">
                 document.getElementById('pay-button').onclick = function(){
                     // SnapToken acquired from previous step
-                    snap.pay('{{$sewa_perangkat->snap_token}}', {
+                    snap.pay('{{$sewa_perangkat->payment->snap_token}}', {
                         // Optional
                         onSuccess: function(result){
                             document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
@@ -139,4 +146,4 @@
             };
           </script>
           @endpush
-</x-app-layout>
+  </x-app-layout>

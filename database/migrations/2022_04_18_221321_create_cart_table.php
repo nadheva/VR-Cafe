@@ -17,7 +17,7 @@ class CreateCartTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('perangkat_id')->constrained('perangkat')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('jumlah');
+            $table->integer('jumlah')->default('1');
             $table->bigInteger('harga');
             $table->timestamps();
         });
