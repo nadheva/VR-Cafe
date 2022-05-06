@@ -99,7 +99,7 @@ class SewaRuangController extends Controller
             // $this->response['id'] = $sewa_perangkat;
 
             });
-            return redirect()->route('order-studio.index');
+            return redirect()->route('user-transaksi-studio.index');
     }
 
     public function notificationHandler(Request $request)
