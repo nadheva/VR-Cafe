@@ -64,7 +64,7 @@
                             <th scope="col" class="pe-2 text-start ps-2">Studio</th>
                             <th scope="col" class="pe-2">Harga</th>
                             <th scope="col" class="pe-2" colspan="2">Lama Sewa</th>
-                            <th scope="col" class="pe-2">Grand Total</th>
+                            {{-- <th scope="col" class="pe-2">Grand Total</th> --}}
                           </tr>
                         </thead>
                         <tbody>
@@ -72,15 +72,15 @@
                             <td class="text-start">{{$sewa_ruang->studio->nama}}</td>
                             <td class="ps-4">Rp. @money($sewa_ruang->studio->harga)</td>
                             <td class="ps-4" colspan="2">{{$hari}} Hari</td>
-                            <td class="ps-4">Rp. @money($sewa_ruang->grand_total)</td>
+                            {{-- <td class="ps-4">Rp. @money($sewa_ruang->grand_total)</td> --}}
                           </tr>
                         </tbody>
                         <tfoot>
                           <tr>
                             <th></th>
                             <th></th>
-                            <th class="h5 ps-4" colspan="2">Status</th>
-                            <th colspan="1" class="text-right h5 ps-4">{{$sewa_ruang->payment->status}}</th>
+                            <th class="h5 ps-4" colspan="2">Grand Total</th>
+                            <th colspan="1" class="text-right h5 ps-4">{{$sewa_ruang->grand_total}}</th>
                           </tr>
                         </tfoot>
                       </table>
@@ -92,11 +92,11 @@
                 <div class="row">
                   <div class="col-lg-5 text-left">
                     <h5>Terima kasih!</h5>
-                    <p class="text-secondary text-sm">Jika Anda mengalami masalah terkait invoice, Anda dapat menghubungi kami di:</p>
-                    <h6 class="text-secondary mb-0">
-                      email:
+                    <p class="text-secondary text-sm">Jika Anda mengalami masalah terkait invoice, Anda dapat menghubungi kami di: <span class="text-dark">vrcafe.business@gmail.com</span></p>
+                    {{-- <h6 class="text-secondary mb-0">
+                      Email:
                       <span class="text-dark">vrcafe.business@gmail.com</span>
-                    </h6>
+                    </h6> --}}
                   </div>
                 </div>
               </div>

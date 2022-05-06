@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\SewaPerangkat;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
 
 class OrderPerangkatController extends Controller
@@ -95,5 +96,7 @@ class OrderPerangkatController extends Controller
         $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_berakhir);
         $hari = $mulai->diffInDays($selesai);
         return view('user.transaksi.perangkat.invoice', compact('sewa_perangkat', 'hari'));
+        // $pdf = PDF::loadView('user.transaksi.perangkat.invoice', compact('sewa_perangkat', 'hari'))->setOptions(['defaultFont' => 'nucleo']);;
+        // return $pdf->download($sewa_perangkat->invoice.'.pdf');
     }
 }

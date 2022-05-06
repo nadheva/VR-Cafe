@@ -104,11 +104,11 @@
                 <div class="row">
                   <div class="col-lg-5 text-left">
                     <h5>Terima kasih!</h5>
-                    <p class="text-secondary text-sm">Jika Anda mengalami masalah terkait invoice, Anda dapat menghubungi kami di:</p>
-                    <h6 class="text-secondary mb-0">
-                      email:
+                    <p class="text-secondary text-sm">Jika Anda mengalami masalah terkait invoice, Anda dapat menghubungi kami di: <span class="text-dark">vrcafe.business@gmail.com</span></p>
+                    {{-- <h6 class="text-secondary mb-0">
+                      Email:
                       <span class="text-dark">vrcafe.business@gmail.com</span>
-                    </h6>
+                    </h6> --}}
                   </div>
                 </div>
               </div>
