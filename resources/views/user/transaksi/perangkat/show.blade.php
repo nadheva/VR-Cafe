@@ -6,7 +6,7 @@
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
                 <div class="col-12 mx-0 text-end">
-                    <a class="btn bg-gradient-primary mb-0" href="" data-bs-toggle="modal" data-bs-target="#tambahPerangkat"><i class="fas fa-plus"></i>&nbsp;&nbsp;Invoice</a>
+                    <a class="btn bg-gradient-warning mb-0" href="">Invoice</a>
                   </div>
                 <table class="table">
                     <tbody>

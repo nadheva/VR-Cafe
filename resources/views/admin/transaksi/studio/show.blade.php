@@ -77,7 +77,7 @@
                 <div class="card-body">
                   <div class="row">
                       <h5 class="font-weight-bolder">Studio</h5>
-                      <table class="table" id="products-list">
+                      <table class="table">
                           <tbody>
                             <tr>
                                 <td>Nama</td>

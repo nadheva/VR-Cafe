@@ -114,7 +114,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //user-order
     Route::resource('user-transaksi-perangkat', UserOrderPerangkatController::class);
-    Route::resource('user-transaksi-perangkat', UserOrderPerangkatController::class);
+    Route::resource('user-transaksi-studio', UserOrderStudioController::class);
 
     //user-denda
     Route::resource('user-denda', UserDenda::class);

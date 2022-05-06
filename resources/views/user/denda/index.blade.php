@@ -35,12 +35,13 @@
                 <table class="table table-flush" id="datatable-search">
                   <thead class="thead-light">
                     <tr>
-                      <th>No.</th>
-                      <th>Invoice</th>
-                      <th>Tanggal</th>
-                      <th>Status</th>
-                      <th>Bayar</th>
-                      <th>Detail</th>
+                        <th>No.</th>
+                        <th>Invoice</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Bayar</th>
+                        <th>Jenis</th>
+                        <th>Detail</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -59,17 +60,49 @@
                       <td class="font-weight-bold">
                         <span class="my-2 text-xs">{{$i->created_at->format('d.m.Y')}}</span>
                       </td>
+                      @if($i->payment->status == 'pending')
+                      <td class="text-xs font-weight-bold">
+                        <div class="d-flex align-items-center">
+                          <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-info" aria-hidden="true"></i></button>
+                          <span>Belum dibayar</span>
+                        </div>
+                      </td>
+                      @elseif($i->payment->status == 'success')
                       <td class="text-xs font-weight-bold">
                         <div class="d-flex align-items-center">
                           <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check" aria-hidden="true"></i></button>
-                          <span>Paid</span>
+                          <span>Sudah dibayar</span>
                         </div>
                       </td>
+                      @elseif($i->payment->status == 'failed')
+                      <td class="text-xs font-weight-bold">
+                        <div class="d-flex align-items-center">
+                          <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times" aria-hidden="true"></i></button>
+                          <span>Gagal</span>
+                        </div>
+                      </td>
+                      @elseif($i->payment->status == 'expired')
+                      <td class="text-xs font-weight-bold">
+                        <div class="d-flex align-items-center">
+                          <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
+                          <span>Kadaluarsa</span>
+                        </div>
+                      </td>
+                      @endif
                       <td class="text-xs font-weight-bold">
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
+                      @if(is_null($i->sewa_perangkat_id))
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-dark badge-sm">Studio</span>
+                      </td>
+                      @elseif(is_null($i->sewa_ruang_id))
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-primary badge-sm">Perangkat VR</span>
+                      </td>
+                      @endif
                       <td class="text-sm">
-                        <a href="{{route('user-denda.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

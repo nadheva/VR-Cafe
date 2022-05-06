@@ -29,7 +29,7 @@ class DendaController extends Controller
 
     public function index()
     {
-        $denda = Denda::where('user_id', Auth::user()->id)->where('grand_total', '!=', '0')->latest()->get();
+        $denda = Denda::where('user_id', Auth::user()->id)->latest()->get();
         return view('user.denda.index', compact('denda'));
     }
 

@@ -6,7 +6,7 @@
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
                 <div class="col-12 mx-0 text-end">
-                    <a class="btn bg-gradient-primary mb-0" href="" data-bs-toggle="modal" data-bs-target="#tambahPerangkat"><i class="fas fa-plus"></i>&nbsp;&nbsp;Invoice</a>
+                    <a class="btn bg-gradient-warning mb-0" href="">Invoice</a>
                   </div>
                 <table class="table">
                     <tbody>
@@ -15,7 +15,7 @@
                       <td>:</td>
                       <td>{{$sewa_ruang->invoice}}</td>
                     </tr>
-                    <tr
+                    <tr>
                       <td>Nama Lengkap </td>
                       <td>:</td>
                       <td>{{$sewa_ruang->user->profile->nama_depan. " ".$sewa_ruang->user->profile->nama_belakang}}</td>
@@ -59,37 +59,44 @@
             </div>
         </div>
         <div class="row mt-4">
-          <div class="col-sm-8 mt-sm-0 mt-4col-sm-8 mt-sm-0 mt-4">
-            <div class="card">
-                <div class="table-responsive">
-                <div class="card-body">
-                  <div class="row">
-                      <h5 class="font-weight-bolder">Perangkat</h5>
-                      <table class="table" id="products-list">
-                          <tbody>
-                            <tr>
-                                <td>Nama Studio</td>
-                                <td> : </td>
-                                <td> {{$sewa_ruang->studio->nama}} </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                          </tbody>
-                        </table>
+            <div class="col-sm-8 mt-sm-0 mt-4col-sm-8 mt-sm-0 mt-4">
+              <div class="card">
+                  <div class="table-responsive">
+                  <div class="card-body">
+                    <div class="row">
+                        <h5 class="font-weight-bolder">Studio</h5>
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                  <td>Nama</td>
+                                  <td> : </td>
+                                  <td>{{$sewa_ruang->studio->nama}}</td>
+                              </tr>
+                              <tr>
+                                  <td>Gambar</td>
+                                  <td> : </td>
+                                  <td><img src="{{asset($sewa_ruang->studio->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
+                              </tr>
+                              <tr>
+                                  <td>Harga</td>
+                                  <td> : </td>
+                                  <td>{{$sewa_ruang->studio->harga}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                  </div>
                   </div>
                 </div>
-                </div>
-              </div>
-          </div>
-          </div>
+            </div>
+            </div>
 
           @push('scripts')
           <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{$client}}"></script>
             <script type="text/javascript">
                 document.getElementById('pay-button').onclick = function(){
                     // SnapToken acquired from previous step
-                    snap.pay('{{$sewa_perangkat->payment->snap_token}}', {
+                    snap.pay('{{$sewa_ruang->payment->snap_token}}', {
                         // Optional
                         onSuccess: function(result){
                             document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
@@ -107,7 +114,7 @@
 
             if (document.getElementById('products-list')) {
               const dataTableSearch = new simpleDatatables.DataTable("#products-list", {
-                searchable: true,
+                searchable: false,
                 fixedHeight: false,
                 perPage: 7
               });

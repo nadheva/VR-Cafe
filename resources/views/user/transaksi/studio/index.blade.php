@@ -5,7 +5,7 @@
             {{-- <a href="javascript:;" class="btn btn-icon bg-gradient-primary">
               New order
             </a> --}}
-            <h5>Transaksi Saya</h5>
+            <h5>Transaksi Studio</h5>
           </div>
           <div class="d-flex">
             <div class="dropdown d-inline">
@@ -92,7 +92,7 @@
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
                       <td class="text-sm">
-                        <a href="{{route('user-transaksi.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('user-transaksi-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

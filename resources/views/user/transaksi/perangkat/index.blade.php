@@ -5,7 +5,7 @@
             {{-- <a href="javascript:;" class="btn btn-icon bg-gradient-primary">
               New order
             </a> --}}
-            <h5>Transaksi Saya</h5>
+            <h5>Transaksi Perangkat VR</h5>
           </div>
           <div class="d-flex">
             <div class="dropdown d-inline">
