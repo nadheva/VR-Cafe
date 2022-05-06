@@ -26,7 +26,7 @@ class DendaController extends Controller
 
     public  function index()
     {
-        $denda = Denda::where('grand_total', '!=', '0')->get();
+        $denda = Denda::latest()->get();
         return view('admin.denda.index', compact('denda'));
     }
 

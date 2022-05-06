@@ -6,7 +6,7 @@
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
                 <div class="col-12 mx-0 text-end">
-                    <a class="btn bg-gradient-danger mb-0" href="" data-bs-toggle="modal" data-bs-target="#tambahPerangkat"><i class="fas fa-plus"></i>&nbsp;&nbsp;Denda</a>
+                    <a class="btn bg-gradient-danger mb-0"  href="" data-bs-toggle="modal" data-bs-target="#denda-{{$sewa_studio->id}}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Denda</a>
                   </div>
                 <table class="table">
                     <tbody>
@@ -102,6 +102,67 @@
               </div>
           </div>
           </div>
+
+    <!-- Modal Edit Perangkat -->
+    <div class="modal fade" id="denda-{{$sewa_studio->id}}" tabindex="-1" role="dialog" aria-labelledby="dendaLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <form method="post" action="{{ route('denda-studio.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="sewa_ruang_id" value="{{$sewa_studio->id}}">
+                    <input type="hidden" name="user_id" value="{{$sewa_studio->user->id}}">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="tambahPerangkatLabel">Denda</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid py-4">
+                            <div  style="align-items: center">
+                              <div class="table-responsive">
+                                  <table class="table">
+                                      <tbody>
+                                      <tr>
+                                        <td>No. Invoice </td>
+                                        <td>:</td>
+                                        <td>{{$sewa_studio->invoice}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Nama Lengkap </td>
+                                        <td>:</td>
+                                        <td>{{$sewa_studio->user->profile->nama_depan. " ".$sewa_studio->user->profile->nama_belakang}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>No. Telp </td>
+                                        <td>:</td>
+                                        <td>{{$sewa_studio->user->profile->no_telp}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Alamat </td>
+                                          <td>:</td>
+                                          <td>{{$sewa_studio->user->profile->alamat}}</td>
+                                      </tr>
+                                      <tr>
+                                          <td>Grand Total</td>
+                                          <td>:</td>
+                                          <td><input class="form-control" type="number" name="grand_total" required></td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                </div>
+                          </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn bg-gradient-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
           @push('scripts')
           <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{$client}}"></script>
