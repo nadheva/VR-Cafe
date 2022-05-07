@@ -15,7 +15,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $artikel = Artikel::latest()->get();
+        $artikel = Artikel::latest()->paginate(6)->get();
         return view('guest.artikel.artikel', compact('artikel'));
     }
 

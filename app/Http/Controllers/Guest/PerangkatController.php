@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Guest;
 
+use App\Models\Perangkat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class PerangkatController extends Controller
      */
     public function index()
     {
-        //
+        $perangkat = Perangkat::latest()->paginate(6)->get();
+        return view('guest.perangkat.perangkat', compact('perangkat'));
     }
 
     /**
@@ -46,7 +48,8 @@ class PerangkatController extends Controller
      */
     public function show($id)
     {
-        //
+        $perangkat = Perangkat::findOrfail($id);
+        return view('guest.perangkat.perangkat-detail', compact('perangkat'));
     }
 
     /**

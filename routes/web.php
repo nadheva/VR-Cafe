@@ -26,6 +26,14 @@ use App\Http\Controllers\User\OrderStudioController as UserOrderStudioController
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
 use App\Http\Controllers\User\RuangController as UserRuang;
 use App\Http\Controllers\User\DendaController as UserDenda;
+
+//Guest
+use App\Http\Controllers\Guest\ArtikelController as GuestArtikel;
+use App\Http\Controllers\Guest\KontakController as GuestKontak;
+use App\Http\Controllers\Guest\PerangkatController as GuestPerangkat;
+use App\Http\Controllers\Guest\ResepsionisController as GuestResepsionis;
+use App\Http\Controllers\Guest\StudioController as GuestStudio;
+use App\Http\Controllers\Guest\TentangController as GuestTentang;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -137,5 +145,11 @@ Route::get('/guest-resepsionis-detail', [BerandaController::class, 'resepsionis_
 Route::get('/guest-artikel', [BerandaController::class, 'artikel']);
 Route::get('/guest-artikel-detail/{id}', [BerandaController::class, 'artikel_detail']);
 Route::get('/guest-vr-room', [BerandaController::class, 'vr_room']);
+Route::resource('guest-artikel', GuestArtikel::class);
+Route::resource('guest-kontak', GuestKontak::class);
+Route::resource('guest-perangkat', GuestPerangkat::class);
+Route::resource('guest-resepsionis', GuestResepsionis::class);
+Route::resource('guest-studio', GuestStudio::class);
+Route::resource('guest-tentang', GuestTentang::class);
 
 require __DIR__.'/auth.php';

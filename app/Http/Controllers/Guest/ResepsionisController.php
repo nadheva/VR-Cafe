@@ -15,7 +15,7 @@ class ResepsionisController extends Controller
      */
     public function index()
     {
-        $resepsionis = Resepsionis::latest()->get();
+        $resepsionis = Resepsionis::latest()->paginate(6)->get();
         return view('guest.resepsionis.resepsionis', compact('resepsionis'));
     }
 

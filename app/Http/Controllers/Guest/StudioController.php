@@ -15,7 +15,7 @@ class StudioController extends Controller
      */
     public function index()
     {
-        $ruang = Ruang::latest()->get();
+        $ruang = Ruang::latest()->paginate(6)->get();
         return view('guest.ruang.ruang', compact('ruang'));
     }
 
