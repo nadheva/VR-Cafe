@@ -116,7 +116,7 @@
                       <br> {{$i->nama}}
                     </h1>
                     <p class="intro-subtitle intro-price">
-                      <a href="{{url('/guest-ruang-detail/'.$i->id )}}"><span class="price-a">sewa | Rp. @money($i->harga)</span></a>
+                      <a href="{{route('guest-studio.show',$i->id )}}"><span class="price-a">sewa | Rp. @money($i->harga)</span></a>
                     </p>
                   </div>
                 </div>
@@ -165,7 +165,7 @@
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Baca Selengkapnya
+                <a href="{{route('guest-studio.index')}}" class="link-c link-icon">Lihat Selengkapnya
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -189,7 +189,7 @@
                 </p>
               </div>
               <div class="card-footer-c">
-                <a href="#" class="link-c link-icon">Baca Selengkapnya
+                <a href="{{route('guest-perangkat.index')}}" class="link-c link-icon">Lihat Selengkapnya
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -212,11 +212,11 @@
                   nec, egestas non nisi.
                 </p>
               </div>
-              <div class="card-footer-c">
+              {{-- <div class="card-footer-c">
                 <a href="#" class="link-c link-icon">Baca Selengkapnya
                   <span class="bi bi-chevron-right"></span>
                 </a>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@
                 <h2 class="title-a">Studio</h2>
               </div>
               <div class="title-link">
-                <a href="{{url('/guest-ruang')}}">Semua Studio
+                <a href="{{route('guest-studio.index')}}">Semua Studio
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -256,7 +256,7 @@
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="{{url('/guest-ruang-detail/'.$i->id)}}">{{$i->kode_ruang}} Studio
+                        <a href="{{route('guest-studio.show',$i->id)}}">{{$i->kode_ruang}} Studio
                           <br /> {{$i->nama}}</a>
                       </h2>
                     </div>
@@ -264,7 +264,7 @@
                       <div class="price-box d-flex">
                         <span class="price-a">rent | Rp. @money($i->harga)</span>
                       </div>
-                      <a href="{{url('/guest-ruang-detail/'.$i->id)}}" class="link-a">Lihat
+                      <a href="{{route('guest-studio.show',$i->id)}}" class="link-a">Lihat
                         <span class="bi bi-chevron-right"></span>
                       </a>
                     </div>
@@ -272,21 +272,21 @@
                       <ul class="card-info d-flex justify-content-around">
                         <li>
                           <h4 class="card-info-title">Ukuran</h4>
-                          <span>340m
+                          <span>{{$i->ukuran}}m
                             <sup>2</sup>
                           </span>
                         </li>
                         <li>
                           <h4 class="card-info-title">Monitor</h4>
-                          <span>2</span>
+                          <span>{{$i->monitor}}</span>
                         </li>
                         <li>
                           <h4 class="card-info-title">Perangkat VR</h4>
-                          <span>4</span>
+                          <span>{{$i->perangkat_vr}}</span>
                         </li>
                         <li>
                           <h4 class="card-info-title">PC Desktop</h4>
-                          <span>1</span>
+                          <span>{{$i->pc_desktop}}</span>
                         </li>
                       </ul>
                     </div>
@@ -337,7 +337,7 @@
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="{{url('/guest-perangkat-detail/'. $i->id)}}">{{$i->kode_perangkat}}
+                        <a href="{{route('guest-perangkat.show', $i->id)}}">{{$i->kode_perangkat}}
                           <br /> {{$i->nama}}</a>
                       </h2>
                     </div>
@@ -345,7 +345,7 @@
                       <div class="price-box d-flex">
                         <span class="price-a">sewa | Rp. @money($i->harga)</span>
                       </div>
-                      <a href="{{url('/guest-perangkat-detail/'. $i->id)}}" class="link-a">Lihat
+                      <a href="{{route('guest-perangkat.show', $i->id)}}" class="link-a">Lihat
                         <span class="bi bi-chevron-right"></span>
                       </a>
                     </div>
@@ -387,7 +387,7 @@
           <div class="col-md-4">
             <div class="card-box-d">
               <div class="card-img-d">
-                <img src="{{asset('tuser/assets/img/agent-4.jpg')}}" alt="" class="img-d img-fluid">
+                <img src="{{asset($i->foto)}}" alt="" class="img-d img-fluid">
               </div>
               <div class="card-overlay card-overlay-hover">
                 <div class="card-header-d">
@@ -456,7 +456,7 @@
                 <h2 class="title-a">Artikel</h2>
               </div>
               <div class="title-link">
-                <a href="{{url('/guest-artikel')}}">Semua Artikel
+                <a href="{{route('guest-artikel.index')}}">Semua Artikel
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -482,7 +482,7 @@
                     </div>
                     <div class="card-title-b">
                       <h2 class="title-2">
-                        <a href="{{url('/guest-artikel-detail/'.$i->id)}}">{{$i->judul}}
+                        <a href="{{route('guest-artikel.show', $i->id)}}">{{$i->judul}}
                           <br></a>
                       </h2>
                     </div>

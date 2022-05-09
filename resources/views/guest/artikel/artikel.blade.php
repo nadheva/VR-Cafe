@@ -1,23 +1,23 @@
 <x-guest-layout>
-    
+
     <!-- ======= Intro Single ======= -->
     <section class="intro-single">
         <div class="container">
           <div class="row">
             <div class="col-md-12 col-lg-8">
               <div class="title-single-box">
-                <h1 class="title-single">Our Amazing Posts</h1>
-                <span class="color-text-a">Grid News</span>
+                <h1 class="title-single">Postingan Kami</h1>
+                <span class="color-text-a">Artikel</span>
               </div>
             </div>
             <div class="col-md-12 col-lg-4">
               <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a href="/">Beranda</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
-                    News Grid
+                    Artikel
                   </li>
                 </ol>
               </nav>
@@ -25,24 +25,25 @@
           </div>
         </div>
       </section><!-- End Intro Single-->
-  
+
       <!-- =======  Blog Grid ======= -->
       <section class="news-grid grid">
         <div class="container">
           <div class="row">
+              @foreach($artikel as $i)
             <div class="col-md-4">
               <div class="card-box-b card-shadow news-box">
                 <div class="img-box-b">
-                  <img src="assets/img/post-1.jpg" alt="" class="img-b img-fluid">
+                  <img src="{{asset($i->gambar)}}" alt="" class="img-b img-fluid">
                 </div>
                 <div class="card-overlay">
                   <div class="card-header-b">
                     <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
+                      <a href="#" class="category-b">Post</a>
                     </div>
                     <div class="card-title-b">
                       <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
+                        <a href="{{route('guest-artikel.show', $i->id)}}">{{$i->judul}}
                           <br> new</a>
                       </h2>
                     </div>
@@ -53,122 +54,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-2.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="blog-single.html" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-3.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-4.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-5.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
-                  <img src="assets/img/post-6.jpg" alt="" class="img-b img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-header-b">
-                    <div class="card-category-b">
-                      <a href="#" class="category-b">Travel</a>
-                    </div>
-                    <div class="card-title-b">
-                      <h2 class="title-2">
-                        <a href="blog-single.html">Travel is comming
-                          <br> new</a>
-                      </h2>
-                    </div>
-                    <div class="card-date">
-                      <span class="date-b">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+            @endforeach
           <div class="row">
             <div class="col-sm-12">
               <nav class="pagination-a">

@@ -21,6 +21,7 @@ class Ruang extends Model
         'ukuran',
         'pc_desktop',
         'monitor',
+        'perangkat_vr',
         'deskripsi',
         'resepsionis_id'
     ];
