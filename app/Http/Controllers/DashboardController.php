@@ -5,6 +5,7 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rules\Exists;
 
 class DashboardController extends Controller
@@ -26,7 +27,8 @@ class DashboardController extends Controller
         return view('dashboard');
         }
         elseif (Auth::user()->role == 'user'){
-            $total = Payment::sum('grand_total');
+            $now = Carbon::now();
+            $total = Payment::whereYear('created_at', $now->year())->whereMonth('created_at', $now->month())->sum('grand_total');
             $payment = Payment::latest()->take(5)->get();
         return view('user.dashboard.index', compact('payment', 'total'));
         }

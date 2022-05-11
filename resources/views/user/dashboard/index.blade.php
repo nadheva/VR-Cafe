@@ -9,7 +9,7 @@
                   <div class="card-body pt-4 text-center">
                     <h2 class="text-white mb-0 mt-2 up">Pengeluaran</h2>
                     <h1 class="text-white mb-0 up">Rp. @money($total)</h1>
-                    <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">+15% since last week</span>
+                    <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">pengeluaran perbulan</span>
                     <a href="javascript:;" class="btn btn-outline-white mb-2 px-5 up">View more</a>
                   </div>
                 </div>
@@ -139,11 +139,16 @@
                     <h6 class="mb-0">Riwayat Pembayaran</h6>
                   </div>
                   <div class="col-md-6 d-flex justify-content-end align-items-center">
-                    <small>23 - 30 March 2020</small>
+                    <small></small>
                   </div>
                 </div>
                 <hr class="horizontal dark mb-0">
               </div>
+              @if($payment->empty())
+              <div class="card-body p-3 pt-0">
+              <span>Belum ada transaksi</span>
+              </div>
+              @else
               <div class="card-body p-3 pt-0">
                 <ul class="list-group list-group-flush" data-toggle="checklist">
                 @foreach($payment as $i)
@@ -210,6 +215,7 @@
               </div>
             </div>
           </div>
+          @endif
           <div class="col-lg-4 col-12 mt-4 mt-lg-0">
             <div class="card overflow-hidden">
               <div class="card-header p-3 pb-0">
