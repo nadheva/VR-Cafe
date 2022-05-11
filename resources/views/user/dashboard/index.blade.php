@@ -164,10 +164,14 @@
                             <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
                           </a>
                           <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable2" style="">
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                          </ul>
+                            @if(is_null($i->sewa_perangkat_id) && is_null($i->denda_id))
+                            <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-studio.show', $i->sewa_ruang->id)}}">Lihat Selengkapnya</a></li>
+                            @elseif(is_null($i->sewa_perangkat_id) && is_null($i->sewa_ruang_id))
+                            <li><a class="dropdown-item border-radius-md" href="{{route('user-denda.show', $i->denda->id)}}">Lihat Selengkapnya</a></li>
+                            @elseif(is_null($i->sewa_denda_id) && is_null($i->sewa_ruang_id))
+                            <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-perangkat.show', $i->sewa_perangkat->id)}}">Lihat Selengkapnya</a></li>
+                        @endif
+                            </ul>
                         </div>
                       </div>
                       <div class="d-flex align-items-center ms-4 mt-3 ps-1">
