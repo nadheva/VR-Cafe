@@ -27,10 +27,11 @@ class DashboardController extends Controller
         return view('dashboard');
         }
         elseif (Auth::user()->role == 'user'){
+            $user = Auth::user();
             $now = Carbon::now();
             $total = Payment::whereYear('created_at', $now->year())->whereMonth('created_at', $now->month())->sum('grand_total');
             $payment = Payment::latest()->take(5)->get();
-        return view('user.dashboard.index', compact('payment', 'total'));
+        return view('user.dashboard.index', compact('payment', 'total', 'user'));
         }
     }
 }

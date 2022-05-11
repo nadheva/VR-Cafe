@@ -105,11 +105,11 @@
                 <div class="row">
                   <div class="col-8 d-flex">
                     <div>
-                      <img src="{{asset('tadmin/assets/img/team-3.jpg')}}" class="avatar avatar-sm me-2" alt="avatar image">
+                      <img src="{{asset($user->profile->foto)}}" class="avatar avatar-sm me-2" alt="avatar image">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Lucas Prila</h6>
-                      <p class="text-xs">2h ago</p>
+                      <h6 class="mb-0 text-sm">{{$user->name}}</h6>
+                      {{-- <p class="text-xs">{{$user->}}</p> --}}
                     </div>
                   </div>
                   <div class="col-4">
@@ -216,7 +216,7 @@
             </div>
           </div>
           @endif
-          <div class="col-lg-4 col-12 mt-4 mt-lg-0">
+          {{-- <div class="col-lg-4 col-12 mt-4 mt-lg-0">
             <div class="card overflow-hidden">
               <div class="card-header p-3 pb-0">
                 <div class="d-flex align-items-center">
@@ -279,7 +279,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
         @push('scripts')
         <script>
