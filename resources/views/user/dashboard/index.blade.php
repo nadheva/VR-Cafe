@@ -5,7 +5,7 @@
             <div class="row">
               <div class="col-lg-4 col-12">
                 <div class="card card-background card-background-mask-info h-100 tilt" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
-                  <div class="full-background" style="background-image: url('../../../assets/img/curved-images/white-curved.jpeg')"></div>
+                  <div class="full-background" style="background-image: url('{{asset('tadmin/assets/img/curved-images/white-curved.jpeg')}}');"></div>
                   <div class="card-body pt-4 text-center">
                     <h2 class="text-white mb-0 mt-2 up">Earnings</h2>
                     <h1 class="text-white mb-0 up">$15,800</h1>
@@ -105,7 +105,7 @@
                 <div class="row">
                   <div class="col-8 d-flex">
                     <div>
-                      <img src="../../../assets/img/team-3.jpg" class="avatar avatar-sm me-2" alt="avatar image">
+                      <img src="{{asset('tadmin/assets/img/team-3.jpg')}}" class="avatar avatar-sm me-2" alt="avatar image">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-0 text-sm">Lucas Prila</h6>
@@ -136,7 +136,7 @@
               <div class="card-header p-3">
                 <div class="row">
                   <div class="col-md-6">
-                    <h6 class="mb-0">To do list</h6>
+                    <h6 class="mb-0">Riwayat Pembayaran</h6>
                   </div>
                   <div class="col-md-6 d-flex justify-content-end align-items-center">
                     <small>23 - 30 March 2020</small>
@@ -146,13 +146,19 @@
               </div>
               <div class="card-body p-3 pt-0">
                 <ul class="list-group list-group-flush" data-toggle="checklist">
+                @foreach($payment as $i)
                   <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
-                    <div class="checklist-item checklist-item-primary ps-2 ms-3">
+                    @if($i->status == "pending")
+                    <div class="checklist-item checklist-item-info ps-2 ms-3">
+                    @elseif($i->status == "success")
+                    <div class="checklist-item checklist-item-success ps-2 ms-3">
+                    @elseif($i->status == "failed")
+                    <div class="checklist-item checklist-item-danger ps-2 ms-3">
+                    @elseif($i->status == "expired")
+                    <div class="checklist-item checklist-item-warning ps-2 ms-3">
+                    @endif
                       <div class="d-flex align-items-center">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        </div>
-                        <h6 class="mb-0 text-dark font-weight-bold text-sm">Check status</h6>
+                        <h6 class="mb-0 text-dark font-weight-bold text-sm">{{$i->invoice}}</h6>
                         <div class="dropstart float-lg-end ms-auto pe-0">
                           <a href="javascript:;" class="cursor-pointer" id="dropdownTable2" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
@@ -166,125 +172,36 @@
                       </div>
                       <div class="d-flex align-items-center ms-4 mt-3 ps-1">
                         <div>
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
-                          <span class="text-xs font-weight-bolder">24 March 2019</span>
+                          <p class="text-xs mb-0 text-secondary font-weight-bold">Jenis</p>
+                          @if(is_null($i->sewa_perangkat_id && $i->denda_id))
+                          <span class="text-xs font-weight-bolder badge badge-warning badge-sm">Studio</span>
+                          @elseif(is_null($i->sewa_ruang_id && $i->denda_id))
+                          <span class="text-xs font-weight-bolder badge badge-info badge-sm">Perangkat VR</span>
+                          @elseif(is_null($i->sewa_ruang_id && $i->sewa_perangkat_id))
+                          <span class="text-xs font-weight-bolder badge badge-danger badge-sm">Denda</span>
+                          @endif
                         </div>
                         <div class="ms-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Project</p>
-                          <span class="text-xs font-weight-bolder">2414_VR4sf3#</span>
+                          <p class="text-xs mb-0 text-secondary font-weight-bold">Total</p>
+                          <span class="text-xs font-weight-bolder">@money($i->grand_total)</span>
                         </div>
                         <div class="mx-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Company</p>
-                          <span class="text-xs font-weight-bolder">Creative Tim</span>
+                          <p class="text-xs mb-0 text-secondary font-weight-bold">Status</p>
+                          @if($i->status == "pending")
+                          <span class="text-xs font-weight-bolder">Belum Dibayar</span>
+                          @elseif($i->status == "success")
+                          <span class="text-xs font-weight-bolder">Sudah Dibayar</span>
+                          @elseif($i->status == "failed")
+                          <span class="text-xs font-weight-bolder">Gagal</span>
+                          @elseif($i->status == "expired")
+                          <span class="text-xs font-weight-bolder">Kadaluarsa</span>
+                          @endif
                         </div>
                       </div>
                     </div>
                     <hr class="horizontal dark mt-4 mb-0">
                   </li>
-                  <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
-                    <div class="checklist-item checklist-item-dark ps-2 ms-3">
-                      <div class="d-flex align-items-center">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" checked>
-                        </div>
-                        <h6 class="mb-0 text-dark font-weight-bold text-sm">Management discussion</h6>
-                        <div class="dropstart float-lg-end ms-auto pe-0">
-                          <a href="javascript:;" class="cursor-pointer" id="dropdownTable3" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
-                          </a>
-                          <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable3" style="">
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center ms-4 mt-3 ps-1">
-                        <div>
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
-                          <span class="text-xs font-weight-bolder">24 March 2019</span>
-                        </div>
-                        <div class="ms-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Project</p>
-                          <span class="text-xs font-weight-bolder">4411_8sIsdd23</span>
-                        </div>
-                        <div class="mx-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Company</p>
-                          <span class="text-xs font-weight-bolder">Apple</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="horizontal dark mt-4 mb-0">
-                  </li>
-                  <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
-                    <div class="checklist-item checklist-item-warning ps-2 ms-3">
-                      <div class="d-flex align-items-center">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" checked>
-                        </div>
-                        <h6 class="mb-0 text-dark font-weight-bold text-sm">New channel distribution</h6>
-                        <div class="dropstart float-lg-end ms-auto pe-0">
-                          <a href="javascript:;" class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
-                          </a>
-                          <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable" style="">
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center ms-4 mt-3 ps-1">
-                        <div>
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
-                          <span class="text-xs font-weight-bolder">25 March 2019</span>
-                        </div>
-                        <div class="ms-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Project</p>
-                          <span class="text-xs font-weight-bolder">827d_kdl33D1s</span>
-                        </div>
-                        <div class="mx-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Company</p>
-                          <span class="text-xs font-weight-bolder">Slack</span>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="horizontal dark mt-4 mb-0">
-                  </li>
-                  <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
-                    <div class="checklist-item checklist-item-success ps-2 ms-3">
-                      <div class="d-flex align-items-center">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                        </div>
-                        <h6 class="mb-0 text-dark font-weight-bold text-sm">IOS App development</h6>
-                        <div class="dropstart float-lg-end ms-auto pe-0">
-                          <a href="javascript:;" class="cursor-pointer" id="dropdownTable1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
-                          </a>
-                          <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable1" style="">
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                            <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center ms-4 mt-3 ps-1">
-                        <div>
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Date</p>
-                          <span class="text-xs font-weight-bolder">26 March 2019</span>
-                        </div>
-                        <div class="ms-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Project</p>
-                          <span class="text-xs font-weight-bolder">88s1_349DA2sa</span>
-                        </div>
-                        <div class="mx-auto">
-                          <p class="text-xs mb-0 text-secondary font-weight-bold">Company</p>
-                          <span class="text-xs font-weight-bolder">Facebook</span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
+                  @endforeach
                 </ul>
               </div>
             </div>

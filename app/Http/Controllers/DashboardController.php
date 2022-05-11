@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Payment;
 use Illuminate\Validation\Rules\Exists;
 
 class DashboardController extends Controller
@@ -25,7 +26,8 @@ class DashboardController extends Controller
         return view('dashboard');
         }
         elseif (Auth::user()->role == 'user'){
-        return view('user.dashboard.index');
+            $payment = Payment::latest()->take(5)->get();
+        return view('user.dashboard.index', compact('payment'));
         }
     }
 }
