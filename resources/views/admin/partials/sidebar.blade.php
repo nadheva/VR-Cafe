@@ -72,7 +72,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Perangkat</span>
+                        <span class="nav-link-text ms-1">Perangkat VR</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -100,7 +100,7 @@
                                 </g>
                             </svg>
                         </div>
-                        <span class="nav-link-text ms-1">Ruang</span>
+                        <span class="nav-link-text ms-1">Studio</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -298,18 +298,18 @@
                     </a>
                     <div class="collapse   {{Route::is('layanan*') ? 'show' : ''}}" id="layanan">
                     <ul class="nav ms-4 ps-3">
-                        <li class="nav-item {{Route::is('sewa-ruang.*') ? 'active' : ''}}">
-                        <a class="nav-link {{Route::is('sewa-ruang.*') ? 'active' : ''}}" href="{{route('user-ruang.index')}}">
+                        <li class="nav-item {{Route::is('user-perangkat.*') ? 'active' : ''}}">
+                        <a class="nav-link {{Route::is('user-perangkat.*') ? 'active' : ''}}" href="{{route('user-perangkat.index')}}">
                             <span class="sidenav-mini-icon"> K </span>
-                            <span class="sidenav-normal"> Studio </span>
+                            <span class="sidenav-normal"> Perangkat VR </span>
                         </a>
                         </li>
                     </ul>
                     <ul class="nav ms-4 ps-3">
-                        <li class="nav-item {{Route::is('user-perangkat.*') ? 'active' : ''}}">
-                        <a class="nav-link {{Route::is('user-perangkat.*') ? 'active' : ''}}" href="{{route('user-perangkat.index')}}">
+                        <li class="nav-item {{Route::is('sewa-ruang.*') ? 'active' : ''}}">
+                        <a class="nav-link {{Route::is('sewa-ruang.*') ? 'active' : ''}}" href="{{route('user-ruang.index')}}">
                             <span class="sidenav-mini-icon"> K </span>
-                            <span class="sidenav-normal"> Perangkat </span>
+                            <span class="sidenav-normal"> Studio </span>
                         </a>
                         </li>
                     </ul>
