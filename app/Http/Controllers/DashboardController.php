@@ -26,8 +26,9 @@ class DashboardController extends Controller
         return view('dashboard');
         }
         elseif (Auth::user()->role == 'user'){
+            $total = Payment::sum('grand_total');
             $payment = Payment::latest()->take(5)->get();
-        return view('user.dashboard.index', compact('payment'));
+        return view('user.dashboard.index', compact('payment', 'total'));
         }
     }
 }
