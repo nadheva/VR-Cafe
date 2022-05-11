@@ -173,11 +173,11 @@
                       <div class="d-flex align-items-center ms-4 mt-3 ps-1">
                         <div>
                           <p class="text-xs mb-0 text-secondary font-weight-bold">Jenis</p>
-                          @if(is_null($i->sewa_perangkat_id && $i->denda_id))
+                          @if(is_null($i->sewa_perangkat_id) && is_null($i->denda_id))
                           <span class="text-xs font-weight-bolder badge badge-warning badge-sm">Studio</span>
-                          @elseif(is_null($i->sewa_ruang_id && $i->denda_id))
+                          @elseif(is_null($i->sewa_ruang_id) && is_null($i->denda_id))
                           <span class="text-xs font-weight-bolder badge badge-info badge-sm">Perangkat VR</span>
-                          @elseif(is_null($i->sewa_ruang_id && $i->sewa_perangkat_id))
+                          @elseif(is_null($i->sewa_ruang_id) && is_null($i->sewa_perangkat_id))
                           <span class="text-xs font-weight-bolder badge badge-danger badge-sm">Denda</span>
                           @endif
                         </div>
