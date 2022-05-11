@@ -10,7 +10,7 @@
                     <h2 class="text-white mb-0 mt-2 up">Pengeluaran</h2>
                     <h1 class="text-white mb-0 up">Rp. @money($total)</h1>
                     <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">pengeluaran perbulan</span>
-                    <a href="javascript:;" class="btn btn-outline-white mb-2 px-5 up">View more</a>
+                    {{-- <a href="javascript:;" class="btn btn-outline-white mb-2 px-5 up">View more</a> --}}
                   </div>
                 </div>
               </div>
