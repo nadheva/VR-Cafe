@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Payment;
 use Illuminate\Support\Carbon;
+use App\Models\SewaPerangkat;
+use App\Models\SewaRuang;
+use App\Models\Denda;
 use Illuminate\Validation\Rules\Exists;
 
 class DashboardController extends Controller
@@ -29,9 +32,13 @@ class DashboardController extends Controller
         elseif (Auth::user()->role == 'user'){
             $user = Auth::user();
             $now = Carbon::now();
-            $total = Payment::whereYear('created_at', $now->year())->whereMonth('created_at', $now->month())->sum('grand_total');
+            $studio = SewaRuang::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $perangkat = SewaPerangkat::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $denda = Denda::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $total = Payment::where('user_id', Auth::user()->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $payment = Payment::latest()->take(5)->get();
-        return view('user.dashboard.index', compact('payment', 'total', 'user'));
+            $transaksi = Payment::where('user_id', Auth::user()->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->count();
+        return view('user.dashboard.index', compact('payment', 'total', 'user', 'denda', 'studio', 'perangkat', 'transaksi'));
         }
     }
 }

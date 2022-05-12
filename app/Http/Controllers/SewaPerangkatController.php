@@ -81,7 +81,8 @@ class SewaPerangkatController extends Controller
       $payment =  $sewa_perangkat->payment()->create([
             'invoice' => $sewa_perangkat->invoice,
             'status' => 'pending',
-            'grand_total' => $sewa_perangkat->grand_total
+            'grand_total' => $sewa_perangkat->grand_total,
+            'user_id' => $sewa_perangkat->user_id
         ]);
 
         foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {

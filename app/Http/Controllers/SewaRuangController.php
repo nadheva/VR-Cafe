@@ -72,7 +72,8 @@ class SewaRuangController extends Controller
             $payment =  $sewa_ruang->payment()->create([
                 'invoice' => $sewa_ruang->invoice,
                 'status' => 'pending',
-                'grand_total' => $sewa_ruang->grand_total
+                'grand_total' => $sewa_ruang->grand_total,
+                'user_id' => $sewa_ruang->user_id
             ]);
 
                 $sewa_ruang->studio->where('id', $sewa_ruang->ruang_id)

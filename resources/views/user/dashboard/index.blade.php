@@ -9,7 +9,7 @@
                   <div class="card-body pt-4 text-center">
                     <h2 class="text-white mb-0 mt-2 up">Pengeluaran</h2>
                     <h1 class="text-white mb-0 up">Rp. @money($total)</h1>
-                    <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">pengeluaran perbulan</span>
+                    <span class="badge badge-lg d-block bg-gradient-warning mb-2 up">pengeluaran perbulan</span>
                     {{-- <a href="javascript:;" class="btn btn-outline-white mb-2 px-5 up">View more</a> --}}
                   </div>
                 </div>
@@ -19,15 +19,15 @@
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div>
-                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md">
+                        <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
                           <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
                         <div class="numbers">
-                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
+                          <p class="text-sm mb-0 text-capitaize font-weight-bold">Sewa Perangkat VR</p>
                           <h5 class="font-weight-bolder mb-0">
-                            $53,000
+                            Rp. @money($perangkat)
                           </h5>
                         </div>
                       </div>
@@ -38,16 +38,16 @@
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div>
-                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md">
+                        <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
                           <i class="ni ni-planet text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
                         <div class="numbers">
-                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Sessions</p>
+                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Sewa Studio</p>
                           <h5 class="font-weight-bolder mb-0">
-                            9,600
-                            <span class="text-success text-sm font-weight-bolder">+15%</span>
+                            Rp. @money($studio)
+                            {{-- <span class="text-success text-sm font-weight-bolder">+15%</span> --}}
                           </h5>
                         </div>
                       </div>
@@ -60,16 +60,16 @@
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div>
-                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md">
+                        <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
                           <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
                         <div class="numbers">
-                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Denda</p>
                           <h5 class="font-weight-bolder mb-0">
-                            2,300
-                            <span class="text-success text-sm font-weight-bolder">+3%</span>
+                            Rp. @money($denda)
+                            {{-- <span class="text-success text-sm font-weight-bolder">+3%</span> --}}
                           </h5>
                         </div>
                       </div>
@@ -80,16 +80,16 @@
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div>
-                        <div class="icon icon-shape bg-gradient-dark text-center border-radius-md">
+                        <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
                           <i class="ni ni-shop text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
                         <div class="numbers">
-                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Sign-ups</p>
+                          <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Transaksi</p>
                           <h5 class="font-weight-bolder mb-0">
-                            348
-                            <span class="text-success text-sm font-weight-bolder">+12%</span>
+                            {{$transaksi}}
+                            {{-- <span class="text-success text-sm font-weight-bolder">+12%</span> --}}
                           </h5>
                         </div>
                       </div>
@@ -105,7 +105,11 @@
                 <div class="row">
                   <div class="col-8 d-flex">
                     <div>
+                        @if(empty($user->profile->foto))
+                        <img src="{{asset('tadmin/assets/img/avatar.webp')}}" class="avatar avatar-sm me-2" alt="avatar image">
+                        @else
                       <img src="{{asset($user->profile->foto)}}" class="avatar avatar-sm me-2" alt="avatar image">
+                      @endif
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                       <h6 class="mb-0 text-sm">{{$user->name}}</h6>
@@ -113,18 +117,26 @@
                     </div>
                   </div>
                   <div class="col-4">
-                    <span class="badge bg-gradient-info ms-auto float-end">{{$user->email}}</span>
+                    <span class="badge bg-gradient-warning ms-auto float-end">{{$user->email}}</span>
                   </div>
                 </div>
               </div>
               <div class="card-body p-3 pt-1">
+                @if(empty($user->profile->alamat))
+                <span class="badge badge-lg d-block bg-gradient-danger mb-2 up">Profil Belum Diisi!</span>
+                @else
                 <h6>Alamat:</h6>
                 <p class="text-sm">{{$user->profile->alamat}}</p>
+                @endif
                 <div class="d-flex bg-gray-100 border-radius-lg p-3">
                   <h4 class="my-auto">
                     {{-- <span class="text-secondary text-sm me-1">$</span>3,000<span class="text-secondary text-sm ms-1">/ month </span> --}}
                   </h4>
-                  <a href="{{route('profil.index')}}" class="btn btn-outline-dark mb-0 ms-auto">Profil</a>
+                  @if(empty($user->profile))
+                  <a href="{{route('profil.create')}}" class="btn btn-outline-dark mb-0 ms-auto">Lengkapi Profil</a>
+                  @else
+                  <a href="{{route('profil.index')}}" class="btn btn-outline-dark mb-0 ms-auto">Lihat Profil</a>
+                  @endif
                 </div>
               </div>
             </div>

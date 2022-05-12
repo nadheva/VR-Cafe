@@ -16,7 +16,8 @@ class Payment extends Model
         'grand_total',
         'sewa_ruang_id',
         'sewa_perangkat_id',
-        'denda_id'
+        'denda_id',
+        'user_id'
     ];
 
     public function sewa_perangkat()
@@ -30,5 +31,9 @@ class Payment extends Model
     public function denda()
     {
         return $this->belongsTo(Denda::class, 'denda_id', 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

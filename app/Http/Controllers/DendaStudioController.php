@@ -45,7 +45,8 @@ class DendaStudioController extends Controller
         $payment =  $denda->payment()->create([
             'invoice' => $denda->invoice,
             'status' => 'pending',
-            'grand_total' => $denda->grand_total
+            'grand_total' => $denda->grand_total,
+            'user_id' => $denda->user_id
         ]);
 
         $payload = [
