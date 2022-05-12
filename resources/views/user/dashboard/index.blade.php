@@ -156,11 +156,11 @@
                 </div>
                 <hr class="horizontal dark mb-0">
               </div>
-              {{-- @if($payment->empty())
+              @if(empty($payment))
               <div class="card-body p-3 pt-0">
               <span>Belum ada transaksi</span>
               </div>
-              @else --}}
+              @else
               <div class="card-body p-3 pt-0">
                 <ul class="list-group list-group-flush" data-toggle="checklist">
                 @foreach($payment as $i)
