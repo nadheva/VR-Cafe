@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 card ms-auto">
+            <div class="col-lg-6 card ms-auto" >
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex align-items-center">
                         <h6 class="mb-0">Sedang Disewa</h6>
@@ -323,16 +323,16 @@
                 new Chart(ctx1, {
                     type: "doughnut",
                     data: {
-                        labels: ['Terbit', 'Permohonan', ],
+                        labels: ['Perangkat VR', 'Studio', ],
                         datasets: [{
-                            label: "Permohonan & Terbit",
+                            label: "Perangkat VR & Studio",
                             weight: 9,
                             cutout: 90,
                             tension: 0.9,
                             pointRadius: 2,
                             borderWidth: 2,
                             backgroundColor: ['#FF0080', '#A8B8D8', ],
-                            data: [{{ $total }}, {{ $total }}, ],
+                            data: [{{ $perangkat->count() }}, {{ $studio->count() }}, ],
                             fill: false
                         }],
                     },
