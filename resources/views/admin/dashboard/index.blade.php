@@ -177,8 +177,8 @@
                             <div class="tab-pane fade show position-relative  height-400 border-radius-lg" id="cam2"
                                 role="tabpanel" aria-labelledby="cam2">
                                 <div class="row mt-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-flush" id="datatable-search">
+                                    {{-- <div class="table-responsive"> --}}
+                                        <table class="table table-flush" id="datatable-search1">
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>No</th>
@@ -216,7 +216,7 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                    </div>
+                                    {{-- </div> --}}
                                 </div>
                             </div>
                         </div>
