@@ -34,7 +34,7 @@ class DashboardController extends Controller
             $total = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $success = Payment::where('status', '=', 'success')->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
             $pending = Payment::where('status', '=', 'pending')->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
-            $transaksi = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
+            $transaksi = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->get();
 
 
         return view('admin.dashboard.index', compact('user', 'studio', 'perangkat', 'denda', 'total', 'transaksi', 'success', 'pending',));
