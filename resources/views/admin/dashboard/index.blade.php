@@ -6,22 +6,24 @@
                     <div class="col-md-6">
                         <div class="card card-background card-background-mask-info" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                             <div class="card-body  text-center">
-                                <h1 class="text-gradient text-dark"><span id="status1"
-                                        countto="{{ $total }}">{{ $total }}</span> <span
+                                <h1 class="text-gradient text-dark"><span
+                                        >{{ $pending->count() }}</span> <span
                                         class="text-lg ms-n2"></span></h1>
                                 <h6 class="mb-0 font-weight-bolder">Transaksi Pending</h6>
                                 <p class="opacity-8 mb-0 text-sm">Perlu Dibayar:</p>
+                                <span class="badge badge-lg d-block bg-gradient-primary mb-2 up">Rp. @money($pending->sum('grand_total'))</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 mt-md-0 ">
                         <div class="card card-background card-background-mask-success" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                             <div class="card-body text-center">
-                                <h1 class="text-gradient text-dark"> <span id="status2"
-                                        countto="{{ $total }}">{{ $total }}</span> <span
+                                <h1 class="text-gradient text-dark"> <span
+                                        >{{ $success->count() }}</span> <span
                                         class="text-lg ms-n1"></span></h1>
                                 <h6 class="mb-0 font-weight-bolder">Transaksi Berhasil</h6>
                                 <p class="opacity-8 mb-0 text-sm">Terbayar: </p>
+                                <span class="badge badge-lg d-block bg-gradient-warning mb-2 up">Rp. @money($success->sum('grand_total'))</span>
                             </div>
                         </div>
                     </div>
@@ -31,10 +33,11 @@
                         <div class="card card-background card-background-mask-warning" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                             <div class="card-body text-center">
                                 <h1 class="text-gradient text-dark"><span id="status3"
-                                        countto="{{ $total }}">{{ $total }}</span> <span
+                                        >{{ $denda->count() }}</span> <span
                                         class="text-lg ms-n2"></span></h1>
-                                <h6 class="mb-0 font-weight-bolder"></h6>
-                                <p class="opacity-8 mb-0 text-sm">Jumlah Data</p>
+                                <h6 class="mb-0 font-weight-bolder">Denda</h6>
+                                <p class="opacity-8 mb-0 text-sm">Perlu Dibaya: </p>
+                                <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Rp. @money($transaksi->orderBy('denda_id')->where('status', '=', 'pending')->sum('grand_total'))</span>
                             </div>
                         </div>
                     </div>
