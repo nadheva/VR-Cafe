@@ -32,12 +32,12 @@
                     <div class="col-md-12">
                         <div class="card card-background card-background-mask-warning" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                             <div class="card-body text-center">
-                                <h1 class="text-gradient text-dark"><span id="status3"
+                                <h1 class="text-gradient text-dark"><span
                                         >{{ $denda->count() }}</span> <span
                                         class="text-lg ms-n2"></span></h1>
                                 <h6 class="mb-0 font-weight-bolder">Denda</h6>
                                 <p class="opacity-8 mb-0 text-sm">Perlu Dibayar: </p>
-                                <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Rp. @money($transaksi->orderBy('denda_id')->where('status', '=', 'pending')->sum('grand_total'))</span>
+                                <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Rp. @money($denda->with('payment')->where('status', '=', 'pending')->sum('grand_total'))</span>
                             </div>
                         </div>
                     </div>
