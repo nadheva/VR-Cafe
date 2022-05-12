@@ -124,7 +124,7 @@
                   <h4 class="my-auto">
                     {{-- <span class="text-secondary text-sm me-1">$</span>3,000<span class="text-secondary text-sm ms-1">/ month </span> --}}
                   </h4>
-                  <a href="javascript:;" class="btn btn-outline-dark mb-0 ms-auto">Profil</a>
+                  <a href="{{route('profil.index')}}" class="btn btn-outline-dark mb-0 ms-auto">Profil</a>
                 </div>
               </div>
             </div>
