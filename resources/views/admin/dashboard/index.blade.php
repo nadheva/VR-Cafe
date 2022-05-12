@@ -137,28 +137,38 @@
                                             <thead class="thead-light">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama Izin</th>
-                                                    <th>Jumlah</th>
+                                                    <th>Invoice</th>
+                                                    <th>Penyewa</th>
                                                     <th>Tanggal</th>
-                                                    <th>Tanggal Dibuat</th>
+                                                    <th>Jenis</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {{-- @foreach ($Permohonan1 as $item)
+                                                @foreach ($transaksi->where('status', '=', 'pending') as $i)
                                                     <tr>
                                                         <td class="text-sm font-weight-normal">{{ $loop->iteration }}
                                                         </td>
                                                         <td class="text-sm font-weight-normal">
-                                                            {{ $item->Perizinan->nama_izin }}</td>
-                                                        <td class="text-sm font-weight-normal">{{ $item->jumlah }}
+                                                            {{ $i->invoice }}</td>
+                                                        <td class="text-sm font-weight-normal">{{ $i->user->name }}
                                                         </td>
-                                                        <td class="text-sm font-weight-normal">{{ $item->tanggal }}
+                                                        <td class="text-sm font-weight-normal">{{$i->created_at->format('d.m.Y')}}
                                                         </td>
-                                                        <td class="text-sm font-weight-normal">
-                                                            {{ $item->created_at }}
+                                                        @if(is_null($i->sewa_perangkat_id) && is_null($i->denda_id))
+                                                        <td  class="text-xs font-weight-bold">
+                                                          <span class="badge badge-dark badge-sm">Studio</span>
                                                         </td>
+                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->denda_id))
+                                                        <td  class="text-xs font-weight-bold">
+                                                          <span class="badge badge-primary badge-sm">Perangkat VR</span>
+                                                        </td>
+                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->sewa_perangkat_id))
+                                                        <td  class="text-xs font-weight-bold">
+                                                          <span class="badge badge-danger badge-sm">Denda</span>
+                                                        </td>
+                                                        @endif
                                                     </tr>
-                                                @endforeach --}}
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -168,34 +178,44 @@
                                 role="tabpanel" aria-labelledby="cam2">
                                 <div class="row mt-4">
                                     {{-- <div class="table-responsive"> --}}
-                                    <table class="table table-flush" id="datatable-search1">
-                                        <thead class="thead-light">
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Izin</th>
-                                                <th>Jumlah</th>
-                                                <th>Tanggal</th>
-                                                <th>Tanggal Dibuat</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{-- @foreach ($Terbit1 as $item)
+                                        <table class="table table-flush" id="datatable-search">
+                                            <thead class="thead-light">
                                                 <tr>
-                                                    <td class="text-sm font-weight-normal">{{ $loop->iteration }}
-                                                    </td>
-                                                    <td class="text-sm font-weight-normal">
-                                                        {{ $item->Perizinan->nama_izin }}</td>
-                                                    <td class="text-sm font-weight-normal">{{ $item->jumlah }}
-                                                    </td>
-                                                    <td class="text-sm font-weight-normal">{{ $item->tanggal }}
-                                                    </td>
-                                                    <td class="text-sm font-weight-normal">
-                                                        {{ $item->created_at }}
-                                                    </td>
+                                                    <th>No</th>
+                                                    <th>Invoice</th>
+                                                    <th>Penyewa</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Jenis</th>
                                                 </tr>
-                                            @endforeach --}}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($transaksi->where('status', '=', 'success') as $i)
+                                                    <tr>
+                                                        <td class="text-sm font-weight-normal">{{ $loop->iteration }}
+                                                        </td>
+                                                        <td class="text-sm font-weight-normal">
+                                                            {{ $i->invoice }}</td>
+                                                        <td class="text-sm font-weight-normal">{{ $i->user->name }}
+                                                        </td>
+                                                        <td class="text-sm font-weight-normal">{{$i->created_at->format('d.m.Y')}}
+                                                        </td>
+                                                        @if(is_null($i->sewa_perangkat_id) && is_null($i->denda_id))
+                                                        <td  class="text-xs font-weight-bold">
+                                                          <span class="badge badge-dark badge-sm">Studio</span>
+                                                        </td>
+                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->denda_id))
+                                                        <td  class="text-xs font-weight-bold">
+                                                          <span class="badge badge-primary badge-sm">Perangkat VR</span>
+                                                        </td>
+                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->sewa_perangkat_id))
+                                                        <td  class="text-xs font-weight-bold">
+                                                          <span class="badge badge-danger badge-sm">Denda</span>
+                                                        </td>
+                                                        @endif
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     {{-- </div> --}}
                                 </div>
                             </div>
