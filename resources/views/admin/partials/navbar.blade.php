@@ -90,6 +90,7 @@
                         </div>
                     </a>
                 </li>
+                @if (Auth::user()->role == 'user')
                 <li class="nav-item px-3 d-flex align-items-center">
                     <a href="{{route('cart.index')}}" class="nav-link text-body p-0">
                         <i class="ni ni-bag-17 fixed-plugin-button-nav cursor-pointer"></i>
@@ -97,12 +98,14 @@
                           echo $cart->getCart();@endphp </span>
                     </a>
                 </li>
+                @else
+                @endif
                 {{-- <li class="nav-item px-3 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0">
                         <i class="fa fa-cog "></i>
                     </a>
                 </li> --}}
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                {{-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell cursor-pointer"></i>
@@ -184,7 +187,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
