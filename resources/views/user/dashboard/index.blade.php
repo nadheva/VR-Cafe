@@ -113,18 +113,18 @@
                     </div>
                   </div>
                   <div class="col-4">
-                    <span class="badge bg-gradient-info ms-auto float-end">Recommendation</span>
+                    <span class="badge bg-gradient-info ms-auto float-end">{{$user->email}}</span>
                   </div>
                 </div>
               </div>
               <div class="card-body p-3 pt-1">
-                <h6>I need a Ruby developer for my new website.</h6>
-                <p class="text-sm">The website was initially built in PHP, I need a professional ruby programmer to shift it.</p>
+                <h6>Alamat:</h6>
+                <p class="text-sm">{{$user->profile->alamat}}</p>
                 <div class="d-flex bg-gray-100 border-radius-lg p-3">
                   <h4 class="my-auto">
-                    <span class="text-secondary text-sm me-1">$</span>3,000<span class="text-secondary text-sm ms-1">/ month </span>
+                    {{-- <span class="text-secondary text-sm me-1">$</span>3,000<span class="text-secondary text-sm ms-1">/ month </span> --}}
                   </h4>
-                  <a href="javascript:;" class="btn btn-outline-dark mb-0 ms-auto">Apply</a>
+                  <a href="javascript:;" class="btn btn-outline-dark mb-0 ms-auto">Profil</a>
                 </div>
               </div>
             </div>
