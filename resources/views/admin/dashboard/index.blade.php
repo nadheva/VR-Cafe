@@ -144,7 +144,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($transaksi->where('status', '=', 'pending')->get() as $i)
+                                                @foreach ($transaksi->latest()->where('status', '=', 'pending')->get() as $i)
                                                     <tr>
                                                         <td class="text-sm font-weight-normal">{{ $loop->iteration }}
                                                         </td>
@@ -189,7 +189,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($transaksi->where('status', '=', 'success')->get() as $i)
+                                                @foreach ($transaksi->latest()->where('status', '=', 'success')->get() as $i)
                                                     <tr>
                                                         <td class="text-sm font-weight-normal">{{ $loop->iteration }}
                                                         </td>
