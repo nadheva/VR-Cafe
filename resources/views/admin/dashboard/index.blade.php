@@ -36,7 +36,7 @@
                                         >{{ $denda->count() }}</span> <span
                                         class="text-lg ms-n2"></span></h1>
                                 <h6 class="mb-0 font-weight-bolder">Denda</h6>
-                                <p class="opacity-8 mb-0 text-sm">Perlu Dibaya: </p>
+                                <p class="opacity-8 mb-0 text-sm">Perlu Dibayar: </p>
                                 <span class="badge badge-lg d-block bg-gradient-dark mb-2 up">Rp. @money($transaksi->orderBy('denda_id')->where('status', '=', 'pending')->sum('grand_total'))</span>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <canvas id="chart-consumption" class="chart-canvas" height="197"></canvas>
                             </div>
                             <h4 class="font-weight-bold mt-n8">
-                                <span>{{ $total }}</span>
+                                <span>{{ $studio->count() + $perangkat->count() }}</span>
                                 <span class="d-block text-body text-sm">Jumlah Data <br> </span>
                             </h4>
                         </div>
@@ -79,7 +79,7 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $total }}
+                                                <span class="text-xs font-weight-bold"> {{ $perangkat->count() }}
                                                 </span>
                                             </td>
                                         </tr>
@@ -93,7 +93,7 @@
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $total }}
+                                                <span class="text-xs font-weight-bold"> {{ $studio->count() }}
                                                 </span>
                                             </td>
                                         </tr>

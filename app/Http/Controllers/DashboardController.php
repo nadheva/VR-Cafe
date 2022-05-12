@@ -28,13 +28,14 @@ class DashboardController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             $user = Auth::user()->role == 'user';
-            $studio = SewaRuang::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
-            $perangkat = SewaPerangkat::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $studio = SewaRuang::where('proses', '=', 'Disewa');
+            $perangkat = SewaPerangkat::where('proses', '=', 'Disewa');
             $denda = Denda::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
             $total = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $success = Payment::where('status', '=', 'success')->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
             $pending = Payment::where('status', '=', 'pending')->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
             $transaksi = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
+
 
         return view('admin.dashboard.index', compact('user', 'studio', 'perangkat', 'denda', 'total', 'transaksi', 'success', 'pending',));
         }
