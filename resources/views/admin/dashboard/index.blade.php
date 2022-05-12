@@ -4,36 +4,36 @@
             <div class="col-xl-6 ms-auto mt-xl-0 ">
                 <div class="row ">
                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body text-center">
-                                <h1 class="text-gradient text-primary"><span id="status1"
-                                        countto="{{ $Terbit->count() }}">{{ $Terbit->count() }}</span> <span
+                        <div class="card card-background card-background-mask-info" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+                            <div class="card-body  text-center">
+                                <h1 class="text-gradient text-dark"><span id="status1"
+                                        countto="{{ $total }}">{{ $total }}</span> <span
                                         class="text-lg ms-n2"></span></h1>
-                                <h6 class="mb-0 font-weight-bolder">Terbit</h6>
-                                <p class="opacity-8 mb-0 text-sm">Jumlah Data</p>
+                                <h6 class="mb-0 font-weight-bolder">Transaksi Pending</h6>
+                                <p class="opacity-8 mb-0 text-sm">Perlu Dibayar:</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 mt-md-0 ">
-                        <div class="card">
+                        <div class="card card-background card-background-mask-success" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                             <div class="card-body text-center">
-                                <h1 class="text-gradient text-primary"> <span id="status2"
-                                        countto="{{ $Permohonan->count() }}">{{ $Permohonan->count() }}</span> <span
+                                <h1 class="text-gradient text-dark"> <span id="status2"
+                                        countto="{{ $total }}">{{ $total }}</span> <span
                                         class="text-lg ms-n1"></span></h1>
-                                <h6 class="mb-0 font-weight-bolder">Permohonan</h6>
-                                <p class="opacity-8 mb-0 text-sm">Jumlah Data</p>
+                                <h6 class="mb-0 font-weight-bolder">Transaksi Berhasil</h6>
+                                <p class="opacity-8 mb-0 text-sm">Terbayar: </p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card card-background card-background-mask-warning" data-tilt="" style="will-change: transform; transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
                             <div class="card-body text-center">
-                                <h1 class="text-gradient text-primary"><span id="status3"
-                                        countto="{{ $Perizinan->count() }}">{{ $Perizinan->count() }}</span> <span
+                                <h1 class="text-gradient text-dark"><span id="status3"
+                                        countto="{{ $total }}">{{ $total }}</span> <span
                                         class="text-lg ms-n2"></span></h1>
-                                <h6 class="mb-0 font-weight-bolder">Jenis Perizinan</h6>
+                                <h6 class="mb-0 font-weight-bolder"></h6>
                                 <p class="opacity-8 mb-0 text-sm">Jumlah Data</p>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
             <div class="col-lg-6 card ms-auto">
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex align-items-center">
-                        <h6 class="mb-0">Terbit & Permohonan</h6>
+                        <h6 class="mb-0">Laporan Disewa</h6>
                         <button type="button"
                             class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-auto"
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="See the consumption per room">
@@ -58,7 +58,7 @@
                                 <canvas id="chart-consumption" class="chart-canvas" height="197"></canvas>
                             </div>
                             <h4 class="font-weight-bold mt-n8">
-                                <span>{{ $Terbit->count() + $Permohonan->count() }}</span>
+                                <span>{{ $total }}</span>
                                 <span class="d-block text-body text-sm">Jumlah Data <br> </span>
                             </h4>
                         </div>
@@ -71,26 +71,26 @@
                                                 <div class="d-flex px-2 py-0">
                                                     <span class="badge bg-gradient-primary me-3"> </span>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Terbit</h6>
+                                                        <h6 class="mb-0 text-sm">Perangkat VR</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $Terbit->count() }}
+                                                <span class="text-xs font-weight-bold"> {{ $total }}
                                                 </span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-2 py-0">
-                                                    <span class="badge bg-gradient-secondary me-3"> </span>
+                                                    <span class="badge bg-gradient-dark me-3"> </span>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Permohonan</h6>
+                                                        <h6 class="mb-0 text-sm">Studio</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-xs font-weight-bold"> {{ $Permohonan->count() }}
+                                                <span class="text-xs font-weight-bold"> {{ $total }}
                                                 </span>
                                             </td>
                                         </tr>
@@ -106,19 +106,19 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header d-flex pb-0 p-3">
-                        <h6 class="my-auto">Data Terakhir</h6>
+                        <h6 class="my-auto">Data Transaksi</h6>
                         <div class="nav-wrapper position-relative ms-auto w-50">
                             <ul class="nav nav-pills nav-fill p-1" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#cam1"
                                         role="tab" aria-controls="cam1" aria-selected="true">
-                                        Permohonan
+                                        Belum Terbayar
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#cam2" role="tab"
                                         aria-controls="cam2" aria-selected="false">
-                                        Terbit
+                                        Terbayar
                                     </a>
                                 </li>
                             </ul>
@@ -141,7 +141,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($Permohonan1 as $item)
+                                                {{-- @foreach ($Permohonan1 as $item)
                                                     <tr>
                                                         <td class="text-sm font-weight-normal">{{ $loop->iteration }}
                                                         </td>
@@ -155,7 +155,7 @@
                                                             {{ $item->created_at }}
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                @endforeach --}}
                                             </tbody>
                                         </table>
                                     </div>
@@ -176,7 +176,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($Terbit1 as $item)
+                                            {{-- @foreach ($Terbit1 as $item)
                                                 <tr>
                                                     <td class="text-sm font-weight-normal">{{ $loop->iteration }}
                                                     </td>
@@ -190,7 +190,7 @@
                                                         {{ $item->created_at }}
                                                     </td>
                                                 </tr>
-                                            @endforeach
+                                            @endforeach --}}
                                         </tbody>
                                     </table>
                                     {{-- </div> --}}
@@ -309,7 +309,7 @@
                             pointRadius: 2,
                             borderWidth: 2,
                             backgroundColor: ['#FF0080', '#A8B8D8', ],
-                            data: [{{ $Terbit->count() }}, {{ $Permohonan->count() }}, ],
+                            data: [{{ $total }}, {{ $total }}, ],
                             fill: false
                         }],
                     },

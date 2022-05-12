@@ -27,7 +27,14 @@ class DashboardController extends Controller
     public function dashboard()
     {
         if (Auth::user()->role == 'admin') {
-        return view('dashboard');
+            $user = Auth::user()->role == 'user';
+            $studio = SewaRuang::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $perangkat = SewaPerangkat::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $denda = Denda::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $total = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $transaksi = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->count();
+
+        return view('admin.dashboard.index', compact('user', 'studio', 'perangkat', 'denda', 'total', 'transaksi'));
         }
         elseif (Auth::user()->role == 'user'){
             $user = Auth::user();
