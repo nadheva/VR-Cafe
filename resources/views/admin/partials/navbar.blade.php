@@ -1,3 +1,25 @@
+<style>
+    .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+</style>
 <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky"
     id="navbarBlur" data-scroll="true">
     <div class="container-fluid py-1 px-3">
@@ -71,6 +93,8 @@
                 <li class="nav-item px-3 d-flex align-items-center">
                     <a href="{{route('cart.index')}}" class="nav-link text-body p-0">
                         <i class="ni ni-bag-17 fixed-plugin-button-nav cursor-pointer"></i>
+                        <span class='badge badge-warning' id='lblCartCount'> @php $cart = new App\Http\Controllers\CartController;
+                          echo $cart->getCart();@endphp </span>
                     </a>
                 </li>
                 {{-- <li class="nav-item px-3 d-flex align-items-center">
