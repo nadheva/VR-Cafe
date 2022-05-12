@@ -46,7 +46,7 @@
             <div class="col-lg-6 card ms-auto">
                 <div class="card-header pb-0 p-3">
                     <div class="d-flex align-items-center">
-                        <h6 class="mb-0">Laporan Disewa</h6>
+                        <h6 class="mb-0">Sedang Disewa</h6>
                         <button type="button"
                             class="btn btn-icon-only btn-rounded btn-outline-secondary mb-0 ms-2 btn-sm d-flex align-items-center justify-content-center ms-auto"
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="See the consumption per room">
@@ -62,7 +62,7 @@
                             </div>
                             <h4 class="font-weight-bold mt-n8">
                                 <span>{{ $studio->count() + $perangkat->count() }}</span>
-                                <span class="d-block text-body text-sm">Jumlah Data <br> </span>
+                                <span class="d-block text-body text-sm">Jumlah Disewa <br> </span>
                             </h4>
                         </div>
                         <div class="col-7">
