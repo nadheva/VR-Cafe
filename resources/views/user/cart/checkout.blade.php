@@ -39,11 +39,11 @@
                             <div class="row mt-3">
                               <div class="col-12 col-sm-6">
                                 <label>Tanggal Mulai</label>
-                                <input class="form-control datetimepicker" placeholder="Please select date" type="date" onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_mulai" id="date1">
+                                <input class="form-control datetimepicker" placeholder="Please select date" type="date" onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_mulai">
                               </div>
                               <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                 <label>Tanggal Akhir</label>
-                                <input class="form-control datetimepicker" placeholder="Please select date" type="date" onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_berakhir" id="date2">
+                                <input class="form-control datetimepicker" placeholder="Please select date" type="date" onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_berakhir">
                               </div>
                             </div>
                             <div class="row mt-3">
@@ -126,26 +126,6 @@
                     allowInput: true
                 }); // flatpickr
             }
-
-            function getNumberOfDays(tanggal_mulai, tanggal_berakhir) {
-                const date1 = new Date(tanggal_mulai);
-                const date2 = new Date(tanggal_berakhir);
-
-                // One day in milliseconds
-                const oneDay = 1000 * 60 * 60 * 24;
-
-                // Calculating the time difference between two dates
-                const diffInTime = date2.getTime() - date1.getTime();
-
-                // Calculating the no. of days between two dates
-                const diffInDays = Math.round(diffInTime / oneDay);
-
-                return diffInDays;
-            }
-                $('.grand-total').on('change', function(){
-                    var total = "<?php echo $total ?>";
-                    console.log(getNumberOfDays(tanggal_mulai, tanggal_berakhir) * total);
-                });
             </script>
         @endpush
     </x-app-layout>
