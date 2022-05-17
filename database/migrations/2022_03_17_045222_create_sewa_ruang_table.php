@@ -18,8 +18,8 @@ class CreateSewaRuangTable extends Migration
             $table->foreignId('ruang_id')->constrained('ruang')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->text('invoice');
-            $table->date('tanggal_mulai');
-            $table->date('tanggal_berakhir');
+            $table->dateTime('tanggal_mulai');
+            $table->dateTime('tanggal_berakhir');
             $table->text('keperluan');
             $table->enum('proses', ['Ditolak', 'Dalam Proses', 'Disewa', 'Dikembalikan'])->default('Dalam Proses');
             $table->bigInteger('grand_total');

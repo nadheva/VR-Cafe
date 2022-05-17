@@ -31,4 +31,9 @@ class Ruang extends Model
     {
         return $this->belongsTo(Resepsionis::class, 'resepsionis_id', 'id');
     }
+
+    public function sewa_ruang()
+    {
+        return $this->hasMany(SewaRuang::class);
+    }
 }

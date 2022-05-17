@@ -37,16 +37,26 @@
                                 <input class="multisteps-form__input form-control" type="text" value="{{$profil->no_telp}}" disabled/>
                               </div>
                             </div>
+                            {{-- <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                  <label>Tanggal Mulai</label>
+                                  <input class="form-control datetimepicker2" placeholder="Please select date" type="date" onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_mulai" id="date1">
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                  <label>Tanggal Akhir</label>
+                                  <input class="form-control datetimepicker2" placeholder="Please select date" type="date" onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_berakhir" id="date2">
+                                </div>
+                              </div> --}}
                             <div class="row mt-3">
-                              <div class="col-12 col-sm-6">
-                                <label>Tanggal Mulai</label>
-                                <input class="form-control datetimepicker" placeholder="Please select date" type="date"  onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_mulai">
+                                <div class="col-12 col-sm-6">
+                                  <label>Tanggal Mulai</label>
+                                  <input class="form-control" type="datetime-local" name="tanggal_mulai" id="date1">
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                  <label>Tanggal Akhir</label>
+                                  <input class="form-control" type="datetime-local" name="tanggal_berakhir" id="date2">
+                                </div>
                               </div>
-                              <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                <label>Tanggal Akhir</label>
-                                <input class="form-control datetimepicker" placeholder="Please select date" type="date"  onfocus="focused(this)" onfocusout="defocused(this)" name="tanggal_berakhir">
-                              </div>
-                            </div>
                             <div class="row mt-3">
                               <div>
                                 <label>Keperluan</label>

@@ -7,6 +7,7 @@ use App\Models\SewaRuang;
 use App\Models\Ruang;
 use App\Models\Profile;
 use Midtrans\Snap;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -48,6 +49,23 @@ class SewaRuangController extends Controller
     public function store()
     {
         DB::transaction(function($id) {
+
+            //cek ketersediaan
+            $studio = Ruang::find($this->request->ruang_id);
+            $tanggal_mulai = $this->request->tanggal_mulai;
+            $already_booked = false;
+            foreach ($studio->sewa_ruang as $sewa) {
+                $from = Carbon::make($sewa->tanggal_mulai);
+                $to =   Carbon::make($sewa->tanggal_berakhir);
+
+                $already_booked = Carbon::make($tanggal_mulai)->between($from, $to);
+            }
+
+            if ($already_booked)
+                return redirect()->back()->with('warning',
+                    'Maaf ruangan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
+            );
+
             $length = 10;
             $random = '';
             for ($i = 0; $i < $length; $i++) {
@@ -62,11 +80,11 @@ class SewaRuangController extends Controller
                 'ruang_id' => $this->request->ruang_id,
                 'user_id' => $user,
                 'invoice' => $invoice,
-                'tanggal_mulai' => $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $this->request->tanggal_mulai),
-                'tanggal_berakhir' =>  $sampai= \Carbon\Carbon::createFromFormat('Y-m-d', $this->request->tanggal_berakhir),
+                'tanggal_mulai' => $mulai = Carbon::make($this->request->tanggal_mulai),
+                'tanggal_berakhir' =>  $sampai = Carbon::make($this->request->tanggal_berakhir),
                 'keperluan' => $this->request->keperluan,
                 'proses' => 'Disewa',
-                'grand_total' => ($mulai->diffInDays($sampai)) * $ruang->harga
+                'grand_total' => (($mulai->diffInMinutes($sampai))/60) * $ruang->harga
             ]);
 
             $payment =  $sewa_ruang->payment()->create([
@@ -76,10 +94,10 @@ class SewaRuangController extends Controller
                 'user_id' => $sewa_ruang->user_id
             ]);
 
-                $sewa_ruang->studio->where('id', $sewa_ruang->ruang_id)
-                ->update([
-                    'jumlah' => ($sewa_ruang->studio->jumlah - 1)
-                ]);
+                // $sewa_ruang->studio->where('id', $sewa_ruang->ruang_id)
+                // ->update([
+                //     'jumlah' => ($sewa_ruang->studio->jumlah - 1)
+                // ]);
 
             $payload = [
                 'transaction_details' => [
@@ -217,10 +235,10 @@ class SewaRuangController extends Controller
             'proses' => 'Dikembalikan'
         ]);
 
-        $sewa_ruang->studio->where('id', $sewa_ruang->studio->id)
-                        ->update([
-                            'jumlah' => ($sewa_ruang->studio->jumlah + 1),
-                            ]);
+        // $sewa_ruang->studio->where('id', $sewa_ruang->studio->id)
+        //                 ->update([
+        //                     'jumlah' => ($sewa_ruang->studio->jumlah + 1),
+        //                     ]);
         return redirect()->route('pengembalian-studio')
                 ->with('success', 'Studio berhasil dikembalikan!');
     }
