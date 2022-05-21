@@ -182,11 +182,11 @@
                           </a>
                           <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable2" style="">
                             @if(is_null($i->sewa_perangkat_id) && is_null($i->denda_id))
-                            <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-studio.show', $id = $i->sewa_ruang_id)}}">Lihat Selengkapnya</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-studio.show', $i->sewa_ruang_id)}}">Lihat Selengkapnya</a></li>
                             @elseif(is_null($i->sewa_perangkat_id) && is_null($i->sewa_ruang_id))
-                            <li><a class="dropdown-item border-radius-md" href="{{route('user-denda.show', $id = $i->denda_id)}}">Lihat Selengkapnya</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="{{route('user-denda.show', $i->denda_id)}}">Lihat Selengkapnya</a></li>
                             @elseif(is_null($i->sewa_denda_id) && is_null($i->sewa_ruang_id))
-                            <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-perangkat.show', $id = $i->sewa_perangkat_id)}}">Lihat Selengkapnya</a></li>
+                            <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-perangkat.show', $i->sewa_perangkat_id)}}">Lihat Selengkapnya</a></li>
                             @endif
                             </ul>
                         </div>
