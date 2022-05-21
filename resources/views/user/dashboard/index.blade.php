@@ -176,11 +176,11 @@
                     @endif
                       <div class="d-flex align-items-center">
                         <h6 class="mb-0 text-dark font-weight-bold text-sm">{{$i->invoice}}</h6>
-                        <div class="dropstart float-lg-end ms-auto pe-0">
+                        {{-- <div class="dropstart float-lg-end ms-auto pe-0">
                           <a href="javascript:;" class="cursor-pointer" id="dropdownTable2" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-ellipsis-h text-secondary" aria-hidden="true"></i>
                           </a>
-                          {{-- <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable2" style="">
+                          <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable2" style="">
                             @if(is_null($i->sewa_perangkat_id) && is_null($i->denda_id))
                             <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-studio.show', $i->sewa_ruang_id)}}">Lihat Selengkapnya</a></li>
                             @elseif(is_null($i->sewa_perangkat_id) && is_null($i->sewa_ruang_id))
@@ -188,8 +188,8 @@
                             @elseif(is_null($i->sewa_denda_id) && is_null($i->sewa_ruang_id))
                             <li><a class="dropdown-item border-radius-md" href="{{route('user-transaksi-perangkat.show', $i->sewa_perangkat_id)}}">Lihat Selengkapnya</a></li>
                             @endif
-                            </ul> --}}
-                        </div>
+                            </ul>
+                        </div> --}}
                       </div>
                       <div class="d-flex align-items-center ms-4 mt-3 ps-1">
                         <div>
