@@ -156,7 +156,7 @@
                 </div>
                 <hr class="horizontal dark mb-0">
               </div>
-              @if($payment->null())
+              @if($payment->isEmpty())
               <div class="card-body p-3 pt-0">
               <span>Belum ada transaksi</span>
               </div>
