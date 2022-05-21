@@ -4,7 +4,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="mb-4">Detail Produk</h5>
+              <h5 class="mb-4">Detail Studio</h5>
               <div class="row">
                 <div class="col-xl-5 col-lg-6 text-center">
                   <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($ruang->gambar)}}" alt="{{$ruang->nama}}">
@@ -107,6 +107,43 @@
             </div>
           </div>
         </div>
+        {{--Cek ketersediaan--}}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="my-3 mx-2">Cek Ketersediaan</h5>
+                    <form method="post" action="{{ route('cek-studio') }}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-6">
+                              <label>Tanggal Mulai</label>
+                              <input class="form-control" type="datetime-local" name="tanggal_mulai" id="date1">
+                            </div>
+                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                              <label>Tanggal Akhir</label>
+                              <input class="form-control" type="datetime-local" name="tanggal_berakhir" id="date2">
+                            </div>
+                          </div>
+                          <div class="text-end">
+                                  <button type="reset" class="btn bg-gradient-danger"><i class="ni ni-bold-left"></i>&nbsp;&nbsp;Reset</button>
+                            <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-plus"></i>&nbsp;&nbsp;Cek</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+                    {{-- Kalender --}}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card card-calendar">
+                <div class="card-body p-3">
+                    <div class="calendar" data-bs-toggle="calendar" id="calendar"></div>
+                </div>
+                </div>
+            </div>
+        </div>
       <div class="row mt-5">
         <div class="col-12">
             <div class="card">
@@ -173,4 +210,125 @@
   </div>
 </div>
 </div>
+
+@push('scripts')
+<script src="{{asset('tadmin/assets/js/plugins/orbit-controls.js')}}"></script>
+<script>
+  var kalender = {!!json_encode($sewa_ruang) !!};
+  var dates = [];
+  var color = "";
+  kalender.forEach(function(data) {
+    // if (data['tipe'] == "kuis"){
+    //   color = "bg-gradient-info";
+    // }
+    // if (data['tipe'] == "assignment"){
+    //   color = "bg-gradient-primary";
+    // }
+    dates.push({title:data['invoice'],start:data['tanggal_mulai'],end:data['tanggal_mulai'],className:data['color']});
+  });
+
+    var calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
+      contentHeight: 'auto',
+      initialView: "dayGridMonth",
+      headerToolbar: {
+        start: 'title', // will normally be on the left. if RTL, will be on the right
+        center: '',
+        end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+      },
+      selectable: true,
+      editable: false,
+      initialDate: Date.now(),
+
+      events: dates,
+
+      views: {
+        month: {
+          titleFormat: {
+            month: "long",
+            year: "numeric"
+          }
+        },
+        agendaWeek: {
+          titleFormat: {
+            month: "long",
+            year: "numeric",
+            day: "numeric"
+          }
+        },
+        agendaDay: {
+          titleFormat: {
+            month: "short",
+            year: "numeric",
+            day: "numeric"
+          }
+        }
+      },
+    });
+    calendar.render();
+
+  var ctx1 = document.getElementById("chart-line-1").getContext("2d");
+
+  var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+  gradientStroke1.addColorStop(1, 'rgba(255,255,255,0.3)');
+  gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
+  gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
+
+  new Chart(ctx1, {
+    type: "line",
+    data: {
+      labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [{
+        label: "Visitors",
+        tension: 0.5,
+        borderWidth: 0,
+        pointRadius: 0,
+        borderColor: "#fff",
+        borderWidth: 2,
+        backgroundColor: gradientStroke1,
+        data: [50, 45, 60, 60, 80, 65, 90, 80, 100],
+        maxBarThickness: 6,
+        fill: true
+      }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+        }
+      },
+      interaction: {
+        intersect: false,
+        mode: 'index',
+      },
+      scales: {
+        y: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+        x: {
+          grid: {
+            drawBorder: false,
+            display: false,
+            drawOnChartArea: false,
+            drawTicks: false,
+          },
+          ticks: {
+            display: false
+          }
+        },
+      },
+    },
+  });
+</script>
+@endpush
 </x-app-layout>

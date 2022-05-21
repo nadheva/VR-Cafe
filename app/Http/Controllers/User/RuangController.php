@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ruang;
+use App\Models\SewaRuang;
 use Illuminate\Http\Request;
 
 class RuangController extends Controller
@@ -22,6 +23,7 @@ class RuangController extends Controller
         foreach ($ruangdetails as $key => $i){
             $data[] = $i;
          }
-        return view('user.sewa-ruang.show', compact('ruang', 'ruangdetails' ,'ruanglain'));
+         $sewa_ruang = SewaRuang::where('ruang_id', $id)->get();
+        return view('user.sewa-ruang.show', compact('ruang', 'ruangdetails' ,'ruanglain', 'sewa_ruang'));
     }
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DendaPerangkatController;
 use App\Http\Controllers\DendaStudioController;
+use App\Http\Controllers\JadwalController;
 
 //User
 use App\Http\Controllers\User\OrderPerangkatController as UserOrderPerangkatController;
@@ -79,8 +80,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkatController::class, 'update']);
 
     //Sewa Studio
-    Route::resource('sewa-ruang', SewaRuangController::class)->except('update', 'create');
+    Route::resource('sewa-ruang', SewaRuangController::class)->except('update', 'create', 'cek_studio');
     Route::get('sewa-ruang-create/{id}', [SewaRuangController::class, 'create'])->name('sewa-ruang-create');
+    Route::post('cek-studio', [SewaRuangController::class, 'cek_studio'])->name('cek-studio');
     Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
 
     //Testimonial

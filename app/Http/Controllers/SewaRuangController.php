@@ -62,7 +62,7 @@ class SewaRuangController extends Controller
             }
 
             if ($already_booked)
-                return redirect()->back()->with('warning',
+                return redirect()->route('user-ruang.index')->with('warning',
                     'Maaf ruangan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
             );
 
@@ -247,5 +247,28 @@ class SewaRuangController extends Controller
     public function destroy($id)
     {
 
+    }
+
+    public function cek_studio(Request $request)
+    {
+        $studio = Ruang::find($request->ruang_id);
+        $tanggal_mulai = $request->tanggal_mulai;
+        $already_booked = false;
+        foreach ($studio->sewa_ruang as $sewa) {
+            $from = Carbon::make($sewa->tanggal_mulai);
+            $to =   Carbon::make($sewa->tanggal_berakhir);
+
+            $already_booked = Carbon::make($tanggal_mulai)->between($from, $to);
+        }
+
+        if ($already_booked){
+            return redirect()->back()->with('warning',
+                'Maaf ruangan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
+        );}
+        else{
+        return redirect()->back()->with('info',
+        'Ruangan tersedia pada waktu tersebut, silahkan booking!'
+        );
+    }
     }
 }

@@ -9,6 +9,7 @@
 <script src="{{asset('tadmin/assets/js/plugins/quill.min.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/multistep-form.js')}}"></script>
 <script src="{{asset('tadmin/assets/js/plugins/flatpickr.min.js')}}"></script>
+<script src="{{asset('tadmin/assets/js/plugins/fullcalendar.min.js')}}"></script>
 
 <!-- Kanban scripts -->
 <script src="{{asset('tadmin/assets/js/plugins/dragula/dragula.min.js')}}"></script>
