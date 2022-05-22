@@ -19,7 +19,7 @@
                   <!--form panels-->
                   <div class="row">
                     <div class="col-12 col-lg-8 m-auto">
-                      <form class="multisteps-form__form mb-8" action="{{route('sewa-ruang.store')}}" method="POST" enctype="multipart/form-data">
+                      <form class="multisteps-form__form mb-8" action="{{route('sewa-studio.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any()){
                         @php
@@ -39,7 +39,7 @@
                           <h5 class="font-weight-bolder mb-0">Rincian</h5>
                           {{-- <p class="mb-0 text-sm">Mandatory informations</p> --}}
                           <div class="multisteps-form__content">
-                              <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
+                              <input type="hidden" name="studio_id" value="{{$studio->id}}">
                             <div class="row mt-3">
                               <div class="col-12 col-sm-6">
                                 <label>Nama Pemesan</label>
@@ -92,17 +92,17 @@
                                         <tr>
                                             <td>Nama</td>
                                             <td> : </td>
-                                            <td>{{$ruang->nama}}</td>
+                                            <td>{{$studio->nama}}</td>
                                         </tr>
                                         <tr>
                                             <td>Gambar</td>
                                             <td> : </td>
-                                            <td><img src="{{asset($ruang->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
+                                            <td><img src="{{asset($studio->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
                                         </tr>
                                         <tr>
                                             <td>Harga</td>
                                             <td> : </td>
-                                            <td>{{$ruang->harga}}</td>
+                                            <td>{{$studio->harga}}</td>
                                         </tr>
                                       </tbody>
                                     </table>

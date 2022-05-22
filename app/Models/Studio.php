@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ruang extends Model
+class Studio extends Model
 {
     use HasFactory;
-    protected $table = 'ruang';
+    protected $table = 'studio';
     protected $fillable = [
-        'kode_ruang',
+        'kode_studio',
         'banner',
         'nama',
         'slug',
@@ -32,8 +32,8 @@ class Ruang extends Model
         return $this->belongsTo(Resepsionis::class, 'resepsionis_id', 'id');
     }
 
-    public function sewa_ruang()
+    public function sewa_studio()
     {
-        return $this->hasMany(SewaRuang::class);
+        return $this->hasMany(SewaStudio::class);
     }
 }

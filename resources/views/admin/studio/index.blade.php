@@ -4,11 +4,11 @@
         <div class="card-header pb-0 p-3">
           <div class="row">
             <div class="col-6 d-flex align-items-center">
-              <h6 class="mb-0">Data Ruang</h6>
+              <h6 class="mb-0">Data Studio</h6>
             </div>
             @if(Auth::user()->where('role', '=', 'Admin'))
             <div class="col-6 text-end">
-                <a class="btn bg-gradient-dark mb-0" href="" data-bs-toggle="modal" data-bs-target="#tambahRuang"><i class="fas fa-plus"></i>&nbsp;&nbsp;Tambah Ruang</a>
+                <a class="btn bg-gradient-dark mb-0" href="" data-bs-toggle="modal" data-bs-target="#tambahStudio"><i class="fas fa-plus"></i>&nbsp;&nbsp;Tambah Studio</a>
               </div>
             @endif
           </div>
@@ -32,13 +32,13 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($ruang as $item)
+                @foreach ($studio as $item)
                 <tr>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold" >{{ $item->kode_ruang }}</span>
+                    <span class="text-secondary text-xs font-weight-bold" >{{ $item->kode_studio }}</span>
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold" maxlength="10" >{{ $item->nama }}</span>
@@ -61,12 +61,12 @@
                   @if(Auth::user()->where('role', '=', 'Admin'))
                   <td>
                     <div class="align-middle text-center">
-                      <form id="form-delete" action="{{route('ruang.destroy', $item->id)}}" method="POST" style="display: inline">
+                      <form id="form-delete" action="{{route('studio.destroy', $item->id)}}" method="POST" style="display: inline">
                         @csrf
                         @method("DELETE")
                         <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0 show_confirm" data-toggle="tooltip" title='Delete' ><i class="fas fa-trash text-secondary"></i></button>
                       </form>
-                      <a class="btn btn-link text-dark px-3 mb-0" href="" data-bs-toggle="modal" data-bs-target="#editRuang-{{$item->id}}"><i class="fas fa-user-edit text-secondary"></i></a>
+                      <a class="btn btn-link text-dark px-3 mb-0" href="" data-bs-toggle="modal" data-bs-target="#editStudio-{{$item->id}}"><i class="fas fa-user-edit text-secondary"></i></a>
                     </div>
                   </td>
                   @endif
@@ -80,25 +80,25 @@
     </div>
 
     <!-- Modal Tambah Perangkat -->
-    <div class="modal fade" id="tambahRuang" tabindex="-1" role="dialog" aria-labelledby="tambahRuangLabel"
+    <div class="modal fade" id="tambahStudio" tabindex="-1" role="dialog" aria-labelledby="tambahStudioLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="post" action="{{ route('ruang.store') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('studio.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title" id="tambahRuangLabel">Tambah Ruang</h5>
+                        <h5 class="modal-title" id="tambahStudioLabel">Tambah Studio</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                       <div class="modal-body">
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Kode Ruang:</label>
-                            <input type="number" class="form-control" name="kode_ruang" placeholder="4 Digit" required>
+                            <label for="recipient-name" class="col-form-label">Kode Studio:</label>
+                            <input type="number" class="form-control" name="kode_studio" placeholder="4 Digit" required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Nama Ruang:</label>
+                            <label for="recipient-name" class="col-form-label">Nama Studio:</label>
                             <input type="text" class="form-control" name="nama" required>
                         </div>
                         <div class="form-group">
@@ -161,27 +161,27 @@
     </div>
 
     <!-- Modal Edit Perangkat -->
-    @foreach($ruang as $i)
-    <div class="modal fade" id="editRuang-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="editRuangLabel"
+    @foreach($studio as $i)
+    <div class="modal fade" id="editStudio-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="editStudioLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="post" action="{{ url('ruang-update', $i->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url('studio-update', $i->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
-                        <h5 class="modal-title" id="tambahRuangLabel">Edit Ruang</h5>
+                        <h5 class="modal-title" id="tambahStudioLabel">Edit Studio</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                          <label for="recipient-name" class="col-form-label">Kode Ruang:</label>
-                          <input type="number" class="form-control" name="kode_ruang" value="{{$i->kode_ruang}}" placeholder="4 Digit" required>
+                          <label for="recipient-name" class="col-form-label">Kode Studio:</label>
+                          <input type="number" class="form-control" name="kode_studio" value="{{$i->kode_studio}}" placeholder="4 Digit" required>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Nama Ruang:</label>
+                            <label for="recipient-name" class="col-form-label">Nama Studio:</label>
                             <input type="text" class="form-control" name="nama" value="{{$i->nama}}" required>
                         </div>
                         <div class="form-group">

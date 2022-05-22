@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ruang;
+use App\Models\Studio;
 use Illuminate\Http\Request;
 
 class StudioController extends Controller
@@ -15,8 +15,8 @@ class StudioController extends Controller
      */
     public function index()
     {
-        $ruang = Ruang::latest()->paginate(6)->get();
-        return view('guest.ruang.ruang', compact('ruang'));
+        $studio = Studio::latest()->paginate(6)->get();
+        return view('guest.studio.studio', compact('studio'));
     }
 
     /**
@@ -48,8 +48,8 @@ class StudioController extends Controller
      */
     public function show($id)
     {
-        $ruang = Ruang::findOrfail($id);
-        return view('guest.ruang.detail-ruang', compact('ruang'));
+        $studio = Studio::findOrfail($id);
+        return view('guest.studio.detail-studio', compact('studio'));
     }
 
     /**

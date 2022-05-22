@@ -158,11 +158,11 @@
                                                         <td  class="text-xs font-weight-bold">
                                                           <span class="badge badge-dark badge-sm">Studio</span>
                                                         </td>
-                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->denda_id))
+                                                        @elseif(is_null($i->sewa_studio_id) && is_null($i->denda_id))
                                                         <td  class="text-xs font-weight-bold">
                                                           <span class="badge badge-primary badge-sm">Perangkat VR</span>
                                                         </td>
-                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->sewa_perangkat_id))
+                                                        @elseif(is_null($i->sewa_studio_id) && is_null($i->sewa_perangkat_id))
                                                         <td  class="text-xs font-weight-bold">
                                                           <span class="badge badge-danger badge-sm">Denda</span>
                                                         </td>
@@ -203,11 +203,11 @@
                                                         <td  class="text-xs font-weight-bold">
                                                           <span class="badge badge-dark badge-sm">Studio</span>
                                                         </td>
-                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->denda_id))
+                                                        @elseif(is_null($i->sewa_studio_id) && is_null($i->denda_id))
                                                         <td  class="text-xs font-weight-bold">
                                                           <span class="badge badge-primary badge-sm">Perangkat VR</span>
                                                         </td>
-                                                        @elseif(is_null($i->sewa_ruang_id) && is_null($i->sewa_perangkat_id))
+                                                        @elseif(is_null($i->sewa_studio_id) && is_null($i->sewa_perangkat_id))
                                                         <td  class="text-xs font-weight-bold">
                                                           <span class="badge badge-danger badge-sm">Denda</span>
                                                         </td>

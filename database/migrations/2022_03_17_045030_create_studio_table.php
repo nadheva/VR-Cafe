@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use phpDocumentor\Reflection\Types\Nullable;
 
-class CreateRuangTable extends Migration
+class CreateStudioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateRuangTable extends Migration
      */
     public function up()
     {
-        Schema::create('ruang', function (Blueprint $table) {
+        Schema::create('studio', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('kode_ruang');
+            $table->bigInteger('kode_studio');
             $table->string('nama');
             $table->string('slug');
             $table->string('gambar');
@@ -41,6 +41,6 @@ class CreateRuangTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ruang');
+        Schema::dropIfExists('studio');
     }
 }

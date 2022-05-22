@@ -11,7 +11,7 @@ class Wishlist extends Model
     protected $table = 'wishlist';
     protected $fillable = [
         'user_id',
-        'ruang_id',
+        'studio_id',
         'perangkat_id'
     ];
 }

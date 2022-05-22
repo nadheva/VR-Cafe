@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resepsionis;
-use App\Models\Ruang;
+use App\Models\Studio;
 use App\Models\Perangkat;
 use App\Models\Testimonial;
 use App\Models\Artikel;
@@ -18,11 +18,11 @@ class BerandaController extends Controller
     public function index()
     {
         $resepsionis = Resepsionis::latest()->take(3)->get();
-        $ruang = Ruang::latest()->take(5)->get();
+        $studio = Studio::latest()->take(5)->get();
         $perangkat = Perangkat::latest()->take(5)->get();
         $testimonial = Testimonial::latest()->take(5)->get();
         $artikel = Artikel::latest()->take(5)->get();
-        return view('guest.index', compact('resepsionis', 'ruang', 'perangkat', 'testimonial', 'artikel'));
+        return view('guest.index', compact('resepsionis', 'studio', 'perangkat', 'testimonial', 'artikel'));
     }
 
     public function about()
@@ -42,16 +42,16 @@ class BerandaController extends Controller
         return view('guest.perangkat.detail-perangkat', compact('perangkat'));
     }
 
-    public function ruang()
+    public function studio()
     {
-        $ruang = Ruang::all();
-        return view('guest.ruang.ruang', compact('ruang'));
+        $studio = Studio::all();
+        return view('guest.studio.studio', compact('studio'));
     }
 
-    public function detail_ruang($id)
+    public function detail_studio($id)
     {
-        $ruang = Ruang::where('id', $id)->first();
-        return view('guest.ruang.ruang-detail', compact('ruang'));
+        $studio = Studio::where('id', $id)->first();
+        return view('guest.studio.studio-detail', compact('studio'));
     }
 
     public function contact()

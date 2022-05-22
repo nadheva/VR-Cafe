@@ -96,7 +96,7 @@
                       <td  class="text-xs font-weight-bold">
                         <span class="badge badge-dark badge-sm">Studio</span>
                       </td>
-                      @elseif(is_null($i->sewa_ruang_id))
+                      @elseif(is_null($i->sewa_studio_id))
                       <td  class="text-xs font-weight-bold">
                         <span class="badge badge-primary badge-sm">Perangkat VR</span>
                       </td>

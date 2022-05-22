@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Payment;
 use Illuminate\Support\Carbon;
 use App\Models\SewaPerangkat;
-use App\Models\SewaRuang;
+use App\Models\SewaStudio;
 use App\Models\Denda;
 use Illuminate\Validation\Rules\Exists;
 
@@ -28,7 +28,7 @@ class DashboardController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             $user = Auth::user()->role == 'user';
-            $studio = SewaRuang::where('proses', '=', 'Disewa');
+            $studio = SewaStudio::where('proses', '=', 'Disewa');
             $perangkat = SewaPerangkat::where('proses', '=', 'Disewa');
             $denda = Denda::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month);
             $total = Payment::whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
@@ -42,7 +42,7 @@ class DashboardController extends Controller
         elseif (Auth::user()->role == 'user'){
             $user = Auth::user();
             $now = Carbon::now();
-            $studio = SewaRuang::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
+            $studio = SewaStudio::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $perangkat = SewaPerangkat::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $denda = Denda::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $total = Payment::where('user_id', Auth::user()->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');

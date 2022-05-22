@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SewaRuang extends Model
+class SewaStudio extends Model
 {
     use HasFactory;
-    protected $table = 'sewa_ruang';
+    protected $table = 'sewa_studio';
     protected $fillable = [
-        'ruang_id',
+        'studio_id',
         'user_id',
         'invoice',
         'tanggal_mulai',
@@ -22,7 +22,7 @@ class SewaRuang extends Model
 
     public function studio()
     {
-        return $this->belongsTo(Ruang::class, 'ruang_id', 'id');
+        return $this->belongsTo(Studio::class, 'studio_id', 'id');
     }
 
     public function denda()

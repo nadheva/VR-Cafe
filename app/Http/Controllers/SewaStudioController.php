@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SewaRuang;
-use App\Models\Ruang;
+use App\Models\SewaStudio;
+use App\Models\Studio;
 use App\Models\Profile;
 use Midtrans\Snap;
 use Illuminate\Support\Carbon;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Validator;
 
-class SewaRuangController extends Controller
+class SewaStudioController extends Controller
 {
     public function __construct(Request $request)
     {
@@ -42,8 +42,8 @@ class SewaRuangController extends Controller
             return redirect()->route('profil.create')
             ->with('danger', 'Anda belum menambahkan data profil!');
         } else {
-        $ruang = Ruang::where('id', $id)->first();
-        return view('user.sewa-ruang.checkout', compact('ruang', 'profil'));
+        $studio = Studio::where('id', $id)->first();
+        return view('user.sewa-studio.checkout', compact('studio', 'profil'));
         }
     }
 
@@ -52,7 +52,7 @@ class SewaRuangController extends Controller
         DB::transaction(function($id) {
 
             //cek ketersediaan
-            $studio = Ruang::find($this->request->ruang_id);
+            $studio = Studio::find($this->request->studio_id);
             $this->request->validate([
                 'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                 'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai'
@@ -69,7 +69,7 @@ class SewaRuangController extends Controller
             );
             $tanggal_mulai = $this->request->tanggal_mulai;
             $already_booked = false;
-            foreach ($studio->sewa_ruang as $sewa) {
+            foreach ($studio->sewa_studio as $sewa) {
                 $from = Carbon::make($sewa->tanggal_mulai);
                 $to =   Carbon::make($sewa->tanggal_berakhir);
 
@@ -77,8 +77,8 @@ class SewaRuangController extends Controller
             }
 
             if ($already_booked)
-                return redirect()->route('user-ruang.index')->with('warning',
-                    'Maaf ruangan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
+                return redirect()->route('user-studio.index')->with('warning',
+                    'Maaf studioan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
             );
 
             $length = 10;
@@ -89,35 +89,35 @@ class SewaRuangController extends Controller
 
             $invoice =  'INV-'.Str::upper($random);
             $user = Auth::user()->id;
-            $ruang = Ruang::where('id', $this->request->ruang_id)->first();
+            $studio = Studio::where('id', $this->request->studio_id)->first();
 
-            $sewa_ruang = SewaRuang::create([
-                'ruang_id' => $this->request->ruang_id,
+            $sewa_studio = SewaStudio::create([
+                'studio_id' => $this->request->studio_id,
                 'user_id' => $user,
                 'invoice' => $invoice,
                 'tanggal_mulai' => $mulai = Carbon::make($this->request->tanggal_mulai),
                 'tanggal_berakhir' =>  $sampai = Carbon::make($this->request->tanggal_berakhir),
                 'keperluan' => $this->request->keperluan,
                 'proses' => 'Disewa',
-                'grand_total' => (($mulai->diffInMinutes($sampai))/60) * $ruang->harga
+                'grand_total' => (($mulai->diffInMinutes($sampai))/60) * $studio->harga
             ]);
 
-            $payment =  $sewa_ruang->payment()->create([
-                'invoice' => $sewa_ruang->invoice,
+            $payment =  $sewa_studio->payment()->create([
+                'invoice' => $sewa_studio->invoice,
                 'status' => 'pending',
-                'grand_total' => $sewa_ruang->grand_total,
-                'user_id' => $sewa_ruang->user_id
+                'grand_total' => $sewa_studio->grand_total,
+                'user_id' => $sewa_studio->user_id
             ]);
 
-                // $sewa_ruang->studio->where('id', $sewa_ruang->ruang_id)
+                // $sewa_studio->studio->where('id', $sewa_studio->studio_id)
                 // ->update([
-                //     'jumlah' => ($sewa_ruang->studio->jumlah - 1)
+                //     'jumlah' => ($sewa_studio->studio->jumlah - 1)
                 // ]);
 
             $payload = [
                 'transaction_details' => [
-                    'order_id' => $sewa_ruang->invoice,
-                    'gross_amount' => $sewa_ruang->grand_total,
+                    'order_id' => $sewa_studio->invoice,
+                    'gross_amount' => $sewa_studio->grand_total,
                 ],
                 'customer_details' => [
                     'first_name' => Auth::user()->name,
@@ -153,7 +153,7 @@ class SewaRuangController extends Controller
         $fraud        = $notification->fraud_status;
 
         //data tranaction
-        $data_transaction = SewaRuang::where('invoice', $orderId)->first();
+        $data_transaction = SewaStudio::where('invoice', $orderId)->first();
 
         if ($transaction == 'capture') {
 
@@ -245,14 +245,14 @@ class SewaRuangController extends Controller
 
     public function update(Request $request, $id)
     {
-        $sewa_ruang = SewaRuang::findOrFail($id);
-        $sewa_ruang->update([
+        $sewa_studio = SewaStudio::findOrFail($id);
+        $sewa_studio->update([
             'proses' => 'Dikembalikan'
         ]);
 
-        // $sewa_ruang->studio->where('id', $sewa_ruang->studio->id)
+        // $sewa_studio->studio->where('id', $sewa_studio->studio->id)
         //                 ->update([
-        //                     'jumlah' => ($sewa_ruang->studio->jumlah + 1),
+        //                     'jumlah' => ($sewa_studio->studio->jumlah + 1),
         //                     ]);
         return redirect()->route('pengembalian-studio')
                 ->with('success', 'Studio berhasil dikembalikan!');
@@ -266,7 +266,7 @@ class SewaRuangController extends Controller
 
     public function cek_studio(Request $request)
     {
-        $studio = Ruang::find($request->ruang_id);
+        $studio = Studio::find($request->studio_id);
         $request->validate([
                         'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
@@ -284,7 +284,7 @@ class SewaRuangController extends Controller
             );
         $tanggal_mulai = $request->tanggal_mulai;
         $already_booked = false;
-        foreach ($studio->sewa_ruang as $sewa) {
+        foreach ($studio->sewa_studio as $sewa) {
             $from = Carbon::make($sewa->tanggal_mulai);
             $to =   Carbon::make($sewa->tanggal_berakhir);
 
@@ -293,11 +293,11 @@ class SewaRuangController extends Controller
 
         if ($already_booked){
             return redirect()->back()->with('warning',
-                'Maaf ruangan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
+                'Maaf studioan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
         );}
         else{
         return redirect()->back()->with('info',
-        'Ruangan tersedia pada waktu tersebut, silahkan booking!'
+        'studioan tersedia pada waktu tersebut, silahkan booking!'
         );
     }
     }

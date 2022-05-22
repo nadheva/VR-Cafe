@@ -76,8 +76,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::is('ruang.*') ? 'active' : '' }}"
-                        href="{{ route('ruang.index') }}">
+                    <a class="nav-link {{ Route::is('studio.*') ? 'active' : '' }}"
+                        href="{{ route('studio.index') }}">
                         <div
                             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -306,8 +306,8 @@
                         </li>
                     </ul>
                     <ul class="nav ms-4 ps-3">
-                        <li class="nav-item {{Route::is('sewa-ruang.*') ? 'active' : ''}}">
-                        <a class="nav-link {{Route::is('sewa-ruang.*') ? 'active' : ''}}" href="{{route('user-ruang.index')}}">
+                        <li class="nav-item {{Route::is('sewa-studio.*') ? 'active' : ''}}">
+                        <a class="nav-link {{Route::is('sewa-studio.*') ? 'active' : ''}}" href="{{route('user-studio.index')}}">
                             <span class="sidenav-mini-icon"> K </span>
                             <span class="sidenav-normal"> Studio </span>
                         </a>

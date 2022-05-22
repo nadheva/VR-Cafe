@@ -14,7 +14,7 @@ class Payment extends Model
         'status',
         'snap_token',
         'grand_total',
-        'sewa_ruang_id',
+        'sewa_studio_id',
         'sewa_perangkat_id',
         'denda_id',
         'user_id'
@@ -24,9 +24,9 @@ class Payment extends Model
     {
         return $this->belongsTo(SewaPerangkat::class, 'sewa_perangkat_id', 'id');
     }
-    public function sewa_ruang()
+    public function sewa_studio()
     {
-        return $this->belongsTo(SewaRuang::class, 'sewa_ruang_id', 'id');
+        return $this->belongsTo(SewaStudio::class, 'sewa_studio_id', 'id');
     }
     public function denda()
     {

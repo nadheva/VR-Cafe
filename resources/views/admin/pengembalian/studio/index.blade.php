@@ -44,7 +44,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($sewa_ruang as $i)
+                      @foreach($sewa_studio as $i)
                     <tr>
                     <td>
                         <div class="d-flex align-items-center">
@@ -84,12 +84,12 @@
       </div>
 
     <!-- Modal Edit Perangkat -->
-    @foreach($sewa_ruang as $i)
+    @foreach($sewa_studio as $i)
     <div class="modal fade" id="editStudio-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="editStudioLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form method="post" action="{{ url('sewa-ruang-update', $i->id) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url('sewa-studio-update', $i->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">

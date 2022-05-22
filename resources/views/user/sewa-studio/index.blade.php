@@ -44,7 +44,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($ruang as $i)
+                    @foreach($studio as $i)
                       <tr>
                         <td class="text-sm">{{$loop->iteration}}</td>
                         <td>
@@ -53,7 +53,7 @@
                             <h6 class="ms-3 my-auto">{{$i->nama}}</h6>
                           </div>
                         </td>
-                        <td class="text-sm">{{$i->kode_ruang}}</td>
+                        <td class="text-sm">{{$i->kode_studio}}</td>
                         <td class="text-sm">Rp. @money($i->harga) </td>
                         <td class="text-sm">{{$i->jumlah}}</td>
                         @if($i->jumlah == 0)
@@ -66,7 +66,7 @@
                         </td>
                         @endif
                         <td class="text-sm">
-                          <a href="{{route('user-ruang.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                          <a href="{{route('user-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                             <i class="fas fa-eye text-secondary"></i>
                           </a>
                         </td>

@@ -1,5 +1,5 @@
 <x-app-layout>
-    @if(is_null($denda->sewa_ruang_id))
+    @if(is_null($denda->sewa_studio_id))
     <div class="container-fluid py-4">
           <div class="col-lg-8 mt-lg-0 mt-4" style="align-items: center">
             <div class="card">
@@ -132,17 +132,17 @@
                       <tr>
                         <td>Nama Lengkap </td>
                         <td>:</td>
-                        <td>{{$denda->sewa_ruang->user->profile->nama_depan. " ".$denda->sewa_ruang->user->profile->nama_belakang}}</td>
+                        <td>{{$denda->sewa_studio->user->profile->nama_depan. " ".$denda->sewa_studio->user->profile->nama_belakang}}</td>
                       </tr>
                       <tr>
                         <td>No. Telp </td>
                         <td>:</td>
-                        <td>{{$denda->sewa_ruang->user->profile->no_telp}}</td>
+                        <td>{{$denda->sewa_studio->user->profile->no_telp}}</td>
                       </tr>
                       <tr>
                           <td>Alamat </td>
                           <td>:</td>
-                          <td>{{$denda->sewa_ruang->user->profile->alamat}}</td>
+                          <td>{{$denda->sewa_studio->user->profile->alamat}}</td>
                       </tr>
                       <tr>
                           <td>Total Bayar </td>
@@ -196,17 +196,17 @@
                               <tr>
                                   <td>Nama</td>
                                   <td> : </td>
-                                  <td>{{$denda->sewa_ruang->studio->nama}}</td>
+                                  <td>{{$denda->sewa_studio->studio->nama}}</td>
                               </tr>
                               <tr>
                                   <td>Gambar</td>
                                   <td> : </td>
-                                  <td><img src="{{asset($denda->sewa_ruang->studio->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
+                                  <td><img src="{{asset($denda->sewa_studio->studio->gambar)}}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></td>
                               </tr>
                               <tr>
                                   <td>Harga</td>
                                   <td> : </td>
-                                  <td>{{$denda->sewa_ruang->studio->harga}}</td>
+                                  <td>{{$denda->sewa_studio->studio->harga}}</td>
                               </tr>
                             </tbody>
                           </table>

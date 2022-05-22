@@ -46,7 +46,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                      @foreach($sewa_ruang as $i)
+                      @foreach($sewa_studio as $i)
                     <tr>
                     <td>
                         <div class="d-flex align-items-center">

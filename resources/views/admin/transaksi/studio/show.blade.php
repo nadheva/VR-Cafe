@@ -110,7 +110,7 @@
             <div class="modal-content">
                 <form method="post" action="{{ route('denda-studio.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="sewa_ruang_id" value="{{$sewa_studio->id}}">
+                    <input type="hidden" name="sewa_studio_id" value="{{$sewa_studio->id}}">
                     <input type="hidden" name="user_id" value="{{$sewa_studio->user->id}}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="tambahPerangkatLabel">Denda</h5>

@@ -10,9 +10,9 @@ use App\Http\Controllers\OrderStudioController;
 use App\Http\Controllers\PerangkatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResepsionisController;
-use App\Http\Controllers\RuangController;
+use App\Http\Controllers\StudioController;
 use App\Http\Controllers\SewaPerangkatController;
-use App\Http\Controllers\SewaRuangController;
+use App\Http\Controllers\SewaStudioController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
@@ -25,7 +25,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\User\OrderPerangkatController as UserOrderPerangkatController;
 use App\Http\Controllers\User\OrderStudioController as UserOrderStudioController;
 use App\Http\Controllers\User\PerangkatController as UserPerangkat;
-use App\Http\Controllers\User\RuangController as UserRuang;
+use App\Http\Controllers\User\StudioController as UserStudio;
 use App\Http\Controllers\User\DendaController as UserDenda;
 
 //Guest
@@ -71,8 +71,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('resepsionis-update/{id}', [ResepsionisController::class, 'update']);
 
     //Studio
-    Route::resource('ruang', RuangController::class)->except('update');
-    Route::put('ruang-update/{id}', [RuangController::class, 'update']);
+    Route::resource('studio', StudioController::class)->except('update');
+    Route::put('studio-update/{id}', [StudioController::class, 'update']);
 
     //Sewa Perangkat
     Route::resource('sewa-perangkat', SewaPerangkatController::class)->except('update', 'notificationHandler');
@@ -80,10 +80,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkatController::class, 'update']);
 
     //Sewa Studio
-    Route::resource('sewa-ruang', SewaRuangController::class)->except('update', 'create', 'cek_studio');
-    Route::get('sewa-ruang-create/{id}', [SewaRuangController::class, 'create'])->name('sewa-ruang-create');
-    Route::post('cek-studio', [SewaRuangController::class, 'cek_studio'])->name('cek-studio');
-    Route::put('sewa-ruang-update/{id}', [SewaRuangController::class, 'update']);
+    Route::resource('sewa-studio', SewaStudioController::class)->except('update', 'create', 'cek_studio');
+    Route::get('sewa-studio-create/{id}', [SewaStudioController::class, 'create'])->name('sewa-studio-create');
+    Route::post('cek-studio', [SewaStudioController::class, 'cek_studio'])->name('cek-studio');
+    Route::put('sewa-studio-update/{id}', [SewaStudioController::class, 'update']);
 
     //Testimonial
     Route::resource('testimonial', TestimonialController::class);
@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Laporan
     Route::resource('laporan', LaporanController::class);
     Route::resource('user-perangkat', UserPerangkat::class);
-    Route::resource('user-ruang', UserRuang::class);
+    Route::resource('user-studio', UserStudio::class);
 
 
     //Cart
@@ -139,8 +139,8 @@ Route::get('/guest-about', [BerandaController::class, 'about']);
 Route::get('/guest-contact', [BerandaController::class, 'contact']);
 Route::get('/guest-perangkat', [BerandaController::class, 'perangkat']);
 Route::get('/guest-perangkat-detail/{id}', [BerandaController::class, 'detail_perangkat']);
-Route::get('/guest-ruang', [BerandaController::class, 'ruang']);
-Route::get('/guest-ruang-detail/{id}', [BerandaController::class, 'detail_ruang']);
+Route::get('/guest-studio', [BerandaController::class, 'studio']);
+Route::get('/guest-studio-detail/{id}', [BerandaController::class, 'detail_studio']);
 Route::get('/guest-contact', [BerandaController::class, 'contact']);
 Route::get('/guest-resepsionis', [BerandaController::class, 'resepsionis']);
 Route::get('/guest-resepsionis-detail', [BerandaController::class, 'resepsionis_detail']);

@@ -15,7 +15,7 @@ class CreateDendaTable extends Migration
     {
         Schema::create('denda', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sewa_ruang_id')->nullable()->constrained('sewa_ruang')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('sewa_studio_id')->nullable()->constrained('sewa_studio')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('sewa_perangkat_id')->nullable()->constrained('sewa_perangkat')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('invoice')->nullable();

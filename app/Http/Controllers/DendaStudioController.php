@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Denda;
-use App\Models\SewaRuang;
-use App\Models\Ruang;
+use App\Models\SewaStudio;
+use App\Models\Studio;
 use App\Models\Payment;
 use Midtrans\Snap;
 use Illuminate\Support\Str;
@@ -36,7 +36,7 @@ class DendaStudioController extends Controller
             }
         $invoice =  'INV-'.Str::upper($random);
         $denda = Denda::create([
-            'sewa_ruang_id' => $this->request->sewa_ruang_id,
+            'sewa_studio_id' => $this->request->sewa_studio_id,
             'user_id' => $this->request->user_id,
             'invoice' => $invoice,
             'grand_total' => $this->request->grand_total

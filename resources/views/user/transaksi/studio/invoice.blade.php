@@ -17,10 +17,10 @@
                     <p class="d-block text-secondary">tel: +6295735691018</p>
                   </div>
                   <div class="col-lg-3 col-md-7 text-md-end text-start mt-5">
-                    <h6 class="d-block mt-2 mb-0">Ditagih ke: {{$sewa_ruang->user->profile->nama_depan. " ".$sewa_ruang->user->profile->nama_belakang}}</h6>
-                    <p class="text-secondary">{{$sewa_ruang->user->profile->alamat}}<br>
-                        {{$sewa_ruang->user->profile->kota}}<br>
-                        {{$sewa_ruang->user->profile->provinsi.", ".$sewa_ruang->user->profile->kode_pos}}
+                    <h6 class="d-block mt-2 mb-0">Ditagih ke: {{$sewa_studio->user->profile->nama_depan. " ".$sewa_studio->user->profile->nama_belakang}}</h6>
+                    <p class="text-secondary">{{$sewa_studio->user->profile->alamat}}<br>
+                        {{$sewa_studio->user->profile->kota}}<br>
+                        {{$sewa_studio->user->profile->provinsi.", ".$sewa_studio->user->profile->kode_pos}}
                     </p>
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                       Invoice:
                     </h6>
                     <h5 class="text-start mb-0">
-                      {{$sewa_ruang->invoice}}
+                      {{$sewa_studio->invoice}}
                     </h5>
                   </div>
                   <div class="col-lg-5 col-md-7 mt-auto">
@@ -40,7 +40,7 @@
                         <h6 class="text-secondary mb-0">Tanggal Invoice:</h6>
                       </div>
                       <div class="col-md-6">
-                        <h6 class="text-dark mb-0">{{$sewa_ruang->created_at->format('d.m.Y')}}</h6>
+                        <h6 class="text-dark mb-0">{{$sewa_studio->created_at->format('d.m.Y')}}</h6>
                       </div>
                     </div>
                     {{-- <div class="row text-md-end text-start">
@@ -69,10 +69,10 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td class="text-start">{{$sewa_ruang->studio->nama}}</td>
-                            <td class="ps-4">Rp. @money($sewa_ruang->studio->harga)</td>
+                            <td class="text-start">{{$sewa_studio->studio->nama}}</td>
+                            <td class="ps-4">Rp. @money($sewa_studio->studio->harga)</td>
                             <td class="ps-4" colspan="2">{{$hari}} Hari</td>
-                            {{-- <td class="ps-4">Rp. @money($sewa_ruang->grand_total)</td> --}}
+                            {{-- <td class="ps-4">Rp. @money($sewa_studio->grand_total)</td> --}}
                           </tr>
                         </tbody>
                         <tfoot>
@@ -80,7 +80,7 @@
                             <th></th>
                             <th></th>
                             <th class="h5 ps-4" colspan="2">Grand Total</th>
-                            <th colspan="1" class="text-right h5 ps-4">{{$sewa_ruang->grand_total}}</th>
+                            <th colspan="1" class="text-right h5 ps-4">{{$sewa_studio->grand_total}}</th>
                           </tr>
                         </tfoot>
                       </table>

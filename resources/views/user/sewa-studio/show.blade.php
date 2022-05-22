@@ -7,9 +7,9 @@
               <h5 class="mb-4">Detail Studio</h5>
               <div class="row">
                 <div class="col-xl-5 col-lg-6 text-center">
-                  <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($ruang->gambar)}}" alt="{{$ruang->nama}}">
+                  <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($studio->gambar)}}" alt="{{$studio->nama}}">
                   <div class="my-gallery d-flex mt-4 pt-2" itemscope itemtype="http://schema.org/ImageGallery">
-                    @foreach($ruangdetails as $key => $i)
+                    @foreach($studiodetails as $key => $i)
                     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
                       <a href="{{asset($i)}}" itemprop="contentUrl" data-size="500x600">
                         <img class="w-75 min-height-100 max-height-100 border-radius-lg shadow" src="{{asset($i)}}" itemprop="thumbnail" alt="Image description" />
@@ -72,7 +72,7 @@
                   </div>
                 </div>
                 <div class="col-lg-5 mx-auto">
-                  <h3 class="mt-lg-0 mt-4">{{$ruang->nama}}</h3>
+                  <h3 class="mt-lg-0 mt-4">{{$studio->nama}}</h3>
                   <div class="rating">
                     <i class="fas fa-star" aria-hidden="true"></i>
                     <i class="fas fa-star" aria-hidden="true"></i>
@@ -82,8 +82,8 @@
                   </div>
                   <br>
                   <h6 class="mb-0 mt-3">Harga</h6>
-                  <h5>Rp.@money($ruang->harga)</h5>
-                  @if($ruang->jumlah == 0)
+                  <h5>Rp.@money($studio->harga)</h5>
+                  @if($studio->jumlah == 0)
                   <span class="badge badge-danger">Habis</span>
                   @else
                   <span class="badge badge-success">Tersedia</span>
@@ -91,14 +91,14 @@
                   <br>
                   <label class="mt-4">Deskripsi</label>
                   <ul>
-                        {!!$ruang->deskripsi!!}
+                        {!!$studio->deskripsi!!}
                   </ul>
                   <div class="row mt-4">
                     <div class="col-lg-5">
-                      @if($ruang->jumlah == 0)
-                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-ruang-create', $ruang->id)}}" type="button" name="button" disabled>Sewa Sekarang</a>
+                      @if($studio->jumlah == 0)
+                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-studio-create', $studio->id)}}" type="button" name="button" disabled>Sewa Sekarang</a>
                       @else
-                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-ruang-create', $ruang->id)}}" type="button" name="button">Sewa Sekarang</a>
+                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-studio-create', $studio->id)}}" type="button" name="button">Sewa Sekarang</a>
                       @endif
                     </div>
                   </div>
@@ -124,7 +124,7 @@
                             </ul>
                         </div>
                         @endif
-                        <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
+                        <input type="hidden" name="studio_id" value="{{$studio->id}}">
                         <div class="row mt-3">
                             <div class="col-12 col-sm-6">
                               <label>Tanggal Mulai</label>
@@ -171,7 +171,7 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($ruanglain as $i)
+                @foreach($studiolain as $i)
                 <tr>
                   <td>
                     <div class="d-flex px-2 py-1">
@@ -184,7 +184,7 @@
                     </div>
                   </td>
                   <td>
-                    <p class="text-sm text-secondary mb-0">{{$i->kode_ruang}}</p>
+                    <p class="text-sm text-secondary mb-0">{{$i->kode_studio}}</p>
                   </td>
                   <td>
                     <p class="text-sm text-secondary mb-0">Rp. @money($i->harga) </p>
@@ -202,7 +202,7 @@
                   </td>
                   @endif
                   <td class="text-sm align-middle text-center">
-                    <a href="{{route('user-ruang.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                    <a href="{{route('user-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                       <i class="fas fa-eye text-secondary"></i>
                     </a>
                   </td>
@@ -223,7 +223,7 @@
 @push('scripts')
 <script src="{{asset('tadmin/assets/js/plugins/orbit-controls.js')}}"></script>
 <script>
-  var kalender = {!!json_encode($sewa_ruang) !!};
+  var kalender = {!!json_encode($sewa_studio) !!};
   var dates = [];
   var color = "";
   kalender.forEach(function(data) {

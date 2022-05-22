@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSewaRuangTable extends Migration
+class CreateSewaStudioTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSewaRuangTable extends Migration
      */
     public function up()
     {
-        Schema::create('sewa_ruang', function (Blueprint $table) {
+        Schema::create('sewa_studio', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('ruang_id')->constrained('ruang')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('studio_id')->constrained('studio')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->text('invoice');
             $table->dateTime('tanggal_mulai');
@@ -34,6 +34,6 @@ class CreateSewaRuangTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sewa_ruang');
+        Schema::dropIfExists('sewa_studio');
     }
 }

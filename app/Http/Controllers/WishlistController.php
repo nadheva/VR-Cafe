@@ -21,9 +21,9 @@ class WishlistController extends Controller
 
         Wishlist::create([
             'user_id' => $request->user_id,
-            'ruang_id' => $request->ruang_id,
+            'studio_id' => $request->studio_id,
             'perangkat_id' => $request->perangkat_id
-        ]); 
+        ]);
 
         return redirect()->route('wishlist.index')
         ->with('success', 'Wishlist Berhasil Ditambahkan!');
@@ -33,7 +33,7 @@ class WishlistController extends Controller
     {
         $wishlist = Wishlist::findOrfail($id);
         $wishlist->user_id = $request->testimonial;
-        $wishlist->ruang_id = $request->ruanng_id;
+        $wishlist->studio_id = $request->studio_id;
         $wishlist->perangkat_id = $request->perangkat_id;
         $wishlist->save();
 

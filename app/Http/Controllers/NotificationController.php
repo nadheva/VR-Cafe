@@ -37,7 +37,7 @@ class NotificationController extends Controller
 
         //data tranaction
         $data_transaction = Payment::where('invoice', $orderId)->first();
-        // $data_transaction1 = SewaRuang::where('invoice', $orderId)->first();
+        // $data_transaction1 = SewaStudio::where('invoice', $orderId)->first();
         // $data_transaction2 = Denda::where('invoice', $orderId)->first();
 
         if ($transaction == 'capture') {

@@ -99,7 +99,7 @@
   <div class="intro intro-carousel swiper position-relative">
 
     <div class="swiper-wrapper">
-    @foreach($ruang as $i)
+    @foreach($studio as $i)
       <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url('{{ asset($i->banner)}}');">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
@@ -112,7 +112,7 @@
                       <br>Hubungi: {{$i->resepsionis->no_telp}}
                     </p> --}}
                     <h1 class="intro-title mb-4 ">
-                      <span class="color-b">{{$i->kode_ruang}}</span> Studio
+                      <span class="color-b">{{$i->kode_studio}}</span> Studio
                       <br> {{$i->nama}}
                     </h1>
                     <p class="intro-subtitle intro-price">
@@ -243,10 +243,10 @@
 
         <div id="property-carousel" class="swiper">
           <div class="swiper-wrapper">
-            @if($ruang->isEmpty())
+            @if($studio->isEmpty())
             <span>Studio kosong</span>
             @else
-            @foreach($ruang as $i)
+            @foreach($studio as $i)
             <div class="carousel-item-b swiper-slide">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
@@ -256,7 +256,7 @@
                   <div class="card-overlay-a-content">
                     <div class="card-header-a">
                       <h2 class="card-title-a">
-                        <a href="{{route('guest-studio.show',$i->id)}}">{{$i->kode_ruang}} Studio
+                        <a href="{{route('guest-studio.show',$i->id)}}">{{$i->kode_studio}} Studio
                           <br /> {{$i->nama}}</a>
                       </h2>
                     </div>

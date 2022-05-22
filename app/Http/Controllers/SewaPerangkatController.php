@@ -11,9 +11,9 @@ use App\Models\Profile;
 use App\Models\Payment;
 use Midtrans\Snap;
 use App\Models\Denda;
-use App\Models\Ruang;
+use App\Models\Studio;
 use Illuminate\Support\Carbon;
-use App\Models\SewaRuang;
+use App\Models\SewaStudio;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -160,7 +160,7 @@ class SewaPerangkatController extends Controller
 
         //data tranaction
         $data_transaction = Payment::where('invoice', $orderId)->first();
-        // $data_transaction1 = SewaRuang::where('invoice', $orderId)->first();
+        // $data_transaction1 = SewaStudio::where('invoice', $orderId)->first();
         // $data_transaction2 = Denda::where('invoice', $orderId)->first();
 
         if ($transaction == 'capture') {

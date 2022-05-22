@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PerangkatSeeder::class,
             ResepsionisSeeder::class,
-            RuangSeeder::class,
+            StudioSeeder::class,
             ]);
     }
 }

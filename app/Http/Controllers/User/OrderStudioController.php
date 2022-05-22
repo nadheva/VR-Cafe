@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ruang;
-use App\Models\SewaRuang;
+use App\Models\Studio;
+use App\Models\SewaStudio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -17,8 +17,8 @@ class OrderStudioController extends Controller
      */
     public function index()
     {
-        $sewa_ruang = SewaRuang::where('user_id', Auth::user()->id)->latest()->get();
-        return view('user.transaksi.studio.index', compact('sewa_ruang'));
+        $sewa_studio = SewaStudio::where('user_id', Auth::user()->id)->latest()->get();
+        return view('user.transaksi.studio.index', compact('sewa_studio'));
     }
 
     /**
@@ -50,9 +50,9 @@ class OrderStudioController extends Controller
      */
     public function show($id)
     {
-        $sewa_ruang = SewaRuang::findOrfail($id);
+        $sewa_studio = SewaStudio::findOrfail($id);
         $client = env('MIDTRANS_CLIENTKEY');
-        return view('user.transaksi.studio.show', compact('sewa_ruang', 'client'));
+        return view('user.transaksi.studio.show', compact('sewa_studio', 'client'));
     }
 
     /**
@@ -91,10 +91,10 @@ class OrderStudioController extends Controller
 
     public function invoice($id)
     {
-        $sewa_ruang = SewaRuang::findOrfail($id);
-        $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_ruang->tanggal_mulai);
-        $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_ruang->tanggal_berakhir);
+        $sewa_studio = SewaStudio::findOrfail($id);
+        $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_studio->tanggal_mulai);
+        $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_studio->tanggal_berakhir);
         $hari = $mulai->diffInDays($selesai);
-        return view('user.transaksi.studio.invoice', compact('sewa_ruang', 'hari'));
+        return view('user.transaksi.studio.invoice', compact('sewa_studio', 'hari'));
     }
 }

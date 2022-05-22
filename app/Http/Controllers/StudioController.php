@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ruang;
+use App\Models\Studio;
 use App\Models\Resepsionis;
 use Illuminate\Support\Str;
 
-class RuangController extends Controller
+class StudioController extends Controller
 {
     public  function index()
     {
-        $ruang = Ruang::all();
+        $studio = Studio::all();
         $resepsionis = Resepsionis::all();
-        return view('admin.ruang.index', compact('ruang', 'resepsionis'));
+        return view('admin.studio.index', compact('studio', 'resepsionis'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'kode_ruang' => 'required',
+            'kode_studio' => 'required',
             'nama' => 'required',
             'gambar' => 'required',
             'resepsionis_id' => 'required',
@@ -37,9 +37,9 @@ class RuangController extends Controller
                 $image_name = md5(rand(1000,10000));
                 $ext = $file->extension();
                 $image_full_name =  $image_name . '.' . $ext;
-                $upload_path = "storage/ruang/gambar_detail/".$image_full_name;
+                $upload_path = "storage/studio/gambar_detail/".$image_full_name;
                 // $image_url = $uploade_path;
-                $file->storeAs('public/ruang/gambar_detail/', $image_full_name);
+                $file->storeAs('public/studio/gambar_detail/', $image_full_name);
                 $image[] = $upload_path;
                 // $perangkat->gambar_detail = json_encode($image);
             }
@@ -50,21 +50,21 @@ class RuangController extends Controller
         if (isset($request->gambar)) {
             $extention = $request->gambar->extension();
             $file_name = time() . '.' . $extention;
-            $txt = "storage/ruang/". $file_name;
-            $request->gambar->storeAs('public/ruang', $file_name);
+            $txt = "storage/studio/". $file_name;
+            $request->gambar->storeAs('public/studio', $file_name);
         } else {
             $file_name = null;
         }
         if (isset($request->banner)) {
             $extention = $request->banner->extension();
             $file_name = time() . '.' . $extention;
-            $txt2 = "storage/ruang/banner/". $file_name;
-            $request->banner->storeAs('public/ruang/banner', $file_name);
+            $txt2 = "storage/studio/banner/". $file_name;
+            $request->banner->storeAs('public/studio/banner', $file_name);
         } else {
             $file_name = null;
         }
-        Ruang::create([
-            'kode_ruang' => $request->kode_ruang,
+        Studio::create([
+            'kode_studio' => $request->kode_studio,
             'nama' => $request->nama,
             'slug' => Str::slug($request->nama, '-'),
             'gambar' => $txt,
@@ -80,35 +80,35 @@ class RuangController extends Controller
             'deskripsi' => $request->deskripsi
         ]);
 
-        return redirect()->route('ruang.index')
-        ->with('success', 'Ruang Berhasil Ditambahkan!');
+        return redirect()->route('studio.index')
+        ->with('success', 'studio Berhasil Ditambahkan!');
     }
 
     public function update(Request $request, $id)
     {
-        $ruang = Ruang::findOrfail($id);
-        $ruang->kode_ruang = $request->kode_ruang;
-        $ruang->nama = $request->nama;
-        $ruang->slug = Str::slug($request->nama, '-');
-        $ruang->resepsionis_id = $request->resepsionis_id;
-        $ruang->harga = $request->harga;
-        $ruang->deskripsi = $request->deskripsi;
-        $ruang->ukuran = $request->ukuran;
-        $ruang->monitor = $request->monitor;
-        $ruang->pc_desktop = $request->pc_desktop;
-        $ruang->perangkat_vr = $request->perangkat_vr;
-        $ruang->jumlah = $request->jumlah;
+        $studio = Studio::findOrfail($id);
+        $studio->kode_studio = $request->kode_studio;
+        $studio->nama = $request->nama;
+        $studio->slug = Str::slug($request->nama, '-');
+        $studio->resepsionis_id = $request->resepsionis_id;
+        $studio->harga = $request->harga;
+        $studio->deskripsi = $request->deskripsi;
+        $studio->ukuran = $request->ukuran;
+        $studio->monitor = $request->monitor;
+        $studio->pc_desktop = $request->pc_desktop;
+        $studio->perangkat_vr = $request->perangkat_vr;
+        $studio->jumlah = $request->jumlah;
         $image = array();
         if($file = $request->file('gambar_detail')){
             foreach($file as $file){
                 $image_name = md5(rand(1000,10000));
                 $ext = $file->extension();
                 $image_full_name =  $image_name . '.' . $ext;
-                $upload_path = "storage/ruang/gambar_detail/".$image_full_name;
+                $upload_path = "storage/studio/gambar_detail/".$image_full_name;
                 // $image_url = $uploade_path;
-                $file->storeAs('public/ruang/gambar_detail/', $image_full_name);
+                $file->storeAs('public/studio/gambar_detail/', $image_full_name);
                 $image[] = $upload_path;
-                $ruang->gambar_detail = json_encode($image);
+                $studio->gambar_detail = json_encode($image);
             }
         } else {
             $image_full_name = null;
@@ -116,31 +116,31 @@ class RuangController extends Controller
         if (isset($request->gambar)) {
             $extention = $request->gambar->extension();
             $file_name = time() . '.' . $extention;
-            $txt = "storage/ruang/". $file_name;
-            $request->gambar->storeAs('public/ruang', $file_name);
-            $ruang->gambar = $txt;
+            $txt = "storage/studio/". $file_name;
+            $request->gambar->storeAs('public/studio', $file_name);
+            $studio->gambar = $txt;
         } else {
             $file_name = null;
         }
         if (isset($request->banner)) {
             $extention = $request->banner->extension();
             $file_name = time() . '.' . $extention;
-            $txt2 = "storage/ruang/banner/". $file_name;
-            $request->banner->storeAs('public/ruang/banner', $file_name);
-            $ruang->banner = $txt2;
+            $txt2 = "storage/studio/banner/". $file_name;
+            $request->banner->storeAs('public/studio/banner', $file_name);
+            $studio->banner = $txt2;
         } else {
             $file_name = null;
         }
-        $ruang->save();
+        $studio->save();
 
-        return redirect()->route('ruang.index')
-        ->with('success', 'Ruang Berhasil Diedit!');
+        return redirect()->route('studio.index')
+        ->with('success', 'studio Berhasil Diedit!');
     }
 
     public function destroy($id)
     {
-        Ruang::find($id)->delete();
-        return redirect()->route('ruang.index')
-        ->with('success', 'Ruang Berhasil Dihapus!');
+        Studio::find($id)->delete();
+        return redirect()->route('studio.index')
+        ->with('success', 'studio Berhasil Dihapus!');
     }
 }

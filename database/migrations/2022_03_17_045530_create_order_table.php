@@ -15,10 +15,10 @@ class CreateOrderTable extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('sewa_ruang_id')->nullable()->constrained('sewa_ruang')->onDelete('cascade')->onUpdate('cascade')->unsigned();
+            // $table->foreignId('sewa_studio_id')->nullable()->constrained('sewa_studio')->onDelete('cascade')->onUpdate('cascade')->unsigned();
             $table->foreignId('sewa_perangkat_id')->nullable()->constrained('sewa_perangkat')->onDelete('cascade')->onUpdate('cascade')->unsigned();
             $table->foreignId('perangkat_id')->nullable()->constrained('perangkat')->onDelete('cascade')->onUpdate('cascade')->unsigned();
-            // $table->foreignId('ruang_id')->nullable()->constrained('ruang')->onDelete('cascade')->onUpdate('cascade')->unsigned();
+            // $table->foreignId('studio_id')->nullable()->constrained('studio')->onDelete('cascade')->onUpdate('cascade')->unsigned();
             $table->integer('jumlah');
             $table->bigInteger('harga');
             $table->timestamps();
