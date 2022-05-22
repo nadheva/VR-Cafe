@@ -55,6 +55,10 @@ class SewaRuangController extends Controller
             $this->request->validate([
                 'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                 'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai'
+            ],
+            [
+                'tanggal_mulai' => 'required|time|before:tanggal_berakhir',
+                'tanggal_berakhir' => 'required|time|after:tanggal_mulai'
             ]);
             $tanggal_mulai = $this->request->tanggal_mulai;
             $already_booked = false;
