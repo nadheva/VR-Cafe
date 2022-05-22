@@ -261,7 +261,7 @@ class SewaRuangController extends Controller
     public function cek_studio(Request $request)
     {
         $studio = Ruang::find($request->ruang_id);
-        $validator = Validator::make([
+        $request->validate([
                         'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
                     ],
@@ -276,9 +276,6 @@ class SewaRuangController extends Controller
                     'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
                 ],
             );
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-            }
         $tanggal_mulai = $request->tanggal_mulai;
         $already_booked = false;
         foreach ($studio->sewa_ruang as $sewa) {
