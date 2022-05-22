@@ -73,6 +73,15 @@ class SewaPerangkatController extends Controller
         $this->request->validate([
             'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
             'tanggal_berakhir' => 'required|date|after:tanggal_mulai'
+        ],
+        [
+            'tanggal_mulai.required' => 'Tanggal mulai wajib diisi!',
+            'tanggal_mulai.date' => 'Tanggal mulai tidak valid',
+            'tanggal_mulai.before' => 'Tanggal mulai harus sebelum tanggal berakhir',
+
+            'tanggal_berakhir.required' => 'Tanggal berakhir wajib diisi!',
+            'tanggal_berakhir.date' => 'Tanggal berakhir tidak valid',
+            'tanggal_berakhir.after' => 'Tanggal berakhir harus setelah tanggal mulai!'
         ]);
 
         $sewa_perangkat = SewaPerangkat::create([
