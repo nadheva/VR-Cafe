@@ -4,7 +4,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="mb-4">Detail Produk</h5>
+              <h5 class="mb-4">Detail Perangkat VR</h5>
               <div class="row">
                 <div class="col-xl-5 col-lg-6 text-center">
                   <img class="w-100 border-radius-lg shadow-lg mx-auto" src="{{asset($perangkat->gambar)}}" alt="{{$perangkat->nama}}">
