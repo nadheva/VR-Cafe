@@ -78,7 +78,7 @@ class SewaStudioController extends Controller
 
             if ($already_booked)
                 return redirect()->route('user-studio.index')->with('warning',
-                    'Maaf studioan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
+                    'Maaf studio tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
             );
 
             $length = 10;
@@ -293,11 +293,11 @@ class SewaStudioController extends Controller
 
         if ($already_booked){
             return redirect()->back()->with('warning',
-                'Maaf studioan tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
+                'Maaf studio tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
         );}
         else{
         return redirect()->back()->with('info',
-        'studioan tersedia pada waktu tersebut, silahkan booking!'
+        'studio tersedia pada waktu tersebut, silahkan booking!'
         );
     }
     }
