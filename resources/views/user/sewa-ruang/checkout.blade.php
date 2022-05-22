@@ -21,6 +21,15 @@
                     <div class="col-12 col-lg-8 m-auto">
                       <form class="multisteps-form__form mb-8" action="{{route('sewa-ruang.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <!--single form panel-->
                         <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active" data-animation="FadeIn">
                           <h5 class="font-weight-bolder mb-0">Rincian</h5>

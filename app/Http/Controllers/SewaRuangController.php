@@ -58,9 +58,15 @@ class SewaRuangController extends Controller
                 'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai'
             ],
             [
-                'tanggal_mulai' => 'required|time|before:tanggal_berakhir',
-                'tanggal_berakhir' => 'required|time|after:tanggal_mulai'
-            ]);
+                'tanggal_mulai.required' => 'Tanggal mulai wajib diisi',
+                'tanggal_mulai.date' => 'Tanggal tidak valid!',
+                'tanggal_mulai.before' => 'Tanggal mulai harus sebelum tanggal berakhir',
+
+                'tanggal_berakhir.required' => 'Tanggal berakhir wajib diisi',
+                'tanggal_berakhir.date' => 'Tanggal tidak valid!',
+                'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
+            ],
+            );
             $tanggal_mulai = $this->request->tanggal_mulai;
             $already_booked = false;
             foreach ($studio->sewa_ruang as $sewa) {
