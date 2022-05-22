@@ -70,6 +70,10 @@ class SewaPerangkatController extends Controller
         $cart = Cart::where('user_id', $user)->get();
         $total = $cart->sum('harga');
 
+        $this->request->validate([
+            'tanggal_selesai' => 'required|date|after:tanggal_mulai'
+        ]);
+
         $sewa_perangkat = SewaPerangkat::create([
             'user_id' => $user,
             'invoice' => $invoice,
