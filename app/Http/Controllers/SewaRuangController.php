@@ -53,8 +53,8 @@ class SewaRuangController extends Controller
             //cek ketersediaan
             $studio = Ruang::find($this->request->ruang_id);
             $this->request->validate([
-                'tanggal_mulai' => 'required|after_or_equal:date',
-                'tanggal_berakhir' => 'required|after_or_equal:date'
+                'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
+                'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai'
             ]);
             $tanggal_mulai = $this->request->tanggal_mulai;
             $already_booked = false;
