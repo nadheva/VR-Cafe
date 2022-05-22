@@ -71,7 +71,8 @@ class SewaPerangkatController extends Controller
         $total = $cart->sum('harga');
 
         $this->request->validate([
-            'tanggal_selesai' => 'required|date|after:tanggal_mulai'
+            'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
+            'tanggal_berakhir' => 'required|date|after:tanggal_mulai'
         ]);
 
         $sewa_perangkat = SewaPerangkat::create([
