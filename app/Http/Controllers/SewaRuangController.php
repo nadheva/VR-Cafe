@@ -265,10 +265,10 @@ class SewaRuangController extends Controller
                         'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
                     ],
-                    [
-                        'tanggal_mulai' => 'required|time|before:tanggal_berakhir',
-                        'tanggal_berakhir' => 'required|time|after:tanggal_mulai'
-                    ],
+                    // [
+                    //     'tanggal_mulai' => 'required|time|before:tanggal_berakhir',
+                    //     'tanggal_berakhir' => 'required|time|after:tanggal_mulai'
+                    // ],
                 [
                     'tanggal_mulai.required' => 'Tanggal mulai wajib diisi',
                     'tanggal_mulai.date' => 'Tanggal tidak valid!',
@@ -278,13 +278,14 @@ class SewaRuangController extends Controller
                     'tanggal_berakhir.date' => 'Tanggal tidak valid!',
                     'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
                 ],
-                [
-                    'tanggal_mulai.time' => 'Waktu tidak valid!',
-                    'tanggal_mulai.before' => 'waktu mulai harus sebelum waktu berakhir',
+                // [
+                //     'tanggal_mulai.time' => 'Waktu tidak valid!',
+                //     'tanggal_mulai.before' => 'waktu mulai harus sebelum waktu berakhir',
 
-                    'tanggal_berakhir.time' => 'Waktu tidak valid!',
-                    'tanggal_berakhir.after' => 'Waktu berakhir harus setelah waktu mulai!'
-                ]);
+                //     'tanggal_berakhir.time' => 'Waktu tidak valid!',
+                //     'tanggal_berakhir.after' => 'Waktu berakhir harus setelah waktu mulai!'
+                // ]
+            );
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
             }
