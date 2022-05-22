@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Validator;
 
 class SewaRuangController extends Controller
 {
@@ -260,14 +261,33 @@ class SewaRuangController extends Controller
     public function cek_studio(Request $request)
     {
         $studio = Ruang::find($request->ruang_id);
-        $request->validate([
-            'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
-            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai'
-        ],
-        [
-            'tanggal_mulai' => 'required|time|before:tanggal_berakhir',
-            'tanggal_berakhir' => 'required|time|after:tanggal_mulai'
-        ]);
+        $validator = Validator::make([
+                        'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
+                        'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
+                    ],
+                    [
+                        'tanggal_mulai' => 'required|time|before:tanggal_berakhir',
+                        'tanggal_berakhir' => 'required|time|after:tanggal_mulai'
+                    ],
+                [
+                    'tanggal_mulai.required' => 'Tanggal mulai wajib diisi',
+                    'tanggal_mulai.date' => 'Tanggal tidak valid!',
+                    'tanggal_mulai.before' => 'Tanggal mulai harus sebelum tanggal berakhir',
+
+                    'tanggal_berakhir.required' => 'Tanggal berakhir wajib diisi',
+                    'tanggal_berakhir.date' => 'Tanggal tidak valid!',
+                    'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
+                ],
+                [
+                    'tanggal_mulai.time' => 'Waktu tidak valid!',
+                    'tanggal_mulai.before' => 'waktu mulai harus sebelum waktu berakhir',
+
+                    'tanggal_berakhir.time' => 'Waktu tidak valid!',
+                    'tanggal_berakhir.after' => 'Waktu berakhir harus setelah waktu mulai!'
+                ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+            }
         $tanggal_mulai = $request->tanggal_mulai;
         $already_booked = false;
         foreach ($studio->sewa_ruang as $sewa) {

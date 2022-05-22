@@ -115,6 +115,15 @@
                     <h5 class="my-3 mx-2">Cek Ketersediaan</h5>
                     <form method="post" action="{{ route('cek-studio') }}" enctype="multipart/form-data">
                         @csrf
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                         <input type="hidden" name="ruang_id" value="{{$ruang->id}}">
                         <div class="row mt-3">
                             <div class="col-12 col-sm-6">
