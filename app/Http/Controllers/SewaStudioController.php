@@ -269,7 +269,7 @@ class SewaStudioController extends Controller
     public function cek_studio(Request $request)
     {
         $studio = Studio::find($request->studio_id);
-        $request->validate([
+        $validator = Validator::make($request->all(),[
                         'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
                     ],
@@ -284,6 +284,10 @@ class SewaStudioController extends Controller
                     'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
                 ],
             );
+            if ($validator->fails()) {
+                Alert::warning('Warning', 'Mohon inputkan waktu mulai dan waktu selesai dengan benar!');
+                return back();
+            }
         $tanggal_mulai = $request->tanggal_mulai;
         $already_booked = false;
         foreach ($studio->sewa_studio as $sewa) {
