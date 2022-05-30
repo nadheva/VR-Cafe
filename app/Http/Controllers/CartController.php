@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Perangkat;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
@@ -35,15 +36,16 @@ class CartController extends Controller
                 'harga' => $request->harga * $request->jumlah
             ]);
         }
-        return redirect()->back()
-        ->with('success', 'Perangkat telah ditambahkan ke keranjang!');
+        Alert::success('Success', 'Perangkat berhasil ditambahkan ke keranjang!');
+        return redirect()->back();
+
     }
 
     public function destroy($id)
     {
         Cart::find($id)->delete();
-        return redirect()->back()
-        ->with('warning', 'Berhasil dihapus dari keranjang');
+        Alert::warning('Warning', 'Perangkat berhasil dihapus dari keranjang!');
+        return redirect()->back();
     }
 
     // public function destroy(Request $request)

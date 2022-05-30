@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wishlist;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class WishlistController extends Controller
 {
@@ -24,9 +25,8 @@ class WishlistController extends Controller
             'studio_id' => $request->studio_id,
             'perangkat_id' => $request->perangkat_id
         ]);
-
-        return redirect()->route('wishlist.index')
-        ->with('success', 'Wishlist Berhasil Ditambahkan!');
+        Alert::success('Success', 'Wishlist berhasil ditambahkan!');
+        return redirect()->route('wishlist.index');
     }
 
     public function update(Request $request, $id)
@@ -36,15 +36,14 @@ class WishlistController extends Controller
         $wishlist->studio_id = $request->studio_id;
         $wishlist->perangkat_id = $request->perangkat_id;
         $wishlist->save();
-
-        return redirect()->route('wishlist.index')
-        ->with('success', 'Wishlist Berhasil Diedit!');
+        Alert::info('info', 'Wishlist berhasil diedit!');
+        return redirect()->route('wishlist.index');
     }
 
     public function destroy($id)
     {
         Wishlist::find($id)->delete();
-        return redirect()->route('wishlist.index')
-        ->with('success', 'Wishlist Berhasil Dihapus!');
+        Alert::warning('Warning', 'Wishlist berhasil dihapus!');
+        return redirect()->route('wishlist.index');
     }
 }

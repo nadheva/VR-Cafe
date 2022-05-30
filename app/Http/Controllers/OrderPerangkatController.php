@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Models\Order;
 use App\Models\SewaPerangkat;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderPerangkatController extends Controller
 {

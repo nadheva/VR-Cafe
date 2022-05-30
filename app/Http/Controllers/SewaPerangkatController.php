@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SewaPerangkatController extends Controller
 {
@@ -138,6 +139,7 @@ class SewaPerangkatController extends Controller
         Cart::with('perangkat')
         ->where('user_id', Auth::user()->id)
         ->delete();
+        Alert::success('Success', 'Sewa Perangkat VR berhasil ditambahkan!');
         return redirect()->route('user-transaksi-perangkat.index');
 
     }
@@ -276,13 +278,14 @@ class SewaPerangkatController extends Controller
           $i->stok = $i->stok + $order->jumlah;
           $i->save();
         }
-        return redirect()->route('pengembalian-perangkat')
-                ->with('success', 'Perangkat berhasil dikembalikan!');
+        Alert::info('Info', 'Sewa Perangkat VR berhasil dikembalikan!');
+        return redirect()->route('pengembalian-perangkat');
     }
 
     public function destroy($id)
     {
         SewaPerangkat::find($id)->delete();
+        Alert::warning('Warning', 'Sewa Perangkat VR berhasil dihapus!');
         return redirect()->back();
     }
 

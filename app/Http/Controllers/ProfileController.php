@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -59,9 +60,8 @@ class ProfileController extends Controller
             'provinsi' => $request->provinsi,
             'kode_pos' => $request->kode_pos
         ]);
-
-        return redirect()->route('profil.index')
-        ->with('success', 'Profil Berhasil Ditambahkan!');
+        Alert::success('Success', 'Profil berhasil ditambahkan!');
+        return redirect()->route('profil.index');
     }
 
     public function edit($id)
@@ -96,15 +96,14 @@ class ProfileController extends Controller
             $file_name = null;
         }
         $profile->save();
-
-        return redirect()->route('profil.index')
-        ->with('info', 'Profile Berhasil Diedit!');
+        Alert::info('Info', 'Profil berhasil diedit!');
+        return redirect()->route('profil.index');
     }
 
     public function destroy($id)
     {
         Profile::find($id)->delete();
-        return redirect()->route('profil.index')
-        ->with('warning', 'Profil Berhasil Dihapus!');
+        Alert::warning('Warning', 'Profil berhasil dihapus!');
+        return redirect()->route('profil.index');
     }
 }

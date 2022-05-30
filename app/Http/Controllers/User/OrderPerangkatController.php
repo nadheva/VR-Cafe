@@ -7,6 +7,7 @@ use App\Models\SewaPerangkat;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderPerangkatController extends Controller
 {

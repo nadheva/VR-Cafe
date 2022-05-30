@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Studio;
 use App\Models\Resepsionis;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class StudioController extends Controller
 {
@@ -79,9 +80,8 @@ class StudioController extends Controller
             'pc_desktop' => $request->pc_desktop,
             'deskripsi' => $request->deskripsi
         ]);
-
-        return redirect()->route('studio.index')
-        ->with('success', 'studio Berhasil Ditambahkan!');
+        Alert::success('Success', 'Studio berhasil ditambahkan!');
+        return redirect()->route('studio.index');
     }
 
     public function update(Request $request, $id)
@@ -132,15 +132,14 @@ class StudioController extends Controller
             $file_name = null;
         }
         $studio->save();
-
-        return redirect()->route('studio.index')
-        ->with('success', 'studio Berhasil Diedit!');
+        Alert::info('Info', 'Studio berhasil diedit!');
+        return redirect()->route('studio.index');
     }
 
     public function destroy($id)
     {
         Studio::find($id)->delete();
-        return redirect()->route('studio.index')
-        ->with('success', 'studio Berhasil Dihapus!');
+        Alert::warning('Warning', 'Studio berhasil dihapus!');
+        return redirect()->route('studio.index');
     }
 }

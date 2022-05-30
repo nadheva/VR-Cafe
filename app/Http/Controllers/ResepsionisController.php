@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resepsionis;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ResepsionisController extends Controller
 {
@@ -34,10 +35,9 @@ class ResepsionisController extends Controller
             'no_telp' => $request->no_telp,
             'foto' => $txt,
             'email' => $request->email,
-        ]); 
-
-        return redirect()->route('resepsionis.index')
-        ->with('success', 'Resepsionis Berhasil Ditambahkan!');
+        ]);
+        Alert::success('Success', 'Resepsionis berhasil ditambahkan!');
+        return redirect()->route('resepsionis.index');
     }
 
     public function update(Request $request, $id)
@@ -56,15 +56,14 @@ class ResepsionisController extends Controller
             $file_name = null;
         }
         $resepsionis->save();
-
-        return redirect()->route('resepsionis.index')
-        ->with('success', 'Resepsionis Berhasil Diedit!');
+        Alert::info('Info', 'Resepsionis berhasil diedit!');
+        return redirect()->route('resepsionis.index');
     }
 
     public function destroy($id)
     {
         Resepsionis::find($id)->delete();
-        return redirect()->route('resepsionis.index')
-        ->with('success', 'Resepsionis Berhasil Dihapus!');
+        Alert::warning('Warning', 'Resepsionis berhasil dihapus!');
+        return redirect()->route('resepsionis.index');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Perangkat;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PerangkatController extends Controller
 {
@@ -64,9 +65,8 @@ class PerangkatController extends Controller
             'deskripsi' => $request->deskripsi
         ]);
         // notify()->success('Perangkat berhasil ditambahkan');
-
-        return redirect()->route('perangkat.index')
-        ->with('success', 'Perangkat Berhasil Ditambahkan!');
+        Alert::success('Success', 'Perangkat VR berhasil ditambahkan!');
+        return redirect()->route('perangkat.index');
     }
 
     public function update(Request $request, $id)
@@ -103,15 +103,14 @@ class PerangkatController extends Controller
             $file_name = null;
         }
         $perangkat->save();
-
-        return redirect()->route('perangkat.index')
-        ->with('success', 'Perangkat Berhasil Diedit!');
+        Alert::info('Info', 'Perangkat VR berhasil diedit!');
+        return redirect()->route('perangkat.index');
     }
 
     public function destroy($id)
     {
         Perangkat::find($id)->delete();
-        return redirect()->route('perangkat.index')
-        ->with('success', 'Perangkat Berhasil Dihapus!');
+        Alert::warning('Warning', 'Perangkat VR berhasil dihapus!');
+        return redirect()->route('perangkat.index');
     }
 }

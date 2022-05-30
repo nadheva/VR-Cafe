@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DendaPerangkatController extends Controller
 {
@@ -64,7 +65,7 @@ class DendaPerangkatController extends Controller
                 $payment->save();
 
                 });
-            return redirect()->back()
-            ->with('info', 'Denda telah ditambahkan!');
+                Alert::success('Success', 'Denda berhasil ditambahkan!');
+            return redirect()->back();
         }
     }

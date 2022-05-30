@@ -10,6 +10,7 @@ use App\Models\Studio;
 use App\Models\Denda;
 use App\Models\Resepsionis;
 use App\Models\Testimonial;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LaporanController extends Controller
 {

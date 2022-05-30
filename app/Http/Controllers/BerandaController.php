@@ -11,6 +11,7 @@ use App\Models\Artikel;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BerandaController extends Controller
 {

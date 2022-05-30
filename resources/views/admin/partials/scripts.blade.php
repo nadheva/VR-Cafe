@@ -38,7 +38,7 @@
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
 </script>
-<script src="https://cdn.tiny.cloud/1/mmwx53azr70y17prfufqx1l5fsbbt2wct576lrl3ax54s5fy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="https://cdn.tiny.cloud/1/mmwx53azr70y17prfufqx1l5fsbbt2wct576lrl3ax54s5fy/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script>
   tinymce.init({
@@ -52,7 +52,7 @@
       'alignleft aligncenter alignright alignjustify | ' +
       'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
   });
-</script>
+</script> --}}
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

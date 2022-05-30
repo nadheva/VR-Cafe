@@ -7,6 +7,7 @@ use App\Models\Denda;
 use App\Models\SewaPerangkat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DendaController extends Controller
 {

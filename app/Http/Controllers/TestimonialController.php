@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TestimonialController extends Controller
 {
@@ -23,10 +24,9 @@ class TestimonialController extends Controller
         Testimonial::create([
             'user_id' => $request->user_id,
             'isi' => $request->isi
-        ]); 
-
-        return redirect()->route('testimonial.index')
-        ->with('success', 'Testimonial Berhasil Ditambahkan!');
+        ]);
+        Alert::success('Success', 'Testimonial berhasil ditambahkan');
+        return redirect()->route('testimonial.index');
     }
 
     public function update(Request $request, $id)
@@ -35,15 +35,14 @@ class TestimonialController extends Controller
         $testimonial->user_id = $request->testimonial;
         $testimonial->isi = $request->isi;
         $testimonial->save();
-
-        return redirect()->route('testimonial.index')
-        ->with('success', 'Testimonial Berhasil Diedit!');
+        Alert::info('Info', 'Testimonial berhasil diedit!');
+        return redirect()->route('testimonial.index');
     }
 
     public function destroy($id)
     {
         Testimonial::find($id)->delete();
-        return redirect()->route('testimonial.index')
-        ->with('success', 'Testimonial Berhasil Dihapus!');
+        Alert::warning('Warning', 'Testimonial berhasil dihapus!');
+        return redirect()->route('testimonial.index');
     }
 }

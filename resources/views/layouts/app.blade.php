@@ -13,7 +13,8 @@
         <!-- End Navbar -->
 
         <div class="container-fluid py-4">
-            @include('admin.partials.flash-message')
+            {{-- @include('admin.partials.flash-message') --}}
+            @include('sweetalert::alert')
             {{ $slot }}
 
             {{-- @include('admin.partials.footer') --}}

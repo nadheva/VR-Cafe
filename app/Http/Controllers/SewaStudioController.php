@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SewaStudioController extends Controller
 {
@@ -133,6 +134,7 @@ class SewaStudioController extends Controller
             // $this->response['id'] = $sewa_perangkat;
 
             });
+            Alert::success('Success', 'Sewa Studio berhasil ditambahkan!');
             return redirect()->route('user-transaksi-studio.index');
     }
 
@@ -292,13 +294,11 @@ class SewaStudioController extends Controller
         }
 
         if ($already_booked){
-            return redirect()->back()->with('warning',
-                'Maaf studio tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain.'
-        );}
+            Alert::warning('Warning', 'Maaf studio tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain!');
+            return redirect()->back();}
         else{
-        return redirect()->back()->with('info',
-        'studio tersedia pada waktu tersebut, silahkan booking!'
-        );
+        Alert::info('Info', 'studio tersedia pada waktu tersebut, silahkan booking!');
+        return redirect()->back();
     }
     }
 }

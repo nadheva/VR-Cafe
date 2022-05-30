@@ -10,6 +10,7 @@ use App\Models\SewaPerangkat;
 use App\Models\SewaStudio;
 use App\Models\Denda;
 use Illuminate\Validation\Rules\Exists;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {

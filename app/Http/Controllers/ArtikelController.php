@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artikel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ArtikelController extends Controller
 {
@@ -33,9 +34,8 @@ class ArtikelController extends Controller
             'gambar' => $txt,
             'isi' => $request->isi
         ]);
-
-        return redirect()->route('artikel.index')
-        ->with('success', 'Artikel Berhasil Ditambahkan!');
+        Alert::success('Success', 'Artikel berhasil ditambahkan!');
+        return redirect()->route('artikel.index');
     }
 
     public function update(Request $request, $id)
@@ -53,15 +53,14 @@ class ArtikelController extends Controller
             $file_name = null;
         }
         $artikel->save();
-
-        return redirect()->route('artikel.index')
-        ->with('info', 'Artikel Berhasil Diedit!');
+        Alert::info('Success', 'Artikel berhasil diedit!');
+        return redirect()->route('artikel.index');
     }
 
     public function destroy($id)
     {
         Artikel::find($id)->delete();
-        return redirect()->route('artikel.index')
-        ->with('warning', 'Artikel Berhasil Dihapus!');
+        Alert::warning('Warning', 'Artikel berhasil dihapus!');
+        return redirect()->route('artikel.index');
     }
 }
