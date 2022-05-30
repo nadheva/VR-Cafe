@@ -127,14 +127,15 @@
                         <input type="hidden" name="studio_id" value="{{$studio->id}}">
                         <div class="row mt-3">
                             <div class="col-12 col-sm-6">
-                              <label>Tanggal Mulai</label>
+                              <label>Waktu Mulai</label>
                               <input class="form-control" type="datetime-local" name="tanggal_mulai" id="date1">
                             </div>
                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                              <label>Tanggal Akhir</label>
+                              <label>Waktu Akhir</label>
                               <input class="form-control" type="datetime-local" name="tanggal_berakhir" id="date2">
                             </div>
                           </div>
+                        </br>
                           <div class="text-end">
                                   <button type="reset" class="btn bg-gradient-danger"><i class="ni ni-bold-left"></i>&nbsp;&nbsp;Reset</button>
                             <button type="submit" class="btn bg-gradient-dark"><i class="fas fa-plus"></i>&nbsp;&nbsp;Cek</button>
