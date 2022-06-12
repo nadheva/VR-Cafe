@@ -22,6 +22,7 @@ class CreateSewaStudioTable extends Migration
             $table->dateTime('tanggal_berakhir');
             $table->text('keperluan');
             $table->enum('proses', ['Ditolak', 'Dalam Proses', 'Disewa', 'Dikembalikan'])->default('Dalam Proses');
+            $table->boolean('approval')->default(0);
             $table->bigInteger('grand_total');
             $table->timestamps();
         });

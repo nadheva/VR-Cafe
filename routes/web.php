@@ -80,10 +80,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('sewa-perangkat-update/{id}', [SewaPerangkatController::class, 'update']);
 
     //Sewa Studio
-    Route::resource('sewa-studio', SewaStudioController::class)->except('update', 'create', 'cek_studio');
+    Route::resource('sewa-studio', SewaStudioController::class)->except('update', 'create', 'cek_studio', 'approve');
     Route::get('sewa-studio-create/{id}', [SewaStudioController::class, 'create'])->name('sewa-studio-create');
     Route::post('cek-studio', [SewaStudioController::class, 'cek_studio'])->name('cek-studio');
     Route::put('sewa-studio-update/{id}', [SewaStudioController::class, 'update']);
+    Route::put('sewa-studio-approve/{id}', [SewaStudioController::class, 'approve'])->name('approve-studio');
+
 
     //Testimonial
     Route::resource('testimonial', TestimonialController::class);

@@ -100,7 +100,8 @@ class SewaStudioController extends Controller
                 'tanggal_berakhir' =>  $sampai = Carbon::make($this->request->tanggal_berakhir),
                 'keperluan' => $this->request->keperluan,
                 'proses' => 'Disewa',
-                'grand_total' => (($mulai->diffInMinutes($sampai))/60) * $studio->harga
+                'grand_total' => (($mulai->diffInMinutes($sampai))/60) * $studio->harga,
+                'approval' => '0'
             ]);
 
             $payment =  $sewa_studio->payment()->create([
@@ -243,6 +244,16 @@ class SewaStudioController extends Controller
     public function edit($id)
     {
 
+    }
+
+    public function approve($id)
+    {
+        $sewa_studio = SewaStudio::findOrfail($id);
+        $sewa_studio->update([
+            'approval' => '1'
+        ]);
+        Alert::success('Success', 'Pengajuan sewa studio berhasil disetujui!');
+        return redirect()->back();
     }
 
     public function update(Request $request, $id)

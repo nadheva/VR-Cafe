@@ -17,7 +17,8 @@ class SewaStudio extends Model
         'tanggal_berakhir',
         'keperluan',
         'proses',
-        'grand_total'
+        'grand_total',
+        'approval'
     ];
 
     public function studio()
