@@ -7,6 +7,8 @@ use App\Models\Studio;
 use App\Models\SewaStudio;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use DateTime;
+use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderStudioController extends Controller
@@ -52,8 +54,12 @@ class OrderStudioController extends Controller
     public function show($id)
     {
         $sewa_studio = SewaStudio::findOrfail($id);
+        // $lama = $sewa_studio->tanggal_mulai->diffInHours($sewa_studio->tanggal_selesai);
+        $start = $sewa_studio->tanggal_mulai;
+        $end = $sewa_studio->tanggal_berakhir;
+        $lama = Carbon::parse($start)->diffInHours(Carbon::parse($end));
         $client = env('MIDTRANS_CLIENTKEY');
-        return view('user.transaksi.studio.show', compact('sewa_studio', 'client'));
+        return view('user.transaksi.studio.show', compact('sewa_studio', 'client', 'lama'));
     }
 
     /**

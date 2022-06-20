@@ -35,11 +35,12 @@
                                                 <th>Tanggal</th>
                                                 <th>Status</th>
                                                 <th>Bayar</th>
+                                                <th>Proses</th>
                                                 <th>Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sewa_studio->latest()->where('approval', '=', '1')->get() as $i)
+                                            @foreach ($sewa_studio->where('approval', '=', '1') as $i)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -86,8 +87,25 @@
                                                   <td class="text-xs font-weight-bold">
                                                     <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                                                   </td>
+                                                  @if($i->proses == 'Disewa')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-info badge-sm">Disewa</span>
+                                                  </td>
+                                                  @elseif($i->proses == 'Dalam Proses')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-warning badge-sm">Dalam Proses</span>
+                                                  </td>
+                                                  @elseif($i->proses == 'Ditolak')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-danger badge-sm">Ditolak</span>
+                                                  </td>
+                                                  @elseif($i->proses == 'Dikembalikan')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-success badge-sm">Dikembalikan</span>
+                                                  </td>
+                                                  @endif
                                                   <td class="text-sm">
-                                                    <a href="{{route('user-transaksi-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                                    <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                                       <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                   </td>
@@ -110,12 +128,13 @@
                                                 <th>Tanggal</th>
                                                 <th>Status</th>
                                                 <th>Bayar</th>
+                                                <th>Proses</th>
                                                 <th>Approval</th>
                                                 <th>Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sewa_studio->latest()->where('approval', '=', '0')->get() as $i)
+                                            @foreach ($sewa_studio->where('approval', '=', '0') as $i)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -162,18 +181,30 @@
                                                   <td class="text-xs font-weight-bold">
                                                     <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                                                   </td>
+                                                  @if($i->proses == 'Disewa')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-info badge-sm">Disewa</span>
+                                                  </td>
+                                                  @elseif($i->proses == 'Dalam Proses')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-warning badge-sm">Dalam Proses</span>
+                                                  </td>
+                                                  @elseif($i->proses == 'Ditolak')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-danger badge-sm">Ditolak</span>
+                                                  </td>
+                                                  @elseif($i->proses == 'Dikembalikan')
+                                                  <td  class="text-xs font-weight-bold">
+                                                    <span class="badge badge-success badge-sm">Dikembalikan</span>
+                                                  </td>
+                                                  @endif
                                                   <td>
                                                     <div class="align-middle text-center">
-                                                      <form id="form-delete" action="{{route('approve-studio', $i->id)}}" method="POST" style="display: inline">
-                                                        @csrf
-                                                        @method("PUT")
-                                                        <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0 show_confirm" data-toggle="tooltip" title='Approve' ><i class="fas fa-user-edit text-secondary"></i></button>
-                                                      </form>
-                                                      <a class="btn btn-link text-dark px-3 mb-0" href="" data-bs-toggle="modal" data-bs-target="#editStudio-{{$item->id}}"><i class="fas fa-user-edit text-secondary"></i></a>
+                                                      <a class="btn btn-link text-dark px-3 mb-0" href="" data-bs-toggle="modal" data-bs-target="#approval-{{$i->id}}"><i class="fas fa-user-edit text-secondary"></i></a>
                                                     </div>
                                                   </td>
                                                   <td class="text-sm">
-                                                    <a href="{{route('user-transaksi-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                                    <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                                       <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                   </td>
@@ -236,6 +267,21 @@
                                               <td>:</td>
                                               <td>{{$i->user->profile->alamat}}</td>
                                           </tr>
+                                          <tr>
+                                            <td>Waktu Mulai </td>
+                                            <td>:</td>
+                                            <td>{{$i->tanggal_mulai}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waktu Selesai </td>
+                                            <td>:</td>
+                                            <td>{{$i->tanggal_berakhir}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lama Sewa</td>
+                                            <td>:</td>
+                                            <td> {{ \Carbon\Carbon::parse($i->tanggal_mulai)->diffInHours(\Carbon\Carbon::parse($i->tangggal_selesai)) }} Jam</td>
+                                        </tr>
                                           </tbody>
                                         </table>
                                     </div>
@@ -244,9 +290,14 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn bg-gradient-primary">Setujui</button>
+                            <button type="submit" class="btn bg-gradient-primary" name="Setuju">Setujui</button>
+                        </form>
+                        <form id="form-delete" action="{{route('deny-studio', $i->id)}}" method="POST" style="display: inline">
+                            @csrf
+                            @method("PUT")
+                            <button type="submit" class="btn bg-gradient-danger" name="Tolak">Tolak</button>
+                          </form>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

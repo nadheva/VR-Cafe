@@ -31,6 +31,21 @@
                         <td>{{$sewa_perangkat->user->profile->alamat}}</td>
                     </tr>
                     <tr>
+                        <td>Tanggal Mulai </td>
+                        <td>:</td>
+                        <td>{{$sewa_perangkat->tanggal_mulai}}</td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Selesai </td>
+                        <td>:</td>
+                        <td>{{$sewa_perangkat->tanggal_berakhir}}</td>
+                    </tr>
+                    <tr>
+                        <td>Lama Sewa</td>
+                        <td>:</td>
+                        <td> {{$lama}} Hari</td>
+                    </tr>
+                    <tr>
                         <td>Total Bayar </td>
                         <td>:</td>
                         <td>Rp. @money($sewa_perangkat->grand_total)</td>

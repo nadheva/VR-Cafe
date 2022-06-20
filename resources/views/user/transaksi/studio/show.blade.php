@@ -31,6 +31,21 @@
                         <td>{{$sewa_studio->user->profile->alamat}}</td>
                     </tr>
                     <tr>
+                        <td>Waktu Mulai </td>
+                        <td>:</td>
+                        <td>{{$sewa_studio->tanggal_mulai}}</td>
+                    </tr>
+                    <tr>
+                        <td>Waktu Selesai </td>
+                        <td>:</td>
+                        <td>{{$sewa_studio->tanggal_berakhir}}</td>
+                    </tr>
+                    <tr>
+                        <td>Lama Sewa</td>
+                        <td>:</td>
+                        <td> {{$lama}} Jam</td>
+                    </tr>
+                    <tr>
                         <td>Total Bayar </td>
                         <td>:</td>
                         <td>Rp. @money($sewa_studio->grand_total)</td>
@@ -39,18 +54,25 @@
                         <td>Status </td>
                         <td>:</td>
                         <td>
+                            @if($sewa_studio->approval == 0 && $sewa_studio->payment->status == "pending")
+                            <div class="col-lg-7 text-right d-flex flex-column">
+                            <button class="btn bg-gradient-primary" id="pay-button" disabled>Menunggu Approval</button>
+                            @elseif($sewa_studio->approval == 1 && $sewa_studio->payment->status == "pending")
                             <div class="col-lg-5 text-right d-flex flex-column">
-                            @if($sewa_studio->payment->status == "pending")
                             <button class="btn bg-gradient-info" id="pay-button">Bayar</button>
-                            @elseif($sewa_studio->payment->status == "success")
+                            @elseif($sewa_studio->approval == 1 && $sewa_studio->payment->status == "success")
+                            <div class="col-lg-5 text-right d-flex flex-column">
                             <button class="btn bg-gradient-success" id="pay-button">Sudah Bayar</button>
-                            @elseif($sewa_studio->payment->status == "failed")
+                            @elseif($sewa_studio->approval == 1 && $sewa_studio->payment->status == "failed")
+                            <div class="col-lg-5 text-right d-flex flex-column">
                             <button class="btn bg-gradient-danger" id="pay-button">Gagal</button>
-                            @elseif($sewa_studio->payment->status == "expired")
+                            @elseif($sewa_studio->approval == 1 && $sewa_studio->payment->status == "expired")
+                            <div class="col-lg-5 text-right d-flex flex-column">
                             <button class="btn bg-gradient-warning" id="pay-button">Kadaluarsa</button>
                             @endif
                             </div>
                         </td>
+                        {{-- @endif --}}
                     </tr>
                     </tbody>
                   </table>

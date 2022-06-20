@@ -31,6 +31,21 @@
                         <td>{{$sewa_studio->user->profile->alamat}}</td>
                     </tr>
                     <tr>
+                        <td>Waktu Mulai </td>
+                        <td>:</td>
+                        <td>{{$sewa_studio->tanggal_mulai}}</td>
+                    </tr>
+                    <tr>
+                        <td>Waktu Selesai </td>
+                        <td>:</td>
+                        <td>{{$sewa_studio->tanggal_berakhir}}</td>
+                    </tr>
+                    <tr>
+                        <td>Lama Sewa</td>
+                        <td>:</td>
+                        <td> {{$lama}} Jam</td>
+                    </tr>
+                    <tr>
                         <td>Total Bayar </td>
                         <td>:</td>
                         <td>Rp. @money($sewa_studio->grand_total)</td>

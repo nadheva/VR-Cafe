@@ -40,7 +40,7 @@
                         <h6 class="text-secondary mb-0">Tanggal Invoice:</h6>
                       </div>
                       <div class="col-md-6">
-                        <h6 class="text-dark mb-0">{{$sewa_studio->created_at->format('d.m.Y')}}</h6>
+                        {{-- <h6 class="text-dark mb-0">{{$sewa_studio->created_at->format('d.m.Y')}}</h6> --}}
                       </div>
                     </div>
                     {{-- <div class="row text-md-end text-start">
@@ -71,7 +71,7 @@
                           <tr>
                             <td class="text-start">{{$sewa_studio->studio->nama}}</td>
                             <td class="ps-4">Rp. @money($sewa_studio->studio->harga)</td>
-                            <td class="ps-4" colspan="2">{{$hari}} Hari</td>
+                            {{-- <td class="ps-4" colspan="2">{{$hari}} Hari</td> --}}
                             {{-- <td class="ps-4">Rp. @money($sewa_studio->grand_total)</td> --}}
                           </tr>
                         </tbody>

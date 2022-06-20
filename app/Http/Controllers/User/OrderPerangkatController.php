@@ -7,6 +7,7 @@ use App\Models\SewaPerangkat;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class OrderPerangkatController extends Controller
@@ -52,8 +53,11 @@ class OrderPerangkatController extends Controller
     public function show($id)
     {
         $sewa_perangkat = SewaPerangkat::findOrfail($id);
+        $start = $sewa_perangkat->tanggal_mulai;
+        $end = $sewa_perangkat->tanggal_berakhir;
+        $lama = Carbon::parse($start)->diffInDays(Carbon::parse($end));
         $client = env('MIDTRANS_CLIENTKEY');
-        return view('user.transaksi.perangkat.show', compact('sewa_perangkat', 'client'));
+        return view('user.transaksi.perangkat.show', compact('sewa_perangkat', 'client', 'lama'));
     }
 
     /**
