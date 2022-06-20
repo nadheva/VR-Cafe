@@ -267,13 +267,18 @@ class SewaStudioController extends Controller
         //                 ->update([
         //                     'jumlah' => ($sewa_studio->studio->jumlah + 1),
         //                     ]);
-        return redirect()->route('pengembalian-studio')
-                ->with('success', 'Studio berhasil dikembalikan!');
+        // return redirect()->route('pengembalian-studio')
+        //         ->with('success', 'Studio berhasil dikembalikan!');
+        Alert::info('Info', 'Studio berhasil dikembalikan!');
+        return redirect()->back();
     }
 
 
     public function destroy($id)
     {
+        SewaStudio::findOrfail($id)->delete();
+        Alert::warning('Warning', 'Transaksi sewa studio berhasil dihapus!');
+        return redirect()->back();
 
     }
 
