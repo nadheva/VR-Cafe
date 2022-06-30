@@ -27,7 +27,8 @@ class OrderStudioController extends Controller
 
     public function show($id)
     {
-        $sewa_studio = SewaStudio::findOrfail($id);
+        $id1 = decrypt($id);
+        $sewa_studio = SewaStudio::findOrfail($id1);
         $start = $sewa_studio->tanggal_mulai;
         $end = $sewa_studio->tanggal_berakhir;
         $lama = Carbon::parse($start)->diffInHours(Carbon::parse($end));

@@ -92,7 +92,7 @@
                         <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
                       </td>
                       <td class="text-sm">
-                        <a href="{{route('user-transaksi-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('user-transaksi-studio.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                       </td>

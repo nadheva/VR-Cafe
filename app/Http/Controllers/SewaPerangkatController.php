@@ -255,7 +255,8 @@ class SewaPerangkatController extends Controller
     public function show($id)
     {
         // $sewa_perangkat = SewaPerangkat::where('id',$id)->first();
-        $sewa_perangkat = SewaPerangkat::find($id);
+        $id1 = decrypt($id);
+        $sewa_perangkat = SewaPerangkat::find($id1);
         return view('user.transaksi.show', compact('sewa_perangkat'));
     }
 

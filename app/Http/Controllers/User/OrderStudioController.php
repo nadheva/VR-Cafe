@@ -53,7 +53,8 @@ class OrderStudioController extends Controller
      */
     public function show($id)
     {
-        $sewa_studio = SewaStudio::findOrfail($id);
+        $id1 = decrypt($id);
+        $sewa_studio = SewaStudio::findOrfail($id1);
         // $lama = $sewa_studio->tanggal_mulai->diffInHours($sewa_studio->tanggal_selesai);
         $start = $sewa_studio->tanggal_mulai;
         $end = $sewa_studio->tanggal_berakhir;

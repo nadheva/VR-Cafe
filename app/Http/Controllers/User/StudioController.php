@@ -18,13 +18,14 @@ class StudioController extends Controller
 
     public function show($id)
     {
-        $studio = Studio::where('id', $id)->first();
-        $studiolain = Studio::latest()->take(5)->get()->except($id);
+        $id1 = decrypt($id);
+        $studio = Studio::where('id', $id1)->first();
+        $studiolain = Studio::latest()->take(5)->get()->except($id1);
         $studiodetails = json_decode($studio->gambar_detail, true);
         foreach ($studiodetails as $key => $i){
             $data[] = $i;
          }
-         $sewa_studio = SewaStudio::where('studio_id', $id)->get();
+         $sewa_studio = SewaStudio::where('studio_id', $id1)->get();
         return view('user.sewa-studio.show', compact('studio', 'studiodetails' ,'studiolain', 'sewa_studio'));
     }
 }

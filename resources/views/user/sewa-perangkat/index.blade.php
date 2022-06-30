@@ -66,7 +66,7 @@
                         </td>
                         @endif
                         <td class="text-sm">
-                          <a href="{{route('user-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                          <a href="{{route('user-perangkat.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                             <i class="fas fa-eye text-secondary"></i>
                           </a>
                         </td>

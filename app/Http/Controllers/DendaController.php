@@ -173,7 +173,8 @@ class DendaController extends Controller
     }
     public function show($id)
     {
-        $denda = Denda::findOrfail($id);
+        $id1 = decrypt($id);
+        $denda = Denda::findOrfail($id1);
         $client = env('MIDTRANS_CLIENTKEY');
         return view('admin.denda.show', compact('denda', 'client'));
     }

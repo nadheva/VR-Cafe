@@ -52,7 +52,8 @@ class OrderPerangkatController extends Controller
      */
     public function show($id)
     {
-        $sewa_perangkat = SewaPerangkat::findOrfail($id);
+        $id1 = decrypt($id);
+        $sewa_perangkat = SewaPerangkat::findOrfail($id1);
         $start = $sewa_perangkat->tanggal_mulai;
         $end = $sewa_perangkat->tanggal_berakhir;
         $lama = Carbon::parse($start)->diffInDays(Carbon::parse($end));
