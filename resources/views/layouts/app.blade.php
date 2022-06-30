@@ -17,7 +17,7 @@
             @include('sweetalert::alert')
             {{ $slot }}
 
-            {{-- @include('admin.partials.footer') --}}
+            @include('admin.partials.footer')
 
         </div>
     </main>
