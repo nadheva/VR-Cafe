@@ -19,7 +19,7 @@ class PerangkatController extends Controller
     {
         $id1 = decrypt($id);
         $perangkat = Perangkat::where('id', $id1)->first();
-        $perangkatlain = Perangkat::latest()->take(5)->get()->except($id);
+        $perangkatlain = Perangkat::latest()->take(5)->get()->except($id1);
         $perangkatdetails = json_decode($perangkat->gambar_detail, true);
         foreach ($perangkatdetails as $key => $i){
             $data[] = $i;
