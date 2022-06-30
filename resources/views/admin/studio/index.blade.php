@@ -47,7 +47,7 @@
                     <img src="{{ asset( $item->gambar) }}" style="max-width: 70px" class="img-fluid shadow border-radius-xl">
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">Rp. @money($item->harga)</span>
+                    <span class="text-secondary text-xs font-weight-bold">Rp. @money($item->harga)/Jam</span>
                   </td>
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">{{$item->jumlah}}</span>

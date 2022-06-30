@@ -54,7 +54,7 @@
                           </div>
                         </td>
                         <td class="text-sm">{{$i->kode_perangkat}}</td>
-                        <td class="text-sm">Rp. @money($i->harga) </td>
+                        <td class="text-sm">Rp. @money($i->harga)/Hari </td>
                         <td class="text-sm">{{$i->stok}}</td>
                         @if($i->stok == 0)
                         <td>

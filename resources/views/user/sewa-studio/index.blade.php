@@ -54,7 +54,7 @@
                           </div>
                         </td>
                         <td class="text-sm">{{$i->kode_studio}}</td>
-                        <td class="text-sm">Rp. @money($i->harga) </td>
+                        <td class="text-sm">Rp. @money($i->harga)/Jam </td>
                         <td class="text-sm">{{$i->jumlah}}</td>
                         @if($i->jumlah == 0)
                         <td>

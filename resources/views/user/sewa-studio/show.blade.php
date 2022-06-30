@@ -73,16 +73,16 @@
                 </div>
                 <div class="col-lg-5 mx-auto">
                   <h3 class="mt-lg-0 mt-4">{{$studio->nama}}</h3>
-                  <div class="rating">
+                  {{-- <div class="rating">
                     <i class="fas fa-star" aria-hidden="true"></i>
                     <i class="fas fa-star" aria-hidden="true"></i>
                     <i class="fas fa-star" aria-hidden="true"></i>
                     <i class="fas fa-star" aria-hidden="true"></i>
                     <i class="fas fa-star-half-alt" aria-hidden="true"></i>
                   </div>
-                  <br>
+                  <br> --}}
                   <h6 class="mb-0 mt-3">Harga</h6>
-                  <h5>Rp.@money($studio->harga)</h5>
+                  <h5>Rp.@money($studio->harga)/Jam</h5>
                   @if($studio->jumlah == 0)
                   <span class="badge badge-danger">Habis</span>
                   @else
