@@ -29,17 +29,17 @@
                         <div class="row mt-3">
                           <div class="col-12 col-sm-6">
                             <label>Nama Depan</label>
-                            <input class="multisteps-form__input form-control" type="text" name="nama_depan"/>
+                            <input class="multisteps-form__input form-control" type="text" name="nama_depan" placeholder="*Nama Depan" required/>
                           </div>
                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                             <label>Nama Belakang</label>
-                            <input class="multisteps-form__input form-control" type="text" name="nama_belakang" />
+                            <input class="multisteps-form__input form-control" type="text" name="nama_belakang" placeholder="*Nama Belakang" required />
                           </div>
                         </div>
                         <div class="row mt-3">
                           <div class="col-12 col-sm-6">
                             <label>NIK</label>
-                            <input class="multisteps-form__input form-control" type="number" name="nik"/>
+                            <input class="multisteps-form__input form-control" type="number" name="nik" placeholder="*NIK"/>
                           </div>
                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                             <label>Email</label>
@@ -49,11 +49,11 @@
                         <div class="row mt-3">
                           <div class="col-12 col-sm-6">
                             <label>Nomor Telepon</label>
-                            <input class="multisteps-form__input form-control" type="number" name="no_telp" />
+                            <input class="multisteps-form__input form-control" type="number" name="no_telp" placeholder="*Nomor Telepon" required />
                           </div>
                           <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                             <label>Foto</label>
-                            <input class="multisteps-form__input form-control" type="file" name="foto"/>
+                            <input class="multisteps-form__input form-control" type="file" name="foto" placeholder="*Foto" required/>
                           </div>
                         </div>
                         <div class="button-row d-flex mt-4">
@@ -68,21 +68,21 @@
                         <div class="row mt-3">
                           <div class="col">
                             <label>Alamat</label>
-                            <input class="multisteps-form__input form-control" type="text" name="alamat" placeholder="eg. Street 221" />
+                            <input class="multisteps-form__input form-control" type="text" name="alamat" placeholder="*Alamat" required/>
                           </div>
                         </div>
                         <div class="row mt-3">
                           <div class="col-12 col-sm-6">
                             <label>Kota</label>
-                            <input class="multisteps-form__input form-control" type="text" name="kota" placeholder="eg. Tokyo" />
+                            <input class="multisteps-form__input form-control" type="text" name="kota" placeholder="*Kota" required/>
                           </div>
                           <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>Provinsi</label>
-                            <input class="multisteps-form__input form-control" type="text" name="provinsi" placeholder="eg. Jawa" />
+                            <input class="multisteps-form__input form-control" type="text" name="provinsi" placeholder="*Provinsi" required />
                           </div>
                           <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                             <label>Kode Pos</label>
-                            <input class="multisteps-form__input form-control" type="number" name="kode_pos" placeholder="eg. 98765" />
+                            <input class="multisteps-form__input form-control" type="number" name="kode_pos" placeholder="*Kode Pos" required />
                           </div>
                         </div>
                         <div class="button-row d-flex mt-4">
@@ -98,11 +98,11 @@
                         <div class="row mt-3">
                           <div class="col-12 mt-3">
                             <label>Facebook</label>
-                            <input class="multisteps-form__input form-control" type="text" name="facebook" placeholder="https://..." />
+                            <input class="multisteps-form__input form-control" type="text" name="facebook" placeholder="https://..." required />
                           </div>
                           <div class="col-12 mt-3">
                             <label>Instagram</label>
-                            <input class="multisteps-form__input form-control" type="text" name="instagram" placeholder="https://..." />
+                            <input class="multisteps-form__input form-control" type="text" name="instagram" placeholder="https://..." required/>
                           </div>
                         </div>
                         <div class="row">

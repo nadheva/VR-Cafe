@@ -95,27 +95,28 @@
                       <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Kode Studio:</label>
-                            <input type="number" class="form-control" name="kode_studio" placeholder="4 Digit" required>
+                            <input type="number" class="form-control" name="kode_studio" placeholder="*Kode Studio" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Studio:</label>
-                            <input type="text" class="form-control" name="nama" required>
+                            <input type="text" class="form-control" name="nama" placeholder="*Nama Studio" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar:</label>
-                            <input type="file" class="form-control" name="gambar" required>
+                            <input type="file" class="form-control" name="gambar" placeholder="*Gambar" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar Detail:</label>
-                            <input type="file" class="form-control" name="gambar_detail[]" multiple required>
+                            <input type="file" class="form-control" name="gambar_detail[]" placeholder="*Gambar Detail (Isi 3)" multiple required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Banner:</label>
-                            <input type="file" class="form-control" name="banner" required>
+                            <input type="file" class="form-control" name="banner" placeholder="*Banner" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1" class="col-form-label">Resepsionis</label>
-                            <select class="form-control" name="resepsionis_id" id="exampleFormControlSelect1" required>
+                            <select class="form-control" name="resepsionis_id" id="exampleFormControlSelect1" placeholder="*Resepsionis" required>
+                            <option value="">--Silahkan Pilih--</option>
                               @foreach ($resepsionis as $item)
                               <option value="{{$item->id}}">{{$item->nama}}</option>
                               @endforeach
@@ -123,31 +124,31 @@
                           </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
-                            <input type="number" class="form-control" name="harga" required>
+                            <input type="number" class="form-control" name="harga" placeholder="*Harga" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Jumlah:</label>
-                            <input type="number" class="form-control" name="jumlah" required>
+                            <input type="number" class="form-control" name="jumlah" placeholder="*Jumlah" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Ukuran:</label>
-                            <input type="number" class="form-control" name="ukuran" required>
+                            <input type="number" class="form-control" name="ukuran" placeholder="*Ukuran dalam m²" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Monitor:</label>
-                            <input type="number" class="form-control" name="monitor" required>
+                            <input type="number" class="form-control" name="monitor" placeholder="*Jumlah Monitor" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Perangkat VR:</label>
-                            <input type="number" class="form-control" name="perangkat_vr" required>
+                            <input type="number" class="form-control" name="perangkat_vr" placeholder="*Jumlah Perangkat VR" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">PC Desktop:</label>
-                            <input type="number" class="form-control" name="pc_desktop" required>
+                            <input type="number" class="form-control" name="pc_desktop" placeholder="*Jumlah PC Desktop" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
-                            <textarea class="form-control" name="deskripsi" id="mytextarea" required></textarea>
+                            <textarea class="form-control" name="deskripsi" id="mytextarea" placeholder="*Deskripsi" required></textarea>
                         </div>
 
                     </div>

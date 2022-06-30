@@ -22,7 +22,7 @@
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Foto</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">E-mail</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Telepon</th>        
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Telepon</th>
                   <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                 </tr>
               </thead>
@@ -62,7 +62,7 @@
         </div>
       </div>
     </div>
-  
+
     <!-- Modal Tambah Perangkat -->
     <div class="modal fade" id="tambahResepsionis" tabindex="-1" role="dialog" aria-labelledby="tambahResepsionisLabel"
         aria-hidden="true">
@@ -79,19 +79,19 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama:</label>
-                            <input type="text" class="form-control" name="nama">
+                            <input type="text" class="form-control" name="nama" placeholder="*Nama" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Foto:</label>
-                            <input type="file" class="form-control" name="foto">
+                            <input type="file" class="form-control" name="foto" placeholder="*Foto" required>
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="col-form-label">email:</label>
-                            <input type="email" class="form-control" name="email">
+                            <label for="message-text" class="col-form-label">Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="*Email" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Telepon:</label>
-                            <input type="number" class="form-control" name="no_telp">
+                            <input type="number" class="form-control" name="no_telp" placeholder="*Telepon" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -151,8 +151,8 @@
         searchable: true,
         fixedHeight: true
       });
-  
-      
+
+
       $('.show_confirm').click(function(event) {
               var form =  $(this).closest("form");
               var name = $(this).data("name");
@@ -170,7 +170,7 @@
                 }
               });
           });
-      
+
     </script>
     @endpush
   </x-app-layout>

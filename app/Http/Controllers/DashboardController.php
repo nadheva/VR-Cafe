@@ -14,20 +14,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardController extends Controller
 {
-    // public function __construct(Request $request){
-
-    //     $userid = Auth::user();
-    //     if(is_null(Profile::where('user_id', $userid)->first())) {
-    //         $email = Auth::user()->email;
-    //         return view('user.profil.create');
-    //     } else {
-    //     return view('dashboard');
-    //     }
-    // }
 
     public function dashboard()
     {
         if (Auth::user()->role == 'admin') {
+            Alert::success('Welcome', 'Selamat datang di dashboard admin!');
             $user = Auth::user()->role == 'user';
             $studio = SewaStudio::where('proses', '=', 'Disewa');
             $perangkat = SewaPerangkat::where('proses', '=', 'Disewa');
@@ -42,6 +33,13 @@ class DashboardController extends Controller
         }
         elseif (Auth::user()->role == 'user'){
             $user = Auth::user();
+            if(!empty($user->profile->alamat)){
+            Alert::success('Welcome', 'Selamat datang di dashboard user!');
+            }
+            elseif(empty($user->profile->alamat)){
+                Alert::warning('Warning', 'Anda belum mengisi profil, silahkan isi profil anda terlebih dahulu!');
+                return redirect()->route('profil.create');
+            }
             $now = Carbon::now();
             $studio = SewaStudio::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $perangkat = SewaPerangkat::where('user_id', $user->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');

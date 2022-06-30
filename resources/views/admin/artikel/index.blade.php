@@ -74,16 +74,16 @@
                       <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Judul:</label>
-                            <input type="text" class="form-control" name="judul">
+                            <input type="text" class="form-control" name="judul" placeholder="*Judul">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar:</label>
-                            <input type="file" class="form-control" name="gambar">
+                            <input type="file" class="form-control" name="gambar" placeholder="*Gambar">
                         </div>
 
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Isi:</label>
-                            <textarea class="form-control" name="isi" id="mytextarea"></textarea>
+                            <textarea class="form-control" name="isi" id="mytextarea" placeholder="*Isi"></textarea>
                         </div>
 
                     </div>

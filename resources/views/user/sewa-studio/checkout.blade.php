@@ -62,18 +62,18 @@
                               </div> --}}
                             <div class="row mt-3">
                                 <div class="col-12 col-sm-6">
-                                  <label>Tanggal Mulai</label>
-                                  <input class="form-control" type="datetime-local" name="tanggal_mulai" id="date1">
+                                  <label>Waktu Mulai</label>
+                                  <input class="form-control" type="datetime-local" name="tanggal_mulai" id="date1" placeholder="*Waktu Mulai" required>
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                  <label>Tanggal Akhir</label>
-                                  <input class="form-control" type="datetime-local" name="tanggal_berakhir" id="date2">
+                                  <label>Waktu Akhir</label>
+                                  <input class="form-control" type="datetime-local" name="tanggal_berakhir" id="date2" placeholder="*Waktu Akhir" required>
                                 </div>
                               </div>
                             <div class="row mt-3">
                               <div>
                                 <label>Keperluan</label>
-                                <textarea class="multisteps-form__input form-control" name="keperluan" id="mytextarea"></textarea>
+                                <textarea class="multisteps-form__input form-control" name="keperluan" id="mytextarea" placeholder="*Keperluan" required></textarea>
                               </div>
                             </div>
                             <div class="button-row d-flex mt-4">

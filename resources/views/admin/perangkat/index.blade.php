@@ -86,31 +86,31 @@
                       <div class="modal-body">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Kode Perangkat:</label>
-                            <input type="number" class="form-control" name="kode_perangkat" placeholder="4 Digit" required>
+                            <input type="number" class="form-control" name="kode_perangkat" placeholder="*Kode Perangkat" required>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Perangkat:</label>
-                            <input type="text" class="form-control" name="nama" required>
+                            <input type="text" class="form-control" name="nama" placeholder="*Nama Perangkat" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar:</label>
-                            <input type="file" class="form-control" name="gambar" required>
+                            <input type="file" class="form-control" name="gambar" placeholder="*Gambar" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar Detail:</label>
-                            <input type="file" class="form-control" name="gambar_detail[]" multiple required>
+                            <input type="file" class="form-control" name="gambar_detail[]" placeholder="*Gambar Detail (Isi 3)" multiple required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Stok:</label>
-                            <input type="number" class="form-control" name="stok" required>
+                            <input type="number" class="form-control" name="stok" placeholder="*Stok" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Harga:</label>
-                            <input type="number" class="form-control" name="harga" required>
+                            <input type="number" class="form-control" name="harga" placeholder="*Harga" required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Deskripsi:</label>
-                            <textarea class="form-control" name="deskripsi" id="mytextarea" required></textarea>
+                            <textarea class="form-control" name="deskripsi" id="mytextarea" placeholder="*Deskripsi" required></textarea>
                         </div>
 
                     </div>
