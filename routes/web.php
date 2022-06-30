@@ -20,6 +20,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DendaPerangkatController;
 use App\Http\Controllers\DendaStudioController;
 use App\Http\Controllers\JadwalController;
+use Illuminate\Support\Facades\Artisan;
 
 //User
 use App\Http\Controllers\User\OrderPerangkatController as UserOrderPerangkatController;
@@ -156,5 +157,8 @@ Route::resource('guest-perangkat', GuestPerangkat::class);
 Route::resource('guest-resepsionis', GuestResepsionis::class);
 Route::resource('guest-studio', GuestStudio::class);
 Route::resource('guest-tentang', GuestTentang::class);
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+    });
 
 require __DIR__.'/auth.php';
