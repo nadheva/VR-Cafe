@@ -47,7 +47,14 @@ class DashboardController extends Controller
             $total = Payment::where('user_id', Auth::user()->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->sum('grand_total');
             $payment = Payment::latest()->take(5)->get();
             $transaksi = Payment::where('user_id', Auth::user()->id)->whereYear('created_at',  '=', Carbon::now()->year)->whereMonth('created_at', '=', Carbon::now()->month)->count();
-        return view('user.dashboard.index', compact('payment', 'total', 'user', 'denda', 'studio', 'perangkat', 'transaksi'));
+
+            $studioproses = SewaStudio::where('user_id', $user->id)->where('proses', '=', 'Disewa')->count();
+            $studioselesai = SewaStudio::where('user_id', $user->id)->where('proses', '=', 'Dikembalikan')->count();
+            $perangkatproses = SewaPerangkat::where('user_id', $user->id)->where('proses', '=', 'Disewa')->count();
+            $perangkatselesai = SewaPerangkat::where('user_id', $user->id)->where('proses', '=', 'Dikembalikan')->count();
+            $proses = $studioproses + $perangkatproses;
+            $selesai = $perangkatselesai + $studioselesai;
+        return view('user.dashboard.index', compact('payment', 'total', 'user', 'denda', 'studio', 'perangkat', 'transaksi', 'proses', 'selesai'));
         }
     }
 }

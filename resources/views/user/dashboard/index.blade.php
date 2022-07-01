@@ -270,17 +270,17 @@
                       <div class="ms-3">
                         <p class="text-sm mb-0 text-capitalize font-weight-bold">Status Transaksi</p>
                         <h5 class="font-weight-bolder mb-0">
-                          115
+                          {{$proses+$selesai}}
                         </h5>
                       </div>
                     </div>
                     <span class="badge badge-dot d-block text-start pb-0 mt-3">
                       <i class="bg-gradient-info"></i>
-                      <span class="text-muted text-xs font-weight-bold">Done</span>
+                      <span class="text-muted text-xs font-weight-bold">Selesai</span>
                     </span>
                     <span class="badge badge-dot d-block text-start">
                       <i class="bg-gradient-secondary"></i>
-                      <span class="text-muted text-xs font-weight-bold">In progress</span>
+                      <span class="text-muted text-xs font-weight-bold">Dalam Proses</span>
                     </span>
                   </div>
                   <div class="col-lg-7 my-auto">
@@ -392,16 +392,16 @@
             new Chart(ctx2, {
               type: "doughnut",
               data: {
-                labels: ['Done', 'In progress'],
+                labels: ['Selesai', 'Dalam Proses'],
                 datasets: [{
-                  label: "Projects",
+                  label: "Status Transaksi",
                   weight: 9,
                   cutout: 50,
                   tension: 0.9,
                   pointRadius: 2,
                   borderWidth: 2,
                   backgroundColor: ['#2152ff', '#a8b8d8'],
-                  data: [75, 25],
+                  data: [{{ $selesai }}, {{ $proses }}, ],
                   fill: false
                 }],
               },
