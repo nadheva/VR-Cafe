@@ -20,7 +20,7 @@
                     <div class="d-flex">
                       <div>
                         <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
-                          <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                          <i class="ni ni-glasses-2 text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
@@ -39,7 +39,7 @@
                     <div class="d-flex">
                       <div>
                         <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
-                          <i class="ni ni-planet text-lg opacity-10" aria-hidden="true"></i>
+                          <i class="ni ni-building text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
@@ -61,7 +61,7 @@
                     <div class="d-flex">
                       <div>
                         <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
-                          <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                          <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
@@ -81,7 +81,7 @@
                     <div class="d-flex">
                       <div>
                         <div class="icon icon-shape bg-gradient-success text-center border-radius-md">
-                          <i class="ni ni-shop text-lg opacity-10" aria-hidden="true"></i>
+                          <i class="ni ni-basket text-lg opacity-10" aria-hidden="true"></i>
                         </div>
                       </div>
                       <div class="ms-3">
@@ -204,7 +204,7 @@
                         </div>
                         <div class="ms-auto">
                           <p class="text-xs mb-0 text-secondary font-weight-bold">Total</p>
-                          <span class="text-xs font-weight-bolder">@money($i->grand_total)</span>
+                          <span class="text-xs font-weight-bolder">Rp. @money($i->grand_total)</span>
                         </div>
                         <div class="mx-auto">
                           <p class="text-xs mb-0 text-secondary font-weight-bold">Status</p>
