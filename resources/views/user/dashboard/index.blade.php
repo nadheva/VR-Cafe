@@ -270,7 +270,7 @@
                       <div class="ms-3">
                         <p class="text-sm mb-0 text-capitalize font-weight-bold">Status Transaksi</p>
                         <h5 class="font-weight-bolder mb-0">
-                          {{$proses+$selesai}}
+                          {{$proses + $selesai}}
                         </h5>
                       </div>
                     </div>
