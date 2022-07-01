@@ -228,7 +228,7 @@
             </div>
           </div>
           @endif
-          {{-- <div class="col-lg-4 col-12 mt-4 mt-lg-0">
+          <div class="col-lg-4 col-12 mt-4 mt-lg-0">
             <div class="card overflow-hidden">
               <div class="card-header p-3 pb-0">
                 <div class="d-flex align-items-center">
@@ -236,7 +236,7 @@
                     <i class="ni ni-calendar-grid-58 text-lg opacity-10" aria-hidden="true"></i>
                   </div>
                   <div class="ms-3">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Tasks</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Transaksi Perbulan</p>
                     <h5 class="font-weight-bolder mb-0">
                       480
                     </h5>
@@ -268,7 +268,7 @@
                         <i class="ni ni-delivery-fast text-lg opacity-10" aria-hidden="true"></i>
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Projects</p>
+                        <p class="text-sm mb-0 text-capitalize font-weight-bold">Status Transaksi</p>
                         <h5 class="font-weight-bolder mb-0">
                           115
                         </h5>
@@ -291,7 +291,7 @@
                 </div>
               </div>
             </div>
-          </div> --}}
+          </div>
         </div>
         @push('scripts')
         <script>
