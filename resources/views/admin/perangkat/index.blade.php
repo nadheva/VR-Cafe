@@ -98,7 +98,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Gambar Detail:</label>
-                            <input type="file" class="form-control" name="gambar_detail[]" placeholder="*Gambar Detail (Isi 3)" multiple required>
+                            <input type="file" class="form-control" name="gambar_detail[]" placeholder="*Gambar Detail (Isi 3)" max="3" multiple required>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Stok:</label>
