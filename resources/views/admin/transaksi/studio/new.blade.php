@@ -105,7 +105,7 @@
                                                   </td>
                                                   @endif
                                                   <td class="text-sm">
-                                                    <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                                    <a href="{{route('order-studio.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                                       <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                   </td>
@@ -204,7 +204,7 @@
                                                     </div>
                                                   </td>
                                                   <td class="text-sm">
-                                                    <a href="{{route('order-studio.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                                    <a href="{{route('order-studio.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                                       <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                   </td>

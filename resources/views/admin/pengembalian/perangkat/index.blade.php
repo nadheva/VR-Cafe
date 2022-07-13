@@ -68,7 +68,7 @@
                         <span class="my-2 text-xs">{{$i->tanggal_berakhir}}</span>
                       </td>
                       <td class="text-sm">
-                        <a href="{{route('order-perangkat.show', $i->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                        <a href="{{route('order-perangkat.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                           <i class="fas fa-eye text-secondary"></i>
                         </a>
                         <a class="btn btn-link text-dark px-3 mb-0" href="" data-bs-toggle="modal" data-bs-target="#editPerangkat-{{$i->id}}"><i class="fas fa-user-edit text-secondary"></i></a>
