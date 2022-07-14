@@ -14,4 +14,19 @@ class Wishlist extends Model
         'studio_id',
         'perangkat_id'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function studio()
+    {
+        return $this->belongsTo(Studio::class);
+    }
+
+    public function perangkat()
+    {
+        return $this->belongsTo(Perangkat::class);
+    }
 }

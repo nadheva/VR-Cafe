@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Perangkat;
+use App\Models\Wishlist;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PerangkatController extends Controller
@@ -24,6 +25,7 @@ class PerangkatController extends Controller
         foreach ($perangkatdetails as $key => $i){
             $data[] = $i;
          }
-        return view('user.sewa-perangkat.show', compact('perangkat', 'perangkatdetails' ,'perangkatlain'));
+         $wishlist = Wishlist::where('perangkat_id', $id1)->first();
+        return view('user.sewa-perangkat.show', compact('perangkat', 'perangkatdetails' ,'perangkatlain', 'wishlist'));
     }
 }

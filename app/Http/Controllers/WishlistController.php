@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class WishlistController extends Controller
@@ -16,34 +17,22 @@ class WishlistController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required',
-        ]);
+        $user = Auth::user()->id;
 
         Wishlist::create([
-            'user_id' => $request->user_id,
+            'user_id' => $user,
             'studio_id' => $request->studio_id,
             'perangkat_id' => $request->perangkat_id
         ]);
         Alert::success('Success', 'Wishlist berhasil ditambahkan!');
-        return redirect()->route('wishlist.index');
-    }
-
-    public function update(Request $request, $id)
-    {
-        $wishlist = Wishlist::findOrfail($id);
-        $wishlist->user_id = $request->testimonial;
-        $wishlist->studio_id = $request->studio_id;
-        $wishlist->perangkat_id = $request->perangkat_id;
-        $wishlist->save();
-        Alert::info('info', 'Wishlist berhasil diedit!');
-        return redirect()->route('wishlist.index');
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
-        Wishlist::find($id)->delete();
+        $id1 = decrypt($id);
+        Wishlist::findOrfail($id1)->delete();
         Alert::warning('Warning', 'Wishlist berhasil dihapus!');
-        return redirect()->route('wishlist.index');
+        return redirect()->back();
     }
 }

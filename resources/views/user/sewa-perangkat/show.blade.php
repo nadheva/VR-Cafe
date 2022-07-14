@@ -113,6 +113,26 @@
                         @endif
                     </form>
                     </div>
+                    <div class="col-5 col-sm-3 mt-3 mt-sm-0">
+                        @if(is_null($wishlist))
+                            <form action="{{route('wishlist.store')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="perangkat_id" value="{{$perangkat->id}}">
+                            <button class="btn btn-icon btn-2 btn-primary" type="submit">
+                                <span class="btn-inner--icon"><i class="ni ni-favourite-28"></i></span>
+                            </button>
+                            </form>
+                        @else
+                            <form action="{{route('wishlist.destroy', encrypt($wishlist->id))}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            {{-- <input type="hidden" name="perangkat_id" value="{{$perangkat->id}}"> --}}
+                            <button class="btn btn-icon btn-2 btn-warning" type="submit">
+                                <span class="btn-inner--icon"><i class="ni ni-favourite-28"></i></span>
+                            </button>
+                            </form>
+                        @endif
+                    </div>
                   </div>
                 </div>
               </div>

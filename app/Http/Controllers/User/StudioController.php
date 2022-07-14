@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Studio;
 use App\Models\SewaStudio;
 use Illuminate\Http\Request;
+use App\Models\Wishlist;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class StudioController extends Controller
@@ -26,6 +27,7 @@ class StudioController extends Controller
             $data[] = $i;
          }
          $sewa_studio = SewaStudio::where('studio_id', $id1)->get();
-        return view('user.sewa-studio.show', compact('studio', 'studiodetails' ,'studiolain', 'sewa_studio'));
+         $wishlist = Wishlist::where('studio_id', $id1)->first();
+        return view('user.sewa-studio.show', compact('studio', 'studiodetails' ,'studiolain', 'sewa_studio', 'wishlist'));
     }
 }
