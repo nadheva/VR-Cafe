@@ -47,7 +47,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="dashboard">Pages</a></li>
+                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{route('dashboard')}}">Pages</a></li>
                 {{-- <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li> --}}
             </ol>
             {{-- <h6 class="font-weight-bolder mb-0">{{request()->path()}}</h6> --}}

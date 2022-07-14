@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Route;
 
 //Backend
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     //Auth
     Route::get('login', [AuthenticatedSessionController::class, 'create'] );
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'] );
