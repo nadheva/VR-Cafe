@@ -31,16 +31,16 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>No.</th>
-                                                <th>Invoice</th>
-                                                <th>Tanggal</th>
-                                                <th>Status</th>
-                                                <th>Bayar</th>
-                                                <th>Proses</th>
+                                                <th>Kode</th>
+                                                <th>Nama</th>
+                                                <th>Gambar</th>
+                                                <th>Stok</th>
+                                                <th>Harga</th>
                                                 <th>Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sewa_studio->where('approval', '=', '1') as $i)
+                                            @foreach ($wishlist->where('studio_id', '=', NULL) as $i)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -49,63 +49,31 @@
                                                   </td>
                                                   <td>
                                                     <div class="d-flex align-items-center">
-                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->invoice}}</p>
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->perangkat->kode_perangkat}}</p>
                                                     </div>
                                                   </td>
-                                                  <td class="font-weight-bold">
-                                                    <span class="my-2 text-xs">{{$i->created_at->format('d.m.Y')}}</span>
-                                                  </td>
-                                                  @if($i->payment->status == 'pending')
-                                                  <td class="text-xs font-weight-bold">
+                                                  <td>
                                                     <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-info" aria-hidden="true"></i></button>
-                                                      <span>Belum dibayar</span>
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->perangkat->nama}}</p>
                                                     </div>
                                                   </td>
-                                                  @elseif($i->payment->status == 'success')
-                                                  <td class="text-xs font-weight-bold">
+                                                  <td>
                                                     <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check" aria-hidden="true"></i></button>
-                                                      <span>Sudah dibayar</span>
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0"><img src="{{ asset( $i->perangkat->gambar) }}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></p>
                                                     </div>
                                                   </td>
-                                                  @elseif($i->payment->status == 'failed')
-                                                  <td class="text-xs font-weight-bold">
+                                                  <td>
                                                     <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times" aria-hidden="true"></i></button>
-                                                      <span>Gagal</span>
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->perangkat->stok}}</p>
                                                     </div>
                                                   </td>
-                                                  @elseif($i->payment->status == 'expired')
-                                                  <td class="text-xs font-weight-bold">
+                                                  <td>
                                                     <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
-                                                      <span>Kadaluarsa</span>
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">Rp. @money($i->perangkat->harga)</p>
                                                     </div>
                                                   </td>
-                                                  @endif
-                                                  <td class="text-xs font-weight-bold">
-                                                    <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
-                                                  </td>
-                                                  @if($i->proses == 'Disewa')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-info badge-sm">Disewa</span>
-                                                  </td>
-                                                  @elseif($i->proses == 'Dalam Proses')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-warning badge-sm">Dalam Proses</span>
-                                                  </td>
-                                                  @elseif($i->proses == 'Ditolak')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-danger badge-sm">Ditolak</span>
-                                                  </td>
-                                                  @elseif($i->proses == 'Dikembalikan')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-success badge-sm">Dikembalikan</span>
-                                                  </td>
-                                                  @endif
                                                   <td class="text-sm">
-                                                    <a href="{{route('order-studio.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                                    <a href="{{route('user-perangkat.show', encrypt($i->perangkat_id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                                       <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                   </td>
@@ -124,17 +92,17 @@
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>No.</th>
-                                                <th>Invoice</th>
-                                                <th>Tanggal</th>
-                                                <th>Status</th>
-                                                <th>Bayar</th>
-                                                <th>Proses</th>
-                                                <th>Approval</th>
+                                                <th>Kode</th>
+                                                <th>Nama</th>
+                                                <th>Gambar</th>
+                                                <th>Jumlah</th>
+                                                <th>Harga</th>
+                                                <th>Resepsionis</th>
                                                 <th>Detail</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($sewa_studio->where('approval', '=', '0') as $i)
+                                            @foreach ($wishlist->where('perangkat_id', '=', NULL) as $s)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -143,68 +111,36 @@
                                                   </td>
                                                   <td>
                                                     <div class="d-flex align-items-center">
-                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$i->invoice}}</p>
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$s->studio->kode_studio}}</p>
                                                     </div>
                                                   </td>
-                                                  <td class="font-weight-bold">
-                                                    <span class="my-2 text-xs">{{$i->created_at->format('d.m.Y')}}</span>
-                                                  </td>
-                                                  @if($i->payment->status == 'pending')
-                                                  <td class="text-xs font-weight-bold">
-                                                    <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-info mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-info" aria-hidden="true"></i></button>
-                                                      <span>Belum dibayar</span>
-                                                    </div>
-                                                  </td>
-                                                  @elseif($i->payment->status == 'success')
-                                                  <td class="text-xs font-weight-bold">
-                                                    <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-check" aria-hidden="true"></i></button>
-                                                      <span>Sudah dibayar</span>
-                                                    </div>
-                                                  </td>
-                                                  @elseif($i->payment->status == 'failed')
-                                                  <td class="text-xs font-weight-bold">
-                                                    <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-times" aria-hidden="true"></i></button>
-                                                      <span>Gagal</span>
-                                                    </div>
-                                                  </td>
-                                                  @elseif($i->payment->status == 'expired')
-                                                  <td class="text-xs font-weight-bold">
-                                                    <div class="d-flex align-items-center">
-                                                      <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
-                                                      <span>Kadaluarsa</span>
-                                                    </div>
-                                                  </td>
-                                                  @endif
-                                                  <td class="text-xs font-weight-bold">
-                                                    <span class="my-2 text-xs">Rp. @money($i->grand_total)</span>
-                                                  </td>
-                                                  @if($i->proses == 'Disewa')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-info badge-sm">Disewa</span>
-                                                  </td>
-                                                  @elseif($i->proses == 'Dalam Proses')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-warning badge-sm">Dalam Proses</span>
-                                                  </td>
-                                                  @elseif($i->proses == 'Ditolak')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-danger badge-sm">Ditolak</span>
-                                                  </td>
-                                                  @elseif($i->proses == 'Dikembalikan')
-                                                  <td  class="text-xs font-weight-bold">
-                                                    <span class="badge badge-success badge-sm">Dikembalikan</span>
-                                                  </td>
-                                                  @endif
                                                   <td>
-                                                    <div class="align-middle text-center">
-                                                      <a class="btn btn-link text-dark px-3 mb-0" href="" data-bs-toggle="modal" data-bs-target="#approval-{{$i->id}}"><i class="fas fa-user-edit text-secondary"></i></a>
+                                                    <div class="d-flex align-items-center">
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$s->studio->nama}}</p>
+                                                    </div>
+                                                  </td>
+                                                  <td>
+                                                    <div class="d-flex align-items-center">
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0"><img src="{{ asset( $s->studio->gambar) }}" style="max-width: 70px" class="img-fluid shadow border-radius-xl"></p>
+                                                    </div>
+                                                  </td>
+                                                  <td>
+                                                    <div class="d-flex align-items-center">
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$s->studio->jumlah}}</p>
+                                                    </div>
+                                                  </td>
+                                                  <td>
+                                                    <div class="d-flex align-items-center">
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">Rp. @money($s->studio->harga)</p>
+                                                    </div>
+                                                  </td>
+                                                  <td>
+                                                    <div class="d-flex align-items-center">
+                                                      <p class="text-xs font-weight-bold ms-2 mb-0">{{$s->studio->resepsionis->nama}}</p>
                                                     </div>
                                                   </td>
                                                   <td class="text-sm">
-                                                    <a href="{{route('order-studio.show', encrypt($i->id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
+                                                    <a href="{{route('user-studio.show', encrypt($s->studio_id))}}" data-bs-toggle="tooltip" data-bs-original-title="Preview product">
                                                       <i class="fas fa-eye text-secondary"></i>
                                                     </a>
                                                   </td>
@@ -220,88 +156,6 @@
             </div>
         </div>
     </div>
-
-        <!-- Modal Edit Perangkat -->
-        @foreach($sewa_studio as $i)
-        <div class="modal fade" id="approval-{{$i->id}}" tabindex="-1" role="dialog" aria-labelledby="approvalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <form method="post" action="{{ route('approve-studio', $i->id) }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="tambahPerangkatLabel">Approval</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid py-4">
-                                <div  style="align-items: center">
-                                  <div class="table-responsive">
-                                      <table class="table">
-                                          <tbody>
-                                          <tr>
-                                            <td>No. Invoice </td>
-                                            <td>:</td>
-                                            <td>{{$i->invoice}}</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Studio </td>
-                                            <td>:</td>
-                                            <td>{{$i->studio->nama}}</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Pelanggan </td>
-                                            <td>:</td>
-                                            <td>{{$i->user->profile->nama_depan. " ".$i->user->profile->nama_belakang}}</td>
-                                          </tr>
-                                          <tr>
-                                            <td>No. Telp </td>
-                                            <td>:</td>
-                                            <td>{{$i->user->profile->no_telp}}</td>
-                                          </tr>
-                                          <tr>
-                                              <td>Alamat </td>
-                                              <td>:</td>
-                                              <td>{{$i->user->profile->alamat}}</td>
-                                          </tr>
-                                          <tr>
-                                            <td>Waktu Mulai </td>
-                                            <td>:</td>
-                                            <td>{{$i->tanggal_mulai}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Waktu Selesai </td>
-                                            <td>:</td>
-                                            <td>{{$i->tanggal_berakhir}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lama Sewa</td>
-                                            <td>:</td>
-                                            <td> {{ \Carbon\Carbon::parse($i->tanggal_mulai)->diffInHours(\Carbon\Carbon::parse($i->tangggal_selesai)) }} Jam</td>
-                                        </tr>
-                                          </tbody>
-                                        </table>
-                                    </div>
-                              </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn bg-gradient-primary" name="Setuju">Setujui</button>
-                        </form>
-                        <form id="form-delete" action="{{route('deny-studio', $i->id)}}" method="POST" style="display: inline">
-                            @csrf
-                            @method("PUT")
-                            <button type="submit" class="btn bg-gradient-danger" name="Tolak">Tolak</button>
-                          </form>
-                        </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
     @push('scripts')
     <script>
         const dataTableSearch = new simpleDatatables.DataTable("#datatable-search", {

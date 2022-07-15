@@ -11,8 +11,8 @@ class WishlistController extends Controller
 {
     public  function index()
     {
-        $wishlist = Wishlist::all();
-        return view('admin.wishlist.index', compact('wishlist'));
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->latest()->get();
+        return view('user.wishlist.index', compact('wishlist'));
     }
 
     public function store(Request $request)
