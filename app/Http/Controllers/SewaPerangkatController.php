@@ -105,8 +105,14 @@ class SewaPerangkatController extends Controller
         foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
             $perangkat->where('id', $cart->perangkat->id);
             foreach (Perangkat::where('id', $cart->perangkat->id)->get() as $i)
+                if($i->stok < $cart->jumlah)
+                {
+                    Alert::info('Info', 'Stok perangkat tidak tersedia!');
+                    return redirect()->route();
+                }else{
             $i->stok = $i->stok - $cart->jumlah;
             $i->save();
+            }
 
             $sewa_perangkat->order()->create([
             'sewa_perangkat_id' => $sewa_perangkat->id,
@@ -114,7 +120,6 @@ class SewaPerangkatController extends Controller
             'jumlah'            => $cart->jumlah,
             'harga'             => $cart->harga,
             ]);
-
         }
 
         $payload = [

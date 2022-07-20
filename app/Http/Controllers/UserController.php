@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $superadmin = User::where('id', '=', '1');
-        $user = User::latest()->get()->except($superadmin);
+        $user = User::latest()->get()->except(1);
         return view('admin.user.index', compact('user'));
 
     }

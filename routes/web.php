@@ -20,6 +20,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\DendaPerangkatController;
 use App\Http\Controllers\DendaStudioController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 
 //User
@@ -88,6 +89,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('sewa-studio-approve/{id}', [SewaStudioController::class, 'approve'])->name('approve-studio');
     Route::put('sewa-studio-deny/{id}', [SewaStudioController::class, 'deny'])->name('deny-studio');
 
+    //user
+    Route::resource('user', UserController::class)->except('update');
+    Route::put('user-update/{id}', [UserController::class, 'update']);
 
     //Testimonial
     Route::resource('testimonial', TestimonialController::class);

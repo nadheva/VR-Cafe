@@ -21,6 +21,13 @@ class CartController extends Controller
     {
         $cart = Cart::where('perangkat_id', $request->perangkat_id)
                 ->where('user_id', Auth::user()->id);
+        foreach($cart as $c) {
+            if($c->stok < $request->jumlah)
+            {
+                Alert::info('Info', 'Stok perangkat tidak tersedia!');
+                return redirect()->back();
+            }
+        }
         if($cart->count()) {
             $cart->increment('jumlah');
             $cart = $cart->first();

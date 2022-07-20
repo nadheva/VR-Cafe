@@ -156,14 +156,14 @@
                 </div>
                 <hr class="horizontal dark mb-0">
               </div>
-              @if($payment->isEmpty())
+              @if($payment->where('user_id', Auth::user()->id)->isEmpty())
               <div class="card-body p-3 pt-0">
               <span>Belum ada transaksi</span>
               </div>
               @else
               <div class="card-body p-3 pt-0">
                 <ul class="list-group list-group-flush" data-toggle="checklist">
-                @foreach($payment as $i)
+                @foreach($payment->where('user_id', Auth::user()->id) as $i)
                   <li class="list-group-item border-0 flex-column align-items-start ps-0 py-0 mb-3">
                     @if($i->status == "pending")
                     <div class="checklist-item checklist-item-info ps-2 ms-3">
