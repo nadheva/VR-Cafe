@@ -19,7 +19,7 @@ class PerangkatSeeder extends Seeder
             'nama' => 'Oculus 1',
             'slug' => 'Oculus 1',
             'gambar' => 'storage/perangkat/sample.jpg',
-            'gambar_detail' => '["storage\/perangkat\/gambar_detail\/sample.jpg"]',
+            'gambar_detail' => '["storage\/perangkat\/gambar_detail\/sample.jpeg"]',
             'stok' => '10',
             'harga' => '20000',
             'deskripsi' => 'Barang bagus'
@@ -30,7 +30,7 @@ class PerangkatSeeder extends Seeder
             'nama' => 'Oculus 2',
             'slug' => 'Oculus 2',
             'gambar' => 'storage/perangkat/sample.jpg',
-            'gambar_detail' => '["storage\/perangkat\/gambar_detail\/sample.jpg"]',
+            'gambar_detail' => '["storage\/perangkat\/gambar_detail\/sample.jpeg"]',
             'stok' => '10',
             'harga' => '20000',
             'deskripsi' => 'Barang bagus'
@@ -41,7 +41,7 @@ class PerangkatSeeder extends Seeder
             'nama' => 'Oculus 3',
             'slug' => 'Oculus 3',
             'gambar' => 'storage/perangkat/sample.jpg',
-            'gambar_detail' => '["storage\/perangkat\/gambar_detail\/sample.jpg"]',
+            'gambar_detail' => '["storage\/perangkat\/gambar_detail\/sample.jpeg"]',
             'stok' => '10',
             'harga' => '20000',
             'deskripsi' => 'Barang bagus'
