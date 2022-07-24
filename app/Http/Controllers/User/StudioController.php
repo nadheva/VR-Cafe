@@ -28,6 +28,14 @@ class StudioController extends Controller
          }
          $sewa_studio = SewaStudio::where('studio_id', $id1)->get();
          $wishlist = Wishlist::where('studio_id', $id1)->first();
+
+         if(request()->ajax()){
+            $start = (!empty($_GET["tanggal_mulai"])) ? ($_GET["tanggal_mulai"]) : ('');
+            $end = (!empty($_GET["tanggal_berakhir"])) ? ($_GET["tanggal_berakhir"]) : ('');
+           $events = SewaStudio::whereDate('tanggal_mulai', '>=', $start)->whereDate('tanggal_berakhir',   '<=', $end)
+                   ->get(['id','invoice','start', 'end']);
+           return response()->json($events);
+           }
         return view('user.sewa-studio.show', compact('studio', 'studiodetails' ,'studiolain', 'sewa_studio', 'wishlist'));
     }
 }
