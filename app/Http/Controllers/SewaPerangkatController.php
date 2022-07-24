@@ -58,6 +58,18 @@ class SewaPerangkatController extends Controller
 
     public function store()
     {
+        $perangkat = Perangkat::get();
+        foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
+            $perangkat->where('id', $cart->perangkat->id);
+            foreach (Perangkat::where('id', $cart->perangkat->id)->get() as $i)
+            if($i->stok < $cart->jumlah){
+                $i->stok = 0;
+                Alert::warning('Warning', 'Mohon cek ketersediaan stok!');
+                return redirect()->route('cart.index');
+            }
+            else{
+
+
         DB::transaction(function() {
         $length = 10;
         $random = '';
@@ -85,6 +97,7 @@ class SewaPerangkatController extends Controller
             'tanggal_berakhir.after' => 'Tanggal berakhir harus setelah tanggal mulai!'
         ]);
 
+
         $sewa_perangkat = SewaPerangkat::create([
             'user_id' => $user,
             'invoice' => $invoice,
@@ -95,19 +108,13 @@ class SewaPerangkatController extends Controller
             'grand_total' => ($mulai->diffInDays($sampai)) * $total
         ]);
 
-      $payment =  $sewa_perangkat->payment()->create([
-            'invoice' => $sewa_perangkat->invoice,
-            'status' => 'pending',
-            'grand_total' => $sewa_perangkat->grand_total,
-            'user_id' => $sewa_perangkat->user_id
-        ]);
-
-        foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
+            foreach(Cart::where('user_id', Auth::user()->id)->get() as $cart) {
             $perangkat->where('id', $cart->perangkat->id);
             foreach (Perangkat::where('id', $cart->perangkat->id)->get() as $i)
             if($i->stok >= $cart->jumlah){
                 $i->stok = $i->stok - $cart->jumlah;
                 $i->save();
+
 
                 $sewa_perangkat->order()->create([
                 'sewa_perangkat_id' => $sewa_perangkat->id,
@@ -122,6 +129,15 @@ class SewaPerangkatController extends Controller
                 return redirect()->route('cart.index');
             }
         }
+
+      $payment =  $sewa_perangkat->payment()->create([
+            'invoice' => $sewa_perangkat->invoice,
+            'status' => 'pending',
+            'grand_total' => $sewa_perangkat->grand_total,
+            'user_id' => $sewa_perangkat->user_id
+        ]);
+
+
 
         $payload = [
             'transaction_details' => [
@@ -142,12 +158,13 @@ class SewaPerangkatController extends Controller
         // $this->response['id'] = $sewa_perangkat;
 
         });
+    }
         Cart::with('perangkat')
         ->where('user_id', Auth::user()->id)
         ->delete();
         Alert::success('Success', 'Sewa Perangkat VR berhasil ditambahkan!');
         return redirect()->route('user-transaksi-perangkat.index');
-
+    }
     }
 
     public function notificationHandler(Request $request)
