@@ -227,15 +227,30 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form method="post" action="{{ route('approve-studio', $i->id) }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
                         <div class="modal-header">
                             <h5 class="modal-title" id="tambahPerangkatLabel">Approval</h5>
+                            <div class="nav-wrapper position-relative ms-auto w-50">
+                                <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="#at1"
+                                            role="tab" aria-controls="at1" aria-selected="true">
+                                            Setuju
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#at2" role="tab"
+                                            aria-controls="at2" aria-selected="false">
+                                            Tolak
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <div class="tab-pane fade show position-relative  height-400 border-radius-lg" id="at1"
+                        role="tabpanel" aria-labelledby="at1">
                         <div class="modal-body">
                             <div class="container-fluid py-4">
                                 <div  style="align-items: center">
@@ -286,32 +301,87 @@
                                         </table>
                                     </div>
                               </div>
-
                         </div>
+
                         <div class="modal-footer">
+                            <form method="post" action="{{ route('approve-studio', $i->id) }}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn bg-gradient-primary" name="Setuju">Setujui</button>
+                        </form>
                         {{-- <form id="form-delete" action="{{route('deny-studio', $i->id)}}" method="POST" style="display: inline">
                             @csrf
                             @method("PUT")
                             <button type="submit" class="btn bg-gradient-danger" name="Tolak">Tolak</button>
                           </form> --}}
                         </div>
+                        </div>
+                        <div class="tab-pane fade show position-relative  height-400 border-radius-lg" id="at2"
+                        role="tabpanel" aria-labelledby="at2">
+                        <div class="modal-body">
+                            <div class="container-fluid py-4">
+                                <div  style="align-items: center">
+                                  <div class="table-responsive">
+                                      <table class="table">
+                                          <tbody>
+                                          <tr>
+                                            <td>No. Invoice </td>
+                                            <td>:</td>
+                                            <td>{{$i->invoice}}</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Studio </td>
+                                            <td>:</td>
+                                            <td>{{$i->studio->nama}}</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Pelanggan </td>
+                                            <td>:</td>
+                                            <td>{{$i->user->profile->nama_depan. " ".$i->user->profile->nama_belakang}}</td>
+                                          </tr>
+                                          <tr>
+                                            <td>No. Telp </td>
+                                            <td>:</td>
+                                            <td>{{$i->user->profile->no_telp}}</td>
+                                          </tr>
+                                          <tr>
+                                              <td>Alamat </td>
+                                              <td>:</td>
+                                              <td>{{$i->user->profile->alamat}}</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Waktu Mulai </td>
+                                            <td>:</td>
+                                            <td>{{$i->tanggal_mulai}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Waktu Selesai </td>
+                                            <td>:</td>
+                                            <td>{{$i->tanggal_berakhir}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lama Sewa</td>
+                                            <td>:</td>
+                                            <td> {{ \Carbon\Carbon::parse($i->tanggal_mulai)->diffInHours(\Carbon\Carbon::parse($i->tangggal_selesai)) }} Jam</td>
+                                        </tr>
+                                          </tbody>
+                                        </table>
+                                    </div>
+                              </div>
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn bg-gradient-primary" name="Setuju">Setujui</button>
+                        </form>
                         <form id="form-delete" action="{{route('deny-studio', $i->id)}}" method="POST" style="display: inline">
-                            {{-- <div class="col-6 d-flex align-items-center">
-                                <h6 class="mb-0">Penolakan</h6>
-                              </div> --}}
                             @csrf
                             @method("PUT")
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">Penolakan:</label>
-                                <input type="text" class="form-control" name="alasan_tolak" placeholder="*Alasan penolakan" required>
-                            </div>
-                            <div class="modal-footer">
+                            <input type="text" class="form-data" name="alasan_tolak">
                             <button type="submit" class="btn bg-gradient-danger" name="Tolak">Tolak</button>
-                            </div>
                           </form>
-                        </form>
+                        </div>
+                </div>
                 </div>
             </div>
         </div>

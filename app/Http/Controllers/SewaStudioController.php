@@ -289,6 +289,11 @@ class SewaStudioController extends Controller
     public function approve($id)
     {
         $sewa_studio = SewaStudio::findOrfail($id);
+        if(isset($this->request->alasan_tolak))
+        {
+            Alert::info('Info', 'Penyetujuan tidak perlu menginput alasan penolakan!');
+            return back();
+        }
         $sewa_studio->update([
             'approval' => '1',
             'proses' => 'Disewa'
@@ -302,7 +307,8 @@ class SewaStudioController extends Controller
         $sewa_studio = SewaStudio::findOrfail($id);
         $sewa_studio->update([
             'approval' => '0',
-            'proses' => 'Ditolak'
+            'proses' => 'Ditolak',
+            'alasan_tolak' => $this->request->alasan_tolak,
         ]);
         Alert::info('Warning', 'Pengajuan sewa studio berhasil ditolak!');
         return redirect()->back();
