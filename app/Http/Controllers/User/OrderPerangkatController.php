@@ -97,10 +97,13 @@ class OrderPerangkatController extends Controller
 
     public function invoice($id)
     {
-        $sewa_perangkat = SewaPerangkat::findOrfail($id);
-        $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_mulai);
-        $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_berakhir);
-        $hari = $mulai->diffInDays($selesai);
+        $id1 = decrypt($id);
+        $sewa_perangkat = SewaPerangkat::findOrfail($id1);
+        // $mulai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_mulai);
+        // $selesai = \Carbon\Carbon::createFromFormat('Y-m-d', $sewa_perangkat->tanggal_berakhir);
+        $mulai = $sewa_perangkat->tanggal_mulai;
+        $selesai = $sewa_perangkat->tanggal_berakhir;
+        $hari = Carbon::parse($mulai)->diffInDays(Carbon::parse($selesai));
         return view('user.transaksi.perangkat.invoice', compact('sewa_perangkat', 'hari'));
         // $pdf = PDF::loadView('user.transaksi.perangkat.invoice', compact('sewa_perangkat', 'hari'))->setOptions(['defaultFont' => 'nucleo']);;
         // return $pdf->download($sewa_perangkat->invoice.'.pdf');

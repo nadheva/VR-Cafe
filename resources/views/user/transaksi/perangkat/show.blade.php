@@ -6,7 +6,11 @@
               <div class="card-body">
                 <h5 class="font-weight-bolder">Detail Transaksi</h5>
                 <div class="col-12 mx-0 text-end">
-                    <a class="btn bg-gradient-warning mb-0" href="{{route('invoice-transaksi-perangkat', $sewa_perangkat->id)}}" target="_blank">Invoice</a>
+                    @if($sewa_perangkat->payment->status == 'success')
+                    <a class="btn bg-gradient-warning mb-0" href="{{route('invoice-transaksi-perangkat', encrypt($sewa_perangkat->id))}}" target="_blank">Invoice</a>
+                    @else
+                    <button class="btn bg-gradient-dark mb-0" href="{{route('invoice-transaksi-perangkat', encrypt($sewa_perangkat->id))}}" disabled>Invoice</button>
+                    @endif
                   </div>
                 <table class="table">
                     <tbody>

@@ -92,7 +92,7 @@
                                       <th></th>
                                       <th></th>
                                       <th class="h5 ps-4" colspan="2">Grand Total</th>
-                                      <th colspan="1" class="text-right h5 ps-4">{{$sewa_perangkat->payment->grand_total}}</th>
+                                      <th colspan="1" class="text-right h5 ps-4">Rp. @money($sewa_perangkat->payment->grand_total) </th>
                                     </tr>
                                   </tfoot>
                               </table>

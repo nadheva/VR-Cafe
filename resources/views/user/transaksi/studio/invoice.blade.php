@@ -37,7 +37,7 @@
                   <div class="col-lg-5 col-md-7 mt-auto">
                     <div class="row mt-md-5 mt-4 text-md-end text-start">
                       <div class="col-md-6">
-                        <h6 class="text-secondary mb-0">Tanggal Invoice:</h6>
+                        <h6 class="text-secondary mb-0">Tanggal Invoice: {{\Carbon\Carbon::now()}}</h6>
                       </div>
                       <div class="col-md-6">
                         {{-- <h6 class="text-dark mb-0">{{$sewa_studio->created_at->format('d.m.Y')}}</h6> --}}
@@ -71,8 +71,8 @@
                           <tr>
                             <td class="text-start">{{$sewa_studio->studio->nama}}</td>
                             <td class="ps-4">Rp. @money($sewa_studio->studio->harga)</td>
-                            {{-- <td class="ps-4" colspan="2">{{$hari}} Hari</td> --}}
-                            {{-- <td class="ps-4">Rp. @money($sewa_studio->grand_total)</td> --}}
+                            <td class="ps-4" colspan="2">{{$hari}} Jam</td>
+                            <td class="ps-4">Rp. @money($sewa_studio->grand_total)</td>
                           </tr>
                         </tbody>
                         <tfoot>
@@ -80,7 +80,7 @@
                             <th></th>
                             <th></th>
                             <th class="h5 ps-4" colspan="2">Grand Total</th>
-                            <th colspan="1" class="text-right h5 ps-4">{{$sewa_studio->grand_total}}</th>
+                            <th colspan="1" class="text-right h5 ps-4">Rp. @money($sewa_studio->grand_total)</th>
                           </tr>
                         </tfoot>
                       </table>
