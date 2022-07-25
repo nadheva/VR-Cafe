@@ -39,6 +39,7 @@
                         <th>Kode Perangkat</th>
                         <th>Harga</th>
                         <th>Stok</th>
+                        <th>Deskripsi</th>
                         <th>Status</th>
                         <th>Detail</th>
                       </tr>
@@ -56,6 +57,7 @@
                         <td class="text-sm">{{$i->kode_perangkat}}</td>
                         <td class="text-sm">Rp. @money($i->harga)/Hari </td>
                         <td class="text-sm">{{$i->stok}}</td>
+                        <td class="text-sm"> {{$i->deskripsi}}</td>
                         @if($i->stok == 0)
                         <td>
                           <span class="badge badge-danger badge-sm">Stok Habis</span>
