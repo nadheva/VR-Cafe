@@ -37,13 +37,14 @@ class SewaStudioController extends Controller
 
     public function create($id)
     {
+        $id1 = decrypt($id);
         $user = Auth::user()->id;
         $profil = Profile::where('user_id', $user)->first();
         if(is_null($profil)){
             return redirect()->route('profil.create')
             ->with('danger', 'Anda belum menambahkan data profil!');
         } else {
-        $studio = Studio::where('id', $id)->first();
+        $studio = Studio::where('id', $id1)->first();
         return view('user.sewa-studio.checkout', compact('studio', 'profil'));
         }
     }

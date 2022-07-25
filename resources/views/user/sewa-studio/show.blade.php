@@ -96,9 +96,9 @@
                   <div class="row mt-4">
                     <div class="col-lg-5">
                       @if($studio->jumlah == 0)
-                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-studio-create', $studio->id)}}" type="button" name="button" disabled>Sewa Sekarang</a>
+                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-studio-create', encrypt($studio->id))}}" type="button" name="button" disabled>Sewa Sekarang</a>
                       @else
-                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-studio-create', $studio->id)}}" type="button" name="button">Sewa Sekarang</a>
+                      <a class="btn bg-gradient-success mb-0 mt-lg-auto w-100" href="{{route('sewa-studio-create', encrypt($studio->id))}}" type="button" name="button">Sewa Sekarang</a>
                       @endif
                     </div>
                     <div class="col-5 col-sm-3 mt-3 mt-sm-0">
