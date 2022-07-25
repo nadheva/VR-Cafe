@@ -15,6 +15,7 @@ use App\Models\Studio;
 use Illuminate\Support\Carbon;
 use App\Models\SewaStudio;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -68,8 +69,25 @@ class SewaPerangkatController extends Controller
                 return redirect()->route('cart.index');
             }
             else{
+                $validator = Validator::make($this->request->all(),[
+                    'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
+                    'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
+                ],
 
+            [
+                'tanggal_mulai.required' => 'Tanggal mulai wajib diisi',
+                'tanggal_mulai.date' => 'Tanggal tidak valid!',
+                'tanggal_mulai.before' => 'Tanggal mulai harus sebelum tanggal berakhir',
 
+                'tanggal_berakhir.required' => 'Tanggal berakhir wajib diisi',
+                'tanggal_berakhir.date' => 'Tanggal tidak valid!',
+                'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
+            ],
+        );
+        if ($validator->fails()) {
+            Alert::warning('Warning', 'Mohon inputkan waktu mulai dan waktu selesai dengan benar!');
+            return back();
+        }
         DB::transaction(function() {
         $length = 10;
         $random = '';

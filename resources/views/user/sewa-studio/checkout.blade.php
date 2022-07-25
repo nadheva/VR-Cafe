@@ -102,7 +102,7 @@
                                         <tr>
                                             <td>Harga</td>
                                             <td> : </td>
-                                            <td>{{$studio->harga}}</td>
+                                            <td>Rp. @money($studio->harga)</td>
                                         </tr>
                                       </tbody>
                                     </table>

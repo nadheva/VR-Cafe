@@ -54,7 +54,11 @@
                           </div>
                         </td>
                         <td class="text-sm">Rp. @money($i->perangkat->harga) </td>
+                        @if($i->perangkat->stok >= $i->jumlah)
                         <td class="text-sm">{{$i->jumlah}}</td>
+                        @else
+                        <td class="text-sm"><span class="badge badge-danger badge-sm">Mohon Cek Stok</span></td>
+                        @endif
                         <td class="text-sm">Rp. @money($i->harga)</td>
                         <td class="text-sm">
                             <div>
