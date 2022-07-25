@@ -12,7 +12,8 @@ class TestimonialController extends Controller
     {
         // $testimonial = Testimonial::all();
         // return view('user.testimonial.index', compact('testimonial'));
-        return abort(404);
+        // return abort(404);
+        return view('error.500');
     }
 
     public function store(Request $request)
