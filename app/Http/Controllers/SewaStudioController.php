@@ -51,7 +51,8 @@ class SewaStudioController extends Controller
 
     public function store()
     {
-        $validator = Validator::make($this->request->all(),[
+        $validator = Validator::make($this->request->all(),
+                    [
                         'tanggal_mulai' => 'required|date|before:tanggal_berakhir',
                         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_mulai',
                     ],
@@ -66,10 +67,27 @@ class SewaStudioController extends Controller
                     'tanggal_berakhir.after_or_equal' => 'Tanggal mulai harus setara atau setelah tanggal mulai!'
                 ],
             );
-            if ($validator->fails()) {
+            if($validator->fails()) {
                 Alert::warning('Warning', 'Mohon inputkan waktu mulai dan waktu selesai dengan benar!');
                 return back();
             }
+            if(((Carbon::parse($this->request->tanggal_mulai)->diffInMinutes(Carbon::parse($this->request->tanggal_berakhir)))/60) < 1) {
+                Alert::warning('Warning', 'Mohon inputkan waktu mulai dan waktu selesai dengan benar!');
+                return back();
+            }
+            $studio = Studio::find($this->request->studio_id);
+            $tanggal_mulai = $this->request->tanggal_mulai;
+            $already_booked = false;
+            foreach ($studio->sewa_studio as $sewa) {
+                $from = Carbon::parse($sewa->tanggal_mulai);
+                $to =   Carbon::parse($sewa->tanggal_berakhir);
+
+                $already_booked = Carbon::parse($tanggal_mulai)->between($from, $to);
+                if ($already_booked){
+                    Alert::info('Info', 'Maaf studio tersebut sudah dibooking pada waktu tersebut, silahkan pilih waktu lain!');
+                    return back();
+            }
+        }
 
         DB::transaction(function($id) {
 
@@ -156,6 +174,7 @@ class SewaStudioController extends Controller
             // $this->response['id'] = $sewa_perangkat;
 
             });
+
             Alert::success('Success', 'Sewa Studio berhasil ditambahkan!');
             return redirect()->route('user-transaksi-studio.index');
     }
