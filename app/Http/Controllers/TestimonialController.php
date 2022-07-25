@@ -10,8 +10,9 @@ class TestimonialController extends Controller
 {
     public  function index()
     {
-        $testimonial = Testimonial::all();
-        return view('admin.testimonial.index', compact('testimonial'));
+        // $testimonial = Testimonial::all();
+        // return view('user.testimonial.index', compact('testimonial'));
+        return abort(404);
     }
 
     public function store(Request $request)
