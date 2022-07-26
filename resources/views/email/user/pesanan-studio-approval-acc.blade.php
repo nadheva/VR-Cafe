@@ -120,7 +120,7 @@ table.body .article {
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Invoice : {{$sewa_studio->invoice}}.</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Studio : {{$sewa_studio->studio->nama}}.</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Waktu mulai : {{$sewa_studio->tanggal_mulai}}.</p>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Waktu selesai : {{$sewa_studio->tanggal_selesai}}.</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Waktu selesai : {{$sewa_studio->tanggal_berakhir}}.</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Mohon segera cek halaman Transaksi Studio.</p></br></br></br>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">Hormat,</p></br></br>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">VR Cafe Mail Bot</p>

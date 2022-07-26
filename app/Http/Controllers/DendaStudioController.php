@@ -10,6 +10,7 @@ use Midtrans\Snap;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -42,6 +43,11 @@ class DendaStudioController extends Controller
             'invoice' => $invoice,
             'grand_total' => $this->request->grand_total
         ]);
+        Mail::send('email.user.denda', compact('denda'), function ($message) use($denda) {
+            $message->from('vrstreamingcafe@gmail.com');
+            $message->to($denda->user->email, 'Denda Sewa Studio')
+            ->subject("Denda Sewa Studio");
+        });
 
         $payment =  $denda->payment()->create([
             'invoice' => $denda->invoice,
