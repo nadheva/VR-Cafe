@@ -51,7 +51,7 @@ class PerangkatController extends Controller
             $txt = "storage/perangkat/". $file_name;
             $request->gambar->storeAs('public/perangkat', $file_name);
         } else {
-            $file_name = null;
+            $txt = null;
         }
 
         Perangkat::create([
