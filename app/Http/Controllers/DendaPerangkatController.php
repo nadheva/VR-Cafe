@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class DendaPerangkatController extends Controller
@@ -41,6 +42,12 @@ class DendaPerangkatController extends Controller
             'invoice' => $invoice,
             'grand_total' => $this->request->grand_total
         ]);
+
+        Mail::send('email.user.denda', compact('denda'), function ($message) use($denda) {
+            $message->from('vrstreamingcafe@gmail.com');
+            $message->to($denda->user->email, 'Denda Sewa Perangkat VR')
+            ->subject("Denda Sewa Perangkat VR");
+        });
 
         $payment =  $denda->payment()->create([
             'invoice' => $denda->invoice,

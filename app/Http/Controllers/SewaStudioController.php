@@ -7,6 +7,7 @@ use App\Models\SewaStudio;
 use App\Models\Studio;
 use App\Models\Profile;
 use Midtrans\Snap;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -142,6 +143,12 @@ class SewaStudioController extends Controller
                 'grand_total' => (($mulai->diffInMinutes($sampai))/60) * $studio->harga,
                 'approval' => '0'
             ]);
+
+            Mail::send('email.admin.pesanan-studio-approval', compact('sewa_studio'), function ($message) use($sewa_studio) {
+                $message->from('vrstreamingcafe@gmail.com');
+                $message->to('vrstreamingcafe@gmail.com', 'Approval Sewa Studio')
+                ->subject("Approval Sewa Studio");
+            });
 
             $payment =  $sewa_studio->payment()->create([
                 'invoice' => $sewa_studio->invoice,
@@ -298,6 +305,11 @@ class SewaStudioController extends Controller
             'approval' => '1',
             'proses' => 'Disewa'
         ]);
+        Mail::send('email.user.pesanan-studio-approval-acc', compact('sewa_studio'), function ($message) use($sewa_studio) {
+            $message->from('vrstreamingcafe@gmail.com');
+            $message->to($sewa_studio->user->email, 'Approval Sewa Studio')
+            ->subject("Approval Sewa Studio");
+        });
         Alert::success('Success', 'Pengajuan sewa studio berhasil disetujui!');
         return redirect()->back();
     }
@@ -314,6 +326,11 @@ class SewaStudioController extends Controller
         $sewa_studio->proses = 'Ditolak';
         $sewa_studio->alasan_tolak = $request->alasan_tolak;
         $sewa_studio->save();
+        Mail::send('email.user.pesanan-studio-approval-deny', compact('sewa_studio'), function ($message) use($sewa_studio) {
+            $message->from('vrstreamingcafe@gmail.com');
+            $message->to($sewa_studio->user->email, 'Approval Sewa Studio')
+            ->subject("Approval Sewa Studio");
+        });
         Alert::info('Warning', 'Pengajuan sewa studio berhasil ditolak!');
         return redirect()->back();
     }

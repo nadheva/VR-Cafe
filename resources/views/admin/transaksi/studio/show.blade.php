@@ -97,7 +97,7 @@
                             <tr>
                                 <td>Nama</td>
                                 <td> : </td>
-                                <td>{{$sewa_studio->studio->nama}}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Gambar</td>
