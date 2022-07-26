@@ -227,7 +227,7 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <form method="post" action="{{ route('approve-studio', $i->id) }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('approve-studio', $i->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="modal-header">
@@ -291,11 +291,12 @@
                         <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn bg-gradient-primary" name="Setuju">Setujui</button>
+                        </form>
                         {{-- <form id="form-delete" action="{{route('deny-studio', $i->id)}}" method="POST" style="display: inline">
                             @csrf
                             @method("PUT")
                             <button type="submit" class="btn bg-gradient-danger" name="Tolak">Tolak</button>
-                          </form> --}}
+                          {{-- </form> --} --}}
                         </div>
                         <form id="form-delete" action="{{route('deny-studio', $i->id)}}" method="POST" style="display: inline">
                             {{-- <div class="col-6 d-flex align-items-center">
@@ -311,7 +312,6 @@
                             <button type="submit" class="btn bg-gradient-danger" name="Tolak">Tolak</button>
                             </div>
                           </form>
-                        </form>
                 </div>
             </div>
         </div>

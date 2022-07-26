@@ -302,14 +302,18 @@ class SewaStudioController extends Controller
         return redirect()->back();
     }
 
-    public function deny($id)
+    public function deny(Request $request, $id)
     {
         $sewa_studio = SewaStudio::findOrfail($id);
-        $sewa_studio->update([
-            'approval' => '0',
-            'proses' => 'Ditolak',
-            'alasan_tolak' => $this->request->alasan_tolak,
-        ]);
+        // $sewa_studio->update([
+        //     'approval' => '0',
+        //     'proses' => 'Ditolak',
+        //     'alasan_tolak' => $request->alasan_tolak,
+        // ]);
+        $sewa_studio->approval = '0';
+        $sewa_studio->proses = 'Ditolak';
+        $sewa_studio->alasan_tolak = $request->alasan_tolak;
+        $sewa_studio->save();
         Alert::info('Warning', 'Pengajuan sewa studio berhasil ditolak!');
         return redirect()->back();
     }

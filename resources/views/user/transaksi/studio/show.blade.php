@@ -55,7 +55,7 @@
                         <td>Rp. @money($sewa_studio->grand_total)</td>
                     </tr>
                     <tr>
-                        <td>Status </td>
+                        <td>Pembayaran </td>
                         <td>:</td>
                         <td>
                             @if($sewa_studio->approval == 0 && $sewa_studio->payment->status == "pending")
@@ -78,6 +78,13 @@
                         </td>
                         {{-- @endif --}}
                     </tr>
+                    @if($sewa_studio->proses == 'Ditolak')
+                    <tr>
+                        <td>Alasan Penolakan </td>
+                        <td>:</td>
+                        <td>{{$sewa_studio->alasan_tolak}}</td>
+                    </tr>
+                    @endif
                     </tbody>
                   </table>
               </div>

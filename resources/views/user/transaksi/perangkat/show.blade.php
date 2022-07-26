@@ -55,7 +55,7 @@
                         <td>Rp. @money($sewa_perangkat->grand_total)</td>
                     </tr>
                     <tr>
-                        <td>Status </td>
+                        <td>Pembayaran </td>
                         <td>:</td>
                         <td>
                             <div class="col-lg-5 text-right d-flex flex-column">

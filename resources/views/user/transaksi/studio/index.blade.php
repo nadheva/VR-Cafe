@@ -39,6 +39,7 @@
                       <th>Invoice</th>
                       <th>Tanggal</th>
                       <th>Status</th>
+                      <th>Proses</th>
                       <th>Bayar</th>
                       <th>Detail</th>
                     </tr>
@@ -86,6 +87,23 @@
                           <button class="btn btn-icon-only btn-rounded btn-outline-warning mb-0 me-2 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-undo" aria-hidden="true"></i></button>
                           <span>Kadaluarsa</span>
                         </div>
+                      </td>
+                      @endif
+                      @if($i->proses == 'Disewa')
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-info badge-sm">Disewa</span>
+                      </td>
+                      @elseif($i->proses == 'Dalam Proses')
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-warning badge-sm">Dalam Proses</span>
+                      </td>
+                      @elseif($i->proses == 'Ditolak')
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-danger badge-sm">Ditolak</span>
+                      </td>
+                      @elseif($i->proses == 'Dikembalikan')
+                      <td  class="text-xs font-weight-bold">
+                        <span class="badge badge-success badge-sm">Dikembalikan</span>
                       </td>
                       @endif
                       <td class="text-xs font-weight-bold">
