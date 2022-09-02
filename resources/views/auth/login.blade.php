@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-body">
                   <form role="form" method="POST" action="{{route('login')}}">
-                    @csrf
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
                     <div class="mb-3">
                       <input type="email" class="form-control form-control-lg" name="email" placeholder="Email" aria-label="Email">
                     </div>

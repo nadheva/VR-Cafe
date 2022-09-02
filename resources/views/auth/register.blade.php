@@ -48,7 +48,7 @@
                 </div>
                 <div class="card-body pb-3">
                   <form role="form" action="{{route('register')}}" method="post">
-                    @csrf
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
                     <label>Nama</label>
                     <div class="mb-3">
                       <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name">
