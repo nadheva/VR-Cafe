@@ -47,8 +47,8 @@
                   <p class="mb-0">Masukan email dan password untuk daftar!</p>
                 </div>
                 <div class="card-body pb-3">
-                  <form role="form" action="register" method="post">
-                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                  <form action="register" method="POST">
+                    @csrf
                     <label>Nama</label>
                     <div class="mb-3">
                       <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name">
