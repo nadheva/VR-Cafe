@@ -34,8 +34,9 @@
                   <p class="mb-0">Masukan email dan password untuk masuk</p>
                 </div>
                 <div class="card-body">
-                  <form role="form" method="POST" action="login">
-                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    @php $token = md5(now()) @endphp
+                  <form role="form" method="POST" action="{{URL('login', $token}}">
+                    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
                     <div class="mb-3">
                       <input type="email" class="form-control form-control-lg" name="email" placeholder="Email" aria-label="Email">
                     </div>
