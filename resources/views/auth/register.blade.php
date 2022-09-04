@@ -47,7 +47,7 @@
                   <p class="mb-0">Masukan email dan password untuk daftar!</p>
                 </div>
                 <div class="card-body pb-3">
-                  <form role="form" action="{{route('register')}}" method="post">
+                  <form role="form" action="register" method="post">
                     <meta name="csrf-token" content="{{ csrf_token() }}">
                     <label>Nama</label>
                     <div class="mb-3">
